@@ -6,7 +6,7 @@
 <div id="main-wrapper">
 			<div class="container">
 			<header class="major" style="margin-bottom: 1.5em;">
-				<h2>Sell Anything Disc Golffff</h2>
+				<h2>Sell Anything Disc Golf</h2>
 			</header>
 				<form action="sell-images.php" method="post">
 				<div class="row" style="width: 100%; margin: auto 0 auto 0;">
