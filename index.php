@@ -1,9 +1,9 @@
 <?php include_once 'header.php'; ?>
 				<section id="searchMarket">
 					<div class="search-container">
-						<form>
-							<input id="search1" type="text" placeholder="Search the Market.." required>
-							<button id="search2" type="button">
+						<form action="buy.php" method="get" id="searchForm">
+							<input id="search1" name="search" type="text" placeholder="Search the Market.." required>
+							<button id="search2" type="submit" form="searchForm">
 								<i class="fa fa-search" style="font-size: 1.5em;"></i>
 							</button>
 						</form>
@@ -55,7 +55,7 @@
 								<a href="buy.php" class="button big">Buy</a>
 							</li>
 							<li>
-								<a href="left-sidebar.html" class="button alt big">Sell</a>
+								<a href="sell.php" class="button alt big">Sell</a>
 							</li>
 						</ul>
 					</footer>
@@ -63,317 +63,57 @@
 
 			</div>
 		</div>
-
+		
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
+				<header class="major" style="margin-bottom: 4em;">
+					<h2>Auctions Ending Now!</h2>
+				</header>
+				<div id="resultsHome"></div>
+				<footer style="margin-top: 0em; text-align: center;">
+					<ul class="actions">
+						<li>
+							<a href="buy.php" class="button big">See More Posts</a>
+						</li>
+					</ul>
+				</footer>
+				<hr>
+				<div class="row" style="text-align: center;">
+					<div class="4u">
+						<span class="fa-stack fa-4x">
+							<i class="fa fa-circle fa-stack-2x icon-background" id="handshake-icon-image-background"></i>
+							<i class="fa fa-handshake-o fa-stack-1x icon-image"  id="handshake-icon-image"></i>
+						</span>
+						<h3>People powered</h3>
+						<p style="margin-bottom: 0; font-weight: 400;">On Disc.Market you buy and sell directly with other users. Cutting out the middleman means you join a community market with the best prices and highest value.</p>
+					</div>
+					<div class="4u">
+						<span class="fa-stack fa-4x">
+							<i class="fa fa-circle fa-stack-2x icon-background" id="paypal-icon-image-background"></i>
+							<i class="fa fa-paypal fa-stack-1x icon-image" id="paypal-icon-image"></i>
+						</span>
+						<h3>PayPal Protections</h3>
+						<p style="margin-bottom: 0; font-weight: 400;">On Disc.Market, we use PayPal for payments because they provide extensive buyer and seller protections. Get what was advertised or get a refund. Period.</p>
+					</div>
+					<div class="4u">
+						<span class="fa-stack fa-4x">
+							<i class="fa fa-circle fa-stack-2x icon-background" id="exclamation-icon-image-background"></i>
+							<i class="fa fa-exclamation fa-stack-1x icon-image" id="exclamation-icon-image"></i>
+						</span>
+						<h3>No junk</h3>
+						<p style="margin-bottom: 0; font-weight: 400;">To keep our marketplace safe, we don’t allow broken items. Every product has listing requirements and an approval process to ensure confident shopping.</p>
+					</div>
+				</div>
+				<hr>
 				<div class="row">
 					<div class="12u">
-
-						<!-- Portfolio -->
-						<section style="margin-bottom: 0em;">
-							<header class="major">
-								<h2>New Items For Sale</h2>
-							</header>
-							<div class="12u 12u(mobile) row  homeposts">
-								<div class="4u 12u(mobile) post first">
-									<div class="post-container">
-										<a href="#" class="image featured">
-											<img src="images/pic2.jpg" alt="" />
-										</a>
-										<section class="box post-content">
-											<div class="post-info">
-												<span class="title">
-													<h3>3x McPro Aviar
-														<br/>&nbsp;</h3>
-												</span>
-												<hr>
-												<p>
-													<h3 style="padding: 0 .75em 0 .75em;">
-														<span>$18</span>
-														<span style="float: right;">12 Bids</span>
-													</h3>
-												</p>
-												<hr>
-												<p>
-													New/Used:
-													<span style="float: right;">New</span>
-												</p>
-												<p>
-													Quality:
-													<span style="float: right;">10/10</span>
-												</p>
-												<p>
-													Brand:
-													<span style="float: right;">Innova</span>
-												</p>
-												<p>
-													Weight:
-													<span style="float: right;">175g</span>
-												</p>
-												<p>
-													Plastic:
-													<span style="float: right;">McPro</span>
-												</p>
-
-											</div>
-											<footer>
-												<p>20 mins ago</p>
-											</footer>
-										</section>
-
-									</div>
-								</div>
-								<div class="4u 12u(mobile) post middle">
-									<div class="post-container">
-										<a href="#" class="image featured">
-											<img src="images/pic3.jpg" alt="" />
-										</a>
-										<section class="box post-content">
-											<div class="post-info">
-												<span class="title">
-													<h3>Yellow Lucid Defender 172g Brand New</h3>
-												</span>
-												<hr>
-												<p>
-													<h3 style="padding: 0 .75em 0 .75em;">
-														<span>$12</span>
-														<span style="float: right;">5 Bids</span>
-													</h3>
-												</p>
-												<hr>
-												<p>
-													New/Used:
-													<span style="float: right;">New</span>
-												</p>
-												<p>
-													Quality:
-													<span style="float: right;">10/10</span>
-												</p>
-												<p>
-													Brand:
-													<span style="float: right;">Dynamic Discs</span>
-												</p>
-												<p>
-													Weight:
-													<span style="float: right;">172g</span>
-												</p>
-												<p>
-													Plastic:
-													<span style="float: right;">Lucid</span>
-												</p>
-
-											</div>
-											<footer>
-												<p>2 hrs ago</p>
-											</footer>
-										</section>
-
-									</div>
-								</div>
-								<div class="4u 12u(mobile) post end">
-									<div class="post-container">
-										<a href="#" class="image featured">
-											<img src="images/pic4.jpg" alt="" />
-										</a>
-										<section class="box post-content">
-											<div class="post-info">
-												<span class="title">
-													<h3>Discraft Z Mantis 168g
-														<br/>&nbsp;</h3>
-												</span>
-												<hr>
-												<p>
-													<h3 style="padding: 0 .75em 0 .75em;">
-														<span>$6</span>
-														<span style="float: right;">1 Bid</span>
-													</h3>
-												</p>
-												<hr>
-												<p>
-													New/Used:
-													<span style="float: right;">Used</span>
-												</p>
-												<p>
-													Quality:
-													<span style="float: right;">8/10</span>
-												</p>
-												<p>
-													Brand:
-													<span style="float: right;">Discraft</span>
-												</p>
-												<p>
-													Weight:
-													<span style="float: right;">168g</span>
-												</p>
-												<p>
-													Plastic:
-													<span style="float: right;">Z</span>
-												</p>
-
-											</div>
-											<footer>
-												<p>15 hrs ago</p>
-											</footer>
-										</section>
-
-									</div>
-								</div>
-							</div>
-						</section>
-						<section>
-							<div class="12u 12u(mobile) row  homeposts">
-								<div class="4u 12u(mobile) post">
-									<div class="post-container">
-										<a href="#" class="image featured">
-											<img src="images/pic5.jpg" alt="" />
-										</a>
-										<section class="box post-content">
-											<div class="post-info">
-												<span class="title">
-													<h3>Westside Tursas Custom Dye Tournament Plastic</h3>
-												</span>
-												<hr>
-												<p>
-													<h3 style="padding: 0 .75em 0 .75em;">
-														<span>$16</span>
-														<span style="float: right;">4 Bids</span>
-													</h3>
-												</p>
-												<hr>
-												<p>
-													New/Used:
-													<span style="float: right;">New</span>
-												</p>
-												<p>
-													Quality:
-													<span style="float: right;">10/10</span>
-												</p>
-												<p>
-													Brand:
-													<span style="float: right;">Westside</span>
-												</p>
-												<p>
-													Weight:
-													<span style="float: right;">171g</span>
-												</p>
-												<p>
-													Plastic:
-													<span style="float: right;">Tournament</span>
-												</p>
-
-											</div>
-											<footer>
-												<p>20 mins ago</p>
-											</footer>
-										</section>
-
-									</div>
-								</div>
-								<div class="4u 12u(mobile) post">
-									<div class="post-container">
-										<a href="#" class="image featured">
-											<img src="images/pic6.jpg" alt="" />
-										</a>
-										<section class="box post-content">
-											<div class="post-info">
-												<span class="title">
-													<h3>Camo Grip A15 Bag
-														<br/>&nbsp;</h3>
-												</span>
-												<hr>
-												<p>
-													<h3 style="padding: 0 .75em 0 .75em;">
-														<span>$120</span>
-														<span style="float: right;">9 Bids</span>
-													</h3>
-												</p>
-												<hr>
-												<p>
-													New/Used:
-													<span style="float: right;">Used</span>
-												</p>
-												<p>
-													Quality:
-													<span style="float: right;">8/10</span>
-												</p>
-												<p>
-													Brand:
-													<span style="float: right;">Grip</span>
-												</p>
-												<p>
-													Size:
-													<span style="float: right;">A15</span>
-												</p>
-												<p>
-													Color:
-													<span style="float: right;">Camo</span>
-												</p>
-
-											</div>
-											<footer>
-												<p>2 hrs ago</p>
-											</footer>
-										</section>
-
-									</div>
-								</div>
-								<div class="4u 12u(mobile) post">
-									<div class="post-container">
-										<a href="#" class="image featured">
-											<img src="images/pic7.jpg" alt="" />
-										</a>
-										<section class="box post-content">
-											<div class="post-info">
-												<span class="title">
-													<h3>Innova Zoo XL Tshirt
-														<br/>&nbsp;</h3>
-												</span>
-												<hr>
-												<p>
-													<h3 style="padding: 0 .75em 0 .75em;">
-														<span>$13</span>
-														<span style="float: right;">3 Bid</span>
-													</h3>
-												</p>
-												<hr>
-												<p>
-													New/Used:
-													<span style="float: right;">New</span>
-												</p>
-												<p>
-													Quality:
-													<span style="float: right;">10/10</span>
-												</p>
-												<p>
-													Brand:
-													<span style="float: right;">Innova</span>
-												</p>
-												<p>
-													Size:
-													<span style="float: right;">XL</span>
-												</p>
-												<p>
-													Color:
-													<span style="float: right;">Blue</span>
-												</p>
-
-											</div>
-											<footer>
-												<p>15 hrs ago</p>
-											</footer>
-										</section>
-
-									</div>
-								</div>
-							</div>
-
-							<footer class="12u">
-								<ul class="actions bottom">
-									<li>
-										<a href="" class="button big">See More Posts</a>
-									</li>
-								</ul>
-							</footer>
-						</section>
+						<div class="faqChat">
+							<h4>Do you have any more questions? See our <a href="/faq.php">FAQ</a> page for more answers or contact our <a href="#">support staff</a> for help.</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 <?php include_once 'footer.php'; ?>

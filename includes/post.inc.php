@@ -19,7 +19,9 @@ if ($postId != "" && !empty($postId)) {
 
 $posts = mysqli_query($conn, $sql);
 
+
 while ($post = mysqli_fetch_array($posts)) {
+
     ?> 
     <div class="modal-content2">
         <div class="row" style="max-width: 1400px; margin: 0 auto 0 auto;">
@@ -314,8 +316,24 @@ while ($post = mysqli_fetch_array($posts)) {
             <div class="12u" style="padding-top: 1em; padding-bottom: 1em; width: 100%; text-align: center;">
                         <div class="bidInfo" style="max-width: 1400px; margin: 0 auto 0 auto;">
                             <div class="row" style="padding: 0; margin: 0;">
-                                <div class="12u" style="padding: 0; text-align: center;">
-                                    <p>Shipping / Payments</p>
+                                <div class="6u" style="padding: 0; text-align: center; border-right:solid 1px black;">
+                                    <h2><u>Shipping</u></h2>
+                                </div>
+                                <div class="6u" style="padding: 0; text-align: center; border-left:solid 1px black;">
+                                    <h2><u>Payment</u></h2>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 0; margin: 0;">
+                                <div class="6u" style="padding: 0; text-align: left; border-right:solid 1px black;">
+                                    <p>FREE Economy Shipping | See details
+                                    <br>Item location:
+                                    <br>New Lenox, Illinois, United States
+                                    <br>Ships to:
+                                    <br>Worldwide See exclusions
+                                    </p>
+                                </div>
+                                <div class="6u" style="padding: 0; text-align: left; border-left:solid 1px black;">
+                                    <p>We want to make payment for your products as easy as possible! This is why we offer a range of different payment options:</p>
                                 </div>
                             </div>
                         </div>
@@ -325,8 +343,18 @@ while ($post = mysqli_fetch_array($posts)) {
             <div class="12u" style="padding-top: 1em; width: 100%; text-align: center;">
                         <div class="bidInfo" style="max-width: 1400px; margin: 0 auto 0 auto;">
                             <div class="row" style="padding: 0; margin: 0;">
-                                <div class="12u" style="padding: 0; text-align: center;">
-                                    <p>Related Posts</p>
+                                <div class="12u" style="padding: 0; text-align: center; margin-top: 1em;">
+                                <h2><u>Related Posts</u></h2>
+                                    <div class="relatedPosts" style="padding: 1em; padding-top: 0;">
+                                        <div style="align: center;"><b><p><span style="color:#075804">$18</span></b> - Content 1 Title</p><img src="<?php echo "images/pic20.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$12</span> - Content 2 Title</p><img src="<?php echo "images/pic21.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$11</span> - Content 3 Title</p><img src="<?php echo "images/pic22.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$6</span> - Content 4 Title</p><img src="<?php echo "images/pic23.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$14</span> - Content 5 Title</p><img src="<?php echo "images/pic24.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$16</span> - Content 6 Title</p><img src="<?php echo "images/pic25.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$22</span> - Content 7 Title</p><img src="<?php echo "images/pic26.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$9</span> - Content 8 Title</p><img src="<?php echo "images/pic27.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -345,8 +373,17 @@ $(window).resize(function(){
 });
     
 $(document).ready(function(){
-    $('#trigger').click( function(event){
-        console.log("YUUUUUUUP");        
+    $('.relatedPosts').slick({
+        lazyLoad: 'ondemand',
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 3000
+    });
+
+    $('#trigger').click( function(event){       
         event.stopPropagation();        
         $('#drop').toggle();        
     });   
@@ -372,9 +409,10 @@ $(document).ready(function(){
 
     });// end on click
 
+
     $('[data-countdown]').each(function() {
 		var $countdown = 0;
-		var $this = $(this), finalDate = $(this).data('countdown');
+        var $this = $(this), finalDate = $(this).data('countdown');
 		$this.countdown(finalDate, function(event) {
 			if(event.offset.days > 0){
 				$this.html('<i id="clock" class="fa fa-clock-o" aria-hidden="true"></i>&nbsp' + event.strftime('%-Dd %-Hh %-Mm %-Ss'));
@@ -394,11 +432,11 @@ $(document).ready(function(){
 					}
 				}
 			}
-		})
+        })
 		.on('finish.countdown', function(event) {
-			  $(this).html('EXPIRED').parent().addClass('disabled');
-              $this.css("color", "black");
-              $this.css("font-weight", "700");
+			$(this).html('EXPIRED').parent().addClass('disabled');
+            $this.css("color", "black");
+            $this.css("font-weight", "700");
 		});
 	});
 

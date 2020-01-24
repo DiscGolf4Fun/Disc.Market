@@ -13,21 +13,40 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/multirange.css" />
-	<link rel="stylesheet" href="assets/css/rSlider.min.css">
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<link rel="stylesheet" href="/assets/css/multirange.css" />
+	<link rel="stylesheet" href="/assets/css/rSlider.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
-	<link rel="stylesheet" href="assets/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
-	<link rel="stylesheet" href="assets/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
-	<link rel="stylesheet" href="assets/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
-	<link rel="stylesheet" href="assets/css/jquery.simpleLens.css" />
-	<link rel="stylesheet" href="assets/css/jquery.simpleGallery.css">
+	<link rel="stylesheet" href="/assets/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/assets/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/assets/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/assets/css/jquery.simpleLens.css" />
+	<link rel="stylesheet" href="/assets/css/jquery.simpleGallery.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/min/basic.min.css">
-	<link rel="stylesheet" href="assets/css/style.css" />
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" href="/assets/css/jquery.bracket.min.css">
+	<link rel="stylesheet" href="/assets/css/jConfirm.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	<link rel="stylesheet" href="/assets/css/style.css" />
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/images/favicon/site.webmanifest">
+	<link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/images/favicon/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+
 
 </head>
 
@@ -45,7 +64,49 @@
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		}
+
+
+		if(isset($_SESSION['u_id'])) {
+			$sql = "SELECT posts.id FROM posts WHERE user_id = " . $_SESSION['u_id'];
+			$sql2 = "SELECT bids.id FROM bids WHERE user_id =". $_SESSION['u_id'] ." GROUP BY post_id";
+			$totalPosts = mysqli_query($conn, $sql);
+			$totalPosts = mysqli_num_rows($totalPosts);
+			$totalBids = mysqli_query($conn, $sql2);
+			$totalBids = mysqli_num_rows($totalBids);
+		} else {
+			$totalPosts = 0;
+			$totalBids = 0;
+		}
+
+
 	?>
+
+
+
+	<div class="dimmer2"></div>
+	<div class="newAccount">
+	<header class="" id="accountTitle" style="margin-top: 2em;">
+		<img id="emailPicture" src="/images/email-icon.png" alt="Profile Picture">
+		<a href="#" class="close-thik3"></a>
+	</header>
+		<h3 style="margin: 1em 2em 0 2em;">Thank you for creating an account</h3>
+		<br>
+		<h4 style="margin: 0 2em 0 2em;">An activation email should arive in your inbox in the next few minutes. If you do not recieve the email, check your spam folder or <a href="#" style="text-decoration: underline; color: #0a7e07;">click here</a> to resend the message.</h4>
+	</div>
+
+
+
+	<script type="text/javascript">
+		if (location.href.indexOf("#NewAccount") != -1) {
+			$('html, body').css("overflow","none");
+			$('.dimmer2').show();
+			$('.newAccount').show();
+		} else {
+			$('.dimmer2').hide();
+			$('.newAccount').hide();
+		}
+	</script>
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
@@ -54,31 +115,56 @@
 
 				<!-- Logo -->
 				<h1>
-					<a href="index.php">
-						<img src="images/logo.png" alt="" />
+					<a href="/">
+						<img src="/images/logo.png" alt="" />
 					</a>
 				</h1>
 
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li <?php if (basename($_SERVER['PHP_SELF']) == "index.php") echo 'class="current"'; ?>>
-							<a href="index.php">Home</a>
+						<li <?php if ((basename($_SERVER['PHP_SELF']) == "index.php") && (strpos($_SERVER['REQUEST_URI'], "admin") != true) && (strpos($_SERVER['REQUEST_URI'], "account") != true))  echo 'class="current"'; ?>>
+							<a href="/">Home</a>
 						</li>
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "buy.php") echo 'class="current"'; ?>>
-							<a href="buy.php">Buy</a>
+							<a href="/buy.php">Buy</a>
 						</li>
-						<li <?php if (basename($_SERVER['PHP_SELF']) == "sell.php") echo 'class="current"'; ?>>
-							<a href="sell.php">Sell</a>
+						<li <?php if (basename($_SERVER['PHP_SELF']) == "sell.php" || basename($_SERVER['PHP_SELF']) == "/sell-images.php") echo 'class="current"'; ?>>
+							<a href="/sell.php">Sell</a>
 						</li>
-						<li <?php if (basename($_SERVER['PHP_SELF']) == "") echo 'class="current"'; ?>>
-							<a href="">About</a>
+						<li <?php if (basename($_SERVER['PHP_SELF']) == "about.php") echo 'class="current"'; ?>>
+							<a href="/about.php">About</a>
 						</li>
-						<li <?php if (basename($_SERVER['PHP_SELF']) == "") echo 'class="current"'; ?>>
-							<a href="" onclick="document.getElementById('id01').style.display='block'; openTab(event, 'Login');" style="width:auto;">
+						<li <?php if (basename($_SERVER['PHP_SELF']) == "faq.php"){echo 'class="opener current"';}else{echo 'class="opener"';}  ?>>
+							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<ul class="dropdownMenu">
+								<li><a href="/faq.php"><i class="fa fa-question" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;FAQs</a></li>
+								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;YouTube Videos</a></li>
+								<li><a href="https://www.pdga.com/faq/ratings/how-is-your-rating-calculated" target="_blank"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Ratings Calculator</a></li>
+								<li><a href="/matchplay.php"><i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Matchplay</a></li>
+								<li><a href="https://www.marshallstreetdiscgolf.com/flightguide" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Disc Lookup</a></li>
 								<?php
 									if (isset($_SESSION['u_id'])) {
-										echo $_SESSION['u_uid'] . '&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>';
+										if($_SESSION['u_role'] <= 2) {
+											echo '<hr class="moreHR">',
+												'<li><a href="#" target="_blank"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Moderator Chat</a></li>',
+												'<li><a href="#" target="_blank"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Accept Posts</a></li>';
+										}
+									}
+								?>
+							</ul>
+						</li>
+						<li <?php if (basename($_SERVER['PHP_SELF']) == "" || (strpos($_SERVER['REQUEST_URI'], "account") == true)) echo 'class="current"'; ?>>
+							<a href="#login" id="loginToggle" class="btn">
+								<?php
+									if (isset($_SESSION['u_id'])) {
+										if($_SESSION['u_role'] == 1) { 
+											echo $_SESSION['u_uid'] . '&nbsp;&nbsp;<img src="/images/gold-crown.png" style="vertical-align: middle; height: 1em;"/>';
+										} elseif ($_SESSION['u_role'] == 2) {
+											echo $_SESSION['u_uid'] . '&nbsp;&nbsp;<img src="/images/silver-crown.png" style="vertical-align: middle; height: 1em;"/>';
+										} else {
+											echo $_SESSION['u_uid'] . '&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>';
+										}
 									} else {
 										echo "Login/Sign Up";
 									}
@@ -86,138 +172,149 @@
 							</a>
 						</li>
 					</ul>
-				</nav>
+				</nav>	
 
-				<!-- Login -->
-				<div id="id01" class="modal">
+				<div id='loginWrapper'>
+					<div class="dimmer"></div>
+					<div class="forgotPassword animated fadeIn">
+						<a href="#" class="close-thik"></a>
+						<h3>Forgot your Password?</h3>
+						<form class="forgot-password-form" action="" method="POST">
+							<input type="text" class="input" autocomplete="off" placeholder="Email or Username" style="margin-bottom: 1em;" required>
+							<div class="g-recaptcha" data-sitekey="6LfNE4oUAAAAAMGBRJ9HHqEDMA3xkiOwYUM83obY" style="margin-bottom: 1em;"></div>
+							<input type="submit" class="button" name="submitForgotPassword" style="margin-bottom: 1em;" value="Send Email">
+						</form><!--.login-form-->
+						<div class="help-text">
+							<p><a href="#" class="forgot2">Back to Login?</a></p>
+						</div><!--.help-text-->
+					</div>
+					<div class="termsOfService animated fadeIn">
+						<a href="#" class="close-thik2"></a>
+						<h3>Terms of Service</h3>
+						<p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis commodo odio aenean sed. Morbi non arcu risus quis varius quam quisque id. Bibendum ut tristique et egestas quis ipsum suspendisse. Vitae turpis massa sed elementum tempus egestas. Dolor magna eget est lorem. Lobortis feugiat vivamus at augue. Magna sit amet purus gravida quis blandit turpis. Ac feugiat sed lectus vestibulum. Velit egestas dui id ornare arcu. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. Maecenas ultricies mi eget mauris.</p>					
+						<p>2. Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. Convallis tellus id interdum velit. Ut consequat semper viverra nam libero justo laoreet. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Felis imperdiet proin fermentum leo vel orci. Viverra nam libero justo laoreet sit. Consectetur adipiscing elit ut aliquam purus sit amet luctus. In iaculis nunc sed augue lacus. Consequat mauris nunc congue nisi vitae suscipit tellus mauris. Feugiat vivamus at augue eget. Venenatis cras sed felis eget velit aliquet sagittis. Eget egestas purus viverra accumsan in nisl nisi. Eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque. Gravida rutrum quisque non tellus orci ac auctor. Suspendisse faucibus interdum posuere lorem ipsum dolor sit. Id nibh tortor id aliquet lectus proin. Iaculis nunc sed augue lacus viverra vitae congue eu. Et sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque.</p>
+						<p>3. Mauris cursus mattis molestie a iaculis at erat. Malesuada proin libero nunc consequat interdum. Cras ornare arcu dui vivamus arcu felis. Suspendisse sed nisi lacus sed. Diam vel quam elementum pulvinar etiam. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Mi quis hendrerit dolor magna. Morbi tempus iaculis urna id volutpat lacus laoreet. Sed odio morbi quis commodo. Nulla malesuada pellentesque elit eget. Consectetur adipiscing elit duis tristique sollicitudin nibh.</p>
+						<p>4. Augue neque gravida in fermentum et. Sed augue lacus viverra vitae congue eu. Egestas egestas fringilla phasellus faucibus. Felis imperdiet proin fermentum leo vel orci porta non. Nunc congue nisi vitae suscipit tellus mauris a diam. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Quis commodo odio aenean sed. Ultrices sagittis orci a scelerisque purus. Sem integer vitae justo eget magna fermentum. Non nisi est sit amet. Varius morbi enim nunc faucibus a pellentesque sit amet porttitor. Scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis. Elit ullamcorper dignissim cras tincidunt lobortis feugiat.</p>
+						<p>5. Lorem mollis aliquam ut porttitor leo a. Sit amet consectetur adipiscing elit. Posuere urna nec tincidunt praesent semper feugiat. Ultricies integer quis auctor elit. Proin sed libero enim sed faucibus turpis in. Id volutpat lacus laoreet non curabitur gravida arcu ac tortor. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Facilisi morbi tempus iaculis urna id volutpat lacus. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh sed. Tellus in metus vulputate eu scelerisque felis imperdiet. Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Viverra mauris in aliquam sem fringilla ut morbi tincidunt augue. In fermentum et sollicitudin ac. Pellentesque eu tincidunt tortor aliquam nulla. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Quis auctor elit sed vulputate mi sit amet mauris commodo.</p>			
+						<button class="terms2" type="submit" name="submitLogout">Close</button>
+					</div>
+					<div class="loginDiv">
 					<?php if (isset($_SESSION['u_id'])): ?> 
-					<header class="" id="accountTitle">
-							<h3><?php echo "My Account - " . $_SESSION['u_uid']; ?></h3>
-					</header>
-					<form class="modal-content" action="includes/logout.inc.php" method="POST">
-						<div class="container">
-							<button type="submit" name="submitLogout">Logout</button>
-						</div>
-					</form>
+						<header class="" id="accountTitle">
+							<?php 
+								if($_SESSION['u_pic'] != "") {
+									echo '<img id="profilePicture" src="/images/'. $_SESSION['u_pic'] .'" alt="Profile Picture">'; 
+								} else {
+									echo '<img id="profilePicture" src="/images/profile.png" alt="Profile Picture">'; 
+								}
+							?>
+								<h3><?php echo $_SESSION['u_uid']; ?></h3>
+								<p style="font-size: 1em; font-weight: 500; font-style: normal;"><a href="/account/#myposts" onClick="window.location.reload()" style="text-decoration: underline; cursor: pointer; color: #0a7e07;"><?php echo $totalPosts; ?></a>&nbsp;posts&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/account/#currentbids" onClick="window.location.reload()" style="text-decoration: underline; cursor: pointer; color: #0a7e07;"><?php echo $totalBids; ?></a>&nbsp;bids&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/account/#messages" onClick="window.location.reload()" style="text-decoration: underline; cursor: pointer; color: #0a7e07;">0</a>&nbsp;messages</p>
+								<?php 
+									if($_SESSION['u_role'] == 1) { 
+										echo '<a href="/admin" style="position: absolute; top: 0; right: 0; margin: 1em; text-decoration: underline; color: #0a7e07;">Admin Home&nbsp;&nbsp;<img src="/images/gold-crown.png" style="vertical-align: middle; height: 1em;"/></a>';
+									} elseif ($_SESSION['u_role'] == 2) {
+										echo '<a href="/admin" style="position: absolute; top: 0; right: 0; margin: 1em; text-decoration: underline; color: #0a7e07;">Admin Home&nbsp;&nbsp;<img src="/images/silver-crown.png" style="vertical-align: middle; height: 1em;"/></a>';
+									}
+								?>
+						</header>
+						<hr style="margin: 0 20% 0 20%;">
+						<a href="/account/#myaccount" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</h3></a>
+						<hr style="margin: 0 20% 0 20%;">
+						<a href="/account/#myposts" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;My Posts</h3></a>
+						<hr style="margin: 0 20% 0 20%;">
+						<a href="/account/#currentbids" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;&nbsp;Current Bids</h3></a>
+						<hr style="margin: 0 20% 0 20%;">	
+						<a href="/account/#messages" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Messages</h3></a>
+						<hr style="margin: 0 20% 0 20%;">
+						<a href="/account/#pastsales" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;&nbsp;Past Sales</h3></a>
+						<hr style="margin: 0 20% 0 20%;">
+						<a href="/account/#pastpurchases" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp;Past Purchases</h3></a>
+						<hr style="margin: 0 20% 0 20%;">
+						<form id="logoutForm" action="/includes/logout.inc.php" method="POST" style="display: block;">
+							<h3 id="logoutButton" class="profilePopup"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Logout</h3>
+						</form>
+						<hr style="margin: 0 20% 0 20%;">
 					<?php else: ?>
-					<header class="" id="tabs">
-						<div class="tab">
-							<button name="button" class="loginButton" style="border-bottom: 1px solid black;" onclick="openTab(event, 'Login')">Login</button>
-							<button name="button" class="signupButton" style="border-bottom: 1px solid black;" onclick="openTab(event, 'SignUp')">Sign Up</button>
-							<button name="button" class="exit" id="exit" style="border-bottom: 1px solid white;"><i class="fa fa-times" aria-hidden="true"></i></button>
-						</div>
-					</header>
-					<div id="Login" class="tabcontent">
-					<form class="modal-content" action="includes/login.inc.php" method="POST">
-							<div class="container">
-								<label for="uid">
-									<b>
-										<h2>Email/Username</h2>
-									</b>
-								</label>
-								<input type="text" placeholder="Enter Username" name="uid" required>
+						<div class="form-wrap">
+							<div class="tabs">
+								<h3 class="login-tab"><a class="active" href="#login-tab-content">Login</a></h3>
+								<h3 class="signup-tab"><a href="#signup-tab-content">Sign Up</a></h3>
+							</div><!--.tabs-->
 
-								<label for="pwd">
-									<b>
-										<h2>Password</h2>
-									</b>
-								</label>
-								<input type="password" placeholder="Enter Password" name="pwd" style="margin-bottom: 2em;" required>
-								<br>
-								<label id="login">
-									<input type="checkbox" checked="checked" name="remember"> Remember me
-								</label>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<label id="login">
-									<a href="">Forgot Password?</a>
-								</label>
-								<br>
-								<button type="submit" name="submitLogin">Login</button>
-							</div>
-
-							<div class="container" style="border-left: 2px solid #4d4d4d;">
-								<a href="http://www.facebook.com" target="_blank">
-									<img id="socialLogin" src="images/facebook.png" alt="Facebook Login">
-								</a>
-								<a href="http://www.google.com" target="_blank">
-									<img id="socialLogin" src="images/google.png" alt="Google Login">
-								</a>
-								<a href="http://www.twitter.com" target="_blank">
-									<img id="socialLogin" src="images/twitter.png" alt="Twitter Login">
-								</a>
-								<br>
-								<h2 id="noAccount">Don't have an account?</h2>
-								<input type="button" value="Create Account" id="accountCreate" onclick="openTab(event, 'SignUp')">
-							</div>
-					</form>
-					</div>
-					<div id="SignUp" class="tabcontent" style="display: none;">
-					<form class="modal-content" action="includes/signup.inc.php" method="POST">
-							<div class="container">
-								<label for="name">
-									<b>
-										<h2>First Name</h2>
-									</b>
-								</label>
-								<input type="text" placeholder="First Name" name="first" required>
-
-								<label for="name">
-									<b>
-										<h2>Last Name</h2>
-									</b>
-								</label>
-								<input type="text" placeholder="Last Name" name="last" required>
-
-								<label for="uname">
-									<b>
-										<h2>Username</h2>
-									</b>
-								</label>
-								<input type="text" placeholder="Username" name="uid" required>
-								<br>
-								<label for="email">
-									<b>
-										<h2>Email</h2>
-									</b>
-								</label>
-								<input type="text" placeholder="E-mail" name="email" required>
-								<br><br>
-							</div>
-							<div class="container" style="border-right: 2px white">
-								<label for="pwd">
-									<b>
-										<h2>Password</h2>
-									</b>
-								</label>
-								<input type="password" placeholder="Password" name="pwd" required>
-
-								<label for="pswagain">
-									<b>
-										<h2>Password Again</h2>
-									</b>
-								</label>
-								<input type="password" placeholder="Password Again" name="pswagain">
-								<br>
-								<img id="socialLogin" src="images/recaptcha-robot.png" alt="Captcha" style="width: 100%; padding: 0 1em 0 1em;">
-								<br>
-								<button type="submit" name="submitSignup">Sign Up</button>
-							</div>
-
-							<div class="container" style="border-left: 2px solid #4d4d4d;">
-								<a href="http://www.facebook.com" target="_blank">
-									<img id="socialLogin" src="images/facebook.png" alt="Facebook Login">
-								</a>
-								<a href="http://www.google.com" target="_blank">
-									<img id="socialLogin" src="images/google.png" alt="Google Login">
-								</a>
-								<a href="http://www.twitter.com" target="_blank">
-									<img id="socialLogin" src="images/twitter.png" alt="Twitter Login">
-								</a>
-								<br>
-								<h2 id="noAccount">Already Have an Account?</h2>
-								<input type="button" id="accountLogin" value="Login" onclick="openTab(event, 'Login')">
-							</div>
-					</form>
-					</div>
+							<div class="tabs-content">
+								<div id="login-tab-content" class="active">
+									<form class="login-form" action="/includes/login.inc.php" method="POST">									
+										<input type="text" class="input" name="uid" id="uid" autocomplete="off" placeholder="Email or Username" required>
+										<input type="password" class="input" name="pwd" id="pwd" autocomplete="off" placeholder="Password" required>
+										<div class="row" style="margin-bottom: 1em;">
+											<div class="6u">
+												<input type="checkbox" class="checkbox" id="remember_me">
+												<label for="remember_me">Remember me</label>
+											</div>
+											<div class="6u">
+												<p style="margin: 0;"><a href="#" class="forgot">Forgot your password?</a></p>
+											</div>
+										</div>
+										<input type="submit" class="button" name="" value="Login">
+									</form><!--.login-form-->
+									<div class="help-text" style="margin-top: 1em; margin-bottom: 1.5em;">
+									<div class="hr-sect" style="color: black;">OR</div>
+									</div><!--.help-text-->
+									<div class="row" style="margin-bottom: 1em;">
+											<div class="6u">
+												<a href="#" class="social-button" id="facebook-connect"> <span>Login with Facebook</span></a>
+											</div>
+											<div class="6u">
+												<a href="#" class="social-button" id="google-connect"> <span>Login with Google</span></a>
+											</div>
+											<div class="6u" style="padding-top: 1.5em;">
+												<a href="#" class="social-button" id="twitter-connect"> <span>Login with Twitter</span></a>
+											</div>
+											<div class="6u" style="padding-top: 1.5em;">
+												<a href="#" class="social-button" id="amazon-connect"> <span>Login with Amazon</span></a>
+											</div>
+									</div>
+								</div><!--.login-tab-content-->
+								<div id="signup-tab-content">
+									<form class="signup-form" action="/includes/signup.inc.php" method="post">
+										<div class="row" style="margin-bottom: 0;">
+											<div class="6u">
+												<input type="text" class="input" id="user_firstname" name="user_firstname" autocomplete="off" placeholder="First Name" required>
+											</div>
+											<div class="6u">
+												<input type="text" class="input" id="user_lastname" name="user_lastname" autocomplete="off" placeholder="Last Name" required>
+											</div>
+											<div class="12u" style="padding-top: 0em;">
+												<input type="email" class="input" id="user_email" name="user_email" autocomplete="off" placeholder="Email" required>
+											</div>
+											<div class="12u" style="padding-top: 0em;">
+												<input type="text" class="input" id="user_name" name="user_name" autocomplete="off" placeholder="Username" required>
+											</div>
+											<div class="6u" style="padding-top: 0em;">
+												<input type="password" class="input" id="user_pass"  name="user_pass" autocomplete="off" placeholder="Password" required>
+											</div>
+											<div class="6u" style="padding-top: 0em;">
+												<input type="password" class="input" id="user_pass2"  name="user_pass2" autocomplete="off" placeholder="Repeat Password" required>
+											</div>
+											<div class="6u" style="padding-top: 0em;">
+											<div class="g-recaptcha" data-sitekey="6LfNE4oUAAAAAMGBRJ9HHqEDMA3xkiOwYUM83obY" style="transform:scale(0.68);transform-origin:0 0"></div>
+											</div>
+											<div class="6u" style="padding-top: 0em;">
+												<div class="help-text" style="margin-top: 0px;">
+													<p>By signing up, you agree to our</p>
+													<p style="margin-top: -.8em;"><a href="#" class="terms">Terms of service</a></p>
+												</div>
+											</div>
+										</div>									
+										<input type="submit" class="button" name="submitSignup" value="Sign Up">
+									</form><!--.login-form-->
+								</div><!--.signup-tab-content-->
+							</div><!--.tabs-content-->
+						</div><!--.form-wrap-->
 					<?php endif; ?>
+					</div>
 				</div>
+		<!-- inser more links here -->
+
+		

@@ -2,26 +2,19 @@
 </div>
 </div>
 <script>
-
-	window.onscroll = function (e)
-	{
-		scrollFunction();
-	}	
+	$(".post2").hide();
 </script>
 
-
-
-<button onclick="topFunction()" id="myBtn" title="Go to top">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 		<?php
-			$innovaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'innova';"));
-			$discraftCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discraft';"));
-			$dynamicCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'dynamic';"));
-			$latitudeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'latitude';"));
-			$westsideCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'westside';"));
-			$discmaniaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discmania';"));
-			$prodigyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'prodigy';"));
-			$mvpCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'MVP';"));
-			$gatewayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'gateway';"));
+			$innovaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'innova' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$discraftCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discraft' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$dynamicCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'dynamic' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$latitudeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'latitude' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$westsideCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'westside' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$discmaniaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discmania' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$prodigyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'prodigy' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$mvpCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'MVP' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$gatewayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'gateway' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
 			$otherBrandCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE 
 			brand != 'innova' && 
 			brand != 'discraft' && 
@@ -31,25 +24,80 @@
 			brand != 'discmania' && 
 			brand != 'prodigy' && 
 			brand != 'MVP' && 
-			brand != 'gateway';"));
+			brand != 'gateway' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
 
-			$discCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc';"));
-			$bagCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'bag';"));
-			$apparelCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'apparel';"));
-			$basketCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'basket';"));
-			$shoesCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'shoes';"));
-			$accessoryCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'accessory';"));
+			$brandsArray = array('innova' => $innovaCount[0], 'discraft' => $discraftCount[0], 'dynamic' => $dynamicCount[0], 'latitude' => $latitudeCount[0], 'westside' => $westsideCount[0], 'discmania' => $discmaniaCount[0], 'prodigy' => $prodigyCount[0], 'mvp' => $mvpCount[0], 'gateway' => $gatewayCount[0]);
+			arsort($brandsArray);
+			$brandsArray['otherBrand'] = $otherBrandCount[0]; 
 
-			$driverCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'driver';"));
-			$fairwayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'fairway';"));
-			$midrangeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'midrange';"));
-			$putterCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'putter';"));
 
-			$newCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'new';"));
-			$usedCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'used';"));
+
+			$discCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$bagCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'bag' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$apparelCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'apparel' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$basketCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'basket' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$shoesCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'shoes' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$accessoryCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'accessory' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+
+			$categoriesArray = array('disc' => $discCount[0], 'bag' => $bagCount[0], 'apparel' => $apparelCount[0], 'basket' => $basketCount[0], 'shoes' => $shoesCount[0], 'accessory' => $accessoryCount[0]);
+			arsort($categoriesArray);
+
+
+
+			$driverCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'driver' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$fairwayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'fairway' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$midrangeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'midrange' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$putterCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'putter' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+
+			$newCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'new' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$usedCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'used' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+
+
+			$totalCount = $innovaCount[0] + $discraftCount[0] + $dynamicCount[0] + $latitudeCount[0] + $westsideCount[0] + $discmaniaCount[0] + $prodigyCount[0] + $mvpCount[0] + $gatewayCount[0] + $otherBrandCount[0];
+
+			$homeSearch = $_GET['search'];
+
+
+			if(isset($_SESSION['u_id'])) {
+				$sql1 = "SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = ". $_SESSION['u_id'] ." ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> '' && UNIX_TIMESTAMP(timestamp) > " . time() . " ";
+				$sql2 = "SELECT DISTINCT bids.post_id, MAX(bids.bid) AS maxbid FROM posts LEFT JOIN bids ON posts.id = bids.post_id WHERE bids.bid <> '' && bids.user_id GROUP BY posts.id";
+
+				$posts = mysqli_query($conn, $sql1);
+
+				$maxBids = mysqli_query($conn, $sql2);
+
+				$count_rows = $posts->num_rows;
+				$post_array = array();
+				$post_array2 = array();
+				$array_count = ceil($count_rows);
+				$array_data = array();
+				$count = 0;
+
+				while ($post = mysqli_fetch_array($posts)) {
+					array_push($post_array,$post);
+				}
+
+				while ($maxBid = mysqli_fetch_array($maxBids)) {
+					array_push($post_array2,$maxBid);
+				}
+
+
+				foreach($post_array as $key1=>$value1) {
+					foreach($post_array2 as $key2=>$value2) {
+						if($value1['id']==$value2['post_id']) {
+							$value1['maxbid'] = $value2['maxbid'];
+							$result[$key1]=$value1;
+						}
+					}
+				}
+				print_r($post_array[1]);
+				die();
+				$losingCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			}
+
+
 		?>
 		<!-- Main -->
-		
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row">
@@ -61,19 +109,19 @@
 									<section id="search">
 										<div class="search-container">
 											<form>
-												<input id="search1" type="text" placeholder="Search the Market.." onkeyup="getPostsSearch(this.value)">
-												<button id="search2" type="button">
-													<i class="fa fa-search" style="font-size: 1.5em;"></i>
+												<input id="search1" name="search" type="text" value="<?php echo $homeSearch; ?>" placeholder="Search the Market..." onkeyup="getPostsSearch(this.value)">
+												<button id="search2" type="button" data-toggle="confirm" role="button">
+													<i class="fa fa-refresh" style="font-size: 1.5em;"></i>
 												</button>
 												<div class="dropdown">
 													<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 													<div class="custom-select">
 														<select onchange="getPostsTopFilter(this.value)">
-															<option value="new">Featured</option>
-															<option value="low">Price: Lowest</option>
-															<option value="high">Price: Highest</option>
 															<option value="endingSoonest">Ending: Soonest</option>
 															<option value="endingLatest">Ending: Latest</option>
+															<!-- <option value="new">Newest</option> -->
+															<option value="low">Price: Lowest</option>
+															<option value="high">Price: Highest</option>
 														</select>
 													</div>
 												</div>
@@ -84,217 +132,97 @@
 								<div class="filter2">
 									<div class="12u 12u(mobile) border">
 										<section class="box" id="filterBox">
-											<h3 class="filterTitle">Brands</h3>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="innova" value="innova" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Innova
+										<?php
+											if($_SESSION['u_role'] == 1) {
+												echo "<h3 class='filterTitle'>Brands<span style='float: right; padding-right: .75em;'>Total: ". $totalCount ."</span></h3>";
+											} else {
+												echo "<h3 class='filterTitle'>Brands</h3>";
+											}
+
+											foreach($brandsArray as $key => $value) {
+												?>
+												<div class="filterItem">
+													<div class="pretty p-svg p-curve p-pulse">
+													<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
+														<div class="state p-success">
+															<!-- svg path -->
+															<svg class="svg svg-icon" viewBox="0 0 20 20">
+																<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+															</svg>
+
+															<?php
+															if($key == 'innova'){
+																$key = 'Innova';
+															} elseif($key == 'discraft') {
+																$key = 'Discraft';
+															} elseif($key == 'dynamic') {
+																$key = 'Dynamic Discs';
+															} elseif($key == 'latitude') {
+																$key = 'Latitude 64';
+															} elseif($key == 'westside') {
+																$key = 'Westside';
+															} elseif($key == 'discmania') {
+																$key = 'Discmania';
+															} elseif($key == 'prodigy') {
+																$key = 'Prodigy';
+															} elseif($key == 'mvp') {
+																$key = 'MVP';
+															} elseif($key == 'gateway') {
+																$key = 'Gateway';
+															} elseif($key == 'otherBrand') {
+																$key = 'Other Brands';
+															}
+															?>
+
+
+															<label style="margin-left: .75em;"></label><?php echo $key; ?>
+														</div>
 													</div>
+													<span style="float: right;"><?php echo $value ?></span>
 												</div>
-												<span style="float: right;"><?php echo $innovaCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="discraft" value="discraft" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Discraft
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $discraftCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="dynamic" value="dynamic" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Dynamic Discs
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $dynamicCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="latitude" value="latitude" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Latitude 64
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $latitudeCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="westside" value="westside" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Westside
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $westsideCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="discmania" value="discmania" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Discmania
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $discmaniaCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="prodigy" value="prodigy" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Prodigy
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $prodigyCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="mvp" value="mvp" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>MVP
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $mvpCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="gateway" value="gateway" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Gateway
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $gatewayCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="otherBrand" value="otherBrand" onchange="getPostsBrands(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Other
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $otherBrandCount[0]; ?></span>
-											</div>
+												<?php
+											}
+											?>
 											<br>
 											<h3 class="filterTitle">Categories</h3>
-											<div class="filterItem">
-												<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="disc" value="disc" onchange="getPostsCategories(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Discs
+											<?php
+											foreach($categoriesArray as $key => $value) {
+												?>
+												<div class="filterItem">
+													<div class="pretty p-svg p-curve p-pulse">
+													<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsCategories(this.value)">
+														<div class="state p-success">
+															<!-- svg path -->
+															<svg class="svg svg-icon" viewBox="0 0 20 20">
+																<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+															</svg>
+
+															<?php
+															if($key == 'disc'){
+																$key = 'Discs';
+															} elseif($key == 'bag') {
+																$key = 'Bags / Carts';
+															} elseif($key == 'apparel') {
+																$key = 'Apparel';
+															} elseif($key == 'basket') {
+																$key = 'Baskets';
+															} elseif($key == 'shoes') {
+																$key = 'Shoes';
+															} elseif($key == 'accessory') {
+																$key = 'Accessories';
+															}
+															?>
+
+
+															<label style="margin-left: .75em;"></label><?php echo $key; ?>
+														</div>
 													</div>
+													<span style="float: right;"><?php echo $value ?></span>
 												</div>
-												<span style="float: right;"><?php echo $discCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-											<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="bag" value="bag" onchange="getPostsCategories(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Bags / Carts
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $bagCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-											<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="apparel" value="apparel" onchange="getPostsCategories(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Apparel
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $apparelCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-											<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="basket" value="basket" onchange="getPostsCategories(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Baskets
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $basketCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-											<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="shoes" value="shoes" onchange="getPostsCategories(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Shoes
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $shoesCount[0]; ?></span>
-											</div>
-											<div class="filterItem">
-											<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="accessory" value="accessory" onchange="getPostsCategories(this.value)">
-													<div class="state p-success">
-														<!-- svg path -->
-														<svg class="svg svg-icon" viewBox="0 0 20 20">
-															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-														</svg>
-														<label style="margin-left: .75em;"></label>Accessories
-													</div>
-												</div>
-												<span style="float: right;"><?php echo $accessoryCount[0]; ?></span>
-											</div>
+												<?php
+											}
+										?>						
+											
 											<br>
 											<h3 class="filterTitle">Disc Type</h3>
 											<div class="filterItem">
@@ -377,6 +305,39 @@
 												</div>
 												<span style="float: right;"><?php echo $usedCount[0]; ?></span>
 											</div>
+
+											<?php if(isset($_SESSION['u_id'])) { ?>
+											<br>
+											<h3 class="filterTitle">Bids</h3>
+											<div class="filterItem">
+											<div class="pretty p-svg p-curve p-pulse">
+												<input type="checkbox" name="filterCheckbox" id="new" value="new" onchange="getPostsNewUsed(this.value)">
+													<div class="state p-success">
+														<!-- svg path -->
+														<svg class="svg svg-icon" viewBox="0 0 20 20">
+															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+														</svg>
+														<label style="margin-left: .75em;"></label>Winning
+													</div>
+												</div>
+												<span style="float: right;"><?php echo $winningCount[0]; ?></span>
+											</div>
+											<div class="filterItem">
+											<div class="pretty p-svg p-curve p-pulse">
+												<input type="checkbox" name="filterCheckbox" id="used" value="used" onchange="getPostsNewUsed(this.value)">
+													<div class="state p-success">
+														<!-- svg path -->
+														<svg class="svg svg-icon" viewBox="0 0 20 20">
+															<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+														</svg>
+														<label style="margin-left: .75em;"></label>Losing
+													</div>
+												</div>
+												<span style="float: right;"><?php echo $losingCount[0]; ?></span>
+											</div>
+											<?php } ?>
+
+
 											<hr style="margin: 1.5em 1em .5em 1em;">
 											<h3 class="filterTitle">Price:  <label id="resultsPrice" style="font-weight: normal;"></label></h3>
 											<br>
@@ -402,9 +363,12 @@
 												</div>
 											</div>
 											<hr style="margin: 1.5em 1em 1.5em 1em;">
-											<center><button style="align: justify-content: center;" onClick="refreshPage()">Clear All Filters</button></center>
+											<center><button style="align: justify-content: center;" data-toggle="confirm2">Clear All Filters</button></center>
 											<br>
 										</section>
+									</div>
+									<div class="12u 12u(mobile)" style="postition: fixed; bottom: 0;">
+										<button onclick="topFunction()" id="toTopButton" title="Go to top">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 									</div>
 								</div>
 								<div class="post2">
@@ -424,5 +388,74 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	
 
 <?php include_once 'footer.php'; ?>
+
+<script>
+
+	$('[data-toggle="confirm"]').jConfirm({
+
+		question:'Refresh Posts?',
+  		confirm_text: 'Yes',
+  		deny_text: 'No',
+  		theme: 'black',
+		// hides on click
+		hide_on_click: true,
+		// 'auto','top','bottom','left','right'
+		position: 'top',
+		// extra class(es)
+		class: '',
+		// shows deny button
+		show_deny_btn: false,
+		// 'tiny', 'small', 'medium', 'large'
+		size: 'medium',
+		// 'black', 'white', 'blurred'
+		backdrop: false
+
+	}).on('confirm', function(e){
+  		clearAllPosts();
+	}).on('jc-show', function(e, value){
+  		$(".jc-tooltip").css("margin-left","-.5em");
+	});
+
+	$('[data-toggle="confirm2"]').jConfirm({
+
+		question:'Clear ALL Filters?',
+		confirm_text: 'Yes',
+		deny_text: 'No',
+		theme: 'black',
+		// hides on click
+		hide_on_click: true,
+		// 'auto','top','bottom','left','right'
+		position: 'bottom',
+		// extra class(es)
+		class: '',
+		// shows deny button
+		show_deny_btn: false,
+		// 'tiny', 'small', 'medium', 'large'
+		size: 'medium',
+		// 'black', 'white', 'blurred'
+		backdrop: false
+
+	}).on('confirm', function(e){
+		clearAllPosts();
+	});
+
+
+
+
+
+	$( "#footer-wrapper" ).hide();
+
+			$(window).load(function() {
+				console.log( "ready!" );
+				var homeSearch = [];
+				homeSearch.push('<?php echo $homeSearch; ?>');
+				if(homeSearch != "" && homeSearch.length != 0) {
+					getPostsSearch(homeSearch);
+					$("#search1").focus().val("").val(homeSearch);
+				}
+			});
+</script>

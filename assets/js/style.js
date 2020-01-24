@@ -1,3 +1,16 @@
+skel.breakpoints({
+	xlarge: "(max-width: 1680px)",
+	large:  "(max-width: 1280px)",
+	medium: "(max-width: 980px)",
+	small:  "(max-width: 750px)",
+	xsmall: "(max-width: 480px)"
+});
+
+
+if(window.scrollY != 0){
+    $('html, body').scrollTop(0);
+}
+
 // Get the modal
 var modal = document.getElementById('id01');
 
@@ -11,9 +24,35 @@ var globalFilterPrice = [];
 var globalFilterWeight = [];
 var globalFilterQuality = [];
 var globalFilterTopFilter;
-var count;
+var globalFilterCount;
+var globalScrollCount = 0;
+
+var globalFilterSearchMyPosts = [];
+var globalFilterTopFilterMyPosts;
+
+var globalFilterSearchCurrentBids = [];
+var globalFilterTopFilterCurrentBids;
+
+$('#priceButton').hide();
+$('#weightButton').hide();
+$('#qualityButton').hide();
+
+
 
 $( document ).ready(function() {
+
+    tab = $('.tabs h3 a');
+
+	tab.on('click', function(event) {
+		event.preventDefault();
+		tab.removeClass('active');
+		$(this).addClass('active');
+
+		tab_content = $(this).attr('href');
+		$('div[id$="tab-content"]').removeClass('active');
+		$(tab_content).addClass('active');
+	});
+
     var text_max = 250;
     $('#textarea_feedback').html(text_max + ' characters remaining');
 
@@ -23,7 +62,48 @@ $( document ).ready(function() {
 
         $('#textarea_feedback').html(text_remaining + ' characters remaining');
     });
+
+    function getPostsCount(value) {
+        console.log("getPostsCount");
+        globalFilterCount = value;
+        console.log("Count:", globalFilterCount);
+    }
+
+
 })
+
+$(window).bind("load", function() {
+    var start = document.getElementById("filterBox").scrollHeight;
+    var initialScrollEvent = true;
+
+    window.onscroll = function(ev) {
+        if (!initialScrollEvent) { 
+
+            if($("#footer-wrapper").is(":hidden")) {     
+                $('.postsLoaderContainer').css("height","8em");
+                if ((window.innerHeight + window.scrollY) == document.body.offsetHeight) {
+                    $('body').css({ overflow: 'hidden' });
+                    $(".postsLoader").css("display","block");
+                    setTimeout(function (){ 
+                        getPostsScroll(globalScrollCount); 
+                    }, 1000);
+                    console.log("SCROLLED!");
+                }
+            } else {
+                $('.postsLoaderContainer').css("display","none");
+            }
+            if (window.scrollY > start || window.scrollY > start) {
+                document.getElementById("toTopButton").style.display = "block";
+                document.getElementById("toTopButton").style.bottom = "3em";
+            } else {
+                document.getElementById("toTopButton").style.display = "none";
+            }
+
+        }
+        initialScrollEvent = false;
+
+    };
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -122,18 +202,74 @@ function isInArray(words, word) {
     return words.indexOf(word.toString().toLowerCase()) > -1;
 }
 
-function getPostsFirst() {
-    $.post("includes/posts.inc.php", {
+function getPostsHome() {
+    console.log("getPostsHome");
+    $.post("/includes/postsHome.inc.php", {
     }, function (data) {
+        $("#resultsHome").html(data);
+    });
+}
+getPostsHome();
+
+function getPostsMyPosts() {
+    console.log("getPostsMyPosts");
+
+    $.post("/includes/postsMyPostsFilter.inc.php", {
+        "partialPost": globalFilterSearchMyPosts,
+        "topFilterPost" : globalFilterTopFilterMyPosts
+    }, function (data) {
+        $("#filterResultsMyPosts").html(data);
+    });
+
+    $.post("/includes/postsMyPosts.inc.php", {
+    }, function (data) {
+        $("#resultsMyPosts").html(data);
+    });
+}
+getPostsMyPosts();
+
+function getPostsCurrentBids() {
+    console.log("getPostsCurrentBids");
+
+    $.post("/includes/postsCurrentBidsFilter.inc.php", {
+        "partialPost": globalFilterSearchCurrentBids,
+        "topFilterPost" : globalFilterTopFilterCurrentBids
+    }, function (data) {
+        $("#filterResultsCurrentBids").html(data);
+    });
+
+    $.post("/includes/postsCurrentBids.inc.php", {
+    }, function (data) {
+        $("#resultsCurrentBids").html(data);
+    });
+}
+getPostsCurrentBids();
+
+
+function getPostsFirst() {
+    console.log("getPostFirst");
+    globalScrollCount = 0;
+    scrollTo(0,0);
+    $.post("/includes/posts.inc.php", {
+        "scrollCount" : globalScrollCount
+    }, function (data) {
+        scrollTo(0,0);
         $("#results").html(data);
     });
 }
-window.onload = getPostsFirst;
+getPostsFirst();
 
-function getPostsSearch(value) {
-        globalFilterSearch = value;
-        console.log("Search:", globalFilterSearch);
-        $.post("includes/postsFilter.inc.php", {
+function clearAllPosts() {
+    console.log("clearAllPosts");
+    topFunction();
+    globalScrollCount = 0;
+    globalFilterBrands = [];
+    globalFilterSearch = [];
+    globalFilterCategories = [];
+    globalFilterDiscType = [];
+    globalFilterNewUsed = [];
+    unCheck('all');
+        $.post("/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -147,7 +283,7 @@ function getPostsSearch(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("includes/posts.inc.php", {
+        $.post("/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -162,7 +298,127 @@ function getPostsSearch(value) {
         });
 }
 
+
+function getPostsScroll(value) {
+    console.log("getPostsScroll");
+        if(value != globalScrollCount){
+            console.log("YEEEEEEP");
+        }
+        globalScrollCount = globalScrollCount + 1;
+        $.post("/includes/posts.inc.php", {
+            "scrollCount" : globalScrollCount,
+            "partialPost": globalFilterSearch,
+            "brandsPost": globalFilterBrands,
+            "categoryPost": globalFilterCategories,
+            "discTypePost": globalFilterDiscType,
+            "newUsedPost": globalFilterNewUsed,
+            "topFilterPost" : globalFilterTopFilter,
+            "pricePost" : globalFilterPrice,
+            "weightPost" : globalFilterWeight,
+            "qualityPost" : globalFilterQuality
+        }, function (data) {
+            $('body').css({ overflow: 'auto' });
+            $(".postsLoader").css("display","none");
+            $('.postsLoaderContainer').css("display","none");
+            $("#results").append(data);
+        });
+}
+
+
+
+var searchTest;
+function getPostsSearch(value) { 
+    if (value != globalFilterSearch) {  
+        console.log("getPostsSearch"); 
+        globalScrollCount = 0;   
+        globalFilterSearch = value;
+        console.log("Search:", globalFilterSearch);
+        $.post("/includes/postsFilter.inc.php", {
+            "partialPost": globalFilterSearch,
+            "brandsPost": globalFilterBrands,
+            "categoryPost": globalFilterCategories,
+            "discTypePost": globalFilterDiscType,
+            "newUsedPost": globalFilterNewUsed,
+            "topFilterPost" : globalFilterTopFilter,
+            "pricePost" : globalFilterPrice,
+            "weightPost" : globalFilterWeight,
+            "qualityPost" : globalFilterQuality
+        }, function (data) {
+            $("#filterResults").html(data);
+        });
+
+        $.post("/includes/posts.inc.php", {
+            "partialPost": globalFilterSearch,
+            "brandsPost": globalFilterBrands,
+            "categoryPost": globalFilterCategories,
+            "discTypePost": globalFilterDiscType,
+            "newUsedPost": globalFilterNewUsed,
+            "topFilterPost" : globalFilterTopFilter,
+            "pricePost" : globalFilterPrice,
+            "weightPost" : globalFilterWeight,
+            "qualityPost" : globalFilterQuality
+        }, function (data) {
+            $("#results").html(data);
+            $( "#search1" ).keyup();
+            searchTest = value;            
+        });
+    }
+}
+
+
+var searchTest2;
+function getPostsSearchMyPosts(value) { 
+    if (value != globalFilterSearchMyPosts) {  
+        globalScrollCount = 0;   
+        globalFilterSearchMyPosts = value;
+        console.log("Search:", globalFilterSearchMyPosts);
+        $.post("/includes/postsMyPostsFilter.inc.php", {
+            "partialPost": globalFilterSearchMyPosts,
+            "topFilterPost" : globalFilterTopFilterMyPosts
+        }, function (data) {
+            $("#filterResultsMyPosts").html(data);
+        });
+    
+        $.post("/includes/postsMyPosts.inc.php", {
+            "partialPost": globalFilterSearchMyPosts,
+            "topFilterPost" : globalFilterTopFilterMyPosts
+        }, function (data) {
+            $("#resultsMyPosts").html(data);
+            $( "#search1MyPosts" ).keyup();
+            searchTest2 = value;            
+        });
+    }
+}
+
+
+var searchTest3;
+function getPostsSearchCurrentBids(value) { 
+    if (value != globalFilterSearchCurrentBids) {  
+        globalScrollCount = 0;   
+        globalFilterSearchCurrentBids = value;
+        console.log("Search:", globalFilterSearchCurrentBids);
+        $.post("/includes/postsCurrentBidsFilter.inc.php", {
+            "partialPost": globalFilterSearchCurrentBids,
+            "topFilterPost" : globalFilterTopFilterCurrentBids
+        }, function (data) {
+            $("#filterResultsCurrentBids").html(data);
+        });
+    
+        $.post("/includes/postsCurrentBids.inc.php", {
+            "partialPost": globalFilterSearchCurrentBids,
+            "topFilterPost" : globalFilterTopFilterCurrentBids
+        }, function (data) {
+            $("#resultsCurrentBids").html(data);
+            $( "#search1CurrentBids" ).keyup();
+            searchTest3 = value;            
+        });
+    }
+}
+
+
 function getPostsBrands(value) {
+    console.log("getPostsBrands");
+    globalScrollCount = 0;
     if(globalFilterBrands.includes(value)){
         globalFilterBrands = globalFilterBrands.filter(function(e) { return e !== value });
     } else {
@@ -170,7 +426,7 @@ function getPostsBrands(value) {
     }
         console.log("Brands: ", globalFilterBrands);
 
-        $.post("includes/postsFilter.inc.php", {
+        $.post("/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -184,7 +440,7 @@ function getPostsBrands(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("includes/posts.inc.php", {
+        $.post("/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -196,10 +452,13 @@ function getPostsBrands(value) {
             "qualityPost" : globalFilterQuality
         }, function (data) {
             $("#results").html(data);
+
         });
 }
 
 function getPostsCategories(value) {
+    console.log("getPostCategories");
+    globalScrollCount = 0;
     if(globalFilterCategories.includes(value)){
         globalFilterCategories = globalFilterCategories.filter(function(e) { return e !== value });
     } else {
@@ -207,7 +466,7 @@ function getPostsCategories(value) {
     }
         console.log("Categories: ",globalFilterCategories);
 
-        $.post("includes/postsFilter.inc.php", {
+        $.post("/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -221,7 +480,7 @@ function getPostsCategories(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("includes/posts.inc.php", {
+        $.post("/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -237,13 +496,15 @@ function getPostsCategories(value) {
 }
 
 function getPostsDiscType(value) {
+    console.log("getPostsDiscType");
+    globalScrollCount = 0;
     if(globalFilterDiscType.includes(value)){
         globalFilterDiscType = globalFilterDiscType.filter(function(e) { return e !== value });
     } else {
         globalFilterDiscType.push(value);
     }
         console.log("DiscType: ", globalFilterDiscType);
-        $.post("includes/postsFilter.inc.php", {
+        $.post("/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -257,7 +518,7 @@ function getPostsDiscType(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("includes/posts.inc.php", {
+        $.post("/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -273,13 +534,14 @@ function getPostsDiscType(value) {
 }
 
 function getPostsNewUsed(value) {
+    console.log("getPostsNewUsed");
     if(globalFilterNewUsed.includes(value)){
         globalFilterNewUsed = globalFilterNewUsed.filter(function(e) { return e !== value });
     } else {
         globalFilterNewUsed.push(value);
     }
         console.log("NewUsed: ", globalFilterNewUsed);
-        $.post("includes/postsFilter.inc.php", {
+        $.post("/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -293,7 +555,7 @@ function getPostsNewUsed(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("includes/posts.inc.php", {
+        $.post("/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -309,9 +571,11 @@ function getPostsNewUsed(value) {
 }
 
 function getPostsTopFilter(value) {
+    console.log("getPostsTopFilter");
+        globalScrollCount = 0;
         globalFilterTopFilter = value;
         console.log("TopFilter: ", globalFilterTopFilter);
-        $.post("includes/posts.inc.php", {
+        $.post("/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -326,6 +590,34 @@ function getPostsTopFilter(value) {
         });
 }
 
+function getPostsTopFilterMyPosts(value) {
+    console.log("getPostsTopFilterMyPosts");
+        globalScrollCount = 0;
+        globalFilterTopFilterMyPosts = value;
+
+        console.log("TopFilter: ", globalFilterTopFilterMyPosts);
+        $.post("/includes/postsMyPosts.inc.php", {
+            "partialPost": globalFilterSearchMyPosts,
+            "topFilterPost" : globalFilterTopFilterMyPosts
+        }, function (data) {
+            $("#resultsMyPosts").html(data);
+        });
+}
+
+function getPostsTopFilterCurrentBids(value) {
+    console.log("getPostsTopFilterCurrentBids");
+        globalScrollCount = 0;
+        globalFilterTopFilterCurrentBids = value;
+
+        console.log("TopFilter: ", globalFilterTopFilterCurrentBids);
+        $.post("/includes/postsCurrentBids.inc.php", {
+            "partialPost": globalFilterSearchCurrentBids,
+            "topFilterPost" : globalFilterTopFilterCurrentBids
+        }, function (data) {
+            $("#resultsCurrentBids").html(data);
+        });
+}
+
 
 
 function refreshPage(){
@@ -333,9 +625,10 @@ function refreshPage(){
     location.reload();
 } 
 
+var priceSliderCount = 0;
 var PriceSlider = new rSlider({
     target: '#sliderPrice',
-    values: {min: 1, max: 200},
+    values: {min: 1, max: 100},
     range: true, // range slider
     set:    null, // an array of preselected values
     width:    false,
@@ -345,47 +638,81 @@ var PriceSlider = new rSlider({
     step:     1, // step size
     disabled: false, // is disabled?
     onChange: function (vals) {
-        console.log(vals);
         valsPrint = "$" + (vals.replace(/,/g , " - $"));
         var valsSplit = vals.split(",");
-        if(valsSplit[1] == "200"){
+        if(valsSplit[1] == "100"){
             valsPrint = valsPrint + "+";
         }
         $("#resultsPrice").html(valsPrint);
-        console.log(valsSplit);
 
         globalFilterPrice = valsSplit;
-        console.log("Price: ", globalFilterPrice);
-        $.post("includes/postsFilter.inc.php", {
-            "partialPost": globalFilterSearch,
-            "brandsPost": globalFilterBrands,
-            "categoryPost": globalFilterCategories,
-            "discTypePost": globalFilterDiscType,
-            "newUsedPost": globalFilterNewUsed,
-            "topFilterPost" : globalFilterTopFilter,
-            "pricePost" : globalFilterPrice,
-            "weightPost" : globalFilterWeight,
-            "qualityPost" : globalFilterQuality
-        }, function (data) {
-            $("#filterResults").html(data);
-        });
+        globalScrollCount = 0;
+        if(globalFilterPrice[0] != 1 || globalFilterPrice[1] != 100) {
+            console.log("PriceSlider");
+            $.post("/includes/postsFilter.inc.php", {
+                "partialPost": globalFilterSearch,
+                "brandsPost": globalFilterBrands,
+                "categoryPost": globalFilterCategories,
+                "discTypePost": globalFilterDiscType,
+                "newUsedPost": globalFilterNewUsed,
+                "topFilterPost" : globalFilterTopFilter,
+                "pricePost" : globalFilterPrice,
+                "weightPost" : globalFilterWeight,
+                "qualityPost" : globalFilterQuality
+            }, function (data) {
+                $("#filterResults").html(data);
+            });
 
-        $.post("includes/posts.inc.php", {
-            "partialPost": globalFilterSearch,
-            "brandsPost": globalFilterBrands,
-            "categoryPost": globalFilterCategories,
-            "discTypePost": globalFilterDiscType,
-            "newUsedPost": globalFilterNewUsed,
-            "topFilterPost" : globalFilterTopFilter,
-            "pricePost" : globalFilterPrice,
-            "weightPost" : globalFilterWeight,
-            "qualityPost" : globalFilterQuality
-        }, function (data) {
-            $("#results").html(data);
-        });
+            $.post("/includes/posts.inc.php", {
+                "partialPost": globalFilterSearch,
+                "brandsPost": globalFilterBrands,
+                "categoryPost": globalFilterCategories,
+                "discTypePost": globalFilterDiscType,
+                "newUsedPost": globalFilterNewUsed,
+                "topFilterPost" : globalFilterTopFilter,
+                "pricePost" : globalFilterPrice,
+                "weightPost" : globalFilterWeight,
+                "qualityPost" : globalFilterQuality
+            }, function (data) {
+                $("#results").html(data);
+            });
+        } else {
+            if(priceSliderCount != 0) {
+                console.log("PriceSlider2");
+                $.post("/includes/postsFilter.inc.php", {
+                    "partialPost": globalFilterSearch,
+                    "brandsPost": globalFilterBrands,
+                    "categoryPost": globalFilterCategories,
+                    "discTypePost": globalFilterDiscType,
+                    "newUsedPost": globalFilterNewUsed,
+                    "topFilterPost" : globalFilterTopFilter,
+                    "pricePost" : globalFilterPrice,
+                    "weightPost" : globalFilterWeight,
+                    "qualityPost" : globalFilterQuality
+                }, function (data) {
+                    $("#filterResults").html(data);
+                });
+
+                $.post("/includes/posts.inc.php", {
+                    "partialPost": globalFilterSearch,
+                    "brandsPost": globalFilterBrands,
+                    "categoryPost": globalFilterCategories,
+                    "discTypePost": globalFilterDiscType,
+                    "newUsedPost": globalFilterNewUsed,
+                    "topFilterPost" : globalFilterTopFilter,
+                    "pricePost" : globalFilterPrice,
+                    "weightPost" : globalFilterWeight,
+                    "qualityPost" : globalFilterQuality
+                }, function (data) {
+                    $("#results").html(data);
+                });
+            }
+        }
+        priceSliderCount++;
     }
 });
 
+var weightSliderCount = 0;
 var WeightSlider = new rSlider({
     target: '#sliderWeight',
     values: {min: 130, max: 200},
@@ -398,49 +725,80 @@ var WeightSlider = new rSlider({
     step:     1, // step size
     disabled: false, // is disabled?
     onChange: function (vals) {
-        console.log(vals);
         valsPrint = (vals.replace(/,/g , "g - "));
         var valsSplit = vals.split(",");
         valsPrint = valsPrint + "g";
-        if(valsSplit[1] == "200"){
-            valsPrint = valsPrint + "+";
-        }
-        
+        globalScrollCount = 0;
         $("#resultsWeight").html(valsPrint);
-        console.log(valsSplit);
 
         globalFilterWeight = valsSplit;
-        console.log("Weight: ", globalFilterWeight);
-        $.post("includes/postsFilter.inc.php", {
-            "partialPost": globalFilterSearch,
-            "brandsPost": globalFilterBrands,
-            "categoryPost": globalFilterCategories,
-            "discTypePost": globalFilterDiscType,
-            "newUsedPost": globalFilterNewUsed,
-            "topFilterPost" : globalFilterTopFilter,
-            "pricePost" : globalFilterPrice,
-            "weightPost" : globalFilterWeight,
-            "qualityPost" : globalFilterQuality
-        }, function (data) {
-            $("#filterResults").html(data);
-        });
+        if(globalFilterWeight[0] != 130 || globalFilterWeight[1] != 200) {
+            console.log("WeightSlider");
+            $.post("/includes/postsFilter.inc.php", {
+                "partialPost": globalFilterSearch,
+                "brandsPost": globalFilterBrands,
+                "categoryPost": globalFilterCategories,
+                "discTypePost": globalFilterDiscType,
+                "newUsedPost": globalFilterNewUsed,
+                "topFilterPost" : globalFilterTopFilter,
+                "pricePost" : globalFilterPrice,
+                "weightPost" : globalFilterWeight,
+                "qualityPost" : globalFilterQuality
+            }, function (data) {
+                $("#filterResults").html(data);
+            });
 
-        $.post("includes/posts.inc.php", {
-            "partialPost": globalFilterSearch,
-            "brandsPost": globalFilterBrands,
-            "categoryPost": globalFilterCategories,
-            "discTypePost": globalFilterDiscType,
-            "newUsedPost": globalFilterNewUsed,
-            "topFilterPost" : globalFilterTopFilter,
-            "pricePost" : globalFilterPrice,
-            "weightPost" : globalFilterWeight,
-            "qualityPost" : globalFilterQuality
-        }, function (data) {
-            $("#results").html(data);
-        });
+            $.post("/includes/posts.inc.php", {
+                "partialPost": globalFilterSearch,
+                "brandsPost": globalFilterBrands,
+                "categoryPost": globalFilterCategories,
+                "discTypePost": globalFilterDiscType,
+                "newUsedPost": globalFilterNewUsed,
+                "topFilterPost" : globalFilterTopFilter,
+                "pricePost" : globalFilterPrice,
+                "weightPost" : globalFilterWeight,
+                "qualityPost" : globalFilterQuality
+            }, function (data) {
+                $("#results").html(data);
+            });
+        } else {
+            if (weightSliderCount != 0) {
+                console.log("WeightSlider2");
+                $.post("/includes/postsFilter.inc.php", {
+                    "partialPost": globalFilterSearch,
+                    "brandsPost": globalFilterBrands,
+                    "categoryPost": globalFilterCategories,
+                    "discTypePost": globalFilterDiscType,
+                    "newUsedPost": globalFilterNewUsed,
+                    "topFilterPost" : globalFilterTopFilter,
+                    "pricePost" : globalFilterPrice,
+                    "weightPost" : globalFilterWeight,
+                    "qualityPost" : globalFilterQuality
+                }, function (data) {
+                    $("#filterResults").html(data);
+                });
+
+                $.post("/includes/posts.inc.php", {
+                    "partialPost": globalFilterSearch,
+                    "brandsPost": globalFilterBrands,
+                    "categoryPost": globalFilterCategories,
+                    "discTypePost": globalFilterDiscType,
+                    "newUsedPost": globalFilterNewUsed,
+                    "topFilterPost" : globalFilterTopFilter,
+                    "pricePost" : globalFilterPrice,
+                    "weightPost" : globalFilterWeight,
+                    "qualityPost" : globalFilterQuality
+                }, function (data) {
+                    $("#results").html(data);
+                });
+            }
+        }
+        weightSliderCount++;
+
     }
 });
 
+var qualitySliderCount = 0;
 var QualitySlider = new rSlider({
     target: '#sliderQuality',
     values: {min: 1, max: 10},
@@ -453,51 +811,84 @@ var QualitySlider = new rSlider({
     step:     1, // step size
     disabled: false, // is disabled?
     onChange: function (vals) {
-        console.log(vals);
         valsPrint = (vals.replace(/,/g , " - "));
         var valsSplit = vals.split(",");
-        
+        globalScrollCount = 0;
         $("#resultsQuality").html(valsPrint);
-        console.log(valsSplit);
 
         globalFilterQuality = valsSplit;
-        console.log("Quality: ", globalFilterQuality);
-        $.post("includes/postsFilter.inc.php", {
-            "partialPost": globalFilterSearch,
-            "brandsPost": globalFilterBrands,
-            "categoryPost": globalFilterCategories,
-            "discTypePost": globalFilterDiscType,
-            "newUsedPost": globalFilterNewUsed,
-            "topFilterPost" : globalFilterTopFilter,
-            "pricePost" : globalFilterPrice,
-            "weightPost" : globalFilterWeight,
-            "qualityPost" : globalFilterQuality
-        }, function (data) {
-            $("#filterResults").html(data);
-        });
+        if(globalFilterQuality[0] != 1 || globalFilterQuality[1] != 10) {
+            console.log("QualitySlider");
+            $.post("/includes/postsFilter.inc.php", {
+                "partialPost": globalFilterSearch,
+                "brandsPost": globalFilterBrands,
+                "categoryPost": globalFilterCategories,
+                "discTypePost": globalFilterDiscType,
+                "newUsedPost": globalFilterNewUsed,
+                "topFilterPost" : globalFilterTopFilter,
+                "pricePost" : globalFilterPrice,
+                "weightPost" : globalFilterWeight,
+                "qualityPost" : globalFilterQuality
+            }, function (data) {
+                $("#filterResults").html(data);
+            });
 
-        $.post("includes/posts.inc.php", {
-            "partialPost": globalFilterSearch,
-            "brandsPost": globalFilterBrands,
-            "categoryPost": globalFilterCategories,
-            "discTypePost": globalFilterDiscType,
-            "newUsedPost": globalFilterNewUsed,
-            "topFilterPost" : globalFilterTopFilter,
-            "pricePost" : globalFilterPrice,
-            "weightPost" : globalFilterWeight,
-            "qualityPost" : globalFilterQuality
-        }, function (data) {
-            $("#results").html(data);
-        });
+            $.post("/includes/posts.inc.php", {
+                "partialPost": globalFilterSearch,
+                "brandsPost": globalFilterBrands,
+                "categoryPost": globalFilterCategories,
+                "discTypePost": globalFilterDiscType,
+                "newUsedPost": globalFilterNewUsed,
+                "topFilterPost" : globalFilterTopFilter,
+                "pricePost" : globalFilterPrice,
+                "weightPost" : globalFilterWeight,
+                "qualityPost" : globalFilterQuality
+            }, function (data) {
+                $("#results").html(data);
+            });
+        } else {
+            if(qualitySliderCount !=0) {
+                console.log("QualitySlider2");
+                $.post("/includes/postsFilter.inc.php", {
+                    "partialPost": globalFilterSearch,
+                    "brandsPost": globalFilterBrands,
+                    "categoryPost": globalFilterCategories,
+                    "discTypePost": globalFilterDiscType,
+                    "newUsedPost": globalFilterNewUsed,
+                    "topFilterPost" : globalFilterTopFilter,
+                    "pricePost" : globalFilterPrice,
+                    "weightPost" : globalFilterWeight,
+                    "qualityPost" : globalFilterQuality
+                }, function (data) {
+                    $("#filterResults").html(data);
+                });
+
+                $.post("/includes/posts.inc.php", {
+                    "partialPost": globalFilterSearch,
+                    "brandsPost": globalFilterBrands,
+                    "categoryPost": globalFilterCategories,
+                    "discTypePost": globalFilterDiscType,
+                    "newUsedPost": globalFilterNewUsed,
+                    "topFilterPost" : globalFilterTopFilter,
+                    "pricePost" : globalFilterPrice,
+                    "weightPost" : globalFilterWeight,
+                    "qualityPost" : globalFilterQuality
+                }, function (data) {
+                    $("#results").html(data);
+                });
+            }
+        }
+        qualitySliderCount++;
     }
 });
 
 function scrollFunction() {
     var start = document.getElementById("filterBox").scrollHeight;
-    if (document.body.scrollTop > start || document.documentElement.scrollTop > start) {
-        document.getElementById("myBtn").style.display = "block";
+    if (window.scrollY > start || window.scrollY > start) {
+        document.getElementById("toTopButton").style.display = "block";
+        document.getElementById("toTopButton").style.bottom = "3em";
     } else {
-        document.getElementById("myBtn").style.display = "none";
+        document.getElementById("toTopButton").style.display = "none";
     }
 }
 
@@ -509,7 +900,7 @@ function topFunction() {
 }
 
 function getPostModal(postId) {    
-	console.log(postId);
+	//console.log(postId);
 }
 
 
@@ -568,15 +959,59 @@ function unCheck(value) {
         $($box4).prop( "checked", false );
         getPostsNewUsed(value);
     }
+
+    if (value == 'all') {
+        $("#innova").prop( "checked", false );
+        $("#discraft").prop( "checked", false );
+        $("#dynamic").prop( "checked", false );
+        $("#latitude").prop( "checked", false );
+        $("#westside").prop( "checked", false );
+        $("#discmania").prop( "checked", false );
+        $("#prodigy").prop( "checked", false );
+        $("#mvp").prop( "checked", false );
+        $("#gateway").prop( "checked", false );
+        $("#otherBrand").prop( "checked", false );
+
+        $("#disc").prop( "checked", false );
+        $("#bag").prop( "checked", false );
+        $("#apparel").prop( "checked", false );
+        $("#basket").prop( "checked", false );
+        $("#shoes").prop( "checked", false );
+        $("#accessory").prop( "checked", false );
+
+        $("#driver").prop( "checked", false );
+        $("#fairway").prop( "checked", false );
+        $("#midrange").prop( "checked", false );
+        $("#putter").prop( "checked", false );
+
+        $("#new").prop( "checked", false );
+        $("#used").prop( "checked", false );
+
+        unSearch();
+        unSliderPrice();
+        unSliderWeight();
+        unSliderQuality();
+        
+    }
 }
 
 function unSearch(){
-    $('#search1').val("");
-    getPostsSearch("");
+    $('#search1').val('');
+    getPostsSearch();
+}
+
+function unSearchMyPosts(){
+    $('#search1MyPosts').val('');
+    getPostsSearchMyPosts();
+}
+
+function unSearchCurrentBids(){
+    $('#search1CurrentBids').val('');
+    getPostsSearchCurrentBids();
 }
 
 function unSliderPrice(){
-    PriceSlider.setValues(1,200);
+    PriceSlider.setValues(1, 100);
 }
 
 function unSliderWeight(){
@@ -587,3 +1022,93 @@ function unSliderQuality(){
     QualitySlider.setValues(1,10);
 }
 
+
+
+var dimmer = $('.dimmer');
+var loginDiv = $('.loginDiv');
+var exit = $('.exit');
+var forgotPassword = $('.forgotPassword');
+var newAccount = $('.newAccount');
+var termsOfService = $('.termsOfService');
+var dimmer2 = $('.dimmer2');
+
+$('.forgot').click( function(e) {
+    console.log("Open: Forgot Password");
+    $('.forgotPassword').show();
+})
+
+$('.forgot2').click( function(e) {
+    console.log("Close: Forgot Password");
+    $('.forgotPassword').hide();
+})
+
+$('.terms').click( function(e) {
+    console.log("Open: Terms of Service");
+    setTimeout(function(){ $('.termsOfService').scrollTop(0); });
+    $('.termsOfService').show();
+})
+
+$('.terms2').click( function(e) {
+    console.log("Close: Terms of Service");
+    $('.termsOfService').hide();
+})
+
+$('.close-thik3').click( function(e) {
+    console.log("Close: New Account");
+    window.history.replaceState({}, document.title, "/");
+    dimmer2.hide();
+    newAccount.hide();
+})
+
+$('.close-thik2').click( function(e) {
+    console.log("Close: Terms of Service");
+    $('.termsOfService').hide();
+})
+
+
+$('.close-thik').click( function(e) {
+    console.log("Close: Forgot Password");
+    $('.forgotPassword').hide();
+})
+
+$('a#loginToggle').click( function(e) {
+    e.preventDefault();
+    dimmer.show();
+    loginDiv.show();
+    $('html, body').css("overflow","hidden");
+    console.log("Show Login");
+
+})
+
+$('.dimmer').click( function(e) {
+    e.preventDefault();
+    dimmer.hide();
+    loginDiv.hide();
+    forgotPassword.hide();
+    termsOfService.hide();
+    $('html, body').css("overflow","auto");
+    console.log("Hide Login");
+
+})
+
+$('.dimmer2').click( function(e) {
+    e.preventDefault();
+    window.history.replaceState({}, document.title, "/");
+    dimmer2.hide();
+    newAccount.hide();
+    $('html, body').css("overflow","auto");
+    console.log("Hide New Account");
+
+})
+
+grecaptcha.ready(function() {
+    grecaptcha.execute('6LdrEYoUAAAAACql8qTRAYI-QUhq9cSM_wiYsa70', {action: 'action_name'})
+    .then(function(token) {
+    // Verify the token on the server.
+    });
+});
+
+
+document.getElementById('logoutButton').onclick = function() {
+    document.getElementById('logoutForm').submit();
+};
