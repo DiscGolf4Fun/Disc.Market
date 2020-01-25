@@ -55,8 +55,12 @@
 
 			$totalCount = $innovaCount[0] + $discraftCount[0] + $dynamicCount[0] + $latitudeCount[0] + $westsideCount[0] + $discmaniaCount[0] + $prodigyCount[0] + $mvpCount[0] + $gatewayCount[0] + $otherBrandCount[0];
 
-			$homeSearch = $_GET['search'];
-
+			if(isset($_GET['search'])) {
+				$homeSearch = $_GET['search'];
+			} else {
+				$homeSearch = null;
+			}
+			
 
 			if(isset($_SESSION['u_id'])) {
 				$sql1 = "SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = ". $_SESSION['u_id'] ." ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> '' && UNIX_TIMESTAMP(timestamp) > " . time() . " ";
@@ -133,7 +137,7 @@
 									<div class="12u 12u(mobile) border">
 										<section class="box" id="filterBox">
 										<?php
-											if($_SESSION['u_role'] == 1) {
+											if(isset($_SESSION['u_role']) && $_SESSION['u_role'] == 1) {
 												echo "<h3 class='filterTitle'>Brands<span style='float: right; padding-right: .75em;'>Total: ". $totalCount ."</span></h3>";
 											} else {
 												echo "<h3 class='filterTitle'>Brands</h3>";

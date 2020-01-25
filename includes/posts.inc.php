@@ -6,6 +6,7 @@ $dbUsername = "root";
 $dbPassword = "root";
 $dbName = "discmarket";
 
+
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
 // Check connection
@@ -14,31 +15,82 @@ if (!$conn) {
 }
 
 $sql0 = [];
-$partialPost = (array) $_POST['partialPost'];
-$brandsPost = (array) $_POST['brandsPost'];
-$categoryPost = (array) $_POST['categoryPost'];
-$discTypePost = (array) $_POST['discTypePost'];
-$newUsedPost = (array) $_POST['newUsedPost'];
-$pricePost = (array) $_POST['pricePost'];
-$weightPost = (array) $_POST['weightPost'];
-$qualityPost = (array) $_POST['qualityPost'];
-$topFilterPost = $_POST['topFilterPost'];
-$scrollCount = $_POST['scrollCount'];
 
-if($pricePost[0] == 1 && $pricePost[1] == 100){
+
+if(isset($_POST['brandsPost'])) {
+	$brandsPost = (array) $_POST['brandsPost'];
+} else {
+	$brandsPost = (array) null;
+}
+
+if(isset($_POST['partialPost'])) {
+	$partialPost = (array) $_POST['partialPost'];
+} else {
+	$partialPost = (array) null;
+}
+
+if(isset($_POST['categoryPost'])) {
+	$categoryPost = (array) $_POST['categoryPost'];
+} else {
+	$categoryPost = (array) null;
+}
+
+if(isset($_POST['discTypePost'])) {
+	$discTypePost = (array) $_POST['discTypePost'];
+} else {
+	$discTypePost = (array) null;
+}
+
+if(isset($_POST['newUsedPost'])) {
+	$newUsedPost = (array) $_POST['newUsedPost'];
+} else {
+	$newUsedPost = (array) null;
+}
+
+if(isset($_POST['pricePost'])) {
+	$pricePost = (array) $_POST['pricePost'];
+} else {
+	$pricePost = (array) null;
+}
+
+if(isset($_POST['weightPost'])) {
+	$weightPost = (array) $_POST['weightPost'];
+} else {
+	$weightPost = (array) null;
+}
+
+if(isset($_POST['qualityPost'])) {
+	$qualityPost = (array) $_POST['qualityPost'];
+} else {
+	$qualityPost = (array) null;
+}
+
+if(isset($_POST['topFilterPost'])) {
+	$topFilterPost = (array) $_POST['topFilterPost'];
+} else {
+	$topFilterPost = (array) null;
+}
+
+if(isset($_POST['scrollCount'])) {
+	$scrollCount = $_POST['scrollCount'];
+	$array_data[$scrollCount] = $_POST['scrollCount'];
+} else {
+	$scrollCount = 0;
+	$array_data[$scrollCount] = $scrollCount;
+}
+
+
+
+if(isset($_POST['pricePost']) && $pricePost[0] == 1 && $pricePost[1] == 100){
 	$pricePost == array(); 
 }
 
-if($weightPost[0] == 130 && $weightPost[1] == 200){
+if(isset($_POST['weightPost']) && $weightPost[0] == 130 && $weightPost[1] == 200){
 	$weightPost == array(); 
 }
 
-if($qualityPost[0] == 1 && $qualityPost[1] == 10){
+if(isset($_POST['qualityPost']) && $qualityPost[0] == 1 && $qualityPost[1] == 10){
 	$qualityPost == array(); 
-}
-
-if(!$scrollCount) {
-	$scrollCount = 0;
 }
 
 
@@ -361,7 +413,7 @@ if (isset($_SESSION['u_id'])) {
 
 
 } else {
-	$post_array2 = [];
+	$result2 = [];
 }
 
 
@@ -428,11 +480,9 @@ for($i=0; $i<$array_count; $i++){
 }	
 
 
+for($i=0; $i<$array_data[$scrollCount]; $i++) {
 
-for($i=0; $i<count($array_data[$scrollCount]); $i++) {
-
-
-	if(count($array_data[$scrollCount]) < $size) {
+	if($array_data[$scrollCount] < $size) {
 		echo '<script type="text/javascript">',
 		'$( ".postsLoader" ).remove();',
 		'$( "#footer-wrapper" ).show();',
@@ -450,9 +500,9 @@ for($i=0; $i<count($array_data[$scrollCount]); $i++) {
 	?> 
 	<div class="4u 12u(mobile) post">
 		<?php 
-		if ($array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
+		if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
 			echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '" style="outline: 5px solid #0a7e07; border: 1px solid #0a7e07;">';
-		} else if ($array_data[$scrollCount][$i]['usermaxbid'] == "no") {
+		} else if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") {
 			echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '" style="outline: 5px solid red; border: 1px solid red;">';
 		} else {
 			echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '">';
@@ -471,7 +521,7 @@ for($i=0; $i<count($array_data[$scrollCount]); $i++) {
 					<hr>
 					<p>
 						<h3 style="padding: 0 .75em 0 .75em;">
-							<?php if ($array_data[$scrollCount][$i]['usermaxbid'] == "no") { ?>
+							<?php if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") { ?>
 								<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600; color: red;">$
 									<?php echo $array_data[$scrollCount][$i]['price']; ?>
 								</span>
@@ -577,12 +627,12 @@ for($i=0; $i<count($array_data[$scrollCount]); $i++) {
 					<?php }?>
 				</div>
 				<?php 
-				if ($array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
+				if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
 					echo '<footer style="background-color: #0a7e07; margin-left: -.9em; margin-right: -.9em;">';
 						echo '<p style="text-align: center; font-weight: 500; font-size: 1.2em; color: white;">Winning</p>'; ?>
 				<?php echo '</footer>'; ?>
 				<?php
-				} else if ($array_data[$scrollCount][$i]['usermaxbid'] == "no") {
+				} else if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") {
 					echo '<footer style="background-color: red; margin-left: -.9em; margin-right: -.9em;">';
 						echo '<p style="text-align: center; font-weight: 500; font-size: 1.2em; color: white;">Losing</p>'; ?>
 				<?php echo '</footer>'; ?>
