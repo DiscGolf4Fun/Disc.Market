@@ -367,11 +367,11 @@
 												</div>
 											</div>
 											<hr style="margin: 1.5em 1em 1.5em 1em;">
-											<center><button style="align: justify-content: center;" data-toggle="confirm2">Clear All Filters</button></center>
+											<center><button style="justify-content: center;" data-toggle="confirm2">Clear All Filters</button></center>
 											<br>
 										</section>
 									</div>
-									<div class="12u 12u(mobile)" style="postition: fixed; bottom: 0;">
+									<div class="12u 12u(mobile)" style="position: fixed; bottom: 0;">
 										<button onclick="topFunction()" id="toTopButton" title="Go to top">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 									</div>
 								</div>
