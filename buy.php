@@ -120,7 +120,7 @@
 												<div class="dropdown">
 													<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 													<div class="custom-select">
-														<select onchange="getPostsTopFilter(this.value)">
+														<select id="topFilterDropdown" onchange="getPostsTopFilter(this.value)">
 															<option value="endingSoonest">Ending: Soonest</option>
 															<option value="endingLatest">Ending: Latest</option>
 															<!-- <option value="new">Newest</option> -->

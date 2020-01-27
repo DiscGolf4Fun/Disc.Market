@@ -6,7 +6,6 @@ $dbUsername = "root";
 $dbPassword = "root";
 $dbName = "discmarket";
 
-
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
 // Check connection
@@ -15,8 +14,6 @@ if (!$conn) {
 }
 
 $sql0 = [];
-
-
 if(isset($_POST['brandsPost'])) {
 	$brandsPost = (array) $_POST['brandsPost'];
 } else {
@@ -49,26 +46,35 @@ if(isset($_POST['newUsedPost'])) {
 
 if(isset($_POST['pricePost'])) {
 	$pricePost = (array) $_POST['pricePost'];
+	if($pricePost[0] == 1 && $pricePost[1] == 100){
+		$pricePost == array(); 
+	}
 } else {
 	$pricePost = (array) null;
 }
 
 if(isset($_POST['weightPost'])) {
 	$weightPost = (array) $_POST['weightPost'];
+	if($weightPost[0] == 130 && $weightPost[1] == 200){
+		$weightPost == array(); 
+	}
 } else {
 	$weightPost = (array) null;
 }
 
 if(isset($_POST['qualityPost'])) {
 	$qualityPost = (array) $_POST['qualityPost'];
+	if($qualityPost[0] == 1 && $qualityPost[1] == 10){
+		$qualityPost == array(); 
+	}
 } else {
 	$qualityPost = (array) null;
 }
 
 if(isset($_POST['topFilterPost'])) {
-	$topFilterPost = (array) $_POST['topFilterPost'];
+	$topFilterPost = $_POST['topFilterPost'];
 } else {
-	$topFilterPost = (array) null;
+	$topFilterPost = 'ORDER BY timestamp ASC';
 }
 
 if(isset($_POST['scrollCount'])) {
@@ -80,154 +86,215 @@ if(isset($_POST['scrollCount'])) {
 }
 
 
-
-if(isset($_POST['pricePost']) && $pricePost[0] == 1 && $pricePost[1] == 100){
-	$pricePost == array(); 
-}
-
-if(isset($_POST['weightPost']) && $weightPost[0] == 130 && $weightPost[1] == 200){
-	$weightPost == array(); 
-}
-
-if(isset($_POST['qualityPost']) && $qualityPost[0] == 1 && $qualityPost[1] == 10){
-	$qualityPost == array(); 
-}
-
-
 if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-	foreach($brandsPost as $brand){
-		if($brand == 'otherBrand'){
-			$sql1[] = '(brand NOT LIKE "innova" AND 
-					brand NOT LIKE "discraft" AND 
-					brand NOT LIKE "dynamic" AND 
-					brand NOT LIKE "latitude" AND  
-					brand NOT LIKE "westside" AND 
-					brand NOT LIKE "discmania" AND 
-					brand NOT LIKE "prodigy" AND 
-					brand NOT LIKE "MVP" AND 
-					brand NOT LIKE "gateway")';
-		} else {
-			$sql1[] = 'brand LIKE \''.$brand.'\'';
+	if(isset($brandsPost) && !empty($brandsPost)) {
+		foreach($brandsPost as $brand){
+			if($brand == 'otherBrand'){
+				$sql1[] = '(brand NOT LIKE "innova" AND 
+						brand NOT LIKE "discraft" AND 
+						brand NOT LIKE "dynamic" AND 
+						brand NOT LIKE "latitude" AND  
+						brand NOT LIKE "westside" AND 
+						brand NOT LIKE "discmania" AND 
+						brand NOT LIKE "prodigy" AND 
+						brand NOT LIKE "MVP" AND 
+						brand NOT LIKE "gateway")';
+			} else {
+				$sql1[] = 'brand LIKE \''.$brand.'\'';
+			}
 		}
+		$sql1 = implode(" OR ", $sql1);	
 	}
-	$sql1 = implode(" OR ", $sql1);	
-	foreach($categoryPost as $category){
-		$sql2[] = 'type LIKE \''.$category.'\'';
+
+	if(isset($categoryPost) && !empty($categoryPost)) {
+		foreach($categoryPost as $category){
+			$sql2[] = 'type LIKE \''.$category.'\'';
+		}
+		$sql2 = implode(" OR ", $sql2);	
 	}
-	$sql2 = implode(" OR ", $sql2);	
-	foreach($discTypePost as $discType){
-		$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+	
+	if(isset($discTypePost) && !empty($discTypePost)) {
+		foreach($discTypePost as $discType){
+			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		}
+		$sql3 = implode(" OR ", $sql3);
 	}
-	$sql3 = implode(" OR ", $sql3);
-	foreach($newUsedPost as $newUsed){
-		$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+
+	if(isset($newUsedPost) && !empty($newUsedPost)) {
+		foreach($newUsedPost as $newUsed){
+			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+		}
+		$sql4 = implode(" OR ", $sql4);	
 	}
-	$sql4 = implode(" OR ", $sql4);	
-	foreach($partialPost as $partial){
-		$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+
+	if(isset($partialPost) && !empty($partialPost)) {
+		foreach($partialPost as $partial){
+			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+		}
+		$sql5 = implode(" OR ", $sql5);	
 	}
-	$sql5 = implode(" OR ", $sql5);	
+
 	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($categoryPost != "" && !empty($categoryPost)){
 	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-	foreach($brandsPost as $brand){
-		$sql1[] = 'brand LIKE \''.$brand.'\'';
+	if(isset($brandsPost) && !empty($brandsPost)) {
+		foreach($brandsPost as $brand){
+			$sql1[] = 'brand LIKE \''.$brand.'\'';
+		}
+		$sql1 = implode(" OR ", $sql1);	
 	}
-	$sql1 = implode(" OR ", $sql1);	
-	foreach($categoryPost as $category){
-		$sql2[] = 'type LIKE \''.$category.'\'';
+
+	if(isset($categoryPost) && !empty($categoryPost)) {
+		foreach($categoryPost as $category){
+			$sql2[] = 'type LIKE \''.$category.'\'';
+		}
+		$sql2 = implode(" OR ", $sql2);	
 	}
-	$sql2 = implode(" OR ", $sql2);
-	foreach($discTypePost as $discType){
-		$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+	
+	if(isset($discTypePost) && !empty($discTypePost)) {
+		foreach($discTypePost as $discType){
+			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		}
+		$sql3 = implode(" OR ", $sql3);
 	}
-	$sql3 = implode(" OR ", $sql3);	
-	foreach($newUsedPost as $newUsed){
-		$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+
+	if(isset($newUsedPost) && !empty($newUsedPost)) {
+		foreach($newUsedPost as $newUsed){
+			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+		}
+		$sql4 = implode(" OR ", $sql4);	
 	}
-	$sql4 = implode(" OR ", $sql4);
-	foreach($partialPost as $partial){
-		$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+
+	if(isset($partialPost) && !empty($partialPost)) {
+		foreach($partialPost as $partial){
+			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+		}
+		$sql5 = implode(" OR ", $sql5);	
 	}
-	$sql5 = implode(" OR ", $sql5);	
-	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);	
+
+	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($discTypePost != 0 && !empty($discTypePost)){
 	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-	foreach($brandsPost as $brand){
-		$sql1[] = 'brand LIKE \''.$brand.'\'';
+	if(isset($brandsPost) && !empty($brandsPost)) {
+		foreach($brandsPost as $brand){
+			$sql1[] = 'brand LIKE \''.$brand.'\'';
+		}
+		$sql1 = implode(" OR ", $sql1);	
 	}
-	$sql1 = implode(" OR ", $sql1);	
-	foreach($categoryPost as $category){
-		$sql2[] = 'type LIKE \''.$category.'\'';
+
+	if(isset($categoryPost) && !empty($categoryPost)) {
+		foreach($categoryPost as $category){
+			$sql2[] = 'type LIKE \''.$category.'\'';
+		}
+		$sql2 = implode(" OR ", $sql2);	
 	}
-	$sql2 = implode(" OR ", $sql2);	
-	foreach($discTypePost as $discType){
-		$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+	
+	if(isset($discTypePost) && !empty($discTypePost)) {
+		foreach($discTypePost as $discType){
+			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		}
+		$sql3 = implode(" OR ", $sql3);
 	}
-	$sql3 = implode(" OR ", $sql3);
-	foreach($newUsedPost as $newUsed){
-		$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+
+	if(isset($newUsedPost) && !empty($newUsedPost)) {
+		foreach($newUsedPost as $newUsed){
+			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+		}
+		$sql4 = implode(" OR ", $sql4);	
 	}
-	$sql4 = implode(" OR ", $sql4);
-	foreach($partialPost as $partial){
-		$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+
+	if(isset($partialPost) && !empty($partialPost)) {
+		foreach($partialPost as $partial){
+			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+		}
+		$sql5 = implode(" OR ", $sql5);	
 	}
-	$sql5 = implode(" OR ", $sql5);	
-	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);	
+
+	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($newUsedPost != 0 && !empty($newUsedPost)){
 	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-	foreach($brandsPost as $brand){
-		$sql1[] = 'brand LIKE \''.$brand.'\'';
+	if(isset($brandsPost) && !empty($brandsPost)) {
+		foreach($brandsPost as $brand){
+			$sql1[] = 'brand LIKE \''.$brand.'\'';
+		}
+		$sql1 = implode(" OR ", $sql1);	
 	}
-	$sql1 = implode(" OR ", $sql1);	
-	foreach($categoryPost as $category){
-		$sql2[] = 'type LIKE \''.$category.'\'';
+
+	if(isset($categoryPost) && !empty($categoryPost)) {
+		foreach($categoryPost as $category){
+			$sql2[] = 'type LIKE \''.$category.'\'';
+		}
+		$sql2 = implode(" OR ", $sql2);	
 	}
-	$sql2 = implode(" OR ", $sql2);	
-	foreach($discTypePost as $discType){
-		$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+	
+	if(isset($discTypePost) && !empty($discTypePost)) {
+		foreach($discTypePost as $discType){
+			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		}
+		$sql3 = implode(" OR ", $sql3);
 	}
-	$sql3 = implode(" OR ", $sql3);	
-	foreach($newUsedPost as $newUsed){
-		$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+
+	if(isset($newUsedPost) && !empty($newUsedPost)) {
+		foreach($newUsedPost as $newUsed){
+			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+		}
+		$sql4 = implode(" OR ", $sql4);	
 	}
-	$sql4 = implode(" OR ", $sql4);	
-	foreach($partialPost as $partial){
-		$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+
+	if(isset($partialPost) && !empty($partialPost)) {
+		foreach($partialPost as $partial){
+			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+		}
+		$sql5 = implode(" OR ", $sql5);	
 	}
-	$sql5 = implode(" OR ", $sql5);	
+
 	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($partialPost != 0 && !empty($partialPost) && $partialPost[0] != ""){
 	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-	foreach($brandsPost as $brand){
-		$sql1[] = 'brand LIKE \''.$brand.'\'';
+	if(isset($brandsPost) && !empty($brandsPost)) {
+		foreach($brandsPost as $brand){
+			$sql1[] = 'brand LIKE \''.$brand.'\'';
+		}
+		$sql1 = implode(" OR ", $sql1);	
 	}
-	$sql1 = implode(" OR ", $sql1);	
-	foreach($categoryPost as $category){
-		$sql2[] = 'type LIKE \''.$category.'\'';
+
+	if(isset($categoryPost) && !empty($categoryPost)) {
+		foreach($categoryPost as $category){
+			$sql2[] = 'type LIKE \''.$category.'\'';
+		}
+		$sql2 = implode(" OR ", $sql2);	
 	}
-	$sql2 = implode(" OR ", $sql2);	
-	foreach($discTypePost as $discType){
-		$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+	
+	if(isset($discTypePost) && !empty($discTypePost)) {
+		foreach($discTypePost as $discType){
+			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		}
+		$sql3 = implode(" OR ", $sql3);
 	}
-	$sql3 = implode(" OR ", $sql3);	
-	foreach($newUsedPost as $newUsed){
-		$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+
+	if(isset($newUsedPost) && !empty($newUsedPost)) {
+		foreach($newUsedPost as $newUsed){
+			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+		}
+		$sql4 = implode(" OR ", $sql4);	
 	}
-	$sql4 = implode(" OR ", $sql4);	
-	foreach($partialPost as $partial){
-		$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+
+	if(isset($partialPost) && !empty($partialPost)) {
+		foreach($partialPost as $partial){
+			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+		}
+		$sql5 = implode(" OR ", $sql5);	
 	}
-	$sql5 = implode(" OR ", $sql5);	
+
 	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
@@ -236,26 +303,41 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 	} else {
 		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-		foreach($brandsPost as $brand){
-			$sql1[] = 'brand LIKE \''.$brand.'\'';
+		if(isset($brandsPost) && !empty($brandsPost)) {
+			foreach($brandsPost as $brand){
+				$sql1[] = 'brand LIKE \''.$brand.'\'';
+			}
+			$sql1 = implode(" OR ", $sql1);	
 		}
-		$sql1 = implode(" OR ", $sql1);	
-		foreach($categoryPost as $category){
-			$sql2[] = 'type LIKE \''.$category.'\'';
+	
+		if(isset($categoryPost) && !empty($categoryPost)) {
+			foreach($categoryPost as $category){
+				$sql2[] = 'type LIKE \''.$category.'\'';
+			}
+			$sql2 = implode(" OR ", $sql2);	
 		}
-		$sql2 = implode(" OR ", $sql2);	
-		foreach($discTypePost as $discType){
-			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		
+		if(isset($discTypePost) && !empty($discTypePost)) {
+			foreach($discTypePost as $discType){
+				$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+			}
+			$sql3 = implode(" OR ", $sql3);
 		}
-		$sql3 = implode(" OR ", $sql3);	
-		foreach($newUsedPost as $newUsed){
-			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+	
+		if(isset($newUsedPost) && !empty($newUsedPost)) {
+			foreach($newUsedPost as $newUsed){
+				$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+			}
+			$sql4 = implode(" OR ", $sql4);	
 		}
-		$sql4 = implode(" OR ", $sql4);	
-		foreach($partialPost as $partial){
-			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+	
+		if(isset($partialPost) && !empty($partialPost)) {
+			foreach($partialPost as $partial){
+				$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+			}
+			$sql5 = implode(" OR ", $sql5);	
 		}
-		$sql5 = implode(" OR ", $sql5);	
+	
 		$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 		$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
@@ -265,26 +347,41 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 	} else {
 		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-		foreach($brandsPost as $brand){
-			$sql1[] = 'brand LIKE \''.$brand.'\'';
+		if(isset($brandsPost) && !empty($brandsPost)) {
+			foreach($brandsPost as $brand){
+				$sql1[] = 'brand LIKE \''.$brand.'\'';
+			}
+			$sql1 = implode(" OR ", $sql1);	
 		}
-		$sql1 = implode(" OR ", $sql1);	
-		foreach($categoryPost as $category){
-			$sql2[] = 'type LIKE \''.$category.'\'';
+	
+		if(isset($categoryPost) && !empty($categoryPost)) {
+			foreach($categoryPost as $category){
+				$sql2[] = 'type LIKE \''.$category.'\'';
+			}
+			$sql2 = implode(" OR ", $sql2);	
 		}
-		$sql2 = implode(" OR ", $sql2);	
-		foreach($discTypePost as $discType){
-			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		
+		if(isset($discTypePost) && !empty($discTypePost)) {
+			foreach($discTypePost as $discType){
+				$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+			}
+			$sql3 = implode(" OR ", $sql3);
 		}
-		$sql3 = implode(" OR ", $sql3);	
-		foreach($newUsedPost as $newUsed){
-			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+	
+		if(isset($newUsedPost) && !empty($newUsedPost)) {
+			foreach($newUsedPost as $newUsed){
+				$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+			}
+			$sql4 = implode(" OR ", $sql4);	
 		}
-		$sql4 = implode(" OR ", $sql4);	
-		foreach($partialPost as $partial){
-			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+	
+		if(isset($partialPost) && !empty($partialPost)) {
+			foreach($partialPost as $partial){
+				$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+			}
+			$sql5 = implode(" OR ", $sql5);	
 		}
-		$sql5 = implode(" OR ", $sql5);	
+	
 		$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 		$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
@@ -294,26 +391,41 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql_start = 'SELECT * FROM posts UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 	} else {
 		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
-		foreach($brandsPost as $brand){
-			$sql1[] = 'brand LIKE \''.$brand.'\'';
+		if(isset($brandsPost) && !empty($brandsPost)) {
+			foreach($brandsPost as $brand){
+				$sql1[] = 'brand LIKE \''.$brand.'\'';
+			}
+			$sql1 = implode(" OR ", $sql1);	
 		}
-		$sql1 = implode(" OR ", $sql1);	
-		foreach($categoryPost as $category){
-			$sql2[] = 'type LIKE \''.$category.'\'';
+	
+		if(isset($categoryPost) && !empty($categoryPost)) {
+			foreach($categoryPost as $category){
+				$sql2[] = 'type LIKE \''.$category.'\'';
+			}
+			$sql2 = implode(" OR ", $sql2);	
 		}
-		$sql2 = implode(" OR ", $sql2);	
-		foreach($discTypePost as $discType){
-			$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+		
+		if(isset($discTypePost) && !empty($discTypePost)) {
+			foreach($discTypePost as $discType){
+				$sql3[] = 'disc_type LIKE \''.$discType.'\'';
+			}
+			$sql3 = implode(" OR ", $sql3);
 		}
-		$sql3 = implode(" OR ", $sql3);	
-		foreach($newUsedPost as $newUsed){
-			$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+	
+		if(isset($newUsedPost) && !empty($newUsedPost)) {
+			foreach($newUsedPost as $newUsed){
+				$sql4[] = 'newused LIKE \''.$newUsed.'\'';
+			}
+			$sql4 = implode(" OR ", $sql4);	
 		}
-		$sql4 = implode(" OR ", $sql4);	
-		foreach($partialPost as $partial){
-			$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+	
+		if(isset($partialPost) && !empty($partialPost)) {
+			foreach($partialPost as $partial){
+				$sql5[] = 'title LIKE \'%'.$partial.'%\'';
+			}
+			$sql5 = implode(" OR ", $sql5);	
 		}
-		$sql5 = implode(" OR ", $sql5);	
+	
 		$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
 		$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
@@ -411,13 +523,11 @@ if (isset($_SESSION['u_id'])) {
 		}
 	}
 
-
+	$post_array2 = $result2;
 } else {
-	$result2 = [];
+	$post_array2 = [];
 }
 
-
-$post_array2 = $result2;
 
 $posts = mysqli_query($conn, $sql);
 
@@ -479,189 +589,191 @@ for($i=0; $i<$array_count; $i++){
 	$array_data[$i] = array_splice($result, 0, $size);
 }	
 
+if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 
-for($i=0; $i<$array_data[$scrollCount]; $i++) {
+	for($i=0; $i<count($array_data[$scrollCount]); $i++) {
 
-	if($array_data[$scrollCount] < $size) {
-		echo '<script type="text/javascript">',
-		'$( ".postsLoader" ).remove();',
-		'$( "#footer-wrapper" ).show();',
-		'</script>';
-	} elseif ((($count_rows % $size) == 0) && ($scrollCount + 1 == $array_count)) {
-		echo '<script type="text/javascript">',
-		'$( ".postsLoader" ).remove();',
-		'$( "#footer-wrapper" ).show();',
-		'</script>';
-	} else {
-		echo '<script type="text/javascript">',
-		'$( "#footer-wrapper" ).hide();',
-		'</script>';
-	}
-	?> 
-	<div class="4u 12u(mobile) post">
-		<?php 
-		if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
-			echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '" style="outline: 5px solid #0a7e07; border: 1px solid #0a7e07;">';
-		} else if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") {
-			echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '" style="outline: 5px solid red; border: 1px solid red;">';
+		if(count($array_data[$scrollCount]) < $size) {
+			echo '<script type="text/javascript">',
+			'$( ".postsLoader" ).remove();',
+			'$( "#footer-wrapper" ).show();',
+			'</script>';
+		} elseif ((($count_rows % $size) == 0) && ($scrollCount + 1 == $array_count)) {
+			echo '<script type="text/javascript">',
+			'$( ".postsLoader" ).remove();',
+			'$( "#footer-wrapper" ).show();',
+			'</script>';
 		} else {
-			echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '">';
+			echo '<script type="text/javascript">',
+			'$( "#footer-wrapper" ).hide();',
+			'</script>';
 		}
-		?>
-			<span class="image featured">
-				<img src="<?php echo "images/" . $array_data[$scrollCount][$i]['img1']; ?>" alt="" />
-			</span>
-			<section class="box post-content">
-				<div class="post-info">
-					<span class="title">
-						<h3>
-							<?php echo $array_data[$scrollCount][$i]['title']; ?>
-						</h3>
-					</span>
-					<hr>
-					<p>
-						<h3 style="padding: 0 .75em 0 .75em;">
-							<?php if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") { ?>
-								<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600; color: red;">$
-									<?php echo $array_data[$scrollCount][$i]['price']; ?>
-								</span>
-							<?php } else { ?>
-								<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600;">$
-									<?php echo $array_data[$scrollCount][$i]['price']; ?>
-								</span>
-							<?php } ?>
-							<?php echo '<span style="float: right; font-size: 1em; font-weight: 500;"><span data-countdown="'. $array_data[$scrollCount][$i]['timestamp'] .'"></span></span>'; ?>
-						</h3>
-					</p>
-					<hr>
+		?> 
+		<div class="4u 12u(mobile) post">
+			<?php 
+			if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
+				echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '" style="outline: 5px solid #0a7e07; border: 1px solid #0a7e07;">';
+			} else if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") {
+				echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '" style="outline: 5px solid red; border: 1px solid red;">';
+			} else {
+				echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '">';
+			}
+			?>
+				<span class="image featured">
+					<img src="<?php echo "images/" . $array_data[$scrollCount][$i]['img1']; ?>" alt="" />
+				</span>
+				<section class="box post-content">
+					<div class="post-info">
+						<span class="title">
+							<h3>
+								<?php echo $array_data[$scrollCount][$i]['title']; ?>
+							</h3>
+						</span>
+						<hr>
+						<p>
+							<h3 style="padding: 0 .75em 0 .75em;">
+								<?php if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") { ?>
+									<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600; color: red;">$
+										<?php echo $array_data[$scrollCount][$i]['price']; ?>
+									</span>
+								<?php } else { ?>
+									<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600;">$
+										<?php echo $array_data[$scrollCount][$i]['price']; ?>
+									</span>
+								<?php } ?>
+								<?php echo '<span style="float: right; font-size: 1em; font-weight: 500;"><span data-countdown="'. $array_data[$scrollCount][$i]['timestamp'] .'"></span></span>'; ?>
+							</h3>
+						</p>
+						<hr>
 
-					<?php if ($array_data[$scrollCount][$i]['type'] == "Disc") {?>
-					<p>
-						New/Used:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['newused']; ?>
-						</span>
-					</p>
-					<p>
-						Quality:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['quality']; ?>/10</span>
-					</p>
-					<p>
-						Brand:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['brand']; ?>
-						</span>
-					</p>
-					<p>
-						Weight:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['weight']; ?>g</span>
-					</p>
-					<p>
-						Plastic:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['plastic']; ?>
-						</span>
-					</p>
-					<?php }?>
-					<?php if (($array_data[$scrollCount][$i]['type'] == "Bag") || ($array_data[$scrollCount][$i]['type'] == "Apparel") || ($array_data[$scrollCount][$i]['type'] == "Accessory") || ($array_data[$scrollCount][$i]['type'] == "Shoes")) {?>
-					<p>
-						New/Used:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['newused']; ?>
-						</span>
-					</p>
-					<p>
-						Quality:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['quality']; ?>/10</span>
-					</p>
-					<p>
-						Brand:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['brand']; ?>
-						</span>
-					</p>
-					<p>
-						Size:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['weight']; ?>g</span>
-					</p>
-					<p>
-						Color:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['plastic']; ?>
-						</span>
-					</p>
-					<?php }?>
-					<?php if ($array_data[$scrollCount][$i]['type'] == "Basket") {?>
-					<p>
-						New/Used:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['newused']; ?>
-						</span>
-					</p>
-					<p>
-						Quality:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['quality']; ?>/10</span>
-					</p>
-					<p>
-						Brand:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['brand']; ?>
-						</span>
-					</p>
-					<p>
-						Type:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['weight']; ?>g</span>
-					</p>
-					<p>
-						Color:
-						<span style="float: right;">
-							<?php echo $array_data[$scrollCount][$i]['plastic']; ?>
-						</span>
-					</p>
-					<?php }?>
-				</div>
-				<?php 
-				if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
-					echo '<footer style="background-color: #0a7e07; margin-left: -.9em; margin-right: -.9em;">';
-						echo '<p style="text-align: center; font-weight: 500; font-size: 1.2em; color: white;">Winning</p>'; ?>
-				<?php echo '</footer>'; ?>
-				<?php
-				} else if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") {
-					echo '<footer style="background-color: red; margin-left: -.9em; margin-right: -.9em;">';
-						echo '<p style="text-align: center; font-weight: 500; font-size: 1.2em; color: white;">Losing</p>'; ?>
-				<?php echo '</footer>'; ?>
-				<?php
-				} else {
-					echo '<hr style="margin: 0;">';
-					echo '<footer>';
-						echo '<p>';
-				?>
-						<span>
-							<?php 
-								$sql2 = "SELECT user_uid FROM users WHERE users.user_id = " . $array_data[$scrollCount][$i]['user_id'];
-								$sql3 = mysqli_query($conn, $sql2);
-								while ($row = $sql3->fetch_assoc()) {
-									echo '<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;' . ($row[user_uid]);
-								}
-							?>
-						</span>
-						<span style="float: right;"><?php echo $array_data[$scrollCount][$i]['maxbid']; ?> Mins Ago</span>
-					<?php echo '</p>'; ?>
-				<?php echo '</footer>'; ?>
-				<?php
-				}
-				?>					
-					
-			</section>
-		<?php echo "</div></a>"; ?>
-	</div>
-	<?php
+						<?php if ($array_data[$scrollCount][$i]['type'] == "Disc") {?>
+						<p>
+							New/Used:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['newused']; ?>
+							</span>
+						</p>
+						<p>
+							Quality:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['quality']; ?>/10</span>
+						</p>
+						<p>
+							Brand:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['brand']; ?>
+							</span>
+						</p>
+						<p>
+							Weight:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['weight']; ?>g</span>
+						</p>
+						<p>
+							Plastic:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['plastic']; ?>
+							</span>
+						</p>
+						<?php }?>
+						<?php if (($array_data[$scrollCount][$i]['type'] == "Bag") || ($array_data[$scrollCount][$i]['type'] == "Apparel") || ($array_data[$scrollCount][$i]['type'] == "Accessory") || ($array_data[$scrollCount][$i]['type'] == "Shoes")) {?>
+						<p>
+							New/Used:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['newused']; ?>
+							</span>
+						</p>
+						<p>
+							Quality:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['quality']; ?>/10</span>
+						</p>
+						<p>
+							Brand:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['brand']; ?>
+							</span>
+						</p>
+						<p>
+							Size:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['weight']; ?>g</span>
+						</p>
+						<p>
+							Color:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['plastic']; ?>
+							</span>
+						</p>
+						<?php }?>
+						<?php if ($array_data[$scrollCount][$i]['type'] == "Basket") {?>
+						<p>
+							New/Used:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['newused']; ?>
+							</span>
+						</p>
+						<p>
+							Quality:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['quality']; ?>/10</span>
+						</p>
+						<p>
+							Brand:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['brand']; ?>
+							</span>
+						</p>
+						<p>
+							Type:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['weight']; ?>g</span>
+						</p>
+						<p>
+							Color:
+							<span style="float: right;">
+								<?php echo $array_data[$scrollCount][$i]['plastic']; ?>
+							</span>
+						</p>
+						<?php }?>
+					</div>
+					<?php 
+					if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
+						echo '<footer style="background-color: #0a7e07; margin-left: -.9em; margin-right: -.9em;">';
+							echo '<p style="text-align: center; font-weight: 500; font-size: 1.2em; color: white;">Winning</p>'; ?>
+					<?php echo '</footer>'; ?>
+					<?php
+					} else if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") {
+						echo '<footer style="background-color: red; margin-left: -.9em; margin-right: -.9em;">';
+							echo '<p style="text-align: center; font-weight: 500; font-size: 1.2em; color: white;">Losing</p>'; ?>
+					<?php echo '</footer>'; ?>
+					<?php
+					} else {
+						echo '<hr style="margin: 0;">';
+						echo '<footer>';
+							echo '<p>';
+					?>
+							<span>
+								<?php 
+									$sql2 = "SELECT user_uid FROM users WHERE users.user_id = " . $array_data[$scrollCount][$i]['user_id'];
+									$sql3 = mysqli_query($conn, $sql2);
+									while ($row = $sql3->fetch_assoc()) {
+										echo '<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;' . ($row['user_uid']);
+									}
+								?>
+							</span>
+							<span style="float: right;"><?php echo $array_data[$scrollCount][$i]['maxbid']; ?> Mins Ago</span>
+						<?php echo '</p>'; ?>
+					<?php echo '</footer>'; ?>
+					<?php
+					}
+					?>					
+						
+				</section>
+			<?php echo "</div></a>"; ?>
+		</div>
+		<?php
+	}
 }
 
 

@@ -12,18 +12,72 @@ if (!$conn) {
 }
 
 $sql0 = [];
-$partialPost = (array) $_POST['partialPost'];
-$brandsPost = (array) $_POST['brandsPost'];
-$categoryPost = (array) $_POST['categoryPost'];
-$discTypePost = (array) $_POST['discTypePost'];
-$newUsedPost = (array) $_POST['newUsedPost'];
-$pricePost = (array) $_POST['pricePost'];
-$weightPost = (array) $_POST['weightPost'];
-$qualityPost = (array) $_POST['qualityPost'];
-$topFilterPost = $_POST['topFilterPost'];
+if(isset($_POST['brandsPost'])) {
+	$brandsPost = (array) $_POST['brandsPost'];
+} else {
+	$brandsPost = (array) null;
+}
+
+if(isset($_POST['partialPost'])) {
+	$partialPost = (array) $_POST['partialPost'];
+} else {
+	$partialPost = (array) null;
+}
+
+if(isset($_POST['categoryPost'])) {
+	$categoryPost = (array) $_POST['categoryPost'];
+} else {
+	$categoryPost = (array) null;
+}
+
+if(isset($_POST['discTypePost'])) {
+	$discTypePost = (array) $_POST['discTypePost'];
+} else {
+	$discTypePost = (array) null;
+}
+
+if(isset($_POST['newUsedPost'])) {
+	$newUsedPost = (array) $_POST['newUsedPost'];
+} else {
+	$newUsedPost = (array) null;
+}
+
+if(isset($_POST['pricePost'])) {
+	$pricePost = (array) $_POST['pricePost'];
+	if($pricePost[0] == 1 && $pricePost[1] == 100){
+		$pricePost == array(); 
+	}
+} else {
+	$pricePost = (array) null;
+}
+
+if(isset($_POST['weightPost'])) {
+	$weightPost = (array) $_POST['weightPost'];
+	if($weightPost[0] == 130 && $weightPost[1] == 200){
+		$weightPost == array(); 
+	}
+} else {
+	$weightPost = (array) null;
+}
+
+if(isset($_POST['qualityPost'])) {
+	$qualityPost = (array) $_POST['qualityPost'];
+	if($qualityPost[0] == 1 && $qualityPost[1] == 10){
+		$qualityPost == array(); 
+	}
+} else {
+	$qualityPost = (array) null;
+}
+
+if(isset($_POST['topFilterPost'])) {
+	$topFilterPost = (array) $_POST['topFilterPost'];
+} else {
+	$topFilterPost = (array) null;
+}
+
 $count = 0;
 
-if ($partialPost[0] != "" && !empty($partialPost[0])) {
+if (isset($_POST['partialPost']) && $partialPost[0] != "" && !empty($partialPost[0])) {
     $count = $count + 1;
     print_r("<button id='newUsedButton' style='font-size:1em;' onclick='unSearch()'><span>Search:&nbsp;". $partialPost[0] ."&nbsp;<i class='fa fa-close'></i></span></button>");
 }

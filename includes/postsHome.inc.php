@@ -151,11 +151,11 @@ for($i=0; $i<count($post_array); $i++) {
 									$sql2 = "SELECT user_uid FROM users WHERE users.user_id = " . $post_array[$i]['user_id'];
 									$sql3 = mysqli_query($conn, $sql2);
 									while ($row = $sql3->fetch_assoc()) {
-										echo '<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;' . ($row[user_uid]);
+										echo '<i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;' . ($row['user_uid']);
 									}
 								?>
 							</span>
-							<span style="float: right;"><?php echo $post_array[$i]['bids']; ?> Mins Ago</span>
+							<span style="float: right;">10 Mins Ago</span>
 					</p>
 				</footer>
 			</section>

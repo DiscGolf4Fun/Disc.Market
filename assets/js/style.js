@@ -23,7 +23,7 @@ var globalFilterSearch = [];
 var globalFilterPrice = [];
 var globalFilterWeight = [];
 var globalFilterQuality = [];
-var globalFilterTopFilter;
+var globalFilterTopFilter = "";
 var globalFilterCount;
 var globalScrollCount = 0;
 
@@ -262,12 +262,14 @@ getPostsFirst();
 function clearAllPosts() {
     console.log("clearAllPosts");
     topFunction();
+    document.getElementById('topFilterDropdown').value = "endingSoonest";
     globalScrollCount = 0;
     globalFilterBrands = [];
     globalFilterSearch = [];
     globalFilterCategories = [];
     globalFilterDiscType = [];
     globalFilterNewUsed = [];
+    globalFilterTopFilter = "";
     unCheck('all');
         $.post("/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
