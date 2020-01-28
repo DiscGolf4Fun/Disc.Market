@@ -518,7 +518,7 @@ if (isset($_SESSION['u_id'])) {
 		foreach($post_array2 as $key2=>$value2) {
 			if($value1['user_id']==$value2['user_id'] && $value1['maxbid']==$value2['bid']) {
 				$value1['usermaxbid'] = "yes";
-				$result2[$key1]=$value1;
+				$result2[$key2]=$value1;
 			}
 		}
 	}
@@ -556,7 +556,7 @@ foreach($post_array as $key1=>$value1) {
 
 	foreach($post_array2 as $key2=>$value2) {
 		if($value1['id']==$value2['post_id']) {
-			$value1['maxbid'] = $value2['bid'];
+			$value1['maxbid'] = $value2['maxbid'];
 			$result[$key1]=$value1;
 
 			$value1['maxbiduserid'] = $value2['user_id'];

@@ -15,8 +15,17 @@ if (!$conn) {
 
 
 $sql0 = [];
-$partialPost = (array) $_POST['partialPost'];
-$topFilterPost = $_POST['topFilterPost'];
+if(isset($_POST['partialPost'])) {
+	$partialPost = (array) $_POST['partialPost'];
+} else {
+	$partialPost = (array) null;
+}
+
+if(isset($_POST['topFilterPost'])) {
+	$topFilterPost = $_POST['topFilterPost'];
+} else {
+	$topFilterPost = "";
+}
 
 if ($partialPost != 0 && !empty($partialPost) && $partialPost[0] != ""){
 	$sql_start = 'SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = '. $_SESSION["u_id"] .' ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> "" && UNIX_TIMESTAMP(timestamp) > ' . time() . ' && ';	

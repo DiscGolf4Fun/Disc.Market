@@ -70,9 +70,9 @@ if(isset($_POST['qualityPost'])) {
 }
 
 if(isset($_POST['topFilterPost'])) {
-	$topFilterPost = (array) $_POST['topFilterPost'];
+	$topFilterPost = $_POST['topFilterPost'];
 } else {
-	$topFilterPost = (array) null;
+	$topFilterPost = "";
 }
 
 $count = 0;

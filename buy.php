@@ -94,8 +94,8 @@
 						}
 					}
 				}
-				print_r($post_array[1]);
-				die();
+				print_r($sql1);
+				$winningCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
 				$losingCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
 			}
 

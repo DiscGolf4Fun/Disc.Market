@@ -2073,3 +2073,7 @@ h4.postDetails {
     background-color: #F5F5F5;
     color: #048F3C;
 }
+
+.ink {
+    text-decoration-skip-ink: none;
+  }
