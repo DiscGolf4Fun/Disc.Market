@@ -51,6 +51,8 @@
 </head>
 
 <body class="homepage">
+
+
 	<?php
 
 		$servername = "localhost";

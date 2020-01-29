@@ -11,6 +11,7 @@ if(window.scrollY != 0){
     $('html, body').scrollTop(0);
 }
 
+
 // Get the modal
 var modal = document.getElementById('id01');
 
@@ -572,6 +573,43 @@ function getPostsNewUsed(value) {
         });
 }
 
+function getPostsWinningLosing(value) {
+    console.log("getPostsWinningLosing");
+    if(globalFilterNewUsed.includes(value)){
+        globalFilterNewUsed = globalFilterNewUsed.filter(function(e) { return e !== value });
+    } else {
+        globalFilterNewUsed.push(value);
+    }
+        console.log("NewUsed: ", globalFilterNewUsed);
+        $.post("/includes/postsFilter.inc.php", {
+            "partialPost": globalFilterSearch,
+            "brandsPost": globalFilterBrands,
+            "categoryPost": globalFilterCategories,
+            "discTypePost": globalFilterDiscType,
+            "newUsedPost": globalFilterNewUsed,
+            "topFilterPost" : globalFilterTopFilter,
+            "pricePost" : globalFilterPrice,
+            "weightPost" : globalFilterWeight,
+            "qualityPost" : globalFilterQuality
+        }, function (data) {
+            $("#filterResults").html(data);
+        });
+
+        $.post("/includes/posts.inc.php", {
+            "partialPost": globalFilterSearch,
+            "brandsPost": globalFilterBrands,
+            "categoryPost": globalFilterCategories,
+            "discTypePost": globalFilterDiscType,
+            "newUsedPost": globalFilterNewUsed,
+            "topFilterPost" : globalFilterTopFilter,
+            "pricePost" : globalFilterPrice,
+            "weightPost" : globalFilterWeight,
+            "qualityPost" : globalFilterQuality
+        }, function (data) {
+            $("#results").html(data);
+        });
+}
+
 function getPostsTopFilter(value) {
     console.log("getPostsTopFilter");
         globalScrollCount = 0;
@@ -960,6 +998,11 @@ function unCheck(value) {
         $box4 = "#" + value;
         $($box4).prop( "checked", false );
         getPostsNewUsed(value);
+    }
+    if (value == 'winning' || value == 'losing') {
+        $box5 = "#" + value;
+        $($box5).prop( "checked", false );
+        getPostsWinningLosing(value);
     }
 
     if (value == 'all') {

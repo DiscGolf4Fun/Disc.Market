@@ -94,7 +94,6 @@
 						}
 					}
 				}
-				print_r($sql1);
 				$winningCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
 				$losingCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
 			}
@@ -315,7 +314,7 @@
 											<h3 class="filterTitle">Bids</h3>
 											<div class="filterItem">
 											<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="new" value="new" onchange="getPostsNewUsed(this.value)">
+												<input type="checkbox" name="filterCheckbox" id="winning" value="winning" onchange="getPostsWinningLosing(this.value)">
 													<div class="state p-success">
 														<!-- svg path -->
 														<svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -328,7 +327,7 @@
 											</div>
 											<div class="filterItem">
 											<div class="pretty p-svg p-curve p-pulse">
-												<input type="checkbox" name="filterCheckbox" id="used" value="used" onchange="getPostsNewUsed(this.value)">
+												<input type="checkbox" name="filterCheckbox" id="losing" value="losing" onchange="getPostsWinningLosing(this.value)">
 													<div class="state p-success">
 														<!-- svg path -->
 														<svg class="svg svg-icon" viewBox="0 0 20 20">

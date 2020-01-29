@@ -37,6 +37,7 @@ if ($partialPost != 0 && !empty($partialPost) && $partialPost[0] != ""){
 	$sql_start = 'SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = '. $_SESSION["u_id"] .' ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> "" && UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 }
 
+
 if ($topFilterPost != ""){
 	if ($topFilterPost == 'new') {
 		$sql_end = ' GROUP BY posts.id ORDER BY timestamp ASC';
@@ -69,7 +70,6 @@ $sql2 = "SELECT DISTINCT bids.post_id, MAX(bids.bid) AS maxbid FROM posts LEFT J
 $posts = mysqli_query($conn, $sql);
 
 $maxBids = mysqli_query($conn, $sql2);
-
 
 $count_rows = $posts->num_rows;
 $post_array = array();
