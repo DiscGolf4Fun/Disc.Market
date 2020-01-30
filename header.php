@@ -51,8 +51,6 @@
 </head>
 
 <body class="homepage">
-
-
 	<?php
 
 		$servername = "localhost";
@@ -137,10 +135,11 @@
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "about.php") echo 'class="current"'; ?>>
 							<a href="/about.php">About</a>
 						</li>
-						<li <?php if (basename($_SERVER['PHP_SELF']) == "faq.php"){echo 'class="opener current"';}else{echo 'class="opener"';}  ?>>
+						<li <?php if (basename($_SERVER['PHP_SELF']) == "faq.php" || basename($_SERVER['PHP_SELF']) == "store.php" || basename($_SERVER['PHP_SELF']) == "matchplay.php"){echo 'class="opener current"';}else{echo 'class="opener"';}  ?>>
 							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 							<ul class="dropdownMenu">
 								<li><a href="/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>FAQs</a></li>
+								<li><a href="/store.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Our Store</a></li>
 								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YouTube Videos</a></li>
 								<li><a href="https://www.pdga.com/faq/ratings/how-is-your-rating-calculated" target="_blank"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ratings Calculator</a></li>
 								<li><a href="/matchplay.php"><i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matchplay</a></li>

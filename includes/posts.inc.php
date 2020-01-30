@@ -533,7 +533,7 @@ $posts = mysqli_query($conn, $sql);
 
 
 
-$size = 30;
+$size = 15;
 $count_rows = $posts->num_rows;
 $post_array = array();
 $array_count = ceil($count_rows/$size);

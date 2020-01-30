@@ -680,7 +680,7 @@ header#tabs button.exit {
 
 
   #btn-close-modal {
-    z-index: 99;
+    z-index: 999999;
     width:100%;
     text-align: center;
     cursor:pointer;
@@ -746,7 +746,7 @@ a.postModal {
 }   
 
 #btn-close-modal{
-    padding: .75em 0 .75em 0;
+    padding: .25em 0 .25em 0;
     background-color: #53A451;
     border-bottom: solid 5px #50814F;
 }
@@ -2078,5 +2078,5 @@ h4.postDetails {
 }
 
 .ink {
-    text-decoration-skip-ink: none;
+    text-decoration: none;
   }
