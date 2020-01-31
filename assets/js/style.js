@@ -73,21 +73,29 @@ $( document ).ready(function() {
 
 })
 
+var scrolled1 = window.innerHeight + window.scrollY;
+var scrolled2 = document.body.offsetHeight;
+var scrolled3 = scrolled2 - 100;
+
 $(window).bind("load", function() {
-    var start = document.getElementById("filterBox").scrollHeight;
     var initialScrollEvent = true;
-
+    scrolled1 = window.innerHeight + window.scrollY;
+    scrolled2 = document.body.offsetHeight;
+    scrolled3 = scrolled2 - 100;
+    
     window.onscroll = function(ev) {
-        if (!initialScrollEvent) { 
-
+        var start = document.getElementById("filterBox").scrollHeight;
+        if (!initialScrollEvent && scrolled1 < scrolled3) { 
+            scrolled1 = window.innerHeight + window.scrollY;
+            scrolled2 = document.body.offsetHeight;
+            scrolled3 = scrolled2 - 100;
             if($("#footer-wrapper").is(":hidden")) {     
-                $('.postsLoaderContainer').css("height","8em");
-                if ((window.innerHeight + window.scrollY) == document.body.offsetHeight) {
-                    $('body').css({ overflow: 'hidden' });
+                if (scrolled1 >= scrolled3) {
+                    $("#postsLoader").scrollTop($("#postsLoader")[0].scrollHeight);
                     $(".postsLoader").css("display","block");
                     setTimeout(function (){ 
                         getPostsScroll(globalScrollCount); 
-                    }, 1000);
+                    }, 2000);
                     console.log("SCROLLED!");
                 }
             } else {
@@ -102,6 +110,8 @@ $(window).bind("load", function() {
 
         }
         initialScrollEvent = false;
+        scrolled2 = document.body.offsetHeight;
+        scrolled3 = scrolled2 - 100;
 
     };
 });
@@ -936,6 +946,13 @@ function scrollFunction() {
 function topFunction() {
     var body = $("html, body");
     body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
+    });
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunctionRefresh() {
+    var body = $("html, body");
+    body.stop().animate({scrollTop:0}, 0, 'swing', function() { 
     });
 }
 

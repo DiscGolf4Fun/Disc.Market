@@ -3,6 +3,7 @@
 </div>
 <script>
 	$(".post2").hide();
+
 </script>
 
 		<?php
@@ -398,6 +399,8 @@
 
 <script>
 
+
+
 	$('[data-toggle="confirm"]').jConfirm({
 
 		question:'Refresh Posts?',
@@ -461,4 +464,8 @@
 					$("#search1").focus().val("").val(homeSearch);
 				}
 			});
+
+	window.onunload = function () {
+        window.scrollTo(0,0);
+	};
 </script>
