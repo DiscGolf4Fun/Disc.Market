@@ -2080,3 +2080,15 @@ h4.postDetails {
 .ink {
     text-decoration: none;
   }
+
+@media screen and (min-width: 1200px) {
+    .title h3 {
+        height: 3.75rem; 
+    }
+}
+
+@media screen and (min-width: 737px) and (max-width: 1200px) {
+    .title h3 {
+        height: 3.0rem; 
+    }
+}
