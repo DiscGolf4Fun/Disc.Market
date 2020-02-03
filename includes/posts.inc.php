@@ -780,7 +780,7 @@ if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 ?>
 
 <div class="12u 12u(mobile) postsLoaderContainer" id="postsLoader" style="text-align: center;">
-	<div class="postsLoader"></div>
+	<div class="postsLoader"></div>	
 </div>
 
 
