@@ -76,45 +76,47 @@ $( document ).ready(function() {
 var scrolled1 = window.innerHeight + window.scrollY;
 var scrolled2 = document.body.offsetHeight;
 var scrolled3 = scrolled2 - 100;
+var initialScrollEvent = true;
 
-$(window).bind("load", function() {
-    var initialScrollEvent = true;
-    scrolled1 = window.innerHeight + window.scrollY;
-    scrolled2 = document.body.offsetHeight;
-    scrolled3 = scrolled2 - 100;
     
-    window.onscroll = function(ev) {
+    window.onscroll = function() {
         var start = document.getElementById("filterBox").scrollHeight;
-        if (!initialScrollEvent && scrolled1 < scrolled3) { 
+        if (scrolled1 <= scrolled3) { 
             scrolled1 = window.innerHeight + window.scrollY;
             scrolled2 = document.body.offsetHeight;
             scrolled3 = scrolled2 - 100;
-            if($("#footer-wrapper").is(":hidden")) {     
+            if($("#footer-wrapper").is(":hidden")) { 
+                console.log(window.scrollY);
+                $("#postsLoader").scrollTop($("#postsLoader")[0].scrollHeight);
+                $(".postsLoader").css("display","block");
                 if (scrolled1 >= scrolled3) {
-                    $("#postsLoader").scrollTop($("#postsLoader")[0].scrollHeight);
-                    $(".postsLoader").css("display","block");
                     setTimeout(function (){ 
-                        getPostsScroll(globalScrollCount); 
+                        if (scrolled1 >= scrolled3) {
+                            getPostsScroll(globalScrollCount);
+                        }
                     }, 2000);
                     console.log("SCROLLED!");
                 }
             } else {
                 $('.postsLoaderContainer').css("display","none");
-            }
-            if (window.scrollY > start || window.scrollY > start) {
-                document.getElementById("toTopButton").style.display = "block";
-                document.getElementById("toTopButton").style.bottom = "3em";
-            } else {
-                document.getElementById("toTopButton").style.display = "none";
-            }
+            }           
 
         }
+        if (window.scrollY > start) {
+            document.getElementById("toTopButton").style.display = "block";
+            document.getElementById("toTopButton").style.bottom = "3em";
+
+
+        } else {
+            document.getElementById("toTopButton").style.display = "none";
+        }
         initialScrollEvent = false;
+        scrolled1 = window.innerHeight + window.scrollY;
         scrolled2 = document.body.offsetHeight;
-        scrolled3 = scrolled2 - 100;
+        scrolled3 = scrolled2 - 100; 
 
     };
-});
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -945,14 +947,14 @@ function scrollFunction() {
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
     var body = $("html, body");
-    body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
+    body.stop().animate({scrollTop:0}, 500, 'swing', function() {
     });
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunctionRefresh() {
     var body = $("html, body");
-    body.stop().animate({scrollTop:0}, 0, 'swing', function() { 
+    body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
     });
 }
 
