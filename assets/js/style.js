@@ -11,6 +11,10 @@ if(window.scrollY != 0){
     $('html, body').scrollTop(0);
 }
 
+window.onunload = function () {
+    window.scrollTo(0,0);
+};
+
 
 // Get the modal
 var modal = document.getElementById('id01');
@@ -103,12 +107,12 @@ var initialScrollEvent = true;
 
         }
         if (window.scrollY > start) {
-            document.getElementById("toTopButton").style.display = "block";
-            document.getElementById("toTopButton").style.bottom = "3em";
+            $('#toTopButton').attr("style", "display: block");
+            $('#toTopButton').attr("style", "bottom: 3em");
 
 
         } else {
-            document.getElementById("toTopButton").style.display = "none";
+            $('#toTopButton').attr("style", "display: none");
         }
         initialScrollEvent = false;
         scrolled1 = window.innerHeight + window.scrollY;
@@ -936,11 +940,13 @@ var QualitySlider = new rSlider({
 
 function scrollFunction() {
     var start = document.getElementById("filterBox").scrollHeight;
-    if (window.scrollY > start || window.scrollY > start) {
-        document.getElementById("toTopButton").style.display = "block";
-        document.getElementById("toTopButton").style.bottom = "3em";
+    if (window.scrollY > start) {
+        $('#toTopButton').attr("style", "display: block");
+        $('#toTopButton').attr("style", "bottom: 3em");
+
+
     } else {
-        document.getElementById("toTopButton").style.display = "none";
+        $('#toTopButton').attr("style", "display: none");
     }
 }
 
@@ -956,10 +962,6 @@ function topFunctionRefresh() {
     var body = $("html, body");
     body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
     });
-}
-
-function getPostModal(postId) {    
-	//console.log(postId);
 }
 
 

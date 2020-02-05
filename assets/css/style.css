@@ -660,7 +660,6 @@ header#tabs button.exit {
 }
 
 #toTopButton {
-    display: none;
     position: fixed;
     z-index: 99;
     font-size: 18px;
@@ -672,6 +671,8 @@ header#tabs button.exit {
     cursor: pointer;
     padding: 15px;
     border-radius: 4px;
+    bottom: 2.5em;
+    left: 2.5em;
   }
   
   #toTopButton:hover {

@@ -3,7 +3,6 @@
 </div>
 <script>
 	$(".post2").hide();
-
 </script>
 
 		<?php
@@ -371,10 +370,10 @@
 											<br>
 										</section>
 									</div>
-									<div class="12u 12u(mobile)" style="position: fixed; bottom: 0;">
-										<button onclick="topFunction()" id="toTopButton" title="Go to top">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
-									</div>
+									<button type="button" id="toTopButton" onclick="topFunction()" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 								</div>
+	
+
 								<div class="post2">
 										<div class="12u">
 											<div class="filterButton">
@@ -387,7 +386,6 @@
 										</div>
 								</div>
 						</section>
-
 					</div>
 				</div>
 			</div>
@@ -398,8 +396,6 @@
 <?php include_once 'footer.php'; ?>
 
 <script>
-
-
 
 	$('[data-toggle="confirm"]').jConfirm({
 
@@ -464,8 +460,4 @@
 					$("#search1").focus().val("").val(homeSearch);
 				}
 			});
-
-	window.onunload = function () {
-        window.scrollTo(0,0);
-	};
 </script>
