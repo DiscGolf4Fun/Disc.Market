@@ -81,6 +81,7 @@ var scrolled1 = window.innerHeight + window.scrollY;
 var scrolled2 = document.body.offsetHeight;
 var scrolled3 = scrolled2 - 100;
 var initialScrollEvent = true;
+var scrollOnce = true;
 
     
     window.onscroll = function() {
@@ -90,16 +91,14 @@ var initialScrollEvent = true;
             scrolled2 = document.body.offsetHeight;
             scrolled3 = scrolled2 - 100;
             if($("#footer-wrapper").is(":hidden")) { 
-                console.log(window.scrollY);
                 $("#postsLoader").scrollTop($("#postsLoader")[0].scrollHeight);
                 $(".postsLoader").css("display","block");
-                if (scrolled1 >= scrolled3) {
-                    setTimeout(function (){ 
-                        if (scrolled1 >= scrolled3) {
+                if (scrolled1 >= scrolled3 && scrollOnce == true) {
+                    scrollOnce = false;
+                    var timeout = setTimeout(function (){ 
                             getPostsScroll(globalScrollCount);
-                        }
+                            scrollOnce = true;
                     }, 2000);
-                    console.log("SCROLLED!");
                 }
             } else {
                 $('.postsLoaderContainer').css("display","none");
@@ -118,8 +117,8 @@ var initialScrollEvent = true;
         scrolled1 = window.innerHeight + window.scrollY;
         scrolled2 = document.body.offsetHeight;
         scrolled3 = scrolled2 - 100; 
-
     };
+
 
 
 // When the user clicks anywhere outside of the modal, close it
