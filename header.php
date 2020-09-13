@@ -114,11 +114,9 @@
 			<div id="header">
 
 				<!-- Logo -->
-				<h1>
 					<a href="/">
-						<img src="/images/logo.png" alt="" />
+						<img id="logo_image" src="/images/logo.png" alt="" />
 					</a>
-				</h1>
 
 				<!-- Nav -->
 				<nav id="nav">

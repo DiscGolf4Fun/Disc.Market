@@ -115,6 +115,10 @@ section#search {
 #search2{
     margin-left: .5em;
     display: block;
+    float: right;
+    margin-bottom: 0;
+    margin-left: 0;
+    line-height: inherit;
 }
 
 form {
@@ -242,8 +246,13 @@ span.psw {
     to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+/* MOBILE */
+@media screen and (max-width: 736px) {
+
+    #searchMarket {
+        margin: 1.5em 0 1.5em 0 !important;
+    }
+
     span.psw {
        display: block;
        float: none;
@@ -251,6 +260,32 @@ span.psw {
     .cancelbtn {
        width: 100%;
     }
+
+    #logo_image {
+        width: 90%;
+    }
+
+    .search-container {
+        width: 90%;
+    }
+
+    #search1 {
+        width: 100%;
+    }
+
+    #search2 {
+        width: 16%;
+        float: right;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        line-height: 0;
+    }
+
+    #searchForm {
+        display: block;
+    }
+    
 }
 
 .modal form label {
@@ -293,6 +328,10 @@ h2#socialLogin{
 
 #createAccountButton{
     font-size: 1.1em;
+}
+
+#searchForm {
+    display: block;
 }
 
 #banner {
