@@ -178,7 +178,7 @@
 				<nav id="navMobile">
 					<ul>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/">Home</a>
+							<a href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
 						</li>
 						<li <?php echo 'class="opener current"';  ?>>
 							<a href="#">Menu&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
@@ -267,9 +267,9 @@
 								<p style="font-size: 1em; font-weight: 500; font-style: normal;"><a href="/account/#myposts" onClick="window.location.reload()" style="text-decoration: underline; cursor: pointer; color: #0a7e07;"><?php echo $totalPosts; ?></a>&nbsp;posts&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/account/#currentbids" onClick="window.location.reload()" style="text-decoration: underline; cursor: pointer; color: #0a7e07;"><?php echo $totalBids; ?></a>&nbsp;bids&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/account/#messages" onClick="window.location.reload()" style="text-decoration: underline; cursor: pointer; color: #0a7e07;">0</a>&nbsp;messages</p>
 								<?php 
 									if($_SESSION['u_role'] == 1) { 
-										echo '<a href="/admin" style="position: absolute; top: 0; right: 0; margin: 1em; text-decoration: underline; color: #0a7e07;">Admin Home&nbsp;&nbsp;<img src="/images/gold-crown.png" style="vertical-align: middle; height: 1em;"/></a>';
+										echo '<a href="/admin" style="position: absolute; top: 0; right: 0; margin: 1em; text-decoration: underline; color: #0a7e07;">Admin&nbsp;&nbsp;<img src="/images/gold-crown.png" style="vertical-align: middle; height: 1em;"/></a>';
 									} elseif ($_SESSION['u_role'] == 2) {
-										echo '<a href="/admin" style="position: absolute; top: 0; right: 0; margin: 1em; text-decoration: underline; color: #0a7e07;">Admin Home&nbsp;&nbsp;<img src="/images/silver-crown.png" style="vertical-align: middle; height: 1em;"/></a>';
+										echo '<a href="/admin" style="position: absolute; top: 0; right: 0; margin: 1em; text-decoration: underline; color: #0a7e07;">Admin&nbsp;&nbsp;<img src="/images/silver-crown.png" style="vertical-align: middle; height: 1em;"/></a>';
 									}
 								?>
 						</header>

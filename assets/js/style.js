@@ -1096,6 +1096,7 @@ var forgotPassword = $('.forgotPassword');
 var newAccount = $('.newAccount');
 var termsOfService = $('.termsOfService');
 var dimmer2 = $('.dimmer2');
+var mobileMenu = $('.dropdownMenu');
 
 $('.forgot').click( function(e) {
     console.log("Open: Forgot Password");
@@ -1138,6 +1139,7 @@ $('.close-thik').click( function(e) {
 
 $('a#loginToggle').click( function(e) {
     e.preventDefault();
+    mobileMenu.hide();
     dimmer.show();
     loginDiv.show();
     $('html, body').css("overflow","hidden");
@@ -1177,3 +1179,19 @@ grecaptcha.ready(function() {
 document.getElementById('logoutButton').onclick = function() {
     document.getElementById('logoutForm').submit();
 };
+
+
+window.onscroll = function() {myFunction()};
+var navMobile = document.getElementById("navMobile");
+// Get the offset position of the navbar
+var sticky = navMobile.offsetTop + navMobile.offsetHeight;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+    console.log("YUUUUUUUUUUUUP");
+  if (window.pageYOffset >= sticky) {
+    navMobile.classList.add("sticky")
+  } else {
+    navMobile.classList.remove("sticky");
+  }
+}
