@@ -246,6 +246,11 @@ span.psw {
     to {transform: scale(1)}
 }
 
+
+#search-icon {
+    font-size: 1.5em;
+}
+
 /* MOBILE */
 @media screen and (max-width: 736px) {
 
@@ -271,6 +276,7 @@ span.psw {
 
     #search1 {
         width: 100%;
+        line-height: 1em;
     }
 
     #search2 {
@@ -279,14 +285,19 @@ span.psw {
         margin-top: 0;
         margin-bottom: 0;
         margin-left: 0;
-        line-height: 0;
+        line-height: 1.1em;
     }
 
     #searchForm {
         display: block;
     }
+
+    #search-icon {
+        font-size: 1em;
+    }
     
 }
+
 
 .modal form label {
     margin: 1.5em 0 0 0;

@@ -3,7 +3,7 @@
 					<div class="search-container">
 						<form action="buy.php" method="get" id="searchForm">
 							<button id="search2" type="submit" form="searchForm">
-								<i class="fa fa-search" style="font-size: 1.5em;"></i>
+								<i class="fa fa-search" id="search-icon"></i>
 							</button>
 							<div style="overflow: hidden; padding-right: .75em; margin-bottom: 0;">
 								<input id="search1" name="search" type="text" placeholder="Search the Market.." required>
