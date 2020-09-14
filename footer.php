@@ -70,7 +70,7 @@
 	<script src="/assets/js/skel-viewport.min.js"></script>
 	<script src="/assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="/assets/js/main.js"></script>
+	<script src="/assets/js/main.js"></script>     
 	<script src="/assets/js/rSlider.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/assets/js/animatedModal.min.js"></script>

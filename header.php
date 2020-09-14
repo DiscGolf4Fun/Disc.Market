@@ -173,6 +173,62 @@
 					</ul>
 				</nav>	
 
+
+				<!-- Nav MOBILE -->
+				<nav id="navMobile">
+					<ul>
+						<li <?php echo 'class="current"'; ?>>
+							<a href="/">Home</a>
+						</li>
+						<li <?php echo 'class="opener current"';  ?>>
+							<a href="#">Menu&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<ul class="dropdownMenu">
+								<li><a href="/buy.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Buy</a></li>
+								<li><a href="/sell.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-money" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Sell</a></li>
+								<li><a href="/about.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a></li>
+								<li><a href="#" style="font-size: 1.5em"><i class="fa fa-arrow-down" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More</a>
+									<ul>
+										<li><a href="#">Magna phasellus</a></li>
+										<li><a href="#">Etiam dolore nisl</a></li>
+										<li><a href="#">Veroeros feugiat</a></li>
+										<li><a href="#">Nisl sed aliquam</a></li>
+										<li><a href="#">Dolore adipiscing</a></li>
+									</ul></li>
+								<?php
+									if (isset($_SESSION['u_id'])) {
+										if($_SESSION['u_role'] <= 2) {
+											echo '<hr class="moreHR">',
+												'<li><a href="#" target="_blank"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Moderator Chat</a></li>',
+												'<li><a href="#" target="_blank"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Accept Posts</a></li>';
+										}
+									}
+								?>
+							</ul>
+						</li>
+						<li <?php echo 'class="current"'; ?>>
+							<a href="#login" id="loginToggle" class="btn">
+								<?php
+									if (isset($_SESSION['u_id'])) {
+										if($_SESSION['u_role'] == 1) { 
+											echo $_SESSION['u_uid'] . '&nbsp;&nbsp;<img src="/images/gold-crown.png" style="vertical-align: middle; height: 1em;"/>';
+										} elseif ($_SESSION['u_role'] == 2) {
+											echo $_SESSION['u_uid'] . '&nbsp;&nbsp;<img src="/images/silver-crown.png" style="vertical-align: middle; height: 1em;"/>';
+										} else {
+											echo $_SESSION['u_uid'] . '&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true"></i>';
+										}
+									} else {
+										echo "Login/Sign Up";
+									}
+								?>
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+
+
+
+
 				<div id='loginWrapper'>
 					<div class="dimmer"></div>
 					<div class="forgotPassword animated fadeIn">
