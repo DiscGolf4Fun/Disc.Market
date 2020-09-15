@@ -1,6 +1,6 @@
 <?php 
 ob_start();
-include_once($_SERVER['DOCUMENT_ROOT'].'/header.php'); 
+include_once($_SERVER['DOCUMENT_ROOT'].'/test/header.php'); 
 ?>
 </div>
 </div>
@@ -201,11 +201,11 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/header.php');
         </div>
     </div>
 <?php } else { 
-    header( 'Location: /' );
+    header( 'Location: /test/' );
     exit();
 } ?>
 
-<?php include_once($_SERVER['DOCUMENT_ROOT'].'/footer.php'); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT'].'/test/footer.php'); ?>
 
 <script>
 

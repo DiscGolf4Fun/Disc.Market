@@ -24,7 +24,7 @@ if (isset($_POST['uid'])) {
                 $_SESSION['u_uid'] = $row['user_uid'];
                 $_SESSION['u_role'] = $row['user_role'];
                 $_SESSION['u_pic'] = $row['user_pic'];
-                header("Location: /");
+                header("Location: /test/");
                 exit();
             }
         }

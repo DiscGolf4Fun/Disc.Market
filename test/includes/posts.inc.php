@@ -609,7 +609,7 @@ if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 			'</script>';
 		}
 		?> 
-		<div class="4u 12u(mobile) post">
+		<div class="4u 6u(mobile) post">
 			<?php 
 			if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "yes") {
 				echo '<a class="postModal" id="postModal' . $array_data[$scrollCount][$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $array_data[$scrollCount][$i]['id'] . '" style="outline: 5px solid #0a7e07; border: 1px solid #0a7e07;">';

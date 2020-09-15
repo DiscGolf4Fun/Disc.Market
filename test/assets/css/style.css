@@ -1478,6 +1478,10 @@ h4.postDetails {
     margin-bottom: .5em;
 }
 
+header.major {
+    margin-bottom: 4em;
+}
+
 
 
 .dimmer {
@@ -2109,6 +2113,23 @@ h4.postDetails {
         font-size: 3vw;
     }
 
+    .post {
+        width: 50%;
+        font-size: .75em;
+    }
+
+    .post2 {
+        width: 100%;
+    }
+
+    .filter2 {
+        display: none;
+    }
+
+    .postHome {
+        font-size: .75em;
+    }
+
     .content {
         padding: 16px;
       }
@@ -2137,6 +2158,14 @@ h4.postDetails {
         display: inline-block;
         font-style: normal;
         margin: 0 0 0 0;
+    }
+
+    header.major {
+        margin-bottom: 3em;
+    }
+
+    .title h3 {
+        height: 3rem;
     }
     
             #navMobile > ul > li > ul {
@@ -2268,6 +2297,10 @@ h4.postDetails {
 
         #banner {
             margin: 1em 0 2em 0 !important;
+        }
+
+        section, article {
+            margin: 0 0 0 0 !important;
         }
         
     }

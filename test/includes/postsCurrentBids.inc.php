@@ -131,7 +131,7 @@ for($i=0; $i<$count_rows; $i++) {
 			
 		?>
 			<span class="image featured">
-				<img src="<?php echo "/images/" . $result[$i]['img1']; ?>" alt="" />
+				<img src="<?php echo "/test/images/" . $result[$i]['img1']; ?>" alt="" />
 			</span>
 			<section class="box post-content">
 				<div class="post-info">

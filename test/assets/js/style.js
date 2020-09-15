@@ -234,7 +234,7 @@ function isInArray(words, word) {
 
 function getPostsHome() {
     console.log("getPostsHome");
-    $.post("/includes/postsHome.inc.php", {
+    $.post("/test/includes/postsHome.inc.php", {
     }, function (data) {
         $("#resultsHome").html(data);
     });
@@ -244,14 +244,14 @@ getPostsHome();
 function getPostsMyPosts() {
     console.log("getPostsMyPosts");
 
-    $.post("/includes/postsMyPostsFilter.inc.php", {
+    $.post("/test/includes/postsMyPostsFilter.inc.php", {
         "partialPost": globalFilterSearchMyPosts,
         "topFilterPost" : globalFilterTopFilterMyPosts
     }, function (data) {
         $("#filterResultsMyPosts").html(data);
     });
 
-    $.post("/includes/postsMyPosts.inc.php", {
+    $.post("/test/includes/postsMyPosts.inc.php", {
     }, function (data) {
         $("#resultsMyPosts").html(data);
     });
@@ -261,14 +261,14 @@ getPostsMyPosts();
 function getPostsCurrentBids() {
     console.log("getPostsCurrentBids");
 
-    $.post("/includes/postsCurrentBidsFilter.inc.php", {
+    $.post("/test/includes/postsCurrentBidsFilter.inc.php", {
         "partialPost": globalFilterSearchCurrentBids,
         "topFilterPost" : globalFilterTopFilterCurrentBids
     }, function (data) {
         $("#filterResultsCurrentBids").html(data);
     });
 
-    $.post("/includes/postsCurrentBids.inc.php", {
+    $.post("/test/includes/postsCurrentBids.inc.php", {
     }, function (data) {
         $("#resultsCurrentBids").html(data);
     });
@@ -280,7 +280,7 @@ function getPostsFirst() {
     console.log("getPostFirst");
     globalScrollCount = 0;
     scrollTo(0,0);
-    $.post("/includes/posts.inc.php", {
+    $.post("/test/includes/posts.inc.php", {
         "scrollCount" : globalScrollCount
     }, function (data) {
         scrollTo(0,0);
@@ -301,7 +301,7 @@ function clearAllPosts() {
     globalFilterNewUsed = [];
     globalFilterTopFilter = "";
     unCheck('all');
-        $.post("/includes/postsFilter.inc.php", {
+        $.post("/test/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -315,7 +315,7 @@ function clearAllPosts() {
             $("#filterResults").html(data);
         });
 
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -337,7 +337,7 @@ function getPostsScroll(value) {
             console.log("YEEEEEEP");
         }
         globalScrollCount = globalScrollCount + 1;
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "scrollCount" : globalScrollCount,
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
@@ -365,7 +365,7 @@ function getPostsSearch(value) {
         globalScrollCount = 0;   
         globalFilterSearch = value;
         console.log("Search:", globalFilterSearch);
-        $.post("/includes/postsFilter.inc.php", {
+        $.post("/test/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -379,7 +379,7 @@ function getPostsSearch(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -404,14 +404,14 @@ function getPostsSearchMyPosts(value) {
         globalScrollCount = 0;   
         globalFilterSearchMyPosts = value;
         console.log("Search:", globalFilterSearchMyPosts);
-        $.post("/includes/postsMyPostsFilter.inc.php", {
+        $.post("/test/includes/postsMyPostsFilter.inc.php", {
             "partialPost": globalFilterSearchMyPosts,
             "topFilterPost" : globalFilterTopFilterMyPosts
         }, function (data) {
             $("#filterResultsMyPosts").html(data);
         });
     
-        $.post("/includes/postsMyPosts.inc.php", {
+        $.post("/test/includes/postsMyPosts.inc.php", {
             "partialPost": globalFilterSearchMyPosts,
             "topFilterPost" : globalFilterTopFilterMyPosts
         }, function (data) {
@@ -429,14 +429,14 @@ function getPostsSearchCurrentBids(value) {
         globalScrollCount = 0;   
         globalFilterSearchCurrentBids = value;
         console.log("Search:", globalFilterSearchCurrentBids);
-        $.post("/includes/postsCurrentBidsFilter.inc.php", {
+        $.post("/test/includes/postsCurrentBidsFilter.inc.php", {
             "partialPost": globalFilterSearchCurrentBids,
             "topFilterPost" : globalFilterTopFilterCurrentBids
         }, function (data) {
             $("#filterResultsCurrentBids").html(data);
         });
     
-        $.post("/includes/postsCurrentBids.inc.php", {
+        $.post("/test/includes/postsCurrentBids.inc.php", {
             "partialPost": globalFilterSearchCurrentBids,
             "topFilterPost" : globalFilterTopFilterCurrentBids
         }, function (data) {
@@ -458,7 +458,7 @@ function getPostsBrands(value) {
     }
         console.log("Brands: ", globalFilterBrands);
 
-        $.post("/includes/postsFilter.inc.php", {
+        $.post("/test/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -472,7 +472,7 @@ function getPostsBrands(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -498,7 +498,7 @@ function getPostsCategories(value) {
     }
         console.log("Categories: ",globalFilterCategories);
 
-        $.post("/includes/postsFilter.inc.php", {
+        $.post("/test/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -512,7 +512,7 @@ function getPostsCategories(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -536,7 +536,7 @@ function getPostsDiscType(value) {
         globalFilterDiscType.push(value);
     }
         console.log("DiscType: ", globalFilterDiscType);
-        $.post("/includes/postsFilter.inc.php", {
+        $.post("/test/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -550,7 +550,7 @@ function getPostsDiscType(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -573,7 +573,7 @@ function getPostsNewUsed(value) {
         globalFilterNewUsed.push(value);
     }
         console.log("NewUsed: ", globalFilterNewUsed);
-        $.post("/includes/postsFilter.inc.php", {
+        $.post("/test/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -587,7 +587,7 @@ function getPostsNewUsed(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -610,7 +610,7 @@ function getPostsWinningLosing(value) {
         globalFilterNewUsed.push(value);
     }
         console.log("NewUsed: ", globalFilterNewUsed);
-        $.post("/includes/postsFilter.inc.php", {
+        $.post("/test/includes/postsFilter.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -624,7 +624,7 @@ function getPostsWinningLosing(value) {
             $("#filterResults").html(data);
         });
 
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -644,7 +644,7 @@ function getPostsTopFilter(value) {
         globalScrollCount = 0;
         globalFilterTopFilter = value;
         console.log("TopFilter: ", globalFilterTopFilter);
-        $.post("/includes/posts.inc.php", {
+        $.post("/test/includes/posts.inc.php", {
             "partialPost": globalFilterSearch,
             "brandsPost": globalFilterBrands,
             "categoryPost": globalFilterCategories,
@@ -665,7 +665,7 @@ function getPostsTopFilterMyPosts(value) {
         globalFilterTopFilterMyPosts = value;
 
         console.log("TopFilter: ", globalFilterTopFilterMyPosts);
-        $.post("/includes/postsMyPosts.inc.php", {
+        $.post("/test/includes/postsMyPosts.inc.php", {
             "partialPost": globalFilterSearchMyPosts,
             "topFilterPost" : globalFilterTopFilterMyPosts
         }, function (data) {
@@ -679,7 +679,7 @@ function getPostsTopFilterCurrentBids(value) {
         globalFilterTopFilterCurrentBids = value;
 
         console.log("TopFilter: ", globalFilterTopFilterCurrentBids);
-        $.post("/includes/postsCurrentBids.inc.php", {
+        $.post("/test/includes/postsCurrentBids.inc.php", {
             "partialPost": globalFilterSearchCurrentBids,
             "topFilterPost" : globalFilterTopFilterCurrentBids
         }, function (data) {
@@ -718,7 +718,7 @@ var PriceSlider = new rSlider({
         globalScrollCount = 0;
         if(globalFilterPrice[0] != 1 || globalFilterPrice[1] != 100) {
             console.log("PriceSlider");
-            $.post("/includes/postsFilter.inc.php", {
+            $.post("/test/includes/postsFilter.inc.php", {
                 "partialPost": globalFilterSearch,
                 "brandsPost": globalFilterBrands,
                 "categoryPost": globalFilterCategories,
@@ -732,7 +732,7 @@ var PriceSlider = new rSlider({
                 $("#filterResults").html(data);
             });
 
-            $.post("/includes/posts.inc.php", {
+            $.post("/test/includes/posts.inc.php", {
                 "partialPost": globalFilterSearch,
                 "brandsPost": globalFilterBrands,
                 "categoryPost": globalFilterCategories,
@@ -748,7 +748,7 @@ var PriceSlider = new rSlider({
         } else {
             if(priceSliderCount != 0) {
                 console.log("PriceSlider2");
-                $.post("/includes/postsFilter.inc.php", {
+                $.post("/test/includes/postsFilter.inc.php", {
                     "partialPost": globalFilterSearch,
                     "brandsPost": globalFilterBrands,
                     "categoryPost": globalFilterCategories,
@@ -762,7 +762,7 @@ var PriceSlider = new rSlider({
                     $("#filterResults").html(data);
                 });
 
-                $.post("/includes/posts.inc.php", {
+                $.post("/test/includes/posts.inc.php", {
                     "partialPost": globalFilterSearch,
                     "brandsPost": globalFilterBrands,
                     "categoryPost": globalFilterCategories,
@@ -803,7 +803,7 @@ var WeightSlider = new rSlider({
         globalFilterWeight = valsSplit;
         if(globalFilterWeight[0] != 130 || globalFilterWeight[1] != 200) {
             console.log("WeightSlider");
-            $.post("/includes/postsFilter.inc.php", {
+            $.post("/test/includes/postsFilter.inc.php", {
                 "partialPost": globalFilterSearch,
                 "brandsPost": globalFilterBrands,
                 "categoryPost": globalFilterCategories,
@@ -817,7 +817,7 @@ var WeightSlider = new rSlider({
                 $("#filterResults").html(data);
             });
 
-            $.post("/includes/posts.inc.php", {
+            $.post("/test/includes/posts.inc.php", {
                 "partialPost": globalFilterSearch,
                 "brandsPost": globalFilterBrands,
                 "categoryPost": globalFilterCategories,
@@ -833,7 +833,7 @@ var WeightSlider = new rSlider({
         } else {
             if (weightSliderCount != 0) {
                 console.log("WeightSlider2");
-                $.post("/includes/postsFilter.inc.php", {
+                $.post("/test/includes/postsFilter.inc.php", {
                     "partialPost": globalFilterSearch,
                     "brandsPost": globalFilterBrands,
                     "categoryPost": globalFilterCategories,
@@ -847,7 +847,7 @@ var WeightSlider = new rSlider({
                     $("#filterResults").html(data);
                 });
 
-                $.post("/includes/posts.inc.php", {
+                $.post("/test/includes/posts.inc.php", {
                     "partialPost": globalFilterSearch,
                     "brandsPost": globalFilterBrands,
                     "categoryPost": globalFilterCategories,
@@ -888,7 +888,7 @@ var QualitySlider = new rSlider({
         globalFilterQuality = valsSplit;
         if(globalFilterQuality[0] != 1 || globalFilterQuality[1] != 10) {
             console.log("QualitySlider");
-            $.post("/includes/postsFilter.inc.php", {
+            $.post("/test/includes/postsFilter.inc.php", {
                 "partialPost": globalFilterSearch,
                 "brandsPost": globalFilterBrands,
                 "categoryPost": globalFilterCategories,
@@ -902,7 +902,7 @@ var QualitySlider = new rSlider({
                 $("#filterResults").html(data);
             });
 
-            $.post("/includes/posts.inc.php", {
+            $.post("/test/includes/posts.inc.php", {
                 "partialPost": globalFilterSearch,
                 "brandsPost": globalFilterBrands,
                 "categoryPost": globalFilterCategories,
@@ -918,7 +918,7 @@ var QualitySlider = new rSlider({
         } else {
             if(qualitySliderCount !=0) {
                 console.log("QualitySlider2");
-                $.post("/includes/postsFilter.inc.php", {
+                $.post("/test/includes/postsFilter.inc.php", {
                     "partialPost": globalFilterSearch,
                     "brandsPost": globalFilterBrands,
                     "categoryPost": globalFilterCategories,
@@ -932,7 +932,7 @@ var QualitySlider = new rSlider({
                     $("#filterResults").html(data);
                 });
 
-                $.post("/includes/posts.inc.php", {
+                $.post("/test/includes/posts.inc.php", {
                     "partialPost": globalFilterSearch,
                     "brandsPost": globalFilterBrands,
                     "categoryPost": globalFilterCategories,

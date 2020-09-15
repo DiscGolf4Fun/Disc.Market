@@ -33,40 +33,40 @@ while ($post = mysqli_fetch_array($posts)) {
                                     <?php
                                     if($post['img1']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper selected" data-lens-image="images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img1'] . '">
-                                            <img src="images/' . $post['img1'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper selected" data-lens-image="test/images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img1'] . '">
+                                            <img src="test/images/' . $post['img1'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img2']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img2'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img2'] . '">
-                                            <img src="images/' . $post['img2'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img2'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img2'] . '">
+                                            <img src="test/images/' . $post['img2'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img3']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img3'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img3'] . '">
-                                            <img src="images/' . $post['img3'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img3'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img3'] . '">
+                                            <img src="test/images/' . $post['img3'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img4']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img4'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img4'] . '">
-                                            <img src="images/' . $post['img4'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img4'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img4'] . '">
+                                            <img src="test/images/' . $post['img4'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img5']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img5'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img5'] . '">
-                                            <img src="images/' . $post['img5'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img5'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img5'] . '">
+                                            <img src="test/images/' . $post['img5'] . '">
                                         </a>';
                                     }
                                     ?>
@@ -77,8 +77,8 @@ while ($post = mysqli_fetch_array($posts)) {
                                     <div class="simpleLens-big-image-container">
                                         <?php
                                             echo 
-                                            '<a class="simpleLens-lens-image" data-lens-image="images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg">
-                                                <img src="images/' . $post['img1'] . '" class="simpleLens-big-image">
+                                            '<a class="simpleLens-lens-image" data-lens-image="test/images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg">
+                                                <img src="test/images/' . $post['img1'] . '" class="simpleLens-big-image">
                                             </a>';
                                         ?>
                                     </div>
@@ -346,14 +346,14 @@ while ($post = mysqli_fetch_array($posts)) {
                                 <div class="12u" style="padding: 0; text-align: center; margin-top: 1em;">
                                 <h2><u>Related Posts</u></h2>
                                     <div class="relatedPosts" style="padding: 1em; padding-top: 0;">
-                                        <div style="align: center;"><b><p><span style="color:#075804">$18</span></b> - Content 1 Title</p><img src="<?php echo "images/pic20.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
-                                        <div style="align: center;"><p><span style="color:#075804">$12</span> - Content 2 Title</p><img src="<?php echo "images/pic21.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
-                                        <div style="align: center;"><p><span style="color:#075804">$11</span> - Content 3 Title</p><img src="<?php echo "images/pic22.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
-                                        <div style="align: center;"><p><span style="color:#075804">$6</span> - Content 4 Title</p><img src="<?php echo "images/pic23.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
-                                        <div style="align: center;"><p><span style="color:#075804">$14</span> - Content 5 Title</p><img src="<?php echo "images/pic24.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
-                                        <div style="align: center;"><p><span style="color:#075804">$16</span> - Content 6 Title</p><img src="<?php echo "images/pic25.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
-                                        <div style="align: center;"><p><span style="color:#075804">$22</span> - Content 7 Title</p><img src="<?php echo "images/pic26.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
-                                        <div style="align: center;"><p><span style="color:#075804">$9</span> - Content 8 Title</p><img src="<?php echo "images/pic27.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><b><p><span style="color:#075804">$18</span></b> - Content 1 Title</p><img src="<?php echo "test/images/pic20.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$12</span> - Content 2 Title</p><img src="<?php echo "test/images/pic21.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$11</span> - Content 3 Title</p><img src="<?php echo "test/images/pic22.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$6</span> - Content 4 Title</p><img src="<?php echo "test/images/pic23.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$14</span> - Content 5 Title</p><img src="<?php echo "test/images/pic24.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$16</span> - Content 6 Title</p><img src="<?php echo "test/images/pic25.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$22</span> - Content 7 Title</p><img src="<?php echo "test/images/pic26.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
+                                        <div style="align: center;"><p><span style="color:#075804">$9</span> - Content 8 Title</p><img src="<?php echo "test/images/pic27.jpg"; ?>" style="max-height: 200px; display: block; margin-left: auto; margin-right: auto;" alt="" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -393,11 +393,11 @@ $(document).ready(function(){
 
 
     $('.simpleLens-gallery-container .simpleLens-thumbnails-container img').simpleGallery({
-        loading_image: 'images/loading.gif'
+        loading_image: 'test/images/loading.gif'
     });
 
     $('.simpleLens-gallery-container .simpleLens-big-image').simpleLens({
-        loading_image: 'images/loading2.gif'
+        loading_image: 'test/images/loading2.gif'
     });
 
 

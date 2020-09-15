@@ -65,31 +65,31 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="/assets/js/jquery.dropotron.min.js"></script>
-	<script src="/assets/js/skel.min.js"></script>
-	<script src="/assets/js/skel-viewport.min.js"></script>
-	<script src="/assets/js/util.js"></script>
+	<script src="/test/assets/js/jquery.dropotron.min.js"></script>
+	<script src="/test/assets/js/skel.min.js"></script>
+	<script src="/test/assets/js/skel-viewport.min.js"></script>
+	<script src="/test/assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="/assets/js/main.js"></script>     
-	<script src="/assets/js/rSlider.min.js"></script>
+	<script src="/test/assets/js/main.js"></script>     
+	<script src="/test/assets/js/rSlider.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="/assets/js/animatedModal.min.js"></script>
-	<script src="/assets/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
-	<script src="/assets/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-	<script src="/assets/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"><script/>
-	<script src="/assets/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-	<script src="/assets/js/jquery.magnific-popup.min.js"></script>
-	<script src="/assets/js/hammer.min.js"></script>
-	<script src="/assets/js/jquery.simpleGallery.min.js"></script>
-	<script src="/assets/js/jquery.simpleLens.min.js"></script>
-	<script src="/assets/js/jquery.countdown.min.js"></script>
-	<script src="/assets/js/dropzone.js"></script>
-	<script src="/assets/js/dropzone.js"></script>
+	<script src="/test/assets/js/animatedModal.min.js"></script>
+	<script src="/test/assets/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
+	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"><script/>
+	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+	<script src="/test/assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="/test/assets/js/hammer.min.js"></script>
+	<script src="/test/assets/js/jquery.simpleGallery.min.js"></script>
+	<script src="/test/assets/js/jquery.simpleLens.min.js"></script>
+	<script src="/test/assets/js/jquery.countdown.min.js"></script>
+	<script src="/test/assets/js/dropzone.js"></script>
+	<script src="/test/assets/js/dropzone.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-	<script src="/assets/js/jquery.bracket.min.js"></script>
-	<script src="/assets/js/jConfirm.min.js"></script>
+	<script src="/test/assets/js/jquery.bracket.min.js"></script>
+	<script src="/test/assets/js/jConfirm.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-	<script src="/assets/js/style.js"></script>
+	<script src="/test/assets/js/style.js"></script>
 
 
 </body>

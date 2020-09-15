@@ -28,11 +28,11 @@ while ($post = mysqli_fetch_array($posts)) {
 echo '<div class="row" style="margin-left: -1.5em;">';
 
 for($i=0; $i<count($post_array); $i++) {
-	echo '<div class="3u 12u(mobile) postHome" id="postHome'. $post_array[$i]['id'] .'">';
+	echo '<div class="3u 6u(mobile) postHome" id="postHome'. $post_array[$i]['id'] .'">';
 			echo '<a class="postModal" id="postModal' . $post_array[$i]['id'] . '" href="#animatedModal"><div class="post-container" id="post-container' . $post_array[$i]['id'] . '">';
 		?>
 			<span class="image featured">
-				<img src="<?php echo "/images/" . $post_array[$i]['img1']; ?>" alt="" />
+				<img src="<?php echo "/test/images/" . $post_array[$i]['img1']; ?>" alt="" />
 			</span>
 			<section class="box post-content">
 				<div class="post-info">
@@ -214,7 +214,7 @@ $(document).ready(function() {
 	function expired(data) {
 		if(data != undefined) {
 
-            $.post("includes/postsHome.inc.php", {
+            $.post("test/includes/postsHome.inc.php", {
             }, function (data) {
                 $("#resultsHome").html(data);
             });          

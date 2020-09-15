@@ -104,7 +104,6 @@
 		<div id="main-wrapper">
 			<div class="container">
 				<div class="row">
-					<div class="12u">
 						<!-- Portfolio -->
 						<section>
 							<div class="row">
@@ -375,18 +374,15 @@
 	
 
 								<div class="post2">
-										<div class="12u">
 											<div class="filterButton">
 												<div id="filterResults"></div>
 											</div>
 											<!-- Portfolio -->
-										<section>
+											<section>											
 												<div id="results"></div>
-										</section>
-										</div>
+											</section>
 								</div>
 						</section>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -23,7 +23,7 @@
 				<!-- Intro -->
 				<section id="intro" class="container">
 					<div class="row">
-						<div class="4u 12u(mobile)">
+						<div class="4u">
 							<section class="first">
 								<i class="icon featured fa-shopping-cart"></i>
 								<header>
@@ -32,7 +32,7 @@
 								<p>Buy Disc Golf Discs, Bags, Baskets, and much more. Auctions and Buy-It-Now.</p>
 							</section>
 						</div>
-						<div class="4u 12u(mobile)">
+						<div class="4u">
 							<section class="middle">
 								<i class="icon featured alt fa-sellsy"></i>
 								<header>
@@ -41,7 +41,7 @@
 								<p>Create a Disc Auction or Buy-It-Now ad easily and start earning cash today.</p>
 							</section>
 						</div>
-						<div class="4u 12u(mobile)">
+						<div class="4u">
 							<section class="last">
 								<i class="icon featured fa-money"></i>
 								<header>
@@ -52,14 +52,14 @@
 						</div>
 					</div>
 					<footer>
-						<ul class="actions">
-							<li>
-								<a href="buy.php" class="button big">Buy</a>
-							</li>
-							<li>
-								<a href="sell.php" class="button alt big">Sell</a>
-							</li>
-						</ul>
+						<div class="row">
+							<div class="6u">
+								<a href="/test/buy.php" class="button big">Buy</a>
+							</div>
+							<div class="6u">
+								<a href="/test/sell.php" class="button alt big">Sell</a>
+							</div>
+						</div>
 					</footer>
 				</section>
 
@@ -69,14 +69,14 @@
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
-				<header class="major" style="margin-bottom: 4em;">
+				<header class="major">
 					<h2>Auctions Ending Now!</h2>
 				</header>
 				<div id="resultsHome"></div>
 				<footer style="margin-top: 0em; text-align: center;">
 					<ul class="actions">
 						<li>
-							<a href="buy.php" class="button big">See More Posts</a>
+							<a href="/test/buy.php" class="button big">See More Posts</a>
 						</li>
 					</ul>
 				</footer>
@@ -111,7 +111,7 @@
 				<div class="row">
 					<div class="12u">
 						<div class="faqChat">
-							<h4>Do you have any more questions? See our <a href="/faq.php">FAQ</a> page for more answers or contact our <a href="#">support staff</a> for help.</h4>
+							<h4>Do you have any more questions? See our <a href="/test/faq.php">FAQ</a> page for more answers or contact our <a href="#">support staff</a> for help.</h4>
 						</div>
 					</div>
 				</div>
