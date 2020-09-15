@@ -2106,6 +2106,7 @@ h4.postDetails {
     #navMobile {
         display: block;
         margin: 2em 0 1em 0;
+        font-size: 3vw;
     }
 
     .content {

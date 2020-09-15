@@ -85,6 +85,20 @@ var scrollOnce = true;
 
     
     window.onscroll = function() {
+        var navMobile = document.getElementById("navMobile");
+        // Get the offset position of the navbar
+        var sticky = navMobile.offsetTop + navMobile.offsetHeight;
+
+        console.log(sticky);
+        console.log();
+
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        if (window.pageYOffset >= sticky) {
+            navMobile.classList.add("sticky")
+        } else {
+            navMobile.classList.remove("sticky");
+        }
+        
         var start = document.getElementById("filterBox").scrollHeight;
         if (scrolled1 <= scrolled3) { 
             scrolled1 = window.innerHeight + window.scrollY;
@@ -1181,17 +1195,4 @@ document.getElementById('logoutButton').onclick = function() {
 };
 
 
-window.onscroll = function() {myFunction()};
-var navMobile = document.getElementById("navMobile");
-// Get the offset position of the navbar
-var sticky = navMobile.offsetTop + navMobile.offsetHeight;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-    console.log("YUUUUUUUUUUUUP");
-  if (window.pageYOffset >= sticky) {
-    navMobile.classList.add("sticky")
-  } else {
-    navMobile.classList.remove("sticky");
-  }
-}

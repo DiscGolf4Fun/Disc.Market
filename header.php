@@ -178,7 +178,10 @@
 				<nav id="navMobile">
 					<ul>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
+							<a href="/"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Buy</a>
+						</li>
+						<li <?php echo 'class="current"'; ?>>
+							<a href="/"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Sell</a>
 						</li>
 						<li <?php echo 'class="opener current"';  ?>>
 							<a href="#">Menu&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
@@ -187,13 +190,6 @@
 								<li><a href="/sell.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-money" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Sell</a></li>
 								<li><a href="/about.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a></li>
 								<li><a href="#" style="font-size: 1.5em"><i class="fa fa-arrow-down" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More</a>
-									<ul>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam dolore nisl</a></li>
-										<li><a href="#">Veroeros feugiat</a></li>
-										<li><a href="#">Nisl sed aliquam</a></li>
-										<li><a href="#">Dolore adipiscing</a></li>
-									</ul></li>
 								<?php
 									if (isset($_SESSION['u_id'])) {
 										if($_SESSION['u_role'] <= 2) {
