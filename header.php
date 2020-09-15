@@ -178,18 +178,21 @@
 				<nav id="navMobile">
 					<ul>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Buy</a>
+							<a href="buy.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Buy</a>
 						</li>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Sell</a>
+							<a href="sell.php"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Sell</a>
 						</li>
 						<li <?php echo 'class="opener current"';  ?>>
-							<a href="#">Menu&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 							<ul class="dropdownMenu">
-								<li><a href="/buy.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Buy</a></li>
-								<li><a href="/sell.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-money" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Sell</a></li>
-								<li><a href="/about.php" style="font-size: 1.5em; padding-bottom: .5em"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About</a></li>
-								<li><a href="#" style="font-size: 1.5em"><i class="fa fa-arrow-down" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More</a>
+								<li><a href="/about.php"><i class="fa fa-star" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>About</a></li>
+								<li><a href="/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>FAQs</a></li>
+								<li><a href="/store.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Our Store</a></li>
+								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YouTube Videos</a></li>
+								<li><a href="https://www.pdga.com/faq/ratings/how-is-your-rating-calculated" target="_blank"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ratings Calculator</a></li>
+								<li><a href="/matchplay.php"><i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matchplay</a></li>
+								<li><a href="https://www.marshallstreetdiscgolf.com/flightguide" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disc Lookup</a></li>
 								<?php
 									if (isset($_SESSION['u_id'])) {
 										if($_SESSION['u_role'] <= 2) {
