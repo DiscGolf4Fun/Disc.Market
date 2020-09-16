@@ -96,6 +96,7 @@ section#search {
   } 
 
 #search1{
+    margin-right: 1em;
     display: block;
     border-color: black;
 }
@@ -2114,12 +2115,15 @@ header.major {
     }
 
     .post {
-        width: 50%;
         font-size: .75em;
+        width: 49.5%;
+        padding: 0 0 1.25em 1em;
     }
 
     .post2 {
         width: 100%;
+        margin-left: .4em;
+        padding-right: .1em;
     }
 
     .filter2 {
@@ -2133,6 +2137,11 @@ header.major {
     .content {
         padding: 16px;
       }
+
+    .buyContent {
+        padding-bottom: 1.5em;
+        padding-top: 1em;
+    }
 
     /* The sticky class is added to the navbar with JS when it reaches its scroll position */
     .sticky {
