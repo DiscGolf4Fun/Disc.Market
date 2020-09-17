@@ -369,6 +369,6 @@
 					<?php endif; ?>
 					</div>
 				</div>
-		<!-- inser more links here -->
+
 
 		

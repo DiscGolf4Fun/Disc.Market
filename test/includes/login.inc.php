@@ -4,7 +4,10 @@
 session_start();
 if (isset($_POST['uid'])) {
 
-    include 'dbh.inc.php';
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	$path .= "/test/includes/dbh.inc.php"; 
+	include_once($path);
+
 
     $uid = mysqli_real_escape_string($conn, $_POST['uid']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);

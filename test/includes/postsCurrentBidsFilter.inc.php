@@ -1,15 +1,10 @@
+<?php 
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	$path .= "/test/includes/dbh.inc.php"; 
+	include_once($path);
+?>
+
 <?php
-$dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "root";
-$dbName = "discmarket";
-
-$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 $sql0 = [];
 

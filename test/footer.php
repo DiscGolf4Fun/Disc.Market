@@ -70,13 +70,13 @@
 	<script src="/test/assets/js/skel-viewport.min.js"></script>
 	<script src="/test/assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="/test/assets/js/main.js"></script>     
+	<script src="/test/assets/js/main.js"></script>
 	<script src="/test/assets/js/rSlider.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/test/assets/js/animatedModal.min.js"></script>
 	<script src="/test/assets/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
 	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"><script/>
+	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 	<script src="/test/assets/js/jquery.magnific-popup.min.js"></script>
 	<script src="/test/assets/js/hammer.min.js"></script>
