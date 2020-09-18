@@ -343,10 +343,10 @@
 											<div class="6u" style="padding-top: 0em;">
 												<input type="password" class="input" id="user_pass2"  name="user_pass2" autocomplete="off" placeholder="Repeat Password" required>
 											</div>
-											<div class="6u" style="padding-top: 0em;">
+											<div class="6u 12u(mobile)" style="padding-top: 0em;">
 											<div class="g-recaptcha" data-sitekey="6LfNE4oUAAAAAMGBRJ9HHqEDMA3xkiOwYUM83obY" style="transform:scale(0.68);transform-origin:0 0"></div>
 											</div>
-											<div class="6u" style="padding-top: 0em;">
+											<div class="6u 12u(mobile)" style="padding-top: 0em;">
 												<div class="help-text" style="margin-top: 0px;">
 													<p>By signing up, you agree to our</p>
 													<p style="margin-top: -.8em;"><a href="#" class="terms">Terms of service</a></p>

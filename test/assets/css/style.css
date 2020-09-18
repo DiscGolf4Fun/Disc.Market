@@ -2311,5 +2311,13 @@ header.major {
         section, article {
             margin: 0 0 0 0 !important;
         }
+
+        .termsOfService {
+            width: 100%;
+            height: 100%;
+        }
+        .terms2 {
+            width: 50%;
+        }
         
     }
