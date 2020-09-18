@@ -32,6 +32,7 @@ html, body {
             <h1>Buy & Sell Anything Disc Golf</h1>
             <br>
             <h1>Site Coming Soon</h1>
+            <br>
     </div>
 </body>
 </html>
