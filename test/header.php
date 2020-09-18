@@ -53,17 +53,9 @@
 <body class="homepage">
 	<?php
 
-		$servername = "localhost";
-		$username = "root";
-		$password = "root";
-		$dbname = "discmarket";
-
-		// Create connection
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	$path .= "/test/includes/dbh.inc.php"; 
+	include_once($path);
 
 
 		if(isset($_SESSION['u_id'])) {
