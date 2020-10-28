@@ -29,9 +29,8 @@ html, body {
         <div class="contentIndex">
             <img src="/test/images/logo.png" alt="Logo">
             <br><br>
-            <h1>Buy & Sell Anything Disc Golf</h1>
-            <br>
-            <h1>Site Coming Soon</h1>
+            <u><h1 style="font-family: Arial, Helvetica, sans-serif;">Buy & Sell Anything Disc Golf</h1></u>
+            <h1 style="font-family: Arial, Helvetica, sans-serif;">Site Coming Soon</h1>
             <br>
     </div>
 </body>
