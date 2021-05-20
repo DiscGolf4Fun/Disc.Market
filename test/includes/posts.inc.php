@@ -425,7 +425,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 	}
 } else {
-	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
+	$sql_start = 'SELECT * FROM posts WHERE timestamp < UNIX_TIMESTAMP() ';
 }
 
 

@@ -28,40 +28,40 @@ while ($post = mysqli_fetch_array($posts)) {
                                     <?php
                                     if($post['img1']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper selected" data-lens-image="test/images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img1'] . '">
-                                            <img src="test/images/' . $post['img1'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper selected" data-lens-image="images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img1'] . '">
+                                            <img src="images/' . $post['img1'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img2']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img2'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img2'] . '">
-                                            <img src="test/images/' . $post['img2'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img2'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img2'] . '">
+                                            <img src="images/' . $post['img2'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img3']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img3'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img3'] . '">
-                                            <img src="test/images/' . $post['img3'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img3'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img3'] . '">
+                                            <img src="images/' . $post['img3'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img4']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img4'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img4'] . '">
-                                            <img src="test/images/' . $post['img4'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img4'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img4'] . '">
+                                            <img src="images/' . $post['img4'] . '">
                                         </a>';
                                     }
                                     ?>
                                     <?php
                                     if($post['img5']) {
                                         echo 
-                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="test/images/' . pathinfo($post['img5'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img5'] . '">
-                                            <img src="test/images/' . $post['img5'] . '">
+                                        '<a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="images/' . pathinfo($post['img5'], PATHINFO_FILENAME) . '_big.jpg" data-big-image="images/' . $post['img5'] . '">
+                                            <img src="images/' . $post['img5'] . '">
                                         </a>';
                                     }
                                     ?>
@@ -72,8 +72,8 @@ while ($post = mysqli_fetch_array($posts)) {
                                     <div class="simpleLens-big-image-container">
                                         <?php
                                             echo 
-                                            '<a class="simpleLens-lens-image" data-lens-image="test/images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg">
-                                                <img src="test/images/' . $post['img1'] . '" class="simpleLens-big-image">
+                                            '<a class="simpleLens-lens-image" data-lens-image="images/' . pathinfo($post['img1'], PATHINFO_FILENAME) . '_big.jpg">
+                                                <img src="images/' . $post['img1'] . '" class="simpleLens-big-image">
                                             </a>';
                                         ?>
                                     </div>
