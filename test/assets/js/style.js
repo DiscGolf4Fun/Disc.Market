@@ -687,6 +687,10 @@ function getPostsTopFilterCurrentBids(value) {
         });
 }
 
+function loadContent() {
+    document.getElementsByClassName('buyContent').style.width = '100%';
+}
+
 
 
 function refreshPage(){

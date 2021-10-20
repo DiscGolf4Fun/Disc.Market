@@ -171,6 +171,12 @@ img.avatar {
 
 .container {
     padding: 16px;
+    visibility: visible;
+}
+
+.container.show {
+    padding: 16px;
+    visibility: visible;
 }
 
 span.psw {
@@ -633,34 +639,6 @@ header#tabs button.exit {
     background-color: #f9f9f9;
 }
 
-.rs-container { 
-    border: 0;
-    height: 30px;
-}
-
-
-.rs-container .rs-scale { 
-    width: 200%;
-    border: 0;
-}
-
-.rs-tooltip {
-    padding: 0 3px 3px 3px;
-    min-width: 40px;
-}
-
-.slider1 {
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 10px;
-}
-
-.rs-container .rs-selected {
-    background-color: #0a7e07;
-    border: 1px solid #064B04;
-}
-
 #toTopButton {
     position: fixed;
     z-index: 99;
@@ -719,6 +697,39 @@ header#tabs button.exit {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+}
+
+/*Slider Content */
+.rs-container { 
+    border: 0;
+    height: 30px;
+}
+
+
+.rs-container .rs-scale { 
+    width: 200%;
+    border: 0;
+}
+
+.rs-tooltip {
+    padding: 0 3px 3px 3px;
+    min-width: 40px;
+}
+
+.slider1 {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.rs-container .rs-selected {
+    background-color: #0a7e07;
+    border: 1px solid #064B04;
+}
+
+.rs-pointer {
+    left: 85%;
 }
 
 /* The Close Button */

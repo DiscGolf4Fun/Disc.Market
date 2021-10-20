@@ -289,9 +289,15 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql5 = implode(" OR ", $sql5);	
 	}
 
-	$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
-	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
-	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
+	if(isset($pricePost) && !empty($pricePost)) {
+		$sql6 = 'price >= '.$pricePost[0].' AND price <= '. ($pricePost[1] == 100 ? 10000 : $pricePost[1]);
+	}
+	if(isset($weightPost) && !empty($weightPost)) {
+		$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
+	}
+	if(isset($qualityPost) && !empty($qualityPost)) {
+		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
+	}
 } elseif ($pricePost != "" && !empty($pricePost)){
 	if($pricePost[0] == 1 && $pricePost[1] == 200) {
 		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';

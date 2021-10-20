@@ -43,7 +43,9 @@ if(isset($_POST['pricePost'])) {
 		$pricePost == array(); 
 	}
 } else {
-	$pricePost = (array) null;
+    $pricePost[0] = '1';
+    $pricePost[1] = '100';
+	$pricePost == array();
 }
 
 if(isset($_POST['weightPost'])) {
@@ -51,8 +53,10 @@ if(isset($_POST['weightPost'])) {
 	if($weightPost[0] == 130 && $weightPost[1] == 200){
 		$weightPost == array(); 
 	}
-} else {
-	$weightPost = (array) null;
+}  else {
+    $weightPost[0] = '130';
+    $weightPost[1] = '200';
+	$weightPost == array();
 }
 
 if(isset($_POST['qualityPost'])) {
@@ -60,8 +64,10 @@ if(isset($_POST['qualityPost'])) {
 	if($qualityPost[0] == 1 && $qualityPost[1] == 10){
 		$qualityPost == array(); 
 	}
-} else {
-	$qualityPost = (array) null;
+}   else {
+    $qualityPost[0] = '1';
+    $qualityPost[1] = '10';
+	$qualityPost == array();
 }
 
 if(isset($_POST['topFilterPost'])) {

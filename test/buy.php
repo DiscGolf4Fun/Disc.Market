@@ -103,12 +103,16 @@
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
-				<div class="row">
+			<script>
+				$(document).ready(function() { 
+					$('.container').addClass("show");
+				});
+			</script>
 						<!-- Portfolio -->
 						<section>
 							<div class="row">
-								<div class="buyContent">
-									<section id="search">
+								<div class="buyContent" onload="loadContent()">
+									<section id="search" style="width: 100%;">
 										<div class="search-container">
 											<form>
 												<input id="search1" name="search" type="text" value="<?php echo $homeSearch; ?>" placeholder="Search the Market..." onkeyup="getPostsSearch(this.value)">
@@ -131,7 +135,7 @@
 										</div>
 									</section>
 								</div>
-								<div class="filter2">
+								<div class="filter2" style="width: 25%;">
 									<div class="12u 12u(mobile) border">
 										<section class="box" id="filterBox">
 										<?php
@@ -383,7 +387,7 @@
 											</section>
 								</div>
 						</section>
-				</div>
+
 			</div>
 		</div>
 	</div>
