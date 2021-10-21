@@ -532,8 +532,9 @@ if (isset($_SESSION['u_id'])) {
 $posts = mysqli_query($conn, $sql);
 
 
+/* MASTER SCROLL COUNT BEFORE RELOAD! */
+$size = 18;
 
-$size = 15;
 $count_rows = $posts->num_rows;
 $post_array = array();
 $array_count = ceil($count_rows/$size);
@@ -785,7 +786,7 @@ if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 
 
 <div id="animatedModal" style="background-color: white; display: none;">
-	<div id="btn-close-modal" class="close-animatedModal" onclick="scrollFunction()"> 
+	<div id="btn-close-modal" class="close-animatedModal" onclick="closePost()"> 
 		<h3>Close <span class="fa fa-close"></span></h3>
 	</div>
 	<div class="results2"></div>

@@ -955,7 +955,7 @@ var QualitySlider = new rSlider({
     }
 });
 
-function scrollFunction() {
+function closePost() {
     var start = document.getElementById("filterBox").scrollHeight;
     if (window.scrollY > start) {
         $('#toTopButton').attr("style", "display: block");

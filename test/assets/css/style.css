@@ -2157,7 +2157,7 @@ header.major {
     /* The sticky class is added to the navbar with JS when it reaches its scroll position */
     .sticky {
     position: fixed;
-    z-index: 999999;
+    z-index: 1000;
     top: 0;
     width: 100%;
     }
