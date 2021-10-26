@@ -8,7 +8,6 @@ if (isset($_POST['uid'])) {
 	$path .= "/test/includes/dbh.inc.php"; 
 	include_once($path);
 
-
     $uid = mysqli_real_escape_string($conn, $_POST['uid']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     $sql = "SELECT * FROM users WHERE user_uid='$uid' OR user_email='$uid'";
@@ -17,8 +16,7 @@ if (isset($_POST['uid'])) {
     if($resultCheck < 1){
     } else {
         if ($row = mysqli_fetch_assoc($result)) {
-            $hashedPwdCheck == password_verify($pwd, $row['user_pwd']);
-            if ($hashedPwdCheck = 1){               
+            if (password_verify($pwd, $row['user_pwd'])){               
                 //Login the user here
                 $_SESSION['u_id'] = $row['user_id'];
                 $_SESSION['u_first'] = $row['user_first'];
@@ -29,7 +27,13 @@ if (isset($_POST['uid'])) {
                 $_SESSION['u_pic'] = $row['user_pic'];
                 header("Location: /test/");
                 exit();
+            } else {
+                print_r("Password Incorrect!");
+                exit();
             }
+        } else {
+            print_r("Password Incorrect!");
+            exit();
         }
     }
 }
