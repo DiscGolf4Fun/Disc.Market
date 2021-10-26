@@ -777,7 +777,6 @@ if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 	}
 }
 
-
 ?>
 
 <div class="12u 12u(mobile) postsLoaderContainer" id="postsLoader" style="text-align: center;">
@@ -791,7 +790,6 @@ if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 	</div>
 	<div class="results2"></div>
 </div>
-
 
 <script>
 $(document).ready(function() {
@@ -881,6 +879,5 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".post2").show();
 </script>
 

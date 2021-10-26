@@ -1,9 +1,7 @@
 <?php include_once 'header.php'; ?>
 </div>
 </div>
-<script>
-	$(".post2").hide();
-</script>
+<script type="text/javascript" src="javascript.js"></script>
 
 		<?php
 			$innovaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'innova' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
@@ -373,17 +371,17 @@
 											<br>
 										</section>
 									</div>
-									<button type="button" id="toTopButton" onclick="topFunction()" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
+									<button type="button" id="toTopButton" onclick="topFunction();" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 								</div>
 	
-
+								
 								<div class="post2">
 											<div class="filterButton">
 												<div id="filterResults"></div>
 											</div>
 											<!-- Portfolio -->
-											<section>											
-												<div id="results"></div>
+											<section>										
+												<div id="results" onload="loadPosts();"></div>
 											</section>
 								</div>
 						</section>
@@ -396,7 +394,6 @@
 <?php include_once 'footer.php'; ?>
 
 <script>
-
 	$('[data-toggle="confirm"]').jConfirm({
 
 		question:'Refresh Posts?',

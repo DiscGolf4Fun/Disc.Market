@@ -20,7 +20,7 @@ while ($post = mysqli_fetch_array($posts)) {
     ?> 
     <div class="modal-content2">
         <div class="row" style="max-width: 1400px; margin: 0 auto 0 auto;">
-            <div class="6u shortPad" style="padding-right: 1em;">
+            <div class="5u shortPad" style="padding-right: 1em;">
                     <div class="simpleLens-gallery-container" id="demo-1">
                         <div class="row" style="margin: 0 0 0 0;">
                             <div class="2u" style="padding-left: 0; padding-top: 0;">
@@ -85,7 +85,7 @@ while ($post = mysqli_fetch_array($posts)) {
                         </div>
                     </div>
             </div>
-            <div class="6u shortPad" style="padding-left: 1em;">
+            <div class="7u shortPad" style="padding-left: 1em;">
                 <div class="row postInfo">
                     <div class="12u">
                         
