@@ -109,15 +109,16 @@
 						<!-- Portfolio -->
 						<section>
 							<div class="row">
-								<div class="buyContent" onload="loadContent()">
-									<section id="search" style="width: 100%;">
-										<div class="search-container">
+										<div class="9u 12u(mobile) search-container">
 											<form>
 												<input id="search1" name="search" type="text" value="<?php echo $homeSearch; ?>" placeholder="Search the Market..." onkeyup="getPostsSearch(this.value)">
 												<button id="search2" type="button" data-toggle="confirm" role="button">
 													<i class="fa fa-refresh" style="font-size: 1.5em;"></i>
 												</button>
-												<div class="dropdown">
+											</form>
+										</div>
+										<div class="3u 12u(mobile) dropdown-container">
+											<form>												
 													<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 													<div class="custom-select">
 														<select id="topFilterDropdown" onchange="getPostsTopFilter(this.value)">
@@ -128,11 +129,8 @@
 															<option value="high">Price: Highest</option>
 														</select>
 													</div>
-												</div>
 											</form>
 										</div>
-									</section>
-								</div>
 								<div class="filter2" style="width: 25%;">
 									<div class="12u 12u(mobile) border">
 										<section class="box" id="filterBox">
@@ -374,26 +372,47 @@
 									<button type="button" id="toTopButton" onclick="topFunction();" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 								</div>
 	
-								
+								<div class="pageLoader" style="background-color: white; width: 73%; border: 1px solid black; margin-left: 2%; padding: 1em 1em 1em 1em; text-align: center;">
+									<img src="/test/images/LoadingPuttGif.gif" alt="Loading Putt Gif"  width="500" />
+									<h2>Loading...</h2>
+								</div>
 								<div class="post2">
-											<div class="filterButton">
-												<div id="filterResults"></div>
-											</div>
-											<!-- Portfolio -->
-											<section>										
-												<div id="results" onload="loadPosts();"></div>
-											</section>
+									<div class="filterButton">
+										<div id="filterResults"></div>
+									</div>
+									<!-- Portfolio -->
+									<section>										
+										<div id="results"></div>
+									</section>
 								</div>
 						</section>
 
 			</div>
 		</div>
 	</div>
+	<script>
+		jQuery(document).ready(checkContainer);
+
+		function checkContainer () {
+			$('.post2').hide();
+			if($('.post2').load()){ //if the container is visible on the page				
+				setTimeout(() => { 
+					$('.pageLoader').hide();
+					scrollTo(0,0);
+					$('.post2').show();
+    			}, 3000);
+
+			} else {
+				setTimeout(checkContainer, 50); //wait 50 ms, then try again
+			}
+		}
+	</script>
 	
 
 <?php include_once 'footer.php'; ?>
 
 <script>
+
 	$('[data-toggle="confirm"]').jConfirm({
 
 		question:'Refresh Posts?',

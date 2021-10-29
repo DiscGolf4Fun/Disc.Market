@@ -15,7 +15,6 @@ window.onunload = function () {
     window.scrollTo(0,0);
 };
 
-
 // Get the modal
 var modal = document.getElementById('id01');
 
@@ -90,7 +89,6 @@ var scrollOnce = true;
         var sticky = navMobile.offsetTop + navMobile.offsetHeight;
 
         console.log(sticky);
-        console.log();
 
         // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
         if (window.pageYOffset >= sticky) {
@@ -132,7 +130,6 @@ var scrollOnce = true;
         scrolled2 = document.body.offsetHeight;
         scrolled3 = scrolled2 - 100; 
     };
-
 
 
 // When the user clicks anywhere outside of the modal, close it
@@ -232,6 +229,7 @@ function isInArray(words, word) {
     return words.indexOf(word.toString().toLowerCase()) > -1;
 }
 
+
 function getPostsHome() {
     console.log("getPostsHome");
     $.post("/test/includes/postsHome.inc.php", {
@@ -279,11 +277,9 @@ getPostsCurrentBids();
 function getPostsFirst() {
     console.log("getPostFirst");
     globalScrollCount = 0;
-    scrollTo(0,0);
     $.post("/test/includes/posts.inc.php", {
         "scrollCount" : globalScrollCount
     }, function (data) {
-        scrollTo(0,0);
         $("#results").html(data);
     });
 }
@@ -690,8 +686,6 @@ function getPostsTopFilterCurrentBids(value) {
 function loadContent() {
     document.getElementsByClassName('buyContent').style.width = '100%';
 }
-
-
 
 function refreshPage(){
     $(window).scrollTop(0);
@@ -1197,5 +1191,6 @@ grecaptcha.ready(function() {
 document.getElementById('logoutButton').onclick = function() {
     document.getElementById('logoutForm').submit();
 };
+
 
 
