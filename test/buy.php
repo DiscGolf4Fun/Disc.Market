@@ -111,11 +111,11 @@
 							<div class="row">
 										<div class="9u 12u(mobile) search-container">
 											<form>
-												<input id="search1" name="search" type="text" value="<?php echo $homeSearch; ?>" placeholder="Search the Market..." onkeyup="getPostsSearch(this.value)">
-												<button id="search2" type="button" data-toggle="confirm" role="button">
-													<i class="fa fa-refresh" style="font-size: 1.5em;"></i>
+												<input id="searchBuypage" type="text" placeholder="Search the Market..." />
+												<button type="button" onclick="getPostsSearch()" id="searchBuypageButton">
+													<i class="fa fa-search" id="search-icon"></i>
 												</button>
-											</form>
+											</form>										
 										</div>
 										<div class="3u 12u(mobile) dropdown-container">
 											<form>												
@@ -412,6 +412,20 @@
 <?php include_once 'footer.php'; ?>
 
 <script>
+
+	// Get the input field
+	var searchBuypage = document.getElementById("searchBuypage");
+
+	// Execute a function when the user releases a key on the keyboard
+	searchBuypage.addEventListener("keydown", function(event) {
+	// Number 13 is the "Enter" key on the keyboard
+	if (event.keyCode === 13) {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Trigger the button element with a click
+		document.getElementById("searchBuypageButton").click();
+	}
+	});
 
 	$('[data-toggle="confirm"]').jConfirm({
 

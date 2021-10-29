@@ -355,7 +355,8 @@ function getPostsScroll(value) {
 
 
 var searchTest;
-function getPostsSearch(value) { 
+function getPostsSearch() { 
+    value = document.getElementById("searchBuypage").value;
     if (value != globalFilterSearch) {  
         console.log("getPostsSearch"); 
         globalScrollCount = 0;   
@@ -1073,7 +1074,7 @@ function unCheck(value) {
 }
 
 function unSearch(){
-    $('#search1').val('');
+    $('#searchBuypage').val('');
     getPostsSearch();
 }
 

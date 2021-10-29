@@ -95,6 +95,12 @@ section#search {
     border-color: black;
 }
 
+#searchBuypage{
+    margin-right: 1em;
+    display: block;
+    border-color: black;
+}
+
 #search1MyPosts{
     display: block;
     border-color: black;
@@ -354,6 +360,29 @@ input#search1CurrentBids:focus{
     font-weight: bold;
 }
 
+input#searchBuypage:focus{
+    outline: none;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid #0a7e07;
+    font-weight: bold;
+}
+
+input#searchBuypageMyPosts:focus{
+    outline: none;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid #0a7e07;
+    font-weight: bold;
+}
+
+input#searchBuypageCurrentBids:focus{
+    outline: none;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid #0a7e07;
+    font-weight: bold;
+}
+
+
+
 .icon {
     position: static;
 }
@@ -457,7 +486,7 @@ input#myRange.slider{
     margin-bottom: 1.5em;
   }
 
-  .search-container form{
+  .search-container button{
     margin-right: 1em;
   }
 
@@ -2306,6 +2335,11 @@ header.major {
         }
     
         #search1 {
+            width: 100%;
+            line-height: 1em;
+        }
+
+        #searchBuypage {
             width: 100%;
             line-height: 1em;
         }
