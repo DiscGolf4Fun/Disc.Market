@@ -3,6 +3,14 @@
 </div>
 
 
+<style>
+  #yourId {
+			width: 500px;
+			height: 500px;
+			position:relative; /* or fixed or absolute */
+		}
+</style>
+
 <div id="main-wrapper">
     <div class="container">
         <header class="major" style="margin-bottom: 1.5em;">
@@ -13,11 +21,22 @@
             <br/>
         </form>
     </div>
+
+    <div id="yourId"></div>
+
+
+
 </div>
 
 <?php include_once 'footer.php'; ?>
 
 <script>
+
+var cropperOptions = {
+			uploadUrl:'path_to_your_image_proccessing_file.php'
+		}		
+		
+		var cropperHeader = new Croppic('yourId', cropperOptions);
 
 //enctype="multipart/form-data"
 //UploadImages
@@ -46,10 +65,10 @@ Dropzone.options.DropZoneFiddle = {
       //$("#div-files").html(responseText);
       //var _this = this;
       //_this.removeFile(file);
-      //alert('done');
     });
     this.on("addedfile", function(file){
   		//alert('hi');
+      alert('done');
   	});
   }
 };

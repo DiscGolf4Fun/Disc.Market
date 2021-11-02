@@ -1,6 +1,7 @@
 <?php include_once 'header.php'; ?>
 </div>
 </div>
+
 <script type="text/javascript" src="javascript.js"></script>
 
 		<?php
@@ -481,13 +482,5 @@
 
 	$( "#footer-wrapper" ).hide();
 
-			$(window).load(function() {
-				console.log( "ready!" );
-				var homeSearch = [];
-				homeSearch.push('<?php echo $homeSearch; ?>');
-				if(homeSearch != "" && homeSearch.length != 0) {
-					getPostsSearch(homeSearch);
-					$("#search1").focus().val("").val(homeSearch);
-				}
-			});
+
 </script>

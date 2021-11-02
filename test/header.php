@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<link rel="stylesheet" href="/test/assets/css/jquery.bracket.min.css">
 	<link rel="stylesheet" href="/test/assets/css/jConfirm.min.css">
+	<link rel="stylesheet" href="/test/assets/css/croppic.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 	<link rel="stylesheet" href="/test/assets/css/style.css" />
 

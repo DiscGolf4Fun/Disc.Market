@@ -84,7 +84,7 @@
 	<script src="/test/assets/js/jquery.simpleLens.min.js"></script>
 	<script src="/test/assets/js/jquery.countdown.min.js"></script>
 	<script src="/test/assets/js/dropzone.js"></script>
-	<script src="/test/assets/js/dropzone.js"></script>
+	<script src="/test/assets/js/croppic.min.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script src="/test/assets/js/jquery.bracket.min.js"></script>
 	<script src="/test/assets/js/jConfirm.min.js"></script>
