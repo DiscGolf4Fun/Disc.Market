@@ -20,7 +20,7 @@ $angle = $_POST['rotation'];
 
 $jpeg_quality = 100;
 
-$output_filename = "/test/temp/croppedImg_".rand();
+$output_filename = "temp/croppedImg_".rand();
 
 // uncomment line below to save the cropped image in the same location as the original image.
 //$output_filename = dirname($imgUrl). "/croppedImg_".rand();
@@ -29,18 +29,18 @@ $what = getimagesize($imgUrl);
 
 switch(strtolower($what['mime']))
 {
-    case '/image/png':
+    case 'image/png':
         $img_r = imagecreatefrompng($imgUrl);
 		$source_image = imagecreatefrompng($imgUrl);
 		$type = '.png';
         break;
-    case '/image/jpeg':
+    case 'image/jpeg':
         $img_r = imagecreatefromjpeg($imgUrl);
 		$source_image = imagecreatefromjpeg($imgUrl);
 		error_log("jpg");
 		$type = '.jpeg';
         break;
-    case '/image/gif':
+    case 'image/gif':
         $img_r = imagecreatefromgif($imgUrl);
 		$source_image = imagecreatefromgif($imgUrl);
 		$type = '.gif';

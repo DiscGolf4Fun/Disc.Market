@@ -73,7 +73,11 @@ $( document ).ready(function() {
         console.log("Count:", globalFilterCount);
     }
 
-
+    if (document.getElementById('logoutButton')) {
+        document.getElementById('logoutButton').onclick = function() {
+            document.getElementById('logoutForm').submit();
+        };
+    }
 })
 
 var scrolled1 = window.innerHeight + window.scrollY;
@@ -82,7 +86,8 @@ var scrolled3 = scrolled2 - 100;
 var initialScrollEvent = true;
 var scrollOnce = true;
 
-    
+
+if (document.location.href.indexOf('buy.php') !== -1){ 
     window.onscroll = function() {
         var navMobile = document.getElementById("navMobile");
         // Get the offset position of the navbar
@@ -129,7 +134,9 @@ var scrollOnce = true;
         scrolled1 = window.innerHeight + window.scrollY;
         scrolled2 = document.body.offsetHeight;
         scrolled3 = scrolled2 - 100; 
-    };
+    }
+
+};
 
 
 // When the user clicks anywhere outside of the modal, close it
@@ -1182,16 +1189,11 @@ $('.dimmer2').click( function(e) {
 })
 
 grecaptcha.ready(function() {
-    grecaptcha.execute('6LdrEYoUAAAAACql8qTRAYI-QUhq9cSM_wiYsa70', {action: 'action_name'})
-    .then(function(token) {
+    //grecaptcha.execute('6LdrEYoUAAAAACql8qTRAYI-QUhq9cSM_wiYsa70', {action: 'action_name'}).then(function(token) {
     // Verify the token on the server.
-    });
+    //});
 });
 
-
-document.getElementById('logoutButton').onclick = function() {
-    document.getElementById('logoutForm').submit();
-};
 
 
 

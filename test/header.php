@@ -43,8 +43,10 @@
 	<meta name="theme-color" content="#ffffff">
 
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<script src=" https://code.jquery.com/jquery-2.1.3.min.js"></script> 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 

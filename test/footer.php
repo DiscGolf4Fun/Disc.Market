@@ -79,10 +79,10 @@
 	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 	<script src="/test/assets/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 	<script src="/test/assets/js/jquery.magnific-popup.min.js"></script>
-	<script src="/test/assets/js/hammer.min.js"></script>
 	<script src="/test/assets/js/jquery.simpleGallery.min.js"></script>
 	<script src="/test/assets/js/jquery.simpleLens.min.js"></script>
 	<script src="/test/assets/js/jquery.countdown.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 	<script src="/test/assets/js/dropzone.js"></script>
 	<script src="/test/assets/js/croppic.min.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
