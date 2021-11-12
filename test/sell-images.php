@@ -9,43 +9,89 @@
   #image1 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
+
+	#image1:hover {
+		cursor: grab;
+	}
+
+	#image1:active {
+		cursor: grabbing;
+	}
 
     #image2 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
+
+	#image2:hover {
+		cursor: grab;
+	}
+
+	#image2:active {
+		cursor: grabbing;
+	}
 
     #image3 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
+	
+	#image3:hover {
+		cursor: grab;
+	}
+
+	#image3:active {
+		cursor: grabbing;
+	}
 
     #image4 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
+
+	#image4:hover {
+		cursor: grab;
+	}
+
+	#image4:active {
+		cursor: grabbing;
+	}
 
     #image5 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
+
+	#image5:hover {
+		cursor: grab;
+	}
+
+	#image5:active {
+		cursor: grabbing;
+	}
 
     #image6 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
 
     .highlight {
@@ -58,13 +104,22 @@
 <script>
   $( function() {
     $( "#sortable1" ).sortable({
-      placeholder: "ui-state-highlight",
-	  forcePlaceholderSize: true,
 	  forceHelperSize: true,
 	  tolerance: "pointer",
 	  items: "li:not(.unsortable)"
     });
     $( "#sortable1" ).disableSelection();
+
+	$("#sortable1").sortable({
+        stop: function ($item, container, _super, event) {
+            $('#sortable1 li').removeClass('dragged');
+            $("body").removeClass('dragging');
+            $('#sortable1 span').each(function (i) {
+                var humanNum = i + 1;
+                $(this).html(humanNum + '');
+            });
+        }
+    });
   } );
 </script>
 
@@ -77,30 +132,51 @@
 
 
     <div class="container">
+
         <ul class="row connectedSortable" id="sortable1">
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image1"></div>
+				<div>
+					<span>1</span> was 1 at beginning
+				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image2"></div>
+				<div>
+					<span>2</span> was 2 at beginning
+				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image3"></div>
+				<div>
+					<span>3</span> was 3 at beginning
+				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image4"></div>
+				<div>
+					<span>4</span> was 4 at beginning
+				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
 				<div id="image5"></div>
+				<div>
+					<span>5</span> was 5 at beginning
+				</div>
           </li>
 		  <li class="4u 12u(mobile) unsortable">
-		  	<center><button style="justify-content: center;" data-toggle="">Reset Images</button></center>
-			  <br>
-			  <center><button style="justify-content: center;" data-toggle="">Back</button></center>
-			  <br>
-			  <center><button style="justify-content: center;" data-toggle="">Next: Preview Post</button></center>
+		  	<div id="image6">
+				<div style="margin-top: 3.5em">
+					<center><input type="reset" value="Next: Preview" style="background-color: green;"></center>
+					<br>
+					<center><input type="reset" value="Reset Images" style="background-color: red;"></center>
+					<br>
+					<center><input type="reset" value="Back: Post Info" style="background-color: grey;"></center>
+				</div>
+			</div>
 		  </li>
         </ul>
+
     </div>
 
 </div>
