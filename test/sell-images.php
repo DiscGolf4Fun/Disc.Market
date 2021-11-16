@@ -9,16 +9,20 @@
   #image1 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
 
-<<<<<<< HEAD
 		.imageTest {
 			height: 350px;
 			outline: 5px solid #0a7e07;
 		}
 
+		.imageTest2 {
+			height: 350px;
+			border: 2px solid #000000;
+		}
 
 		.imageTest p {
 			margin-top: -40px; 
@@ -31,51 +35,79 @@
 			font-weight: 800;
 		}
 
-	#image1:hover {
-		cursor: grab;
-	}
-
-	#image1:active {
-		cursor: grabbing;
-	}
-
-=======
->>>>>>> parent of cc55307 (Image Sorting)
     #image2 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+     		border: 1px solid;
 			position:relative;
+			background: white;
 		}
 
     #image3 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
 
     #image4 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
 
     #image5 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
 
     #image6 {
 			width: auto;
 			height: 350px;
-      border: 1px solid;
+      		border: 1px solid;
 			position:relative;
+			background: white;
 		}
 
+		.previewPost {
+			margin-top: 4em;
+		}
+
+		.backImages {
+			background: gray;
+		}
+
+		.backImages:hover {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: gray;
+			opacity: 70%;
+		}
+
+		.resetImages {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: red;
+		}
+
+		.resetImages:hover {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: red;
+			opacity: 50%;
+		}
 
 </style>
 
@@ -101,53 +133,10 @@
 
 
     <div class="container">
-<<<<<<< HEAD
         <ul class="row connectedSortable" id="sortable1" style="position: relative;">
-		  <li class="4u unsortable" style="position: absolute;">
+			<li class="4u unsortable" style="position: absolute;">
 			<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 		  </li>
-          <li class="4u 12u(mobile) ui-state-default">
-		  		<div id="image1"></div>
-				<div style="font-weight: bold;">
-					<span>1</span> was 1 at beginning
-				</div>
-          </li>
-          <li class="4u 12u(mobile) ui-state-default">
-            	<div id="image2"></div>
-				<div style="font-weight: bold;">
-					<span>2</span> was 2 at beginning
-				</div>
-          </li>
-          <li class="4u 12u(mobile) ui-state-default">
-            	<div id="image3"></div>
-				<div style="font-weight: bold;">
-					<span>3</span> was 3 at beginning
-				</div>
-          </li>
-          <li class="4u 12u(mobile) ui-state-default">
-            	<div id="image4"></div>
-				<div style="font-weight: bold;">
-					<span>4</span> was 4 at beginning
-				</div>
-          </li>
-          <li class="4u 12u(mobile) ui-state-default">
-				<div id="image5"></div>
-				<div style="font-weight: bold;">
-					<span>5</span> was 5 at beginning
-				</div>
-          </li>
-		  <li class="4u 12u(mobile) unsortable">
-		  	<div id="image6">
-				<div style="margin-top: 3.5em">
-					<center><input type="reset" value="Next: Preview" style="background-color: green;"></center>
-					<br>
-					<center><input type="reset" value="Reset Images" style="background-color: red;" data-toggle="resetImages"></center>
-					<br>
-					<center><input type="reset" value="Back: Post Info" style="background-color: grey;"></center>
-				</div>
-			</div>
-=======
-        <ul class="row connectedSortable" id="sortable1">
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image1"></div>
           </li>
@@ -164,12 +153,13 @@
 				<div id="image5"></div>
           </li>
 		  <li class="4u 12u(mobile) unsortable">
-		  	<center><button style="justify-content: center;" data-toggle="">Reset Images</button></center>
+		  	<div id="image6">
+			  <center><button class="previewPost" data-toggle="">Next: Preview Post</button></center>
+			  <br>			  
+			  <center><button class="backImages" onclick="location.href='/test/sell.php'">Back: Post Info</button></center>	
 			  <br>
-			  <center><button style="justify-content: center;" data-toggle="">Back</button></center>
-			  <br>
-			  <center><button style="justify-content: center;" data-toggle="">Next: Preview Post</button></center>
->>>>>>> parent of cc55307 (Image Sorting)
+		  	  <center><button class="resetImages" data-toggle="resetImages">Reset Images</button></center> 		  
+			</div>
 		  </li>
         </ul>
     </div>
@@ -180,6 +170,18 @@
 
 
 <script>
+
+
+	function resetImages() {
+		cropContainerModal1.reset();
+		cropContainerModal2.reset();
+		cropContainerModal3.reset();
+		cropContainerModal4.reset();
+		cropContainerModal5.reset();
+		$('.croppedImg').hide();
+		$('.cropControlRemoveCroppedImage').hide();
+	}
+
     var croppicContainerModalOptions1 = {
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
