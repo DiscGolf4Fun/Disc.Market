@@ -88,7 +88,6 @@ while ($post = mysqli_fetch_array($posts)) {
             <div class="7u 12u(mobile) shortPad" style="padding-left: 1em;">
                 <div class="row postInfo">
                     <div class="12u">
-                        
                         <h3 class="postTitle"><?php echo $post['title']; ?></h3>
                         <div style="display:block; margin: .5em 0 0 0;">
                             <p style="margin-top: .5em; display:inline;">

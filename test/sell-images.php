@@ -11,7 +11,8 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: white;
+			background: none;
+			z-index: 3;
 		}
 
 		.imageTest {
@@ -40,7 +41,8 @@
 			height: 350px;
      		border: 1px solid;
 			position:relative;
-			background: white;
+			background: none;
+			z-index: 3;
 		}
 
     #image3 {
@@ -48,7 +50,8 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: white;
+			background: none;
+			z-index: 3;
 		}
 
     #image4 {
@@ -56,7 +59,8 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: white;
+			background: none;
+			z-index: 3;
 		}
 
     #image5 {
@@ -64,7 +68,8 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: white;
+			background: none;
+			z-index: 3;
 		}
 
     #image6 {
@@ -109,18 +114,80 @@
 			opacity: 50%;
 		}
 
+		#image1:hover {
+			cursor: grab;
+		}
+
+		#image1:active {
+			cursor: grabbing;
+		}
+
+		#image2:hover {
+			cursor: grab;
+		}
+
+		#image2:active {
+			cursor: grabbing;
+		}
+
+		#image3:hover {
+			cursor: grab;
+		}
+
+		#image3:active {
+			cursor: grabbing;
+		}
+
+		#image4:hover {
+			cursor: grab;
+		}
+
+		#image4:active {
+			cursor: grabbing;
+		}
+
+		#image5:hover {
+			cursor: grab;
+		}
+
+		#image5:active {
+			cursor: grabbing;
+		}
+
+		#croppicModal {
+			background: rgba(0,0,0,0.9);
+		}
+
+		.cropImgWrapper {
+			outline: 5px solid white;
+			background-color: white;
+		}
+
+		.noImage {
+			background-color: white;
+		}
+
+
 </style>
 
 <script>
   $( function() {
     $( "#sortable1" ).sortable({
-      placeholder: "ui-state-highlight",
-	  forcePlaceholderSize: true,
 	  forceHelperSize: true,
 	  tolerance: "pointer",
 	  items: "li:not(.unsortable)"
     });
     $( "#sortable1" ).disableSelection();
+	$("#sortable1").sortable({
+        stop: function ($item, container, _super, event) {
+            $('#sortable1 li').removeClass('dragged');
+            $("body").removeClass('dragging');
+            $('#sortable1 span').each(function (i) {
+                var humanNum = i + 1;
+                $(this).html(humanNum + '');
+            });
+        }
+    });
   } );
 </script>
 
@@ -129,28 +196,45 @@
         <header class="major" style="margin-bottom: 1.5em;">
             <h2>Upload Images</h2>
         </header>
+		<center><h4 style="font-weight: 500;">Click on the&nbsp;&nbsp;<i class="fa fa-upload"></i>&nbsp;&nbsp;button to upload your images. Click and drag each box to change the order.</h4></center>
+		<br>
     </div>
 
 
     <div class="container">
         <ul class="row connectedSortable" id="sortable1" style="position: relative;">
-			<li class="4u unsortable" style="position: absolute;">
+		  <li class="4u unsortable" style="position: absolute;">
 			<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 		  </li>
           <li class="4u 12u(mobile) ui-state-default">
+		 			<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+  						<h2>Image <span>1</span></h2>
+					</div>
             	<div id="image1"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
+		  		<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+  					<h2>Image <span>2</span></h2>
+				</div>
             	<div id="image2"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
+		  <div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+  					<h2>Image <span>3</span></h2>
+				</div>
             	<div id="image3"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
+		  		<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+  					<h2>Image <span>4</span></h2>
+				</div>
             	<div id="image4"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
-				<div id="image5"></div>
+		  		<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+  					<h2>Image <span>5</span></h2>
+				</div>
+            	<div id="image5"></div>
           </li>
 		  <li class="4u 12u(mobile) unsortable">
 		  	<div id="image6">
@@ -187,7 +271,7 @@
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
 		imgEyecandy:true,
-		imgEyecandyOpacity:0.2,
+		imgEyecandyOpacity:0.5,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
@@ -204,7 +288,8 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
-		imgEyecandyOpacity:0.4,
+		imgEyecandy:true,
+		imgEyecandyOpacity:0.5,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
@@ -221,7 +306,8 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
-		imgEyecandyOpacity:0.4,
+		imgEyecandy:true,
+		imgEyecandyOpacity:0.5,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
@@ -238,7 +324,8 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
-		imgEyecandyOpacity:0.4,
+		imgEyecandy:true,
+		imgEyecandyOpacity:0.5,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
@@ -255,7 +342,8 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
-		imgEyecandyOpacity:0.4,
+		imgEyecandy:true,
+		imgEyecandyOpacity:0.5,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
@@ -278,38 +366,6 @@
 		$('.cropControlRemoveCroppedImage').hide();
 	}
 
-
-Dropzone.options.DropZoneFiddle = {
-  url: this.location,
-  paramName: "file", //the parameter name containing the uploaded file
-  clickable: true,
-  maxFilesize: 10, //in mb
-  uploadMultiple: true, 
-  maxFiles: 5, // allowing any more than this will stress a basic php/mysql stack
-  addRemoveLinks: true,
-  acceptedFiles: '.png,.jpg', //allowed filetypes
-  thumbnailWidth: null,
-  thumbnailHeight: null,
-  dictDefaultMessage: "Upload your files here", //override the default text
-  init: function() {
-    this.on("sending", function(file, xhr, formData) {
-      //formData.append("step", "upload"); // Append all the additional input data of your form here!
-      //formData.append("id", "1"); // Append all the additional input data of your form here!
-      //alert('hd');
-    });
-    this.on("success", function(file, responseText) {
-      //auto remove buttons after upload
-      
-      //$("#div-files").html(responseText);
-      //var _this = this;
-      //_this.removeFile(file);
-    });
-    this.on("addedfile", function(file){
-  		//alert('hi');
-      alert('done');
-  	});
-  }
-};
 
 
 $('[data-toggle="resetImages"]').jConfirm({
