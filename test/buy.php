@@ -477,9 +477,6 @@
 	});
 
 
-
-
-
 	$( "#footer-wrapper" ).hide();
 
 

@@ -14,6 +14,27 @@
 			background: white;
 		}
 
+		.imageTest {
+			height: 350px;
+			outline: 5px solid #0a7e07;
+		}
+
+		.imageTest2 {
+			height: 350px;
+			border: 2px solid #000000;
+		}
+
+		.imageTest p {
+			margin-top: -40px; 
+			z-index: 100; 
+			left: 0px; 
+			width: 100%; 
+			position: absolute; 
+			text-align: center;
+			color: #0a7e07;
+			font-weight: 800;
+		}
+
 	#image1:hover {
 		cursor: grab;
 	}
@@ -99,6 +120,7 @@
       background-color: #333333;
     }
 
+
 </style>
 
 <script>
@@ -132,35 +154,37 @@
 
 
     <div class="container">
-
-        <ul class="row connectedSortable" id="sortable1">
+        <ul class="row connectedSortable" id="sortable1" style="position: relative;">
+		  <li class="4u unsortable" style="position: absolute;">
+			<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
+		  </li>
           <li class="4u 12u(mobile) ui-state-default">
-            	<div id="image1"></div>
-				<div>
+		  		<div id="image1"></div>
+				<div style="font-weight: bold;">
 					<span>1</span> was 1 at beginning
 				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image2"></div>
-				<div>
+				<div style="font-weight: bold;">
 					<span>2</span> was 2 at beginning
 				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image3"></div>
-				<div>
+				<div style="font-weight: bold;">
 					<span>3</span> was 3 at beginning
 				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
             	<div id="image4"></div>
-				<div>
+				<div style="font-weight: bold;">
 					<span>4</span> was 4 at beginning
 				</div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
 				<div id="image5"></div>
-				<div>
+				<div style="font-weight: bold;">
 					<span>5</span> was 5 at beginning
 				</div>
           </li>
@@ -169,7 +193,7 @@
 				<div style="margin-top: 3.5em">
 					<center><input type="reset" value="Next: Preview" style="background-color: green;"></center>
 					<br>
-					<center><input type="reset" value="Reset Images" style="background-color: red;"></center>
+					<center><input type="reset" value="Reset Images" style="background-color: red;" data-toggle="resetImages"></center>
 					<br>
 					<center><input type="reset" value="Back: Post Info" style="background-color: grey;"></center>
 				</div>
@@ -189,7 +213,8 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
-		imgEyecandyOpacity:0.4,
+		imgEyecandy:true,
+		imgEyecandyOpacity:0.2,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
@@ -270,7 +295,15 @@
 	}
 	var cropContainerModal5 = new Croppic('image5', croppicContainerModalOptions5);
 
-
+	function resetImages() {
+		cropContainerModal1.reset();
+		cropContainerModal2.reset();
+		cropContainerModal3.reset();
+		cropContainerModal4.reset();
+		cropContainerModal5.reset();
+		$('.croppedImg').hide();
+		$('.cropControlRemoveCroppedImage').hide();
+	}
 
 
 Dropzone.options.DropZoneFiddle = {
@@ -304,5 +337,32 @@ Dropzone.options.DropZoneFiddle = {
   	});
   }
 };
+
+
+$('[data-toggle="resetImages"]').jConfirm({
+
+question:'Reset Images?',
+confirm_text: 'Yes',
+deny_text: 'No',
+theme: 'black',
+// hides on click
+hide_on_click: true,
+// 'auto','top','bottom','left','right'
+position: 'left',
+// extra class(es)
+class: '',
+// shows deny button
+show_deny_btn: false,
+// 'tiny', 'small', 'medium', 'large'
+size: 'medium',
+// 'black', 'white', 'blurred'
+backdrop: false
+
+}).on('confirm', function(e){
+	resetImages()
+}).on('jc-show', function(e, value){
+$(".jc-tooltip").css("margin-left","-.5em");
+});
+
 </script>
 
