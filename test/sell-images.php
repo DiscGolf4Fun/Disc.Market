@@ -19,10 +19,6 @@
 			outline: 5px solid #0a7e07;
 		}
 
-		.imageTest2 {
-			height: 350px;
-			border: 2px solid #000000;
-		}
 
 		.imageTest p {
 			margin-top: -40px; 
@@ -114,11 +110,6 @@
 			position:relative;
 			background: white;
 		}
-
-    .highlight {
-      border: 1px solid red;
-      background-color: #333333;
-    }
 
 
 </style>
