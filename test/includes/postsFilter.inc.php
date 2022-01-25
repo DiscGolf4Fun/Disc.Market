@@ -80,7 +80,7 @@ $count = 0;
 
 if (isset($_POST['partialPost']) && $partialPost[0] != "" && !empty($partialPost[0])) {
     $count = $count + 1;
-    print_r("<button id='newUsedButton' style='font-size:1em;' onclick='unSearch()'><span>Search:&nbsp;". $partialPost[0] ."&nbsp;<i class='fa fa-close'></i></span></button>");
+    print_r("<div class='filterButtonStyle 12u(mobile)'><button id='newUsedButton' style='font-size:1em;' onclick='unSearch()'><span>Search:&nbsp;". $partialPost[0] ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
 }
 
 if ($brandsPost != "" && !empty($brandsPost)) {
@@ -107,7 +107,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
         } elseif ($brand == 'otherBrand') {
             $brandTitle = 'Other Brands';
         }
-        print_r("<button type='button' class='brandsButton' id='brandsButton' style='font-size:1em;' onclick='unCheck(`". $brand ."`)'><span>". $brandTitle ."&nbsp;<i class='fa fa-close'></i></span></button>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button type='button' class='brandsButton' id='brandsButton' style='font-size:1em;' onclick='unCheck(`". $brand ."`)'><span>". $brandTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 
 }
@@ -128,7 +128,7 @@ if ($categoryPost != "" && !empty($categoryPost)) {
         } elseif ($category == 'accessory') {
             $categoryTitle = 'Accessories';
         }
-        print_r("<button id='categoriesButton' style='font-size:1em;' onclick='unCheck(`". $category ."`)'><span>". $categoryTitle ."&nbsp;<i class='fa fa-close'></i></span></button>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='categoriesButton' style='font-size:1em;' onclick='unCheck(`". $category ."`)'><span>". $categoryTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 }
 
@@ -144,7 +144,7 @@ if ($discTypePost != "" && !empty($discTypePost)) {
         } elseif ($discType == 'putter') {
             $discTypeTitle = 'Putter';
         }
-        print_r("<button id='discTypeButton' style='font-size:1em;' onclick='unCheck(`". $discType ."`)'><span>". $discTypeTitle ."&nbsp;<i class='fa fa-close'></i></span></button>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='discTypeButton' style='font-size:1em;' onclick='unCheck(`". $discType ."`)'><span>". $discTypeTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 }
 
@@ -156,27 +156,27 @@ if ($newUsedPost != "" && !empty($newUsedPost)) {
         } elseif ($newUsed == 'used') {
             $newUsedTitle = 'Used';
         }
-        print_r("<button id='newUsedButton' style='font-size:1em;' onclick='unCheck(`". $newUsed ."`)'><span>". $newUsedTitle ."&nbsp;<i class='fa fa-close'></i></span></button>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='newUsedButton' style='font-size:1em;' onclick='unCheck(`". $newUsed ."`)'><span>". $newUsedTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 }
 
 if (($pricePost[0] != "1" || $pricePost[1] != "100") && ($pricePost[0] != "" || $pricePost[1] != "")) {
     $count = $count + 1;
     if($pricePost[1] >= 100) {
-        print_r("<button id='priceButton' style='font-size:1em;' onclick='unSliderPrice()'><span>$". $pricePost[0] ."&nbsp;-&nbsp;$" . $pricePost[1] . "+&nbsp;&nbsp;<i class='fa fa-close'></i></span></button>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='priceButton' style='font-size:1em;' onclick='unSliderPrice()'><span>$". $pricePost[0] ."&nbsp;-&nbsp;$" . $pricePost[1] . "+&nbsp;&nbsp;<i class='fa fa-close'></i></span></button></div>");
     } else {
-        print_r("<button id='priceButton' style='font-size:1em;' onclick='unSliderPrice()'><span>$". $pricePost[0] ."&nbsp;-&nbsp;$" . $pricePost[1] . "&nbsp;<i class='fa fa-close'></i></span></button>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='priceButton' style='font-size:1em;' onclick='unSliderPrice()'><span>$". $pricePost[0] ."&nbsp;-&nbsp;$" . $pricePost[1] . "&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 }
 
 if (($weightPost[0] != "130" || $weightPost[1] != "200") && ($weightPost[0] != "" || $weightPost[1] != "")) {
     $count = $count + 1;
-    print_r("<button id='weightButton' style='font-size:1em;' onclick='unSliderWeight()'><span>". $weightPost[0] ."g&nbsp;-&nbsp;" . $weightPost[1] . "g&nbsp;<i class='fa fa-close'></i></span></button>");
+    print_r("<div class='filterButtonStyle 6u(mobile)'><button id='weightButton' style='font-size:1em;' onclick='unSliderWeight()'><span>". $weightPost[0] ."g&nbsp;-&nbsp;" . $weightPost[1] . "g&nbsp;<i class='fa fa-close'></i></span></button></div>");
 }
 
 if (($qualityPost[0] != "1" || $qualityPost[1] != "10") && ($qualityPost[0] != "" || $qualityPost[1] != "")) {
     $count = $count + 1;
-    print_r("<button id='qualityButton' style='font-size:1em;' onclick='unSliderQuality()'><span>". $qualityPost[0] ."/10&nbsp;-&nbsp;" . $qualityPost[1] . "/10&nbsp;<i class='fa fa-close'></i></span></button>");
+    print_r("<div class='filterButtonStyle 6u(mobile)'><button id='qualityButton' style='font-size:1em;' onclick='unSliderQuality()'><span>". $qualityPost[0] ."/10&nbsp;-&nbsp;" . $qualityPost[1] . "/10&nbsp;<i class='fa fa-close'></i></span></button></div>");
 }
 
 

@@ -88,20 +88,7 @@ var scrollOnce = true;
 
 
 if (document.location.href.indexOf('buy.php') !== -1){ 
-    window.onscroll = function() {
-        var navMobile = document.getElementById("navMobile");
-        // Get the offset position of the navbar
-        var sticky = navMobile.offsetTop + navMobile.offsetHeight;
-
-        console.log(sticky);
-
-        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-        if (window.pageYOffset >= sticky) {
-            navMobile.classList.add("sticky")
-        } else {
-            navMobile.classList.remove("sticky");
-        }
-        
+    window.onscroll = function() { 
         var start = document.getElementById("filterBox").scrollHeight;
         if (scrolled1 <= scrolled3) { 
             scrolled1 = window.innerHeight + window.scrollY;
@@ -474,6 +461,11 @@ function getPostsBrands(value) {
             "qualityPost" : globalFilterQuality
         }, function (data) {
             $("#filterResults").html(data);
+            if (globalFilterBrands == "" && globalFilterCategories == "" && globalFilterDiscType == "" && globalFilterNewUsed == "" && globalFilterSearch == ""){  
+                $(".filterButton").css("display","none");
+            } else {
+                $(".filterButton").css("display","block");
+            }
         });
 
         $.post("/test/includes/posts.inc.php", {
@@ -514,6 +506,11 @@ function getPostsCategories(value) {
             "qualityPost" : globalFilterQuality
         }, function (data) {
             $("#filterResults").html(data);
+            if (globalFilterBrands == "" && globalFilterCategories == "" && globalFilterDiscType == "" && globalFilterNewUsed == "" && globalFilterSearch == ""){  
+                $(".filterButton").css("display","none");
+            } else {
+                $(".filterButton").css("display","block");
+            }
         });
 
         $.post("/test/includes/posts.inc.php", {
@@ -766,6 +763,7 @@ var PriceSlider = new rSlider({
                     "qualityPost" : globalFilterQuality
                 }, function (data) {
                     $("#filterResults").html(data);
+                    $(".filterButton").css(data);
                 });
 
                 $.post("/test/includes/posts.inc.php", {
@@ -957,6 +955,14 @@ var QualitySlider = new rSlider({
     }
 });
 
+function noFilter() {
+    if (1 == 2) {
+        console.log("NEVER");
+    } else {
+        $('.filterButton').attr("style", "display: none");
+    }
+}
+
 function closePost() {
     var start = document.getElementById("filterBox").scrollHeight;
     if (window.scrollY > start) {
@@ -1021,7 +1027,7 @@ var keynum, lines = 1;
 function unCheck(value) {
     if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand'){
         $box = "#" + value;
-        $($box).prop( "checked", false );
+        $($box).attr('checked', false);
         getPostsBrands(value);
     }
     if (value == 'disc' || value == 'bag' || value == 'apparel' || value == 'basket' || value == 'shoes' || value == 'accessory') {
@@ -1107,6 +1113,22 @@ function unSliderQuality(){
     QualitySlider.setValues(1,10);
 }
 
+$('.filterButtonMobile').click( function(e) {
+    console.log("Open1: Mobile Filters");
+    setTimeout(function(){ $('.filterPopup').scrollTop(0); });
+    $('html').attr("style", "height: 100%;", "overflow: hidden;");
+    $('body').attr("style", "height: 100%;", "overflow: hidden;");
+    $('.filterPopup').show();
+})
+
+
+$('.filterMobileClose2').click( function(e) {
+    console.log("Close: Mobile Filters");
+    $('html').attr("style", "height: auto;", "overflow: auto;");
+    $('body').attr("style", "height: auto;", "overflow: auto;");
+    $('.filterPopup').hide();
+})
+
 
 
 var dimmer = $('.dimmer');
@@ -1151,6 +1173,10 @@ $('.close-thik2').click( function(e) {
     $('.termsOfService').hide();
 })
 
+$('.close-thik4').click( function(e) {
+    console.log("Close: Filter Mobile");
+    $('.filterPopup').hide();
+})
 
 $('.close-thik').click( function(e) {
     console.log("Close: Forgot Password");
@@ -1193,6 +1219,7 @@ grecaptcha.ready(function() {
     // Verify the token on the server.
     //});
 });
+
 
 
 
