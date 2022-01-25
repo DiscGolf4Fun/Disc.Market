@@ -114,6 +114,7 @@
 		}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		#image1:hover {
 			cursor: grab;
 		}
@@ -178,6 +179,8 @@
 
 =======
 >>>>>>> parent of eeaa1aa (Upload Images Fixes)
+=======
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 </style>
 
 <script>
@@ -207,6 +210,7 @@
 			<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 		  </li>
           <li class="4u 12u(mobile) ui-state-default">
+<<<<<<< HEAD
 <<<<<<< HEAD
 		 			<div class="noImage">
   						<h2>Image <span>1</span></h2>
@@ -241,6 +245,21 @@
 					<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 				</div>
             	<div id="image5"></div>
+=======
+            	<div id="image1"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+            	<div id="image2"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+            	<div id="image3"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+            	<div id="image4"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+				<div id="image5"></div>
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 =======
             	<div id="image1"></div>
           </li>
@@ -319,9 +338,13 @@
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 =======
 		imgEyecandyOpacity:0.4,
 >>>>>>> parent of eeaa1aa (Upload Images Fixes)
@@ -351,9 +374,13 @@
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 =======
 		imgEyecandyOpacity:0.4,
 >>>>>>> parent of eeaa1aa (Upload Images Fixes)
@@ -383,9 +410,13 @@
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 =======
 		imgEyecandyOpacity:0.4,
 >>>>>>> parent of eeaa1aa (Upload Images Fixes)
@@ -415,9 +446,13 @@
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 =======
 		imgEyecandyOpacity:0.4,
 >>>>>>> parent of eeaa1aa (Upload Images Fixes)
