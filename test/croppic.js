@@ -115,13 +115,15 @@
 		},
 		createImgUploadControls: function(){
 			var that = this;
+			
 			var cropControlUpload = '';
 			if(that.options.customUploadButtonId ===''){ cropControlUpload = '<i class="cropControlUpload"></i>'; }
 			var cropControlRemoveCroppedImage = '<i class="cropControlRemoveCroppedImage"></i>';
-
+			
 			if( $.isEmptyObject(that.croppedImg)){ cropControlRemoveCroppedImage=''; }
 			if( !$.isEmptyObject(that.options.loadPicture)){ cropControlUpload='';}
-			var html = '<div class="cropControls cropControlsUpload"> ' + cropControlUpload + cropControlRemoveCroppedImage + ' </div>';
+
+			var html =    '<div class="cropControls cropControlsUpload"> ' + cropControlUpload + cropControlRemoveCroppedImage + ' </div>';
 			that.outputDiv.append(html);
 			
 			that.cropControlsUpload = that.outputDiv.find('.cropControlsUpload');
@@ -158,6 +160,7 @@
 			});						
 			
 			if( !$.isEmptyObject(that.croppedImg)){
+			
 				that.cropControlRemoveCroppedImage.on('click',function(){ 
 					if (typeof (that.options.onBeforeRemoveCroppedImg) === typeof(Function)) {
 						that.options.onBeforeRemoveCroppedImg.call(that);
@@ -273,7 +276,7 @@
 					if (that.options.onAfterImgUpload) that.options.onAfterImgUpload.call(that);
 				});	
 						
-			}else{				
+			}else{					
 				that.cropControlRemoveCroppedImage.on('click',function(){ 
 					that.croppedImg.remove();
 					$(this).hide();
