@@ -14,8 +14,7 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: none;
-			z-index: 3;
+			background: white;
 		}
 
 		.imageTest {
@@ -45,8 +44,7 @@
 			height: 350px;
      		border: 1px solid;
 			position:relative;
-			background: none;
-			z-index: 3;
+			background: white;
 		}
 
     #image3 {
@@ -54,8 +52,7 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: none;
-			z-index: 3;
+			background: white;
 		}
 
     #image4 {
@@ -63,8 +60,7 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: none;
-			z-index: 3;
+			background: white;
 		}
 
     #image5 {
@@ -72,8 +68,7 @@
 			height: 350px;
       		border: 1px solid;
 			position:relative;
-			background: none;
-			z-index: 3;
+			background: white;
 		}
 
     #image6 {
@@ -118,6 +113,7 @@
 			opacity: 50%;
 		}
 
+<<<<<<< HEAD
 		#image1:hover {
 			cursor: grab;
 		}
@@ -180,26 +176,20 @@
 		}
 
 
+=======
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 </style>
 
 <script>
   $( function() {
     $( "#sortable1" ).sortable({
+      placeholder: "ui-state-highlight",
+	  forcePlaceholderSize: true,
 	  forceHelperSize: true,
 	  tolerance: "pointer",
 	  items: "li:not(.unsortable)"
     });
     $( "#sortable1" ).disableSelection();
-	$("#sortable1").sortable({
-        stop: function ($item, container, _super, event) {
-            $('#sortable1 li').removeClass('dragged');
-            $("body").removeClass('dragging');
-            $('#sortable1 span').each(function (i) {
-                var humanNum = i + 1;
-                $(this).html(humanNum + '');
-            });
-        }
-    });
   } );
 </script>
 
@@ -208,17 +198,16 @@
         <header class="major" style="margin-bottom: 1.5em;">
             <h2>Upload Images</h2>
         </header>
-		<center><h4 style="font-weight: 500;">Click on the&nbsp;&nbsp;<i class="fa fa-upload"></i>&nbsp;&nbsp;button to upload your images. Click and drag each box to change the order.</h4></center>
-		<br>
     </div>
 
 
     <div class="container">
         <ul class="row connectedSortable" id="sortable1" style="position: relative;">
-		  <li class="4u unsortable" style="position: absolute;">
+			<li class="4u unsortable" style="position: absolute;">
 			<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 		  </li>
           <li class="4u 12u(mobile) ui-state-default">
+<<<<<<< HEAD
 		 			<div class="noImage">
   						<h2>Image <span>1</span></h2>
 						<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
@@ -252,6 +241,21 @@
 					<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 				</div>
             	<div id="image5"></div>
+=======
+            	<div id="image1"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+            	<div id="image2"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+            	<div id="image3"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+            	<div id="image4"></div>
+          </li>
+          <li class="4u 12u(mobile) ui-state-default">
+				<div id="image5"></div>
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
           </li>
 		  <li class="4u 12u(mobile) unsortable">
 		  	<div id="image6">
@@ -288,7 +292,7 @@
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
 		imgEyecandy:true,
-		imgEyecandyOpacity:0.5,
+		imgEyecandyOpacity:0.2,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ 
@@ -314,9 +318,13 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ 
@@ -342,9 +350,13 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ 
@@ -370,9 +382,13 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ 
@@ -398,9 +414,13 @@
 		uploadUrl:'img_save_to_file.php',
 		cropUrl:'img_crop_to_file.php',
 		modal:true,
+<<<<<<< HEAD
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
 		enableMousescroll: false,
+=======
+		imgEyecandyOpacity:0.4,
+>>>>>>> parent of eeaa1aa (Upload Images Fixes)
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
 		onAfterImgUpload: function(){ 
@@ -432,6 +452,38 @@
 		$('.cropControlRemoveCroppedImage').hide();
 	}
 
+
+Dropzone.options.DropZoneFiddle = {
+  url: this.location,
+  paramName: "file", //the parameter name containing the uploaded file
+  clickable: true,
+  maxFilesize: 10, //in mb
+  uploadMultiple: true, 
+  maxFiles: 5, // allowing any more than this will stress a basic php/mysql stack
+  addRemoveLinks: true,
+  acceptedFiles: '.png,.jpg', //allowed filetypes
+  thumbnailWidth: null,
+  thumbnailHeight: null,
+  dictDefaultMessage: "Upload your files here", //override the default text
+  init: function() {
+    this.on("sending", function(file, xhr, formData) {
+      //formData.append("step", "upload"); // Append all the additional input data of your form here!
+      //formData.append("id", "1"); // Append all the additional input data of your form here!
+      //alert('hd');
+    });
+    this.on("success", function(file, responseText) {
+      //auto remove buttons after upload
+      
+      //$("#div-files").html(responseText);
+      //var _this = this;
+      //_this.removeFile(file);
+    });
+    this.on("addedfile", function(file){
+  		//alert('hi');
+      alert('done');
+  	});
+  }
+};
 
 
 $('[data-toggle="resetImages"]').jConfirm({
