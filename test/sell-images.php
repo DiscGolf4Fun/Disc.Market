@@ -6,8 +6,11 @@
 
 
 <style>
+
+
+
   #image1 {
-			width: auto;
+			width: 350px;
 			height: 350px;
       		border: 1px solid;
 			position:relative;
@@ -16,6 +19,7 @@
 		}
 
 		.imageTest {
+			width: 350px;
 			height: 350px;
 			outline: 5px solid #0a7e07;
 		}
@@ -37,7 +41,7 @@
 		}
 
     #image2 {
-			width: auto;
+			width: 350px;
 			height: 350px;
      		border: 1px solid;
 			position:relative;
@@ -46,7 +50,7 @@
 		}
 
     #image3 {
-			width: auto;
+			width: 350px;
 			height: 350px;
       		border: 1px solid;
 			position:relative;
@@ -55,7 +59,7 @@
 		}
 
     #image4 {
-			width: auto;
+			width: 350px;
 			height: 350px;
       		border: 1px solid;
 			position:relative;
@@ -64,7 +68,7 @@
 		}
 
     #image5 {
-			width: auto;
+			width: 350px;
 			height: 350px;
       		border: 1px solid;
 			position:relative;
@@ -73,7 +77,7 @@
 		}
 
     #image6 {
-			width: auto;
+			width: 350px;
 			height: 350px;
       		border: 1px solid;
 			position:relative;
@@ -165,6 +169,14 @@
 
 		.noImage {
 			background-color: white;
+			position: absolute; 
+			height: 350px; 
+			width: 350px; 
+			display: flex; 
+			flex-direction: column; 
+			justify-content: center; 
+			align-items: center;
+			opacity: .8;
 		}
 
 
@@ -207,32 +219,37 @@
 			<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 		  </li>
           <li class="4u 12u(mobile) ui-state-default">
-		 			<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+		 			<div class="noImage">
   						<h2>Image <span>1</span></h2>
+						<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 					</div>
             	<div id="image1"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
-		  		<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+		  		<div class="noImage">
   					<h2>Image <span>2</span></h2>
+					<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 				</div>
             	<div id="image2"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
-		  <div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+		  <div class="noImage">
   					<h2>Image <span>3</span></h2>
+					<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 				</div>
             	<div id="image3"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
-		  		<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+		  		<div class="noImage">
   					<h2>Image <span>4</span></h2>
+					<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 				</div>
             	<div id="image4"></div>
           </li>
           <li class="4u 12u(mobile) ui-state-default">
-		  		<div class="noImage" style="position: absolute; height: 350px; width: 350px; display: flex; justify-content: center; align-items: center;">
+		  		<div class="noImage">
   					<h2>Image <span>5</span></h2>
+					<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 				</div>
             	<div id="image5"></div>
           </li>
@@ -274,12 +291,21 @@
 		imgEyecandyOpacity:0.5,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
-		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+		onAfterImgUpload: function(){ 
+			console.log('onAfterImgUpload'); 
+			document.querySelector("html").style.overflow = "hidden"; 
+		},
 		onImgDrag: function(){ console.log('onImgDrag') },
 		onImgZoom: function(){ console.log('onImgZoom') },
 		onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-		onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
-		onReset:function(){ console.log('onReset') },
+		onAfterImgCrop:function(){ 
+			console.log('onAfterImgCrop');
+			document.querySelector("html").style.overflow = "visible";
+		},
+		onReset:function(){ 
+			console.log('onReset');
+			document.querySelector("html").style.overflow = "visible"; 
+		},
 		onError:function(errormessage){ console.log('onError:'+errormessage) }
 	}
 	var cropContainerModal1 = new Croppic('image1', croppicContainerModalOptions1);
@@ -290,14 +316,24 @@
 		modal:true,
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
+		enableMousescroll: false,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
-		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+		onAfterImgUpload: function(){ 
+			console.log('onAfterImgUpload'); 
+			document.querySelector("html").style.overflow = "hidden"; 
+		},
 		onImgDrag: function(){ console.log('onImgDrag') },
 		onImgZoom: function(){ console.log('onImgZoom') },
 		onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-		onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
-		onReset:function(){ console.log('onReset') },
+		onAfterImgCrop:function(){ 
+			console.log('onAfterImgCrop');
+			document.querySelector("html").style.overflow = "visible";
+		},
+		onReset:function(){ 
+			console.log('onReset');
+			document.querySelector("html").style.overflow = "visible"; 
+		},
 		onError:function(errormessage){ console.log('onError:'+errormessage) }
 	}
 	var cropContainerModal2 = new Croppic('image2', croppicContainerModalOptions2);
@@ -308,14 +344,24 @@
 		modal:true,
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
+		enableMousescroll: false,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
-		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+		onAfterImgUpload: function(){ 
+			console.log('onAfterImgUpload'); 
+			document.querySelector("html").style.overflow = "hidden"; 
+		},
 		onImgDrag: function(){ console.log('onImgDrag') },
 		onImgZoom: function(){ console.log('onImgZoom') },
 		onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-		onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
-		onReset:function(){ console.log('onReset') },
+		onAfterImgCrop:function(){ 
+			console.log('onAfterImgCrop');
+			document.querySelector("html").style.overflow = "visible";
+		},
+		onReset:function(){ 
+			console.log('onReset');
+			document.querySelector("html").style.overflow = "visible"; 
+		},
 		onError:function(errormessage){ console.log('onError:'+errormessage) }
 	}
 	var cropContainerModal3 = new Croppic('image3', croppicContainerModalOptions3);
@@ -326,14 +372,24 @@
 		modal:true,
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
+		enableMousescroll: false,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
-		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+		onAfterImgUpload: function(){ 
+			console.log('onAfterImgUpload'); 
+			document.querySelector("html").style.overflow = "hidden"; 
+		},
 		onImgDrag: function(){ console.log('onImgDrag') },
 		onImgZoom: function(){ console.log('onImgZoom') },
 		onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-		onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
-		onReset:function(){ console.log('onReset') },
+		onAfterImgCrop:function(){ 
+			console.log('onAfterImgCrop');
+			document.querySelector("html").style.overflow = "visible";
+		},
+		onReset:function(){ 
+			console.log('onReset');
+			document.querySelector("html").style.overflow = "visible"; 
+		},
 		onError:function(errormessage){ console.log('onError:'+errormessage) }
 	}
 	var cropContainerModal4 = new Croppic('image4', croppicContainerModalOptions4);
@@ -344,14 +400,24 @@
 		modal:true,
 		imgEyecandy:true,
 		imgEyecandyOpacity:0.5,
+		enableMousescroll: false,
 		loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
 		onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
-		onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+		onAfterImgUpload: function(){ 
+			console.log('onAfterImgUpload'); 
+			document.querySelector("html").style.overflow = "hidden"; 
+		},
 		onImgDrag: function(){ console.log('onImgDrag') },
 		onImgZoom: function(){ console.log('onImgZoom') },
 		onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-		onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
-		onReset:function(){ console.log('onReset') },
+		onAfterImgCrop:function(){ 
+			console.log('onAfterImgCrop');
+			document.querySelector("html").style.overflow = "visible";
+		},
+		onReset:function(){ 
+			console.log('onReset');
+			document.querySelector("html").style.overflow = "visible"; 
+		},
 		onError:function(errormessage){ console.log('onError:'+errormessage) }
 	}
 	var cropContainerModal5 = new Croppic('image5', croppicContainerModalOptions5);

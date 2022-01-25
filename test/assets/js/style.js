@@ -88,20 +88,7 @@ var scrollOnce = true;
 
 
 if (document.location.href.indexOf('buy.php') !== -1){ 
-    window.onscroll = function() {
-        var navMobile = document.getElementById("navMobile");
-        // Get the offset position of the navbar
-        var sticky = navMobile.offsetTop + navMobile.offsetHeight;
-
-        console.log(sticky);
-
-        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-        if (window.pageYOffset >= sticky) {
-            navMobile.classList.add("sticky")
-        } else {
-            navMobile.classList.remove("sticky");
-        }
-        
+    window.onscroll = function() { 
         var start = document.getElementById("filterBox").scrollHeight;
         if (scrolled1 <= scrolled3) { 
             scrolled1 = window.innerHeight + window.scrollY;
@@ -1107,6 +1094,22 @@ function unSliderQuality(){
     QualitySlider.setValues(1,10);
 }
 
+$('.filterButtonMobile').click( function(e) {
+    console.log("Open1: Mobile Filters");
+    setTimeout(function(){ $('.filterPopup').scrollTop(0); });
+    $('html').attr("style", "height: 100%;", "overflow: hidden;");
+    $('body').attr("style", "height: 100%;", "overflow: hidden;");
+    $('.filterPopup').show();
+})
+
+
+$('.filterMobileClose2').click( function(e) {
+    console.log("Close: Mobile Filters");
+    $('html').attr("style", "height: auto;", "overflow: auto;");
+    $('body').attr("style", "height: auto;", "overflow: auto;");
+    $('.filterPopup').hide();
+})
+
 
 
 var dimmer = $('.dimmer');
@@ -1151,6 +1154,10 @@ $('.close-thik2').click( function(e) {
     $('.termsOfService').hide();
 })
 
+$('.close-thik4').click( function(e) {
+    console.log("Close: Filter Mobile");
+    $('.filterPopup').hide();
+})
 
 $('.close-thik').click( function(e) {
     console.log("Close: Forgot Password");
@@ -1193,6 +1200,7 @@ grecaptcha.ready(function() {
     // Verify the token on the server.
     //});
 });
+
 
 
 

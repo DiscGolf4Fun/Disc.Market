@@ -11,11 +11,11 @@
 				<form action="sell-images.php" method="post">
 				<div class="row" style="width: 100%; margin: auto 0 auto 0;">
 					<div class="9u" style="padding: 0 1em 1.5em 1em;">
-						<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Title</label>
+						<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Title&nbsp;<span style="color: red;">*</span></label>
 						<input type="text" name="title" placeholder="Title" style="border: 1px solid black;">
 					</div>
-					<div class="3u" style="padding: 0 1em 1.5em 1em;">
-						<label for="dropdown" style="font-size: 1.5em; margin-bottom: .25em; padding-left: 10%;">Category</label>
+					<div class="3u 12u(mobile)" style="padding: 0 1em 1.5em 1em;">
+						<label for="dropdown" style="font-size: 1.5em; margin-bottom: .25em; padding-left: 10%;">Category&nbsp;<span style="color: red;">*</span></label>
 						<div class="dropdown" style="width: 100%; margin-left: 0; padding-left: 10%;">
 							<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 							<div class="custom-select">
@@ -34,14 +34,14 @@
 
 
 					<div class="12u" style="padding: 0 1em 1.5em 1em;">
-						<label for="description" style="font-size: 1.5em; margin-bottom: .25em;">Description</label>
+						<label for="description" style="font-size: 1.5em; margin-bottom: .25em;">Description&nbsp;<span style="color: red;">*</span></label>
 						<textarea name="description" id="textarea" onkeydown="return limitLines(this, event)" placeholder="Description" maxlength="250" rows="5" style="resize: none; height: 10em; border: 1px solid black;"></textarea>
 						<div id="textarea_feedback"></div>
 					</div>
 
 
 					<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: 1em 1em 1.5em 1em;">
-						<div class="4u" style="padding: 0 1em 0 1em; text-align: right;">
+						<div class="4u 12u(mobile)" style="padding: 0 1em 0 1em; text-align: right;">
 							<div class="switch-field">
 								<input type="radio" id="switch_left" name="switch_2" value="yes"/>
 								<label for="switch_left" style="width: 30%; border: 1px solid black; padding: 0.75em 1em;">New</label>
@@ -49,7 +49,7 @@
 								<label for="switch_right" style="width: 30%; border: 1px solid black; padding: 0.75em 1em;">Used</label>
 							</div>
 						</div>
-						<div class="4u" style="padding: 0 0 1.5em 0; text-align: center;">
+						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center;">
 							<div class="quality row" style="margin: 0 auto 0 auto;">
 
 								<div class="5u" style="padding-left: 0; padding-top: 0; text-align: right;">
@@ -76,7 +76,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="4u" style="padding-left: 0; padding-top: 0; text-align: left;">
+								<div class="4u 12u(mobile)" style="padding-left: 0; padding-top: 0; text-align: left;">
 									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
 										<span style="display: inline-block; margin-bottom: 0;">/ 10</span>
 									</div>
@@ -84,7 +84,7 @@
 
 							</div>
 						</div>
-						<div class="4u" style="padding: 0 0 1.5em 0; text-align: center;">
+						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center;">
 							<div class="quality row" style="margin: 0 auto 0 auto;">
 
 								<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
@@ -118,7 +118,7 @@
 
 
 					<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-						<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 							<div class="quality row" style="margin: 0 auto 0 auto;">
 								<div class="6u" style="padding-left: 0; padding-top: 0; text-align: right;">
 									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -132,7 +132,7 @@
 								</div>
 							</div>							
 						</div>
-						<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 							<div class="quality row" style="margin: 0 auto 0 auto;">
 								<div class="7u" style="padding-left: 0; padding-top: 0; text-align: right;">
 									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -146,7 +146,7 @@
 								</div>
 							</div>							
 						</div>
-						<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 							<div class="quality row" style="margin: 0 auto 0 auto;">
 								<div class="7u" style="padding-left: 0; padding-top: 0; text-align: right;">
 									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -189,7 +189,7 @@
 						</header>
 
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -201,7 +201,7 @@
 									</div>
 								</div>					
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -213,7 +213,7 @@
 									</div>
 								</div>							
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -227,7 +227,7 @@
 							</div>
 						</div>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="6u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="row" style="margin: 0 auto 0 auto;">
 									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -239,7 +239,7 @@
 									</div>
 								</div>					
 							</div>
-							<div class="6u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="row" style="margin: 0 auto 0 auto;">
 									<div class="2u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block; text-align: right;">
@@ -266,7 +266,7 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Bags / Carts</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -278,7 +278,7 @@
 									</div>
 								</div>					
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -290,7 +290,7 @@
 									</div>
 								</div>							
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -310,7 +310,7 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Apparel</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -322,7 +322,7 @@
 									</div>
 								</div>					
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -334,7 +334,7 @@
 									</div>
 								</div>							
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -354,7 +354,7 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Baskets</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -366,7 +366,7 @@
 									</div>
 								</div>					
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -378,7 +378,7 @@
 									</div>
 								</div>							
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -398,7 +398,7 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Shoes</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -410,7 +410,7 @@
 									</div>
 								</div>					
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="12u" style="padding-left: 0; padding-top: 0; text-align: center;">
 										<div class="switch-field3" style="text-align: center;">
@@ -422,7 +422,7 @@
 									</div>
 								</div>							
 							</div>
-							<div class="4u" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
+							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
 								<div class="quality row" style="margin: 0 auto 0 auto;">
 									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -442,7 +442,7 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Accessories</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="6u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="row" style="margin: 0 auto 0 auto;">
 									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -454,7 +454,7 @@
 									</div>
 								</div>					
 							</div>
-							<div class="6u" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
+							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
 								<div class="row" style="margin: 0 auto 0 auto;">
 									<div class="2u" style="padding-left: 0; padding-top: 0; text-align: right;">
 										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
@@ -472,10 +472,10 @@
 					</div>
 
 
-					<div class="6u" style="text-align: right; padding-left: 0; padding-top: 0;">
+					<div class="6u 12u(mobile)" style="text-align: right; padding-left: 0; padding-top: 0;">
 						<input type="submit" name="submit" value="Next: Images" style="margin-right: 1em;">
 					</div>
-					<div class="6u" style="text-align: left; padding-left: 0; padding-top: 0;">
+					<div class="6u 12u(mobile)" style="text-align: left; padding-left: 0; padding-top: 0;">
 						<input type="reset" value="Reset" style="margin-left: 1em; background-color: gray;" onclick="topFunction();">
 					</div>
 				</div>

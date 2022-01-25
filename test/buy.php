@@ -111,14 +111,263 @@
 						<section>
 							<div class="row">
 										<div class="9u 12u(mobile) search-container">
-											<form>
+											<form class="searchForm">
 												<input id="searchBuypage" type="text" placeholder="Search the Market..." />
 												<button type="button" onclick="getPostsSearch()" id="searchBuypageButton">
 													<i class="fa fa-search" id="search-icon"></i>
 												</button>
 											</form>										
 										</div>
-										<div class="3u 12u(mobile) dropdown-container">
+										<div class="0u 4u(mobile) dropdown-container mobile">
+											<button type="button" class="filterButtonMobile">
+												<i class="fa fa-filter" id="filter-icon"></i>&nbsp;&nbsp;Filters
+											</button>
+											<div class="filterPopup">
+												<br>
+												<div class="12u 12u(mobile) border">
+													<section class="box" id="filterBox">
+													<?php
+														if(isset($_SESSION['u_role']) && $_SESSION['u_role'] == 1) {
+															echo "<h3 class='filterTitle'>Brands<span style='float: right; padding-right: .75em;'>Total: ". $totalCount ."</span></h3>";
+														} else {
+															echo "<h3 class='filterTitle'>Brands</h3>";
+														}
+
+														foreach($brandsArray as $key => $value) {
+															?>
+															<div class="filterItem">
+																<div class="pretty p-svg p-curve p-pulse">
+																<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
+																	<div class="state p-success">
+																		<!-- svg path -->
+																		<svg class="svg svg-icon" viewBox="0 0 20 20">
+																			<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																		</svg>
+
+																		<?php
+																		if($key == 'innova'){
+																			$key = 'Innova';
+																		} elseif($key == 'discraft') {
+																			$key = 'Discraft';
+																		} elseif($key == 'dynamic') {
+																			$key = 'Dynamic Discs';
+																		} elseif($key == 'latitude') {
+																			$key = 'Latitude 64';
+																		} elseif($key == 'westside') {
+																			$key = 'Westside';
+																		} elseif($key == 'discmania') {
+																			$key = 'Discmania';
+																		} elseif($key == 'prodigy') {
+																			$key = 'Prodigy';
+																		} elseif($key == 'mvp') {
+																			$key = 'MVP';
+																		} elseif($key == 'gateway') {
+																			$key = 'Gateway';
+																		} elseif($key == 'otherBrand') {
+																			$key = 'Other Brands';
+																		}
+																		?>
+
+
+																		<label style="margin-left: .75em;"></label><?php echo $key; ?>
+																	</div>
+																</div>
+																<span style="float: right;"><?php echo $value ?></span>
+															</div>
+															<?php
+														}
+														?>
+														<br>
+														<h3 class="filterTitle">Categories</h3>
+														<?php
+														foreach($categoriesArray as $key => $value) {
+															?>
+															<div class="filterItem">
+																<div class="pretty p-svg p-curve p-pulse">
+																<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsCategories(this.value)">
+																	<div class="state p-success">
+																		<!-- svg path -->
+																		<svg class="svg svg-icon" viewBox="0 0 20 20">
+																			<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																		</svg>
+
+																		<?php
+																		if($key == 'disc'){
+																			$key = 'Discs';
+																		} elseif($key == 'bag') {
+																			$key = 'Bags / Carts';
+																		} elseif($key == 'apparel') {
+																			$key = 'Apparel';
+																		} elseif($key == 'basket') {
+																			$key = 'Baskets';
+																		} elseif($key == 'shoes') {
+																			$key = 'Shoes';
+																		} elseif($key == 'accessory') {
+																			$key = 'Accessories';
+																		}
+																		?>
+
+
+																		<label style="margin-left: .75em;"></label><?php echo $key; ?>
+																	</div>
+																</div>
+																<span style="float: right;"><?php echo $value ?></span>
+															</div>
+															<?php
+															}
+														?>						
+														
+														<br>
+														<h3 class="filterTitle">Disc Type</h3>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+															<input type="checkbox" name="filterCheckbox" id="driver" value="driver" onchange="getPostsDiscType(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>Driver
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $driverCount[0]; ?></span>
+														</div>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+															<input type="checkbox" name="filterCheckbox" id="fairway" value="fairway" onchange="getPostsDiscType(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>Fairway Driver
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $fairwayCount[0]; ?></span>
+														</div>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve">
+															<input type="checkbox" name="filterCheckbox" id="midrange" value="midrange" onchange="getPostsDiscType(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>Midrange
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $midrangeCount[0]; ?></span>
+														</div>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+															<input type="checkbox" name="filterCheckbox" id="putter" value="putter" onchange="getPostsDiscType(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>Putter
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $putterCount[0]; ?></span>
+														</div>
+														<br>
+														<h3 class="filterTitle">New / Used</h3>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+															<input type="checkbox" name="filterCheckbox" id="new" value="new" onchange="getPostsNewUsed(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>New
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $newCount[0]; ?></span>
+														</div>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+															<input type="checkbox" name="filterCheckbox" id="used" value="used" onchange="getPostsNewUsed(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>Used
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $usedCount[0]; ?></span>
+														</div>
+
+														<?php if(isset($_SESSION['u_id'])) { ?>
+														<br>
+														<h3 class="filterTitle">Bids</h3>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+															<input type="checkbox" name="filterCheckbox" id="winning" value="winning" onchange="getPostsWinningLosing(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>Winning
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $winningCount[0]; ?></span>
+														</div>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+															<input type="checkbox" name="filterCheckbox" id="losing" value="losing" onchange="getPostsWinningLosing(this.value)">
+																<div class="state p-success">
+																	<!-- svg path -->
+																	<svg class="svg svg-icon" viewBox="0 0 20 20">
+																		<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																	</svg>
+																	<label style="margin-left: .75em;"></label>Losing
+																</div>
+															</div>
+															<span style="float: right;"><?php echo $losingCount[0]; ?></span>
+														</div>
+														<?php } ?>
+
+
+														<hr style="margin: 1.5em 1em .5em 1em;">
+														<h3 class="filterTitle">Price:  <label id="resultsPrice" style="font-weight: normal;"></label></h3>
+														<br>
+														<div class="filterItemSlider">
+															<div class="slider1">
+																<input type="text" id="sliderPrice" class="sliderPrice">
+															</div>
+														</div>
+														<hr style="margin: 1.5em 1em .5em 1em;">
+														<h3 class="filterTitle">Weight: <label id="resultsWeight" style="font-weight: normal;"></label></h3>
+														<br>
+														<div class="filterItemSlider">
+															<div class="slider1">
+																<input type="text" id="sliderWeight" class="sliderWeight">
+															</div>
+														</div>
+														<hr style="margin: 1.5em 1em .5em 1em;">
+														<h3 class="filterTitle">Quality: <label id="resultsQuality" style="font-weight: normal;"></label></h3>
+														<br>
+														<div class="filterItemSlider">
+															<div class="slider1">
+																<input type="text" id="sliderQuality" class="sliderQuality">
+															</div>
+														</div>
+													</section>
+												</div>
+													<div style="background: #CEE5CD; border-top: black solid 5px; z-index: 9999; position: fixed; bottom: 0; width: 100%;">		
+														<div id="" class="row" onclick="" style="z-index: 99999999; margin-left: 5%; margin-right: 10%; padding-top: 1em; padding-bottom: 1em;"> 
+															<div class="12u(mobile)">
+																<button class="filterMobileClose2" type="button">Show Results</button>
+															</div>
+														</div>
+													</div>
+											</div>
+										</div>
+										<div class="3u 8u(mobile) dropdown-container">
 											<form>												
 													<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 													<div class="custom-select">
@@ -223,8 +472,8 @@
 													<span style="float: right;"><?php echo $value ?></span>
 												</div>
 												<?php
-											}
-										?>						
+												}
+											?>						
 											
 											<br>
 											<h3 class="filterTitle">Disc Type</h3>
@@ -373,13 +622,13 @@
 									<button type="button" id="toTopButton" onclick="topFunction();" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 								</div>
 	
-								<div class="pageLoader" style="background-color: white; width: 73%; border: 1px solid black; margin-left: 2%; padding: 1em 1em 1em 1em; text-align: center;">
+								<div class="pageLoader" style="">
 									<img src="/test/images/LoadingPuttGif.gif" alt="Loading Putt Gif"  width="500" />
-									<h2>Loading...</h2>
+									<h2>Loading discs...</h2>
 								</div>
 								<div class="post2">
 									<div class="filterButton">
-										<div id="filterResults"></div>
+										<div class="row" id="filterResults"></div>
 									</div>
 									<!-- Portfolio -->
 									<section>										
