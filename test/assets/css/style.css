@@ -503,6 +503,15 @@ input#myRange.slider{
     margin-left: 0em; 
   }
 
+  #filterResults {
+      margin-left: 0;
+  }
+
+  .filterButtonStyle {
+      padding-left: 0;
+      padding-right: 0.5em;
+  }
+
   #filterResults p {
     font-size: 1.5em;
     margin-top: .5em;

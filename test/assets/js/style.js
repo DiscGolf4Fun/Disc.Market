@@ -461,6 +461,11 @@ function getPostsBrands(value) {
             "qualityPost" : globalFilterQuality
         }, function (data) {
             $("#filterResults").html(data);
+            if (globalFilterBrands == "" && globalFilterCategories == "" && globalFilterDiscType == "" && globalFilterNewUsed == "" && globalFilterSearch == ""){  
+                $(".filterButton").css("display","none");
+            } else {
+                $(".filterButton").css("display","block");
+            }
         });
 
         $.post("/test/includes/posts.inc.php", {
@@ -501,6 +506,11 @@ function getPostsCategories(value) {
             "qualityPost" : globalFilterQuality
         }, function (data) {
             $("#filterResults").html(data);
+            if (globalFilterBrands == "" && globalFilterCategories == "" && globalFilterDiscType == "" && globalFilterNewUsed == "" && globalFilterSearch == ""){  
+                $(".filterButton").css("display","none");
+            } else {
+                $(".filterButton").css("display","block");
+            }
         });
 
         $.post("/test/includes/posts.inc.php", {
@@ -753,6 +763,7 @@ var PriceSlider = new rSlider({
                     "qualityPost" : globalFilterQuality
                 }, function (data) {
                     $("#filterResults").html(data);
+                    $(".filterButton").css(data);
                 });
 
                 $.post("/test/includes/posts.inc.php", {
@@ -944,6 +955,14 @@ var QualitySlider = new rSlider({
     }
 });
 
+function noFilter() {
+    if (1 == 2) {
+        console.log("NEVER");
+    } else {
+        $('.filterButton').attr("style", "display: none");
+    }
+}
+
 function closePost() {
     var start = document.getElementById("filterBox").scrollHeight;
     if (window.scrollY > start) {
@@ -1008,7 +1027,7 @@ var keynum, lines = 1;
 function unCheck(value) {
     if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand'){
         $box = "#" + value;
-        $($box).prop( "checked", false );
+        $($box).attr('checked', false);
         getPostsBrands(value);
     }
     if (value == 'disc' || value == 'bag' || value == 'apparel' || value == 'basket' || value == 'shoes' || value == 'accessory') {

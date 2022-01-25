@@ -622,12 +622,12 @@
 									<button type="button" id="toTopButton" onclick="topFunction();" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 								</div>
 	
-								<div class="pageLoader" style="">
+								<div class="pageLoader">
 									<img src="/test/images/LoadingPuttGif.gif" alt="Loading Putt Gif"  width="500" />
 									<h2>Loading discs...</h2>
 								</div>
 								<div class="post2">
-									<div class="filterButton">
+									<div class="filterButton" style="display: none;">
 										<div class="row" id="filterResults"></div>
 									</div>
 									<!-- Portfolio -->
