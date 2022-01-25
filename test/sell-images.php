@@ -115,17 +115,47 @@
 			background: white;
 		}
 
-    .highlight {
-      border: 1px solid red;
-      background-color: #333333;
-    }
+		.previewPost {
+			margin-top: 4em;
+		}
 
+		.backImages {
+			background: gray;
+		}
+
+		.backImages:hover {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: gray;
+			opacity: 70%;
+		}
+
+		.resetImages {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: red;
+		}
+
+		.resetImages:hover {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: red;
+			opacity: 50%;
+		}
 
 </style>
 
 <script>
   $( function() {
     $( "#sortable1" ).sortable({
+      placeholder: "ui-state-highlight",
+	  forcePlaceholderSize: true,
 	  forceHelperSize: true,
 	  tolerance: "pointer",
 	  items: "li:not(.unsortable)"
@@ -155,7 +185,7 @@
 
     <div class="container">
         <ul class="row connectedSortable" id="sortable1" style="position: relative;">
-		  <li class="4u unsortable" style="position: absolute;">
+			<li class="4u unsortable" style="position: absolute;">
 			<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 		  </li>
           <li class="4u 12u(mobile) ui-state-default">
