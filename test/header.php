@@ -173,10 +173,13 @@
 				<nav id="navMobile">
 					<ul>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/test/buy.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp;Buy</a>
+							<a href="/test/buy.php"><i class="fa fa-home" aria-hidden="true"></i></a>
 						</li>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/test/sell.php"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Sell</a>
+							<a href="/test/buy.php">Buy</a>
+						</li>
+						<li <?php echo 'class="current"'; ?>>
+							<a href="/test/sell.php">Sell</a>
 						</li>
 						<li <?php echo 'class="opener current"';  ?>>
 							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>

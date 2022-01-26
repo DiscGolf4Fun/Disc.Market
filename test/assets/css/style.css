@@ -36,7 +36,7 @@
     #nav > ul > li {
         display: inline-block;
         font-style: normal;
-        margin: 0 1em 0 1em;
+        margin: 0 0.5em 0 0.5em;
     }
 
 
@@ -130,8 +130,6 @@ form {
     position: relative;
     z-index: 0;
 }
-
-
 
 
 
@@ -496,7 +494,7 @@ input#myRange.slider{
   }
 
   .dropdown-container form{
-    margin-left: 1em; 
+    margin: 0; 
   }
 
   #filterResults p {
@@ -525,6 +523,7 @@ input#myRange.slider{
     box-shadow: none;
     background: transparent;
     background-image: none;
+    color: black;
 }
 
 .custom-select:active {
@@ -536,6 +535,14 @@ input#myRange.slider{
 
 .box.post-content{
     padding: .5em .75em 0 .75em;
+}
+
+.mobileFilterButton {
+    display: none;
+}
+
+.custom-select {
+    display: block;
 }
 
 .post-info {
@@ -808,6 +815,10 @@ a.postModal {
 .results2 {
     margin: 0 2em 2em 2em;
     background-color: white;
+}
+
+.custom-select.sell {
+    display: block;
 }
 
 .filterItem:hover {
@@ -2159,7 +2170,7 @@ header.major {
     #navMobile {
         display: block;
         margin: 2em 0 1em 0;
-        font-size: 3vw;
+        font-size: 0.75em;
     }
 
     .post {
@@ -2207,6 +2218,7 @@ header.major {
     .search-container{
         margin-top: 0;
         margin-bottom: 1.5em;
+        padding-top: 0.5em;
       }
     
     .search-container form{
@@ -2217,6 +2229,10 @@ header.major {
         margin-top: 0;
         margin-bottom: 1.5em;  
       }
+
+    .dropdown-container.mobile {
+        padding-top: 0;
+    }
     
       .dropdown-container form{
         margin-left: 0 em; 
@@ -2240,6 +2256,7 @@ header.major {
 
     .title h3 {
         height: 3rem;
+        font-size: 1.5em;
     }
     
             #navMobile > ul > li > ul {
@@ -2264,7 +2281,7 @@ header.major {
             }
     
             #navMobile > ul > li.current > a {
-                border: 3px solid black;
+                border: 2px solid black;
                 background: #fff;
                 color: black !important;
                 font-weight: 800;
@@ -2343,13 +2360,16 @@ header.major {
             width: 100%;
             line-height: 1em;
         }
+
+        #searchBuypageButton {
+            margin: 0;
+            width: 4em;
+        }
     
         #search2 {
             width: 16%;
             float: right;
-            margin-top: 0;
-            margin-bottom: 0;
-            margin-left: 0;
+            margin: 0;
             line-height: 1.1em;
         }
     
@@ -2386,6 +2406,52 @@ header.major {
         }
         .terms2 {
             width: 50%;
+        }
+
+        .pageLoader {
+            background-color: white;
+            width: 94%;
+            border: 1px solid black;
+            margin-left: 6%;
+            padding: 1em;
+            text-align: center;
+            display: block;
+        }
+
+        .mobileFilterButton {
+            display: block;
+        }
+
+        .custom-select {
+            display: none;
+        }
+
+        .custom-select.mobile {
+            display: block;
+        }
+
+
+        .filterButtonMobile {
+            background-color: white;
+            color: black !important;
+            border: black solid 1px;
+            margin: 0;
+            margin-right: 1em;
+            width: 10em;
+        }
+
+        .filterButtonMobile:hover {
+            background-color: white;
+            color: black !important;
+            border: black solid 1px;
+            margin: 0;
+            margin-right: 1em;
+            width: 10em;
+        }
+
+        .post-info p {
+            margin: 0 .5em 0 .5em;
+            font-size: 1.3em;
         }
         
     }

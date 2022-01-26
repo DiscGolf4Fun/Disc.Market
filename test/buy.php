@@ -118,7 +118,24 @@
 												</button>
 											</form>										
 										</div>
-										<div class="3u 12u(mobile) dropdown-container">
+										<div class="3u 12u(mobile) dropdown-container mobile">
+											<div class="mobileFilterButton">
+											<form>
+												<button type="button" onclick="" class="filterButtonMobile">
+													<i class="fa fa-filter" id="filter-icon"></i>&nbsp;Filters
+												</button>
+												<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+												<div class="custom-select mobile">
+														<select id="topFilterDropdown" onchange="getPostsTopFilter(this.value)">
+															<option value="endingSoonest">Ending: Soonest</option>
+															<option value="endingLatest">Ending: Latest</option>
+															<!-- <option value="new">Newest</option> -->
+															<option value="low">Price: Lowest</option>
+															<option value="high">Price: Highest</option>
+														</select>
+													</div>
+											</form>	
+											</div>
 											<form>												
 													<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 													<div class="custom-select">
@@ -373,9 +390,9 @@
 									<button type="button" id="toTopButton" onclick="topFunction();" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 								</div>
 	
-								<div class="pageLoader" style="background-color: white; width: 73%; border: 1px solid black; margin-left: 2%; padding: 1em 1em 1em 1em; text-align: center;">
-									<img src="/test/images/LoadingPuttGif.gif" alt="Loading Putt Gif"  width="500" />
-									<h2>Loading...</h2>
+								<div class="pageLoader">
+									<img src="/test/images/LoadingPuttGif.gif" alt="Loading Putt Gif"  width="100%" />
+									<h2>Loading discs...</h2>
 								</div>
 								<div class="post2">
 									<div class="filterButton">
