@@ -125,12 +125,10 @@
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "sell.php" || basename($_SERVER['PHP_SELF']) == "/sell-images.php") echo 'class="current"'; ?>>
 							<a href="/test/sell.php">Sell</a>
 						</li>
-						<li <?php if (basename($_SERVER['PHP_SELF']) == "about.php") echo 'class="current"'; ?>>
-							<a href="/test/about.php">About</a>
-						</li>
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "faq.php" || basename($_SERVER['PHP_SELF']) == "store.php" || basename($_SERVER['PHP_SELF']) == "matchplay.php"){echo 'class="opener current"';}else{echo 'class="opener"';}  ?>>
 							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 							<ul class="dropdownMenu">
+								<li><a href="/test/about.php"><i class="fa fa-star" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>About</a></li>
 								<li><a href="/test/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>FAQs</a></li>
 								<li><a href="/test/store.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Our Store</a></li>
 								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YouTube Videos</a></li>
@@ -173,7 +171,7 @@
 				<nav id="navMobile">
 					<ul>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/test/buy.php"><i class="fa fa-home" aria-hidden="true"></i></a>
+							<a href="/test/"><i class="fa fa-home" aria-hidden="true"></i></a>
 						</li>
 						<li <?php echo 'class="current"'; ?>>
 							<a href="/test/buy.php">Buy</a>
@@ -326,6 +324,11 @@
 											<div class="6u" style="padding-top: 1.5em;">
 												<a href="#" class="social-button" id="amazon-connect"> <span>Login with Amazon</span></a>
 											</div>
+									</div>
+									<div class="row" style="margin-bottom: 1em;">
+										<div class="12u">
+											<u>Back</u>
+										</div>
 									</div>
 								</div><!--.login-tab-content-->
 								<div id="signup-tab-content">

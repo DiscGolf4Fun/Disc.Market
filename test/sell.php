@@ -11,11 +11,11 @@
 				<form action="sell-images.php" method="post">
 				<div class="row" style="width: 100%; margin: auto 0 auto 0;">
 					<div class="9u 12u(mobile)" style="padding: 0 1em 1.5em 1em;">
-						<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Title</label>
+						<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Title&nbsp;<span style="color:red;">*<span></label>
 						<input type="text" name="title" placeholder="Title" style="border: 1px solid black;">
 					</div>
 					<div class="3u 12u(mobile)" style="padding: 0 1em 1.5em 1em;">
-						<label for="dropdown" style="font-size: 1.5em; margin-bottom: .25em;">Category</label>
+						<label for="dropdown" style="font-size: 1.5em; margin-bottom: .25em;">Category&nbsp;<span style="color:red;">*<span></label>
 						<div class="dropdown" style="width: 100%; margin-left: 0;">
 							<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 							<div class="custom-select sell">
@@ -34,7 +34,7 @@
 
 
 					<div class="12u" style="padding: 0 1em 1.5em 1em;">
-						<label for="description" style="font-size: 1.5em; margin-bottom: .25em;">Description</label>
+						<label for="description" style="font-size: 1.5em; margin-bottom: .25em;">Description&nbsp;<span style="color:red;">*<span></label>
 						<textarea name="description" id="textarea" onkeydown="return limitLines(this, event)" placeholder="Description" maxlength="250" rows="5" style="resize: none; height: 10em; border: 1px solid black;"></textarea>
 						<div id="textarea_feedback"></div>
 					</div>
@@ -180,7 +180,7 @@
 						<header class="major" style="margin-bottom: 1.5em;">
 							<h2 style="font-weight: 500;">Category:&nbsp;None</h2>
 						</header>
-						<h2 style="font-weight: 300; padding-bottom: 2em;">You need to select a Category above</h2>
+						<h2 style="font-weight: 500; padding-bottom: 2em; color: red;">You need to select a Category above</h2>
 					</div>
 
 					<div class="12u" style="padding: 0; display: none; text-align: left;" id="discs">
@@ -471,12 +471,14 @@
 						</div>
 					</div>
 
-
-					<div class="6u" style="text-align: right; padding-left: 0; padding-top: 0;">
-						<input type="submit" name="submit" value="Next: Images" style="margin-right: 1em;">
-					</div>
-					<div class="6u" style="text-align: left; padding-left: 0; padding-top: 0;">
-						<input type="reset" value="Reset" style="margin-left: 1em; background-color: gray;" onclick="topFunction();">
+					<div style="width: 100%; padding-left: 0;">
+						<div class="6u 12u(mobile)" style="text-align: left; padding-left: 0; padding-top: 0;">
+							<input type="reset" value="Reset" style="background-color: gray;" onclick="topFunction();">
+						</div>
+						<br>
+						<div class="6u 12u(mobile)" style="text-align: right; padding-left: 0; padding-top: 0;">
+							<input type="submit" name="submit" value="Next: Images">
+						</div>
 					</div>
 				</div>
 				</form> 

@@ -1104,6 +1104,7 @@ var exit = $('.exit');
 var forgotPassword = $('.forgotPassword');
 var newAccount = $('.newAccount');
 var termsOfService = $('.termsOfService');
+var filterMobile = $('.filterButtonMobile');
 var dimmer2 = $('.dimmer2');
 var mobileMenu = $('.dropdownMenu');
 
@@ -1127,6 +1128,12 @@ $('.terms2').click( function(e) {
     console.log("Close: Terms of Service");
     $('.termsOfService').hide();
 })
+
+$('.filterButtonMobile').click( function(e) {
+    console.log("Open: Mobile Filter");
+    $('.filterPopup').show();
+})
+
 
 $('.close-thik3').click( function(e) {
     console.log("Close: New Account");

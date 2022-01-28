@@ -403,6 +403,7 @@
 										<div id="results"></div>
 									</section>
 								</div>
+							</div>
 						</section>
 
 			</div>
