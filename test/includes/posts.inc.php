@@ -431,26 +431,26 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 	}
 } else {
-	$sql_start = 'SELECT * FROM posts WHERE timestamp < UNIX_TIMESTAMP() ';
+	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 }
 
 
 if ($topFilterPost != ""){
 	if ($topFilterPost == 'new') {
-		$sql_end = ' ORDER BY timestamp ASC';
+		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
 	} elseif ($topFilterPost == 'low') {
-		$sql_end = ' ORDER BY price ASC';
+		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY price ASC';
 	} elseif($topFilterPost == 'high') {
-		$sql_end = ' ORDER BY price DESC';
+		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY price DESC';
 	} elseif ($topFilterPost == 'endingSoonest') {
-		$sql_end = ' ORDER BY timestamp ASC';
+		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
 	} elseif ($topFilterPost == 'endingLatest') {
-		$sql_end = ' ORDER BY timestamp DESC';
+		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp DESC';
 	} else {
-		$sql_end = 'ORDER BY timestamp ASC';
+		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
 	}
 } else {
-	$sql_end = 'ORDER BY timestamp ASC';
+	$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
 }
 
 
