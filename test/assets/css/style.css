@@ -74,7 +74,7 @@
 }
 
 section#searchMarket {
-    margin-top: 2em;
+    margin-top: 4em;
     margin-bottom: 0;
 }
 
@@ -480,6 +480,17 @@ input#myRange.slider{
 
   #main-wrapper{
       padding: 1em 0 1.5em 0;
+  }
+
+  .filterMobile {
+      display: none;
+      background: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 100;
   }
 
 
@@ -1831,6 +1842,15 @@ header.major {
         color: red;
       }
 
+      .close-thik4:after {
+        content: '✖'; /* UTF-8 symbol */
+        text-decoration: none;
+      }
+
+      .close-thik4:hover {
+        color: red;
+      }
+
       .termsOfService {
           overflow: auto;
       }
@@ -2340,7 +2360,7 @@ header.major {
             }
     
         #searchMarket {
-            margin: 2.5em 0 1.5em 0 !important;
+            margin: 1.5em 0 1.5em 0 !important;
         }
     
         span.psw {

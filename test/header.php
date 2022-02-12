@@ -324,11 +324,10 @@
 											<div class="6u" style="padding-top: 1.5em;">
 												<a href="#" class="social-button" id="amazon-connect"> <span>Login with Amazon</span></a>
 											</div>
-									</div>
-									<div class="row" style="margin-bottom: 1em;">
-										<div class="12u">
-											<u>Back</u>
-										</div>
+
+											<div class="12u close6">
+												<p><a href="#">Back</a></p>
+											</div><!--.help-text-->
 									</div>
 								</div><!--.login-tab-content-->
 								<div id="signup-tab-content">
@@ -364,6 +363,9 @@
 										</div>									
 										<input type="submit" class="button" name="submitSignup" value="Sign Up">
 									</form><!--.login-form-->
+									<div class="12u close6">
+										<p><a href="#">Back</a></p>
+									</div><!--.help-text-->
 								</div><!--.signup-tab-content-->
 							</div><!--.tabs-content-->
 						</div><!--.form-wrap-->

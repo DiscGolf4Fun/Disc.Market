@@ -634,7 +634,7 @@ if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 						<p>
 							<h3 class="bidTime">
 								<?php if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") { ?>
-									<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600; color: red;">$
+									<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600;">$
 										<?php echo $array_data[$scrollCount][$i]['price']; ?>
 									</span>
 								<?php } else { ?>
