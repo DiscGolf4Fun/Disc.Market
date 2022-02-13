@@ -117,7 +117,7 @@
 				<nav id="nav">
 					<ul>
 						<li <?php if ((basename($_SERVER['PHP_SELF']) == "index.php") && (strpos($_SERVER['REQUEST_URI'], "admin") != true) && (strpos($_SERVER['REQUEST_URI'], "account") != true))  echo 'class="current"'; ?>>
-							<a href="/test">Home</a>
+							<a href="/test"><i class="fa fa-home" aria-hidden="true"></i></a>
 						</li>
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "buy.php") echo 'class="current"'; ?>>
 							<a href="/test/buy.php">Buy</a>
@@ -125,22 +125,24 @@
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "sell.php" || basename($_SERVER['PHP_SELF']) == "/sell-images.php") echo 'class="current"'; ?>>
 							<a href="/test/sell.php">Sell</a>
 						</li>
+						<li <?php if (basename($_SERVER['PHP_SELF']) == "about.php") echo 'class="current"'; ?>>
+							<a href="/test/about.php">About</a>
+						</li>
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "faq.php" || basename($_SERVER['PHP_SELF']) == "store.php" || basename($_SERVER['PHP_SELF']) == "matchplay.php"){echo 'class="opener current"';}else{echo 'class="opener"';}  ?>>
 							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 							<ul class="dropdownMenu">
-								<li><a href="/test/about.php"><i class="fa fa-star" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>About</a></li>
-								<li><a href="/test/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>FAQs</a></li>
-								<li><a href="/test/store.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Our Store</a></li>
-								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YouTube Videos</a></li>
-								<li><a href="https://www.pdga.com/faq/ratings/how-is-your-rating-calculated" target="_blank"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ratings Calculator</a></li>
-								<li><a href="/test/matchplay.php"><i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matchplay</a></li>
-								<li><a href="https://www.marshallstreetdiscgolf.com/flightguide" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disc Lookup</a></li>
+								<li><a href="/test/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink"></span>FAQs</a></li>
+								<li><a href="/test/store.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="ink"></span>Our Store</a></li>
+								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i><span class="ink"></span>YouTube Videos</a></li>
+								<li><a href="https://www.pdga.com/faq/ratings/how-is-your-rating-calculated" target="_blank"><i class="fa fa-calculator" aria-hidden="true"></i><span class="ink"></span>Ratings Calculator</a></li>
+								<li><a href="/test/matchplay.php"><i class="fa fa-list-ol" aria-hidden="true"></i><span class="ink"></span>Matchplay</a></li>
+								<li><a href="https://www.marshallstreetdiscgolf.com/flightguide" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i><span class="ink"></span>Disc Lookup</a></li>
 								<?php
 									if (isset($_SESSION['u_id'])) {
 										if($_SESSION['u_role'] <= 2) {
 											echo '<hr class="moreHR">',
-												'<li><a href="#" target="_blank"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Moderator Chat</a></li>',
-												'<li><a href="#" target="_blank"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Accept Posts</a></li>';
+												'<li><a href="#" target="_blank"><i class="fa fa-comments" aria-hidden="true"></i><span class="ink"></span>Moderator Chat</a></li>',
+												'<li><a href="#" target="_blank"><i class="fa fa-check" aria-hidden="true"></i><span class="ink"></span>Accept Posts</a></li>';
 										}
 									}
 								?>
@@ -171,9 +173,9 @@
 				<nav id="navMobile">
 					<ul>
 						<li <?php echo 'class="current"'; ?>>
-							<a href="/test/"><i class="fa fa-home" aria-hidden="true"></i></a>
+							<a href="/test"><i class="fa fa-home" aria-hidden="true"></i></a>
 						</li>
-						<li <?php echo 'class="current"'; ?>>
+						<li <?php echo 'class="current"'; ?> style="font-size: ">
 							<a href="/test/buy.php">Buy</a>
 						</li>
 						<li <?php echo 'class="current"'; ?>>
@@ -182,13 +184,13 @@
 						<li <?php echo 'class="opener current"';  ?>>
 							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 							<ul class="dropdownMenu">
-								<li><a href="/test/about.php"><i class="fa fa-star" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>About</a></li>
-								<li><a href="/test/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>FAQs</a></li>
-								<li><a href="/test/store.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="ink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Our Store</a></li>
-								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YouTube Videos</a></li>
-								<li><a href="https://www.pdga.com/faq/ratings/how-is-your-rating-calculated" target="_blank"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ratings Calculator</a></li>
-								<li><a href="/test/matchplay.php"><i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matchplay</a></li>
-								<li><a href="https://www.marshallstreetdiscgolf.com/flightguide" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disc Lookup</a></li>
+								<li><a href="/test/about.php"><i class="fa fa-star" aria-hidden="true"></i><span class="ink"></span>About</a></li>
+								<li><a href="/test/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink"></span>FAQs</a></li>
+								<li><a href="/test/store.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="ink"></span>Our Store</a></li>
+								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i>YouTube Videos</a></li>
+								<li><a href="https://www.pdga.com/faq/ratings/how-is-your-rating-calculated" target="_blank"><i class="fa fa-calculator" aria-hidden="true"></i>Ratings Calculator</a></li>
+								<li><a href="/test/matchplay.php"><i class="fa fa-list-ol" aria-hidden="true"></i>Matchplay</a></li>
+								<li><a href="https://www.marshallstreetdiscgolf.com/flightguide" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i>Disc Lookup</a></li>
 								<?php
 									if (isset($_SESSION['u_id'])) {
 										if($_SESSION['u_role'] <= 2) {
@@ -272,7 +274,7 @@
 						<a href="/test/account/#myaccount" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</h3></a>
 						<hr style="margin: 0 20% 0 20%;">
 						<a href="/test/account/#myposts" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;My Posts</h3></a>
-						<hr style="margin: 0 20% 0 20%;"> 
+						<hr style="margin: 0 20% 0 20%;">
 						<a href="/test/account/#currentbids" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;&nbsp;Current Bids</h3></a>
 						<hr style="margin: 0 20% 0 20%;">	
 						<a href="/test/account/#messages" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Messages</h3></a>
@@ -324,10 +326,6 @@
 											<div class="6u" style="padding-top: 1.5em;">
 												<a href="#" class="social-button" id="amazon-connect"> <span>Login with Amazon</span></a>
 											</div>
-
-											<div class="12u close6">
-												<p><a href="#">Back</a></p>
-											</div><!--.help-text-->
 									</div>
 								</div><!--.login-tab-content-->
 								<div id="signup-tab-content">
@@ -363,9 +361,6 @@
 										</div>									
 										<input type="submit" class="button" name="submitSignup" value="Sign Up">
 									</form><!--.login-form-->
-									<div class="12u close6">
-										<p><a href="#">Back</a></p>
-									</div><!--.help-text-->
 								</div><!--.signup-tab-content-->
 							</div><!--.tabs-content-->
 						</div><!--.form-wrap-->

@@ -88,9 +88,7 @@ var scrollOnce = true;
 
 
 if (document.location.href.indexOf('buy.php') !== -1){ 
-    window.onscroll = function() {
-        var navMobile = document.getElementById("navMobile");
-        
+    window.onscroll = function() { 
         var start = document.getElementById("filterBox").scrollHeight;
         if (scrolled1 <= scrolled3) { 
             scrolled1 = window.innerHeight + window.scrollY;
@@ -776,94 +774,6 @@ var PriceSlider = new rSlider({
     }
 });
 
-
-var priceSliderCount2 = 0;
-var PriceSliderMobile = new rSlider({
-    target: '#sliderPriceMobile',
-    values: {min: 1, max: 100},
-    range: true, // range slider
-    set:    null, // an array of preselected values
-    width:    false,
-    scale:    false,
-    labels:   false,
-    tooltip:  true,
-    step:     1, // step size
-    disabled: false, // is disabled?
-    onChange: function (vals) {
-        valsPrint = "$" + (vals.replace(/,/g , " - $"));
-        var valsSplit = vals.split(",");
-        if(valsSplit[1] == "100"){
-            valsPrint = valsPrint + "+";
-        }
-        $("#resultsPrice").html(valsPrint);
-
-        globalFilterPrice = valsSplit;
-        globalScrollCount = 0;
-        if(globalFilterPrice[0] != 1 || globalFilterPrice[1] != 100) {
-            console.log("PriceSliderMobile");
-            $.post("/test/includes/postsFilter.inc.php", {
-                "partialPost": globalFilterSearch,
-                "brandsPost": globalFilterBrands,
-                "categoryPost": globalFilterCategories,
-                "discTypePost": globalFilterDiscType,
-                "newUsedPost": globalFilterNewUsed,
-                "topFilterPost" : globalFilterTopFilter,
-                "pricePost" : globalFilterPrice,
-                "weightPost" : globalFilterWeight,
-                "qualityPost" : globalFilterQuality
-            }, function (data) {
-                $("#filterResults").html(data);
-            });
-
-            $.post("/test/includes/posts.inc.php", {
-                "partialPost": globalFilterSearch,
-                "brandsPost": globalFilterBrands,
-                "categoryPost": globalFilterCategories,
-                "discTypePost": globalFilterDiscType,
-                "newUsedPost": globalFilterNewUsed,
-                "topFilterPost" : globalFilterTopFilter,
-                "pricePost" : globalFilterPrice,
-                "weightPost" : globalFilterWeight,
-                "qualityPost" : globalFilterQuality
-            }, function (data) {
-                $("#results").html(data);
-            });
-        } else {
-            if(priceSliderCount2 != 0) {
-                console.log("PriceSlider2");
-                $.post("/test/includes/postsFilter.inc.php", {
-                    "partialPost": globalFilterSearch,
-                    "brandsPost": globalFilterBrands,
-                    "categoryPost": globalFilterCategories,
-                    "discTypePost": globalFilterDiscType,
-                    "newUsedPost": globalFilterNewUsed,
-                    "topFilterPost" : globalFilterTopFilter,
-                    "pricePost" : globalFilterPrice,
-                    "weightPost" : globalFilterWeight,
-                    "qualityPost" : globalFilterQuality
-                }, function (data) {
-                    $("#filterResults").html(data);
-                });
-
-                $.post("/test/includes/posts.inc.php", {
-                    "partialPost": globalFilterSearch,
-                    "brandsPost": globalFilterBrands,
-                    "categoryPost": globalFilterCategories,
-                    "discTypePost": globalFilterDiscType,
-                    "newUsedPost": globalFilterNewUsed,
-                    "topFilterPost" : globalFilterTopFilter,
-                    "pricePost" : globalFilterPrice,
-                    "weightPost" : globalFilterWeight,
-                    "qualityPost" : globalFilterQuality
-                }, function (data) {
-                    $("#results").html(data);
-                });
-            }
-        }
-        priceSliderCount2++;
-    }
-});
-
 var weightSliderCount = 0;
 var WeightSlider = new rSlider({
     target: '#sliderWeight',
@@ -950,92 +860,6 @@ var WeightSlider = new rSlider({
     }
 });
 
-var weightSliderCount2 = 0;
-var WeightSliderMobile = new rSlider({
-    target: '#sliderWeightMobile',
-    values: {min: 130, max: 200},
-    range: true, // range slider
-    set:    null, // an array of preselected values
-    width:    false,
-    scale:    false,
-    labels:   false,
-    tooltip:  true,
-    step:     1, // step size
-    disabled: false, // is disabled?
-    onChange: function (vals) {
-        valsPrint = (vals.replace(/,/g , "g - "));
-        var valsSplit = vals.split(",");
-        valsPrint = valsPrint + "g";
-        globalScrollCount = 0;
-        $("#resultsWeight").html(valsPrint);
-
-        globalFilterWeight = valsSplit;
-        if(globalFilterWeight[0] != 130 || globalFilterWeight[1] != 200) {
-            console.log("WeightSlider");
-            $.post("/test/includes/postsFilter.inc.php", {
-                "partialPost": globalFilterSearch,
-                "brandsPost": globalFilterBrands,
-                "categoryPost": globalFilterCategories,
-                "discTypePost": globalFilterDiscType,
-                "newUsedPost": globalFilterNewUsed,
-                "topFilterPost" : globalFilterTopFilter,
-                "pricePost" : globalFilterPrice,
-                "weightPost" : globalFilterWeight,
-                "qualityPost" : globalFilterQuality
-            }, function (data) {
-                $("#filterResults").html(data);
-            });
-
-            $.post("/test/includes/posts.inc.php", {
-                "partialPost": globalFilterSearch,
-                "brandsPost": globalFilterBrands,
-                "categoryPost": globalFilterCategories,
-                "discTypePost": globalFilterDiscType,
-                "newUsedPost": globalFilterNewUsed,
-                "topFilterPost" : globalFilterTopFilter,
-                "pricePost" : globalFilterPrice,
-                "weightPost" : globalFilterWeight,
-                "qualityPost" : globalFilterQuality
-            }, function (data) {
-                $("#results").html(data);
-            });
-        } else {
-            if (weightSliderCount2 != 0) {
-                console.log("WeightSlider2");
-                $.post("/test/includes/postsFilter.inc.php", {
-                    "partialPost": globalFilterSearch,
-                    "brandsPost": globalFilterBrands,
-                    "categoryPost": globalFilterCategories,
-                    "discTypePost": globalFilterDiscType,
-                    "newUsedPost": globalFilterNewUsed,
-                    "topFilterPost" : globalFilterTopFilter,
-                    "pricePost" : globalFilterPrice,
-                    "weightPost" : globalFilterWeight,
-                    "qualityPost" : globalFilterQuality
-                }, function (data) {
-                    $("#filterResults").html(data);
-                });
-
-                $.post("/test/includes/posts.inc.php", {
-                    "partialPost": globalFilterSearch,
-                    "brandsPost": globalFilterBrands,
-                    "categoryPost": globalFilterCategories,
-                    "discTypePost": globalFilterDiscType,
-                    "newUsedPost": globalFilterNewUsed,
-                    "topFilterPost" : globalFilterTopFilter,
-                    "pricePost" : globalFilterPrice,
-                    "weightPost" : globalFilterWeight,
-                    "qualityPost" : globalFilterQuality
-                }, function (data) {
-                    $("#results").html(data);
-                });
-            }
-        }
-        weightSliderCount2++;
-
-    }
-});
-
 var qualitySliderCount = 0;
 var QualitySlider = new rSlider({
     target: '#sliderQuality',
@@ -1117,91 +941,6 @@ var QualitySlider = new rSlider({
             }
         }
         qualitySliderCount++;
-    }
-});
-
-
-var qualitySliderCount2 = 0;
-var QualitySliderMobile = new rSlider({
-    target: '#sliderQualityMobile',
-    values: {min: 1, max: 10},
-    range: true, // range slider
-    set:    null, // an array of preselected values
-    width:    false,
-    scale:    false,
-    labels:   false,
-    tooltip:  true,
-    step:     1, // step size
-    disabled: false, // is disabled?
-    onChange: function (vals) {
-        valsPrint = (vals.replace(/,/g , " - "));
-        var valsSplit = vals.split(",");
-        globalScrollCount = 0;
-        $("#resultsQuality").html(valsPrint);
-
-        globalFilterQuality = valsSplit;
-        if(globalFilterQuality[0] != 1 || globalFilterQuality[1] != 10) {
-            console.log("QualitySlider");
-            $.post("/test/includes/postsFilter.inc.php", {
-                "partialPost": globalFilterSearch,
-                "brandsPost": globalFilterBrands,
-                "categoryPost": globalFilterCategories,
-                "discTypePost": globalFilterDiscType,
-                "newUsedPost": globalFilterNewUsed,
-                "topFilterPost" : globalFilterTopFilter,
-                "pricePost" : globalFilterPrice,
-                "weightPost" : globalFilterWeight,
-                "qualityPost" : globalFilterQuality
-            }, function (data) {
-                $("#filterResults").html(data);
-            });
-
-            $.post("/test/includes/posts.inc.php", {
-                "partialPost": globalFilterSearch,
-                "brandsPost": globalFilterBrands,
-                "categoryPost": globalFilterCategories,
-                "discTypePost": globalFilterDiscType,
-                "newUsedPost": globalFilterNewUsed,
-                "topFilterPost" : globalFilterTopFilter,
-                "pricePost" : globalFilterPrice,
-                "weightPost" : globalFilterWeight,
-                "qualityPost" : globalFilterQuality
-            }, function (data) {
-                $("#results").html(data);
-            });
-        } else {
-            if(qualitySliderCount2 !=0) {
-                console.log("QualitySlider2");
-                $.post("/test/includes/postsFilter.inc.php", {
-                    "partialPost": globalFilterSearch,
-                    "brandsPost": globalFilterBrands,
-                    "categoryPost": globalFilterCategories,
-                    "discTypePost": globalFilterDiscType,
-                    "newUsedPost": globalFilterNewUsed,
-                    "topFilterPost" : globalFilterTopFilter,
-                    "pricePost" : globalFilterPrice,
-                    "weightPost" : globalFilterWeight,
-                    "qualityPost" : globalFilterQuality
-                }, function (data) {
-                    $("#filterResults").html(data);
-                });
-
-                $.post("/test/includes/posts.inc.php", {
-                    "partialPost": globalFilterSearch,
-                    "brandsPost": globalFilterBrands,
-                    "categoryPost": globalFilterCategories,
-                    "discTypePost": globalFilterDiscType,
-                    "newUsedPost": globalFilterNewUsed,
-                    "topFilterPost" : globalFilterTopFilter,
-                    "pricePost" : globalFilterPrice,
-                    "weightPost" : globalFilterWeight,
-                    "qualityPost" : globalFilterQuality
-                }, function (data) {
-                    $("#results").html(data);
-                });
-            }
-        }
-        qualitySliderCount2++;
     }
 });
 
@@ -1355,6 +1094,22 @@ function unSliderQuality(){
     QualitySlider.setValues(1,10);
 }
 
+$('.filterButtonMobile').click( function(e) {
+    console.log("Open1: Mobile Filters");
+    setTimeout(function(){ $('.filterPopup').scrollTop(0); });
+    $('html').attr("style", "height: 100%;", "overflow: hidden;");
+    $('body').attr("style", "height: 100%;", "overflow: hidden;");
+    $('.filterPopup').show();
+})
+
+
+$('.filterMobileClose2').click( function(e) {
+    console.log("Close: Mobile Filters");
+    $('html').attr("style", "height: auto;", "overflow: auto;");
+    $('body').attr("style", "height: auto;", "overflow: auto;");
+    $('.filterPopup').hide();
+})
+
 
 
 var dimmer = $('.dimmer');
@@ -1363,7 +1118,6 @@ var exit = $('.exit');
 var forgotPassword = $('.forgotPassword');
 var newAccount = $('.newAccount');
 var termsOfService = $('.termsOfService');
-var filterMobile = $('.filterButtonMobile');
 var dimmer2 = $('.dimmer2');
 var mobileMenu = $('.dropdownMenu');
 
@@ -1388,30 +1142,6 @@ $('.terms2').click( function(e) {
     $('.termsOfService').hide();
 })
 
-
-$('.filterButtonMobile').click( function(e) {
-    console.log("Open: Mobile Filter");
-    $('.filterMobile').show();
-})
-
-$('.close-thik4').click( function(e) {
-    console.log("Close: Mobile Filter");
-    $('.filterMobile').hide() ;
-})
-
-$('.close6').click( function(e) {
-    console.log("Close: Login/Signup");
-    loginDiv.hide();
-    $('html, body').css("overflow","auto");
-})
-
-$('.close-thik5').click( function(e) {
-    console.log("Close: Mobile Filter");
-    $('#main-wrapper').css("position","absolute");
-    $('#main-wrapper').css("overflow","visible");
-})
-
-
 $('.close-thik3').click( function(e) {
     console.log("Close: New Account");
     window.history.replaceState({}, document.title, "/");
@@ -1424,6 +1154,10 @@ $('.close-thik2').click( function(e) {
     $('.termsOfService').hide();
 })
 
+$('.close-thik4').click( function(e) {
+    console.log("Close: Filter Mobile");
+    $('.filterPopup').hide();
+})
 
 $('.close-thik').click( function(e) {
     console.log("Close: Forgot Password");
@@ -1437,6 +1171,7 @@ $('a#loginToggle').click( function(e) {
     loginDiv.show();
     $('html, body').css("overflow","hidden");
     console.log("Show Login");
+
 })
 
 $('.dimmer').click( function(e) {
@@ -1465,6 +1200,7 @@ grecaptcha.ready(function() {
     // Verify the token on the server.
     //});
 });
+
 
 
 

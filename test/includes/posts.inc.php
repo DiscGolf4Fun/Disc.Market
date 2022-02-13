@@ -81,7 +81,7 @@ if(isset($_POST['scrollCount'])) {
 
 
 if ($brandsPost != "" && !empty($brandsPost)) {
-	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			if($brand == 'otherBrand'){
@@ -133,7 +133,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($categoryPost != "" && !empty($categoryPost)){
-	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -173,7 +173,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($discTypePost != 0 && !empty($discTypePost)){
-	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -213,7 +213,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($newUsedPost != 0 && !empty($newUsedPost)){
-	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -253,7 +253,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($partialPost != 0 && !empty($partialPost) && $partialPost[0] != ""){
-	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -300,9 +300,9 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	}
 } elseif ($pricePost != "" && !empty($pricePost)){
 	if($pricePost[0] == 1 && $pricePost[1] == 200) {
-		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
+		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 	} else {
-		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 		if(isset($brandsPost) && !empty($brandsPost)) {
 			foreach($brandsPost as $brand){
 				$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -344,9 +344,9 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	}
 } elseif ($weightPost != "" && !empty($weightPost)){
 	if($weightPost[0] == 130 && $weightPost[1] == 200) {
-		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
+		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 	} else {
-		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 		if(isset($brandsPost) && !empty($brandsPost)) {
 			foreach($brandsPost as $brand){
 				$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -388,9 +388,9 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	}
 } elseif ($qualityPost != "" && !empty($qualityPost)){
 	if($qualityPost[0] == 1 && $qualityPost[1] == 10) {
-		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
+		$sql_start = 'SELECT * FROM posts UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
 	} else {
-		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
+		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
 		if(isset($brandsPost) && !empty($brandsPost)) {
 			foreach($brandsPost as $brand){
 				$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -431,7 +431,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 	}
 } else {
-	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
+	$sql_start = 'SELECT * FROM posts WHERE timestamp < UNIX_TIMESTAMP() ';
 }
 
 
@@ -447,10 +447,10 @@ if ($topFilterPost != ""){
 	} elseif ($topFilterPost == 'endingLatest') {
 		$sql_end = ' ORDER BY timestamp DESC';
 	} else {
-		$sql_end = ' ORDER BY timestamp ASC';
+		$sql_end = 'ORDER BY timestamp ASC';
 	}
 } else {
-	$sql_end = ' ORDER BY timestamp ASC';
+	$sql_end = 'ORDER BY timestamp ASC';
 }
 
 
@@ -632,9 +632,9 @@ if(isset($array_data[$scrollCount]) && count($array_data[$scrollCount]) > 0) {
 						</span>
 						<hr>
 						<p>
-							<h3 class="bidTime">
+							<h3 style="padding: 0 .75em 0 .75em;">
 								<?php if (isset($array_data[$scrollCount][$i]['usermaxbid']) && $array_data[$scrollCount][$i]['usermaxbid'] == "no") { ?>
-									<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600;">$
+									<span style="color:#0a7e07; font-size: 1.1em; font-weight: 600; color: red;">$
 										<?php echo $array_data[$scrollCount][$i]['price']; ?>
 									</span>
 								<?php } else { ?>

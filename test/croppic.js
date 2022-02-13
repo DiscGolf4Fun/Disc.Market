@@ -93,9 +93,11 @@
 		
 		init: function () {
 			var that = this;
-			
+			var percent = .5;
 			that.objW = that.obj.width();
 			that.objH = that.obj.height();
+			that.objW = $(window).width() * percent;
+			that.objH = $(window).width() * percent;
 			
 			// reset rotation
 			that.actualRotation = 0;
@@ -699,7 +701,7 @@
 
                 that.destroy();
 				
-                that.obj.append('<img class="croppedImg" src="' + response.url + '">');
+                that.obj.append('<img class="croppedImg" src="' + response.url + '"  style="height: 350px;">');
                 if (that.options.outputUrlId !== '') { $('#' + that.options.outputUrlId).val(response.url); }
 
                 that.croppedImg = that.obj.find('.croppedImg');
