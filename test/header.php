@@ -272,7 +272,7 @@
 						<a href="/test/account/#myaccount" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Account</h3></a>
 						<hr style="margin: 0 20% 0 20%;">
 						<a href="/test/account/#myposts" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;My Posts</h3></a>
-						<hr style="margin: 0 20% 0 20%;">
+						<hr style="margin: 0 20% 0 20%;"> 
 						<a href="/test/account/#currentbids" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-gavel" aria-hidden="true"></i>&nbsp;&nbsp;Current Bids</h3></a>
 						<hr style="margin: 0 20% 0 20%;">	
 						<a href="/test/account/#messages" onClick="window.location.reload()" style="text-decoration: none;"><h3 class="profilePopup"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;&nbsp;Messages</h3></a>

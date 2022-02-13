@@ -81,7 +81,7 @@ if(isset($_POST['scrollCount'])) {
 
 
 if ($brandsPost != "" && !empty($brandsPost)) {
-	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			if($brand == 'otherBrand'){
@@ -133,7 +133,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($categoryPost != "" && !empty($categoryPost)){
-	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -173,7 +173,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($discTypePost != 0 && !empty($discTypePost)){
-	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -213,7 +213,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($newUsedPost != 0 && !empty($newUsedPost)){
-	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -253,7 +253,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	$sql7 = 'weight >= '.($weightPost[0] == 130 ? 0 : $weightPost[0]).' AND weight <= '. ($weightPost[1] == 200 ? 10000 : $weightPost[1]);
 	$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 } elseif ($partialPost != 0 && !empty($partialPost) && $partialPost[0] != ""){
-	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 	if(isset($brandsPost) && !empty($brandsPost)) {
 		foreach($brandsPost as $brand){
 			$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -300,9 +300,9 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	}
 } elseif ($pricePost != "" && !empty($pricePost)){
 	if($pricePost[0] == 1 && $pricePost[1] == 200) {
-		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
+		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
 	} else {
-		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 		if(isset($brandsPost) && !empty($brandsPost)) {
 			foreach($brandsPost as $brand){
 				$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -344,9 +344,9 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	}
 } elseif ($weightPost != "" && !empty($weightPost)){
 	if($weightPost[0] == 130 && $weightPost[1] == 200) {
-		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
+		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
 	} else {
-		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 		if(isset($brandsPost) && !empty($brandsPost)) {
 			foreach($brandsPost as $brand){
 				$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -388,9 +388,9 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 	}
 } elseif ($qualityPost != "" && !empty($qualityPost)){
 	if($qualityPost[0] == 1 && $qualityPost[1] == 10) {
-		$sql_start = 'SELECT * FROM posts UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
+		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
 	} else {
-		$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' AND ';
+		$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp AND ';
 		if(isset($brandsPost) && !empty($brandsPost)) {
 			foreach($brandsPost as $brand){
 				$sql1[] = 'brand LIKE \''.$brand.'\'';
@@ -431,26 +431,26 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 		$sql8 = 'quality >= '.$qualityPost[0].' AND quality <= '.$qualityPost[1];
 	}
 } else {
-	$sql_start = 'SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > ' . time() . ' ';
+	$sql_start = 'SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp';
 }
 
 
 if ($topFilterPost != ""){
 	if ($topFilterPost == 'new') {
-		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
+		$sql_end = ' ORDER BY timestamp ASC';
 	} elseif ($topFilterPost == 'low') {
-		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY price ASC';
+		$sql_end = ' ORDER BY price ASC';
 	} elseif($topFilterPost == 'high') {
-		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY price DESC';
+		$sql_end = ' ORDER BY price DESC';
 	} elseif ($topFilterPost == 'endingSoonest') {
-		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
+		$sql_end = ' ORDER BY timestamp ASC';
 	} elseif ($topFilterPost == 'endingLatest') {
-		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp DESC';
+		$sql_end = ' ORDER BY timestamp DESC';
 	} else {
-		$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
+		$sql_end = ' ORDER BY timestamp ASC';
 	}
 } else {
-	$sql_end = 'AND NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC';
+	$sql_end = ' ORDER BY timestamp ASC';
 }
 
 

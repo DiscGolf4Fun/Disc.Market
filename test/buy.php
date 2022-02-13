@@ -62,7 +62,7 @@
 			
 
 			if(isset($_SESSION['u_id'])) {
-				$sql1 = "SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = ". $_SESSION['u_id'] ." ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> '' &&  NOW() + INTERVAL 1 HOUR < timestamp ";
+				$sql1 = "SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = ". $_SESSION['u_id'] ." ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> '' && UNIX_TIMESTAMP(timestamp) > " . time() . " ";
 				$sql2 = "SELECT DISTINCT bids.post_id, MAX(bids.bid) AS maxbid FROM posts LEFT JOIN bids ON posts.id = bids.post_id WHERE bids.bid <> '' && bids.user_id GROUP BY posts.id";
 
 				$posts = mysqli_query($conn, $sql1);
@@ -93,8 +93,8 @@
 						}
 					}
 				}
-				$winningCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-				$losingCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+				$winningCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+				$losingCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
 			}
 
 
@@ -367,6 +367,9 @@
                 <center><button style="justify-content: center;" data-toggle="confirm2">Clear All Filters</button>
                 </center>
                 <br>
+                <div class="mobileFilterButton" style="position: relative; bottom: 0px;width: 100%;padding: 1.5em 1em 1.5em 1em;border-top: solid;">
+                <h2>TESTING</h2>
+            </div>
             </section>
 </div>
 <!-- Main -->

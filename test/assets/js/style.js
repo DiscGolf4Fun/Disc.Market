@@ -1388,27 +1388,21 @@ $('.terms2').click( function(e) {
     $('.termsOfService').hide();
 })
 
+
 $('.filterButtonMobile').click( function(e) {
     console.log("Open: Mobile Filter");
-    $('#main-wrapper').css("position","fixed");
-    $('#main-wrapper').css("overflow","hidden");
     $('.filterMobile').show();
 })
 
 $('.close-thik4').click( function(e) {
     console.log("Close: Mobile Filter");
-    $('.filterMobile').hide();
-    $('#main-wrapper').css("position","absolute");
-    $('#main-wrapper').css("overflow","visible");
+    $('.filterMobile').hide() ;
 })
 
 $('.close6').click( function(e) {
     console.log("Close: Login/Signup");
-    dimmer.hide();
     loginDiv.hide();
     $('html, body').css("overflow","auto");
-    $('#main-wrapper').css("position","absolute");
-    $('#main-wrapper').css("overflow","visible");
 })
 
 $('.close-thik5').click( function(e) {
