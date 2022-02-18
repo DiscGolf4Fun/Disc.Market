@@ -7,6 +7,13 @@
 <?php
 
 $sql0 = [];
+
+if(isset($_POST['categoryPost'])) {
+	$categoryPost = (array) $_POST['categoryPost'];
+} else {
+	$categoryPost = (array) null;
+}
+
 if(isset($_POST['brandsPost'])) {
 	$brandsPost = (array) $_POST['brandsPost'];
 } else {
@@ -17,12 +24,6 @@ if(isset($_POST['partialPost'])) {
 	$partialPost = (array) $_POST['partialPost'];
 } else {
 	$partialPost = (array) null;
-}
-
-if(isset($_POST['categoryPost'])) {
-	$categoryPost = (array) $_POST['categoryPost'];
-} else {
-	$categoryPost = (array) null;
 }
 
 if(isset($_POST['discTypePost'])) {
@@ -83,6 +84,26 @@ if (isset($_POST['partialPost']) && $partialPost[0] != "" && !empty($partialPost
     print_r("<div class='filterButtonStyle 12u(mobile)'><button id='newUsedButton' style='font-size:1em;' onclick='unSearch()'><span>Search:&nbsp;". $partialPost[0] ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
 }
 
+if ($categoryPost != "" && !empty($categoryPost)) {
+    $count = $count + 1;
+    foreach ($categoryPost as $category) {
+        if ($category == 'disc') {
+            $categoryTitle = 'Discs';
+        } elseif ($category == 'bag') {
+            $categoryTitle = 'Bags / Carts';
+        } elseif ($category == 'apparel') {
+            $categoryTitle = 'Apparel';
+        } elseif ($category == 'basket') {
+            $categoryTitle = 'Baskets';
+        } elseif ($category == 'shoes') {
+            $categoryTitle = 'Shoes';
+        } elseif ($category == 'accessory') {
+            $categoryTitle = 'Accessories';
+        }
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='categoriesButton' style='font-size:1em;' onclick='unCheck(`". $category ."`,$(this).parent())'><span>". $categoryTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
+    }
+}
+
 if ($brandsPost != "" && !empty($brandsPost)) {
     $count = $count + 1;
     foreach ($brandsPost as $brand) {
@@ -106,30 +127,16 @@ if ($brandsPost != "" && !empty($brandsPost)) {
             $brandTitle = 'Gateway';
         } elseif ($brand == 'otherBrand') {
             $brandTitle = 'Other Brands';
+        } elseif ($brand == 'hyzerbomb') {
+            $brandTitle = 'Hyzerbomb';
+        } elseif ($brand == 'legacy') {
+            $brandTitle = 'Legacy';
+        } elseif ($brand == 'kastaplast') {
+            $brandTitle = 'Kastaplast';
         }
         print_r("<div class='filterButtonStyle 6u(mobile)'><button id='brandsButton' style='font-size:1em;' onclick='unCheck(`". $brand ."`,$(this).parent())'><span>". $brandTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 
-}
-
-if ($categoryPost != "" && !empty($categoryPost)) {
-    $count = $count + 1;
-    foreach ($categoryPost as $category) {
-        if ($category == 'disc') {
-            $categoryTitle = 'Discs';
-        } elseif ($category == 'bag') {
-            $categoryTitle = 'Bags / Carts';
-        } elseif ($category == 'apparel') {
-            $categoryTitle = 'Apparel';
-        } elseif ($category == 'basket') {
-            $categoryTitle = 'Baskets';
-        } elseif ($category == 'shoes') {
-            $categoryTitle = 'Shoes';
-        } elseif ($category == 'accessory') {
-            $categoryTitle = 'Accessories';
-        }
-        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='categoriesButton' style='font-size:1em;' onclick='unCheck(`". $category ."`,$(this).parent())'><span>". $categoryTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
-    }
 }
 
 if ($discTypePost != "" && !empty($discTypePost)) {

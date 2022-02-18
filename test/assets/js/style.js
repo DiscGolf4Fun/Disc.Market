@@ -1367,7 +1367,7 @@ var keynum, lines = 1;
       }
 
 function unCheck(value, value2) {
-    if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand'){
+    if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand' || value == 'hyzerbomb' || value == 'kastaplast' || value == 'legacy'){
         value2.remove();
         $('input#' + value).not(this).prop('checked', false);
         getPostsBrands(value);
@@ -1403,6 +1403,9 @@ function unCheck(value, value2) {
         $('input#prodigy').not(this).prop('checked', false);
         $('input#mvp').not(this).prop('checked', false);
         $('input#gateway').not(this).prop('checked', false);
+        $('input#hyzerbomb').not(this).prop('checked', false);
+        $('input#legacy').not(this).prop('checked', false);
+        $('input#kastaplast').not(this).prop('checked', false);
         $('input#otherBrand').not(this).prop('checked', false);
 
         $('input#disc').not(this).prop('checked', false);
@@ -1470,6 +1473,16 @@ $('.filterMobileClose2').click( function(e) {
     $('body').attr("style", "height: auto;", "overflow: auto;");
     $('.filterPopup').hide();
 })
+
+// This function is used when the MoreBrands button is clicked in the buy page filter.
+function moreBrands() {
+    $('.moreBrands').replaceWith('<a onclick="lessBrands()" class="lessBrands" style="color: #0a7e07; font-weight: 600;">Less Brands&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-up"></i></a>');
+    $('.filterItem.hide').attr("style", "display: block;");
+}
+function lessBrands() {
+    $('.lessBrands').replaceWith('<a onclick="moreBrands()" class="moreBrands" style="color: #0a7e07; font-weight: 600;">More Brands&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a>');
+    $('.filterItem.hide').attr("style", "display: none;");
+}
 
 
 

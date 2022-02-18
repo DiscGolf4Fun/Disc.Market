@@ -5,32 +5,6 @@
 <script type="text/javascript"></script>
 
 		<?php
-			$innovaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'innova' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$discraftCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discraft' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$dynamicCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'dynamic' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$latitudeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'latitude' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$westsideCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'westside' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$discmaniaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discmania' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$prodigyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'prodigy' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$mvpCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'MVP' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$gatewayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-			$otherBrandCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE 
-			brand != 'innova' && 
-			brand != 'discraft' && 
-			brand != 'dynamic' && 
-			brand != 'latitude' && 
-			brand != 'westside' && 
-			brand != 'discmania' && 
-			brand != 'prodigy' && 
-			brand != 'MVP' && 
-			brand != 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
-
-			$brandsArray = array('innova' => $innovaCount[0], 'discraft' => $discraftCount[0], 'dynamic' => $dynamicCount[0], 'latitude' => $latitudeCount[0], 'westside' => $westsideCount[0], 'discmania' => $discmaniaCount[0], 'prodigy' => $prodigyCount[0], 'mvp' => $mvpCount[0], 'gateway' => $gatewayCount[0]);
-			arsort($brandsArray);
-			$brandsArray['otherBrand'] = $otherBrandCount[0]; 
-
-
-
 			$discCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$bagCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'bag' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$apparelCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'apparel' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
@@ -41,6 +15,35 @@
 			$categoriesArray = array('disc' => $discCount[0], 'bag' => $bagCount[0], 'apparel' => $apparelCount[0], 'basket' => $basketCount[0], 'shoes' => $shoesCount[0], 'accessory' => $accessoryCount[0]);
 			arsort($categoriesArray);
 
+			$innovaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'innova' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$discraftCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discraft' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$dynamicCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'dynamic' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$latitudeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'latitude' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$westsideCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'westside' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$discmaniaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discmania' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$prodigyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'prodigy' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$mvpCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'MVP' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$gatewayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$hyzerbombCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'hyzerbomb' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$legacyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'legacy' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$kastaplastCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'kastaplast' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$otherBrandCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE 
+			brand != 'innova' && 
+			brand != 'discraft' && 
+			brand != 'dynamic' && 
+			brand != 'latitude' && 
+			brand != 'westside' && 
+			brand != 'discmania' && 
+			brand != 'prodigy' && 
+			brand != 'MVP' &&
+			brand != 'hyzerbomb' && 
+			brand != 'legacy' && 
+			brand != 'kastaplast' &&  
+			brand != 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+
+			$brandsArray = array('innova' => $innovaCount[0], 'discraft' => $discraftCount[0], 'dynamic' => $dynamicCount[0], 'latitude' => $latitudeCount[0], 'westside' => $westsideCount[0], 'discmania' => $discmaniaCount[0], 'prodigy' => $prodigyCount[0], 'mvp' => $mvpCount[0], 'gateway' => $gatewayCount[0], 'hyzerbomb' => $hyzerbombCount[0], 'kastaplast' => $kastaplastCount[0], 'legacy' => $legacyCount[0]);
+			arsort($brandsArray);
+			$brandsArray['otherBrand'] = $otherBrandCount[0]; 
 
 
 			$driverCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'driver' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
@@ -52,7 +55,7 @@
 			$usedCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'used' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 
 
-			$totalCount = $innovaCount[0] + $discraftCount[0] + $dynamicCount[0] + $latitudeCount[0] + $westsideCount[0] + $discmaniaCount[0] + $prodigyCount[0] + $mvpCount[0] + $gatewayCount[0] + $otherBrandCount[0];
+			$totalCount = $innovaCount[0] + $discraftCount[0] + $dynamicCount[0] + $latitudeCount[0] + $westsideCount[0] + $discmaniaCount[0] + $prodigyCount[0] + $mvpCount[0] + $gatewayCount[0] + $hyzerbombCount[0] + $kastaplastCount[0] + $legacyCount[0] + $otherBrandCount[0];
 
 			if(isset($_GET['search'])) {
 				$homeSearch = $_GET['search'];
@@ -126,59 +129,7 @@
 												<br>
 												<div class="12u 12u(mobile) border">
 													<section class="box" id="filterBox">
-													<?php
-														if(isset($_SESSION['u_role']) && $_SESSION['u_role'] == 1) {
-															echo "<h3 class='filterTitle'>Brands<span style='float: right; padding-right: .75em;'>Total: ". $totalCount ."</span></h3>";
-														} else {
-															echo "<h3 class='filterTitle'>Brands</h3>";
-														}
-
-														foreach($brandsArray as $key => $value) {
-															?>
-															<div class="filterItem">
-																<div class="pretty p-svg p-curve p-pulse">
-																<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
-																	<div class="state p-success">
-																		<!-- svg path -->
-																		<svg class="svg svg-icon" viewBox="0 0 20 20">
-																			<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-																		</svg>
-
-																		<?php
-																		if($key == 'innova'){
-																			$key = 'Innova';
-																		} elseif($key == 'discraft') {
-																			$key = 'Discraft';
-																		} elseif($key == 'dynamic') {
-																			$key = 'Dynamic Discs';
-																		} elseif($key == 'latitude') {
-																			$key = 'Latitude 64';
-																		} elseif($key == 'westside') {
-																			$key = 'Westside';
-																		} elseif($key == 'discmania') {
-																			$key = 'Discmania';
-																		} elseif($key == 'prodigy') {
-																			$key = 'Prodigy';
-																		} elseif($key == 'mvp') {
-																			$key = 'MVP';
-																		} elseif($key == 'gateway') {
-																			$key = 'Gateway';
-																		} elseif($key == 'otherBrand') {
-																			$key = 'Other Brands';
-																		}
-																		?>
-
-
-																		<label style="margin-left: .75em;"></label><?php echo $key; ?>
-																	</div>
-																</div>
-																<span style="float: right;"><?php echo $value ?></span>
-															</div>
-															<?php
-														}
-														?>
-														<br>
-														<h3 class="filterTitle">Categories</h3>
+													<h3 class="filterTitle">Categories</h3>
 														<?php
 														foreach($categoriesArray as $key => $value) {
 															?>
@@ -215,8 +166,78 @@
 															</div>
 															<?php
 															}
-														?>						
-														
+														?>
+														<br>
+													<?php
+														if(isset($_SESSION['u_role']) && $_SESSION['u_role'] == 1) {
+															echo "<h3 class='filterTitle'>Brands<span style='float: right; padding-right: .75em;'>Total: ". $totalCount ."</span></h3>";
+														} else {
+															echo "<h3 class='filterTitle'>Brands</h3>";
+														}
+
+																		$j = 0;
+															foreach($brandsArray as $key => $value) {
+																	if ($j < 10) {
+																	?>
+																		<div class="filterItem">
+																		<div class="pretty p-svg p-curve p-pulse">
+																		<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
+																		<?php
+																	} else {
+																		?>
+																		<div class="filterItem hide" style="display: none;">
+																		<div class="pretty p-svg p-curve p-pulse">
+																		<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
+																	<?php
+																	}
+																	$j++;
+																	?>
+																	<div class="state p-success">
+																		<!-- svg path -->
+																		<svg class="svg svg-icon" viewBox="0 0 20 20">
+																			<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+																		</svg>
+
+																		<?php
+																		if($key == 'innova'){
+																			$key = 'Innova';
+																		} elseif($key == 'discraft') {
+																			$key = 'Discraft';
+																		} elseif($key == 'dynamic') {
+																			$key = 'Dynamic Discs';
+																		} elseif($key == 'latitude') {
+																			$key = 'Latitude 64';
+																		} elseif($key == 'westside') {
+																			$key = 'Westside';
+																		} elseif($key == 'discmania') {
+																			$key = 'Discmania';
+																		} elseif($key == 'prodigy') {
+																			$key = 'Prodigy';
+																		} elseif($key == 'mvp') {
+																			$key = 'MVP';
+																		} elseif($key == 'gateway') {
+																			$key = 'Gateway';
+																		} elseif($key == 'hyzerbomb') {
+																			$key = 'Hyzerbomb';
+																		} elseif($key == 'legacy') {
+																			$key = 'Legacy';
+																		} elseif($key == 'kastaplast') {
+																			$key = 'Kastaplast';
+																		} elseif($key == 'otherBrand') {
+																			$key = 'Other Brands';
+																		}
+																		?>
+
+
+																		<label style="margin-left: .75em;"></label><?php echo $key; ?>
+																	</div>
+																</div>
+																<span style="float: right;"><?php echo $value ?></span>
+															</div>
+															<?php
+														}
+														?>
+														<p style="text-align: center; cursor: pointer; margin-bottom: 0;"><a onclick="moreBrands()" class="moreBrands" style="color: #0a7e07; font-weight: 600;">More Brands&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a></p>																	
 														<br>
 														<h3 class="filterTitle">Disc Type</h3>
 														<div class="filterItem">
@@ -384,59 +405,7 @@
 								<div class="filter2" style="width: 25%;">
 									<div class="12u 12u(mobile) border">
 										<section class="box" id="filterBox">
-										<?php
-											if(isset($_SESSION['u_role']) && $_SESSION['u_role'] == 1) {
-												echo "<h3 class='filterTitle'>Brands<span style='float: right; padding-right: .75em;'>Total: ". $totalCount ."</span></h3>";
-											} else {
-												echo "<h3 class='filterTitle'>Brands</h3>";
-											}
-
-											foreach($brandsArray as $key => $value) {
-												?>
-												<div class="filterItem">
-													<div class="pretty p-svg p-curve p-pulse">
-													<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
-														<div class="state p-success">
-															<!-- svg path -->
-															<svg class="svg svg-icon" viewBox="0 0 20 20">
-																<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
-															</svg>
-
-															<?php
-															if($key == 'innova'){
-																$key = 'Innova';
-															} elseif($key == 'discraft') {
-																$key = 'Discraft';
-															} elseif($key == 'dynamic') {
-																$key = 'Dynamic Discs';
-															} elseif($key == 'latitude') {
-																$key = 'Latitude 64';
-															} elseif($key == 'westside') {
-																$key = 'Westside';
-															} elseif($key == 'discmania') {
-																$key = 'Discmania';
-															} elseif($key == 'prodigy') {
-																$key = 'Prodigy';
-															} elseif($key == 'mvp') {
-																$key = 'MVP';
-															} elseif($key == 'gateway') {
-																$key = 'Gateway';
-															} elseif($key == 'otherBrand') {
-																$key = 'Other Brands';
-															}
-															?>
-
-
-															<label style="margin-left: .75em;"></label><?php echo $key; ?>
-														</div>
-													</div>
-													<span style="float: right;"><?php echo $value ?></span>
-												</div>
-												<?php
-											}
-											?>
-											<br>
-											<h3 class="filterTitle">Categories</h3>
+										<h3 class="filterTitle">Categories</h3>
 											<?php
 											foreach($categoriesArray as $key => $value) {
 												?>
@@ -473,9 +442,78 @@
 												</div>
 												<?php
 												}
-											?>						
-											
+											?>
 											<br>
+										<?php
+											if(isset($_SESSION['u_role']) && $_SESSION['u_role'] == 1) {
+												echo "<h3 class='filterTitle'>Brands<span style='float: right; padding-right: .75em;'>Total: ". $totalCount ."</span></h3>";
+											} else {
+												echo "<h3 class='filterTitle'>Brands</h3>";
+											}
+											$j = 0;
+											foreach($brandsArray as $key => $value) {
+													if ($j < 10) {
+													?>
+														<div class="filterItem">
+														<div class="pretty p-svg p-curve p-pulse">
+														<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
+														<?php
+													} else {
+														?>
+														<div class="filterItem hide" style="display: none;">
+														<div class="pretty p-svg p-curve p-pulse">
+														<input type="checkbox" name="filterCheckbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>" onchange="getPostsBrands(this.value)">
+													<?php
+													}
+													$j++;
+													?>
+														<div class="state p-success">
+															<!-- svg path -->
+															<svg class="svg svg-icon" viewBox="0 0 20 20">
+																<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+															</svg>
+
+															<?php
+															if($key == 'innova'){
+																$key = 'Innova';
+															} elseif($key == 'discraft') {
+																$key = 'Discraft';
+															} elseif($key == 'dynamic') {
+																$key = 'Dynamic Discs';
+															} elseif($key == 'latitude') {
+																$key = 'Latitude 64';
+															} elseif($key == 'westside') {
+																$key = 'Westside';
+															} elseif($key == 'discmania') {
+																$key = 'Discmania';
+															} elseif($key == 'prodigy') {
+																$key = 'Prodigy';
+															} elseif($key == 'mvp') {
+																$key = 'MVP';
+															} elseif($key == 'gateway') {
+																$key = 'Gateway';
+															} elseif($key == 'hyzerbomb') {
+																$key = 'Hyzerbomb';
+															} elseif($key == 'legacy') {
+																$key = 'Legacy';
+															} elseif($key == 'kastaplast') {
+																$key = 'Kastaplast';
+															} elseif($key == 'otherBrand') {
+																$key = 'Other Brands';
+															}
+															?>
+
+
+															<label style="margin-left: .75em;"></label><?php echo $key; ?>
+														</div>
+													</div>
+													<span style="float: right;"><?php echo $value ?></span>
+												</div>
+												<?php
+											}
+											?>																
+											<p style="text-align: center; cursor: pointer; margin-bottom: 0;"><a onclick="moreBrands()" class="moreBrands" style="color: #0a7e07; font-weight: 600;">More Brands&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a></p>
+											<br>	
 											<h3 class="filterTitle">Disc Type</h3>
 											<div class="filterItem">
 											<div class="pretty p-svg p-curve p-pulse">
