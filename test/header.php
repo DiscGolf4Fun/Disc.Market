@@ -117,7 +117,7 @@
 				<nav id="nav">
 					<ul>
 						<li <?php if ((basename($_SERVER['PHP_SELF']) == "index.php") && (strpos($_SERVER['REQUEST_URI'], "admin") != true) && (strpos($_SERVER['REQUEST_URI'], "account") != true))  echo 'class="current"'; ?>>
-							<a href="/test"><i class="fa fa-home" aria-hidden="true"></i></a>
+							<a href="/test">Home</a>
 						</li>
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "buy.php") echo 'class="current"'; ?>>
 							<a href="/test/buy.php">Buy</a>
@@ -125,12 +125,10 @@
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "sell.php" || basename($_SERVER['PHP_SELF']) == "/sell-images.php") echo 'class="current"'; ?>>
 							<a href="/test/sell.php">Sell</a>
 						</li>
-						<li <?php if (basename($_SERVER['PHP_SELF']) == "about.php") echo 'class="current"'; ?>>
-							<a href="/test/about.php">About</a>
-						</li>
 						<li <?php if (basename($_SERVER['PHP_SELF']) == "faq.php" || basename($_SERVER['PHP_SELF']) == "store.php" || basename($_SERVER['PHP_SELF']) == "matchplay.php"){echo 'class="opener current"';}else{echo 'class="opener"';}  ?>>
 							<a href="#">More&nbsp;&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 							<ul class="dropdownMenu">
+								<li><a href="/test/about.php"><i class="fa fa-star" aria-hidden="true"></i><span class="ink"></span>About</a></li>
 								<li><a href="/test/faq.php"><i class="fa fa-question" aria-hidden="true"></i><span class="ink"></span>FAQs</a></li>
 								<li><a href="/test/store.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="ink"></span>Our Store</a></li>
 								<li><a href="https://www.youtube.com/user/213ultimate/videos" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i><span class="ink"></span>YouTube Videos</a></li>

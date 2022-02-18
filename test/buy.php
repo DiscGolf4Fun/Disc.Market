@@ -1,19 +1,19 @@
-<?php include_once 'header.php'; ?>
+ <?php include_once 'header.php'; ?>
 </div>
 </div>
 
-<script type="text/javascript" src="javascript.js"></script>
+<script type="text/javascript"></script>
 
 		<?php
-			$innovaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'innova' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$discraftCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discraft' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$dynamicCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'dynamic' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$latitudeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'latitude' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$westsideCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'westside' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$discmaniaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discmania' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$prodigyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'prodigy' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$mvpCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'MVP' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$gatewayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'gateway' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$innovaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'innova' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$discraftCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discraft' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$dynamicCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'dynamic' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$latitudeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'latitude' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$westsideCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'westside' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$discmaniaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'discmania' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$prodigyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'prodigy' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$mvpCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'MVP' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$gatewayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$otherBrandCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE 
 			brand != 'innova' && 
 			brand != 'discraft' && 
@@ -23,7 +23,7 @@
 			brand != 'discmania' && 
 			brand != 'prodigy' && 
 			brand != 'MVP' && 
-			brand != 'gateway' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			brand != 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 
 			$brandsArray = array('innova' => $innovaCount[0], 'discraft' => $discraftCount[0], 'dynamic' => $dynamicCount[0], 'latitude' => $latitudeCount[0], 'westside' => $westsideCount[0], 'discmania' => $discmaniaCount[0], 'prodigy' => $prodigyCount[0], 'mvp' => $mvpCount[0], 'gateway' => $gatewayCount[0]);
 			arsort($brandsArray);
@@ -31,25 +31,25 @@
 
 
 
-			$discCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$bagCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'bag' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$apparelCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'apparel' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$basketCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'basket' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$shoesCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'shoes' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$accessoryCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'accessory' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$discCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$bagCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'bag' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$apparelCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'apparel' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$basketCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'basket' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$shoesCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'shoes' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$accessoryCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'accessory' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 
 			$categoriesArray = array('disc' => $discCount[0], 'bag' => $bagCount[0], 'apparel' => $apparelCount[0], 'basket' => $basketCount[0], 'shoes' => $shoesCount[0], 'accessory' => $accessoryCount[0]);
 			arsort($categoriesArray);
 
 
 
-			$driverCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'driver' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$fairwayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'fairway' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$midrangeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'midrange' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$putterCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'putter' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$driverCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'driver' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$fairwayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'fairway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$midrangeCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'midrange' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$putterCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE disc_type = 'putter' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 
-			$newCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'new' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-			$usedCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'used' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+			$newCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'new' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$usedCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'used' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 
 
 			$totalCount = $innovaCount[0] + $discraftCount[0] + $dynamicCount[0] + $latitudeCount[0] + $westsideCount[0] + $discmaniaCount[0] + $prodigyCount[0] + $mvpCount[0] + $gatewayCount[0] + $otherBrandCount[0];
@@ -62,7 +62,7 @@
 			
 
 			if(isset($_SESSION['u_id'])) {
-				$sql1 = "SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = ". $_SESSION['u_id'] ." ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> '' && UNIX_TIMESTAMP(timestamp) > " . time() . " ";
+				$sql1 = "SELECT * FROM posts LEFT JOIN(SELECT DISTINCT bids.post_id, bids.bid FROM bids WHERE bids.user_id = ". $_SESSION['u_id'] ." ORDER BY bids.bid DESC) bidding ON posts.id = bidding.post_id WHERE bidding.post_id <> '' && NOW() + INTERVAL 1 HOUR < timestamp ";
 				$sql2 = "SELECT DISTINCT bids.post_id, MAX(bids.bid) AS maxbid FROM posts LEFT JOIN bids ON posts.id = bids.post_id WHERE bids.bid <> '' && bids.user_id GROUP BY posts.id";
 
 				$posts = mysqli_query($conn, $sql1);
@@ -93,8 +93,8 @@
 						}
 					}
 				}
-				$winningCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
-				$losingCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND UNIX_TIMESTAMP(timestamp) > " . time() . ";"));
+				$winningCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+				$losingCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE type = 'disc' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			}
 
 
@@ -337,7 +337,7 @@
 														<br>
 														<div class="filterItemSlider">
 															<div class="slider1">
-																<input type="text" id="sliderPrice" class="sliderPrice">
+																<input type="text" id="sliderPriceMobile" class="sliderPriceMobile">
 															</div>
 														</div>
 														<hr style="margin: 1.5em 1em .5em 1em;">
@@ -345,7 +345,7 @@
 														<br>
 														<div class="filterItemSlider">
 															<div class="slider1">
-																<input type="text" id="sliderWeight" class="sliderWeight">
+																<input type="text" id="sliderWeightMobile" class="sliderWeightMobile">
 															</div>
 														</div>
 														<hr style="margin: 1.5em 1em .5em 1em;">
@@ -353,7 +353,7 @@
 														<br>
 														<div class="filterItemSlider">
 															<div class="slider1">
-																<input type="text" id="sliderQuality" class="sliderQuality">
+																<input type="text" id="sliderQualityMobile" class="sliderQualityMobile">
 															</div>
 														</div>
 													</section>
@@ -622,7 +622,7 @@
 									<button type="button" id="toTopButton" onclick="topFunction();" style="display: none;">&nbsp;&nbsp;<i class="fa fa-caret-up" style="font-size: 1.5em;"></i>&nbsp;&nbsp;</button>
 								</div>
 	
-								<div class="pageLoader" style="">
+								<div class="pageLoader">
 									<img src="/test/images/LoadingPuttGif.gif" alt="Loading Putt Gif"  width="500" />
 									<h2>Loading discs...</h2>
 								</div>

@@ -107,7 +107,7 @@ if ($brandsPost != "" && !empty($brandsPost)) {
         } elseif ($brand == 'otherBrand') {
             $brandTitle = 'Other Brands';
         }
-        print_r("<div class='filterButtonStyle 6u(mobile)'><button type='button' class='brandsButton' id='brandsButton' style='font-size:1em;' onclick='unCheck(`". $brand ."`)'><span>". $brandTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='brandsButton' style='font-size:1em;' onclick='unCheck(`". $brand ."`,$(this).parent())'><span>". $brandTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 
 }
@@ -128,7 +128,7 @@ if ($categoryPost != "" && !empty($categoryPost)) {
         } elseif ($category == 'accessory') {
             $categoryTitle = 'Accessories';
         }
-        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='categoriesButton' style='font-size:1em;' onclick='unCheck(`". $category ."`)'><span>". $categoryTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='categoriesButton' style='font-size:1em;' onclick='unCheck(`". $category ."`,$(this).parent())'><span>". $categoryTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 }
 
@@ -144,7 +144,7 @@ if ($discTypePost != "" && !empty($discTypePost)) {
         } elseif ($discType == 'putter') {
             $discTypeTitle = 'Putter';
         }
-        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='discTypeButton' style='font-size:1em;' onclick='unCheck(`". $discType ."`)'><span>". $discTypeTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='discTypeButton' style='font-size:1em;' onclick='unCheck(`". $discType ."`,$(this).parent())'><span>". $discTypeTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 }
 
@@ -156,7 +156,7 @@ if ($newUsedPost != "" && !empty($newUsedPost)) {
         } elseif ($newUsed == 'used') {
             $newUsedTitle = 'Used';
         }
-        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='newUsedButton' style='font-size:1em;' onclick='unCheck(`". $newUsed ."`)'><span>". $newUsedTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
+        print_r("<div class='filterButtonStyle 6u(mobile)'><button id='newUsedButton' style='font-size:1em;' onclick='unCheck(`". $newUsed ."`,$(this).parent())'><span>". $newUsedTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }
 }
 
