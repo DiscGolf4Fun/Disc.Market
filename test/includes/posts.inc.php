@@ -94,8 +94,12 @@ if ($brandsPost != "" && !empty($brandsPost)) {
 						brand NOT LIKE "prodigy" AND 
 						brand NOT LIKE "mvp" AND 
 						brand NOT LIKE "hyzerbomb" AND 
+						brand NOT LIKE "dga" AND 
+						brand NOT LIKE "milenium" AND 
 						brand NOT LIKE "legacy" AND 
 						brand NOT LIKE "kastaplast" AND 
+						brand NOT LIKE "fullturn" AND 
+						brand NOT LIKE "elevation" AND 
 						brand NOT LIKE "gateway")';
 			} else {
 				$sql1[] = 'brand LIKE \''.$brand.'\'';

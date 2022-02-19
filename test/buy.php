@@ -25,8 +25,12 @@
 			$mvpCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'MVP' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$gatewayCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$hyzerbombCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'hyzerbomb' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$dgaCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'dga' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$mileniumCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'milenium' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$legacyCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'legacy' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$kastaplastCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'kastaplast' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$fullturnCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'fullturn' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
+			$elevationCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE brand = 'elevation' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 			$otherBrandCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE 
 			brand != 'innova' && 
 			brand != 'discraft' && 
@@ -37,11 +41,13 @@
 			brand != 'prodigy' && 
 			brand != 'MVP' &&
 			brand != 'hyzerbomb' && 
+			brand != 'dga' && 
+			brand != 'milenium' && 
 			brand != 'legacy' && 
 			brand != 'kastaplast' &&  
 			brand != 'gateway' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 
-			$brandsArray = array('innova' => $innovaCount[0], 'discraft' => $discraftCount[0], 'dynamic' => $dynamicCount[0], 'latitude' => $latitudeCount[0], 'westside' => $westsideCount[0], 'discmania' => $discmaniaCount[0], 'prodigy' => $prodigyCount[0], 'mvp' => $mvpCount[0], 'gateway' => $gatewayCount[0], 'hyzerbomb' => $hyzerbombCount[0], 'kastaplast' => $kastaplastCount[0], 'legacy' => $legacyCount[0]);
+			$brandsArray = array('innova' => $innovaCount[0], 'discraft' => $discraftCount[0], 'dynamic' => $dynamicCount[0], 'latitude' => $latitudeCount[0], 'westside' => $westsideCount[0], 'discmania' => $discmaniaCount[0], 'prodigy' => $prodigyCount[0], 'mvp' => $mvpCount[0], 'gateway' => $gatewayCount[0], 'hyzerbomb' => $hyzerbombCount[0],  'dga' => $dgaCount[0], 'milenium' => $mileniumCount[0],'kastaplast' => $kastaplastCount[0], 'legacy' => $legacyCount[0], 'fullturn' => $legacyCount[0],  'elevation' => $legacyCount[0]);
 			arsort($brandsArray);
 			$brandsArray['otherBrand'] = $otherBrandCount[0]; 
 
@@ -55,7 +61,7 @@
 			$usedCount = mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) FROM posts WHERE newused = 'used' AND NOW() + INTERVAL 1 HOUR < timestamp;"));
 
 
-			$totalCount = $innovaCount[0] + $discraftCount[0] + $dynamicCount[0] + $latitudeCount[0] + $westsideCount[0] + $discmaniaCount[0] + $prodigyCount[0] + $mvpCount[0] + $gatewayCount[0] + $hyzerbombCount[0] + $kastaplastCount[0] + $legacyCount[0] + $otherBrandCount[0];
+			$totalCount = $innovaCount[0] + $discraftCount[0] + $dynamicCount[0] + $latitudeCount[0] + $westsideCount[0] + $discmaniaCount[0] + $prodigyCount[0] + $mvpCount[0] + $gatewayCount[0] + $hyzerbombCount[0] + $kastaplastCount[0] + $legacyCount[0]  + $fullturnCount[0]  + $elevationCount[0] + $otherBrandCount[0];
 
 			if(isset($_GET['search'])) {
 				$homeSearch = $_GET['search'];
@@ -221,8 +227,16 @@
 																			$key = 'Hyzerbomb';
 																		} elseif($key == 'legacy') {
 																			$key = 'Legacy';
+																		} elseif($key == 'dga') {
+																			$key = 'DGA';
+																		} elseif($key == 'milenium') {
+																			$key = 'Milenium';
 																		} elseif($key == 'kastaplast') {
 																			$key = 'Kastaplast';
+																		} elseif($key == 'fullturn') {
+																			$key = 'Full Turn';
+																		} elseif($key == 'elevation') {
+																			$key = 'Elevation';
 																		} elseif($key == 'otherBrand') {
 																			$key = 'Other Brands';
 																		}
@@ -494,10 +508,18 @@
 																$key = 'Gateway';
 															} elseif($key == 'hyzerbomb') {
 																$key = 'Hyzerbomb';
+															} elseif($key == 'dga') {
+																$key = 'DGA';
+															} elseif($key == 'milenium') {
+																$key = 'Milenium';
 															} elseif($key == 'legacy') {
 																$key = 'Legacy';
 															} elseif($key == 'kastaplast') {
 																$key = 'Kastaplast';
+															} elseif($key == 'fullturn') {
+																$key = 'Full Turn';
+															} elseif($key == 'elevation') {
+																$key = 'Elevation';
 															} elseif($key == 'otherBrand') {
 																$key = 'Other Brands';
 															}

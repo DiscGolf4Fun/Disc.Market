@@ -129,10 +129,18 @@ if ($brandsPost != "" && !empty($brandsPost)) {
             $brandTitle = 'Other Brands';
         } elseif ($brand == 'hyzerbomb') {
             $brandTitle = 'Hyzerbomb';
+        } elseif ($brand == 'dga') {
+            $brandTitle = 'DGA';
+        } elseif ($brand == 'milenium') {
+            $brandTitle = 'Milenium';
         } elseif ($brand == 'legacy') {
             $brandTitle = 'Legacy';
         } elseif ($brand == 'kastaplast') {
             $brandTitle = 'Kastaplast';
+        } elseif ($brand == 'fullturn') {
+            $brandTitle = 'Full Turn';
+        } elseif ($brand == 'elevation') {
+            $brandTitle = 'Elevation';
         }
         print_r("<div class='filterButtonStyle 6u(mobile)'><button id='brandsButton' style='font-size:1em;' onclick='unCheck(`". $brand ."`,$(this).parent())'><span>". $brandTitle ."&nbsp;<i class='fa fa-close'></i></span></button></div>");
     }

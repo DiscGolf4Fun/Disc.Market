@@ -96,7 +96,7 @@ if (document.location.href.indexOf('buy.php') !== -1){
             scrolled2 = document.body.offsetHeight;
             scrolled3 = scrolled2 - 100;
             if($("#footer-wrapper").is(":hidden")) { 
-                $("#postsLoader").scrollTop($("#postsLoader")[0].scrollHeight);
+                $("#postsLoader").scrollTop($("#postsLoader")[0].offsetHeight);
                 $(".postsLoader").css("display","block");
                 if (scrolled1 >= scrolled3 && scrollOnce == true) {
                     scrollOnce = false;
@@ -110,7 +110,7 @@ if (document.location.href.indexOf('buy.php') !== -1){
             }           
 
         }
-        if (window.scrollY > start) {
+        if (window.scrollY > start + 500) {
             $('#toTopButton').attr("style", "display: block");
             $('#toTopButton').attr("style", "bottom: 3em");
 
@@ -1367,7 +1367,7 @@ var keynum, lines = 1;
       }
 
 function unCheck(value, value2) {
-    if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand' || value == 'hyzerbomb' || value == 'kastaplast' || value == 'legacy'){
+    if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand' || value == 'hyzerbomb' || value == 'kastaplast' || value == 'dga' || value == 'milenium' || value == 'legacy'){
         value2.remove();
         $('input#' + value).not(this).prop('checked', false);
         getPostsBrands(value);
@@ -1404,8 +1404,12 @@ function unCheck(value, value2) {
         $('input#mvp').not(this).prop('checked', false);
         $('input#gateway').not(this).prop('checked', false);
         $('input#hyzerbomb').not(this).prop('checked', false);
+        $('input#dga').not(this).prop('checked', false);
+        $('input#milenium').not(this).prop('checked', false);
         $('input#legacy').not(this).prop('checked', false);
         $('input#kastaplast').not(this).prop('checked', false);
+        $('input#fullturn').not(this).prop('checked', false);
+        $('input#elevation').not(this).prop('checked', false);
         $('input#otherBrand').not(this).prop('checked', false);
 
         $('input#disc').not(this).prop('checked', false);
