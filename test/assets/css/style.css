@@ -84,6 +84,16 @@ section#searchMarket {
     margin-bottom: 0;
 }
 
+section#searchMarketHome {
+    margin-top: 3em;
+    margin-bottom: 0;
+}
+
+section#searchMarketHome .search-container {
+    pointer-events: auto;
+    opacity: 1;
+}
+
 section#search {
     margin-bottom: 1.75em;
 }
@@ -488,6 +498,8 @@ input#myRange.slider{
   .search-container{
     margin-top: 0;
     margin-bottom: 1.5em;
+    pointer-events: none;
+    opacity: .50;
   }
 
   .search-container button{
@@ -497,10 +509,17 @@ input#myRange.slider{
   .dropdown-container{
     margin-top: 0;
     margin-bottom: 1.5em;  
+    pointer-events: none;
+    opacity: .50;
   }
 
   .dropdown-container form{
     margin-left: 0em; 
+  }
+
+  .filter2 div.border {
+    pointer-events: none;
+    opacity: .50;
   }
 
   #filterResults p {
@@ -843,7 +862,8 @@ a.postModal {
 }
 
 .filterTitle {
-    padding: 0 0 0 .75em;
+    text-decoration: underline;
+    padding: 0 0 .25em .75em;
 }
 
 .modal-content2 .row div.pad{
@@ -1104,7 +1124,7 @@ h4.postDetails {
 }
 
 .switch-field input:checked + label {
-  background-color: #0a7e07;
+  background-color: #6CB16A;
   -webkit-box-shadow: none;
   color: black;
   font-weight: 600;
@@ -1230,6 +1250,115 @@ h4.postDetails {
 .switch-field3 label:last-of-type {
   border-radius: 0 4px 4px 0;
 }
+
+.sellTitle {
+    padding: 1.5em 4em 1.5em 1em;
+}
+
+.sellCategory {
+    padding: 1.5em 1em 1.5em 1em;
+}
+
+.sellDescription {
+    padding: 1.5em 1em 0em 1em;
+}
+
+.sellAccessorySize {
+    padding: 1.5em 4em 1.5em 10em;
+}
+
+.sellAccessoryColor {
+    padding: 1.5em 10em 1.5em 4em;
+}
+
+.sellMinBid {
+    padding: 2em 4em 2.5em 10em;
+}
+
+.sellBuyitnow {
+    padding: 2em 10em 2.5em 4em;
+}
+
+.sellNewused {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.sellQuality {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.sellBrand {
+    padding: 1.5em 3em 1.5em 3em;
+}
+
+.discWeight {
+    padding: 1.5em 3em 1.5em 3em;
+}
+
+.discPlastic {
+    padding: 1.5em 3em 1.5em 3em;
+}
+
+.discColor {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.discName {
+    padding: 1.5em 4em 1.5em 10em;
+}
+.discInk {
+    padding: 1.5em 10em 1.5em 4em;
+}
+.bagColor {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.bagModal {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.bagCapacity {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.apparelSize {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.apparelColor {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.apparelMaterial {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.basketModal {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.basketChains {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.basketColor {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.shoeSize {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.shoeColor {
+    padding: 1.5em 3em 1.5em 3em;
+}
+.shoeGender {
+    padding: 1.5em 3em 1.5em 3em;
+}
+
+#otherBrand {
+    padding-top: 0;
+    padding-left: 35%;
+    padding-right: 35%;
+    display: none;
+}
+
+
+.nextImages {
+    padding: 1em 0 1em 0;
+}
+.sellReset {
+    padding: 1em 0 1em 0;
+    padding-left: 1em;
+}
+
 
 .quality {
     text-align: center;
@@ -1597,7 +1726,7 @@ header.major {
     background-color: #fff;
     width: 100%;
     height: 100%;}
-    .form-wrap .tabs {
+    .form-wrap .tabs-content {
       overflow: hidden; }
       .form-wrap .tabs h3 {
         float: left;
@@ -2666,9 +2795,7 @@ header.major {
                 border-bottom-color: rgba(34, 30, 31, 0.98);
             }
     
-        #searchMarket {
-            margin: 2em 0 1.5em 0 !important;
-        }
+
     
         span.psw {
            display: block;
@@ -2714,6 +2841,16 @@ header.major {
         #searchMarket {
             margin-top: 2em;
         }
+
+        section#searchMarketHome {
+            margin-top: 1.5em;
+            margin-bottom: 0;
+        }
+        
+        section#searchMarketHome .search-container {
+            pointer-events: auto;
+            opacity: 1;
+        }
     
         .loginDiv {
             width: 100%;
@@ -2735,9 +2872,6 @@ header.major {
             margin: 1em 0 2em 0 !important;
         }
 
-        section, article {
-            margin: 0 0 0 0 !important;
-        }
 
         .termsOfService {
             width: 100%;
@@ -2768,5 +2902,106 @@ header.major {
             margin-bottom: 0;
         }
 
+        .sellTitle {
+            padding: 0 1em 1.5em 1em;
+        }
+        .sellCategory {
+            padding: 0 1em 1.5em 1em;
+        }
+
+        .sellDescription {
+            padding: 0em 1em 0em 1em;
+        }
+
+        .sellAccessorySize {
+            padding: 0 1em 1.5em 1em;
+        }
+        
+        .sellAccessoryColor {
+            padding: 0 1em 0em 1em;
+        }
+
+        .sellMinBid {
+            padding: 0 1em 1.5em 1em;
+        }
+        
+        .sellBuyitnow {
+            padding: 0 1em 1.5em 1em;
+        }
+        .sellNewused {
+            padding: 0 1em 1.5em 1em;
+        }
+        .sellQuality {
+            padding: 0 1em 1.5em 1em;
+        }
+        .sellBrand {
+            padding: 0 1em 1.5em 1em;
+        }
+        .nextImages {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .sellReset {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .discWeight {
+            padding: 0 1em 1.5em 1em;
+        }
+        
+        .discPlastic {
+            padding: 0 1em 1.5em 1em;
+        }
+        
+        .discColor {
+            padding: 0 1em 1.5em 1em;
+        }
+        .discName {
+            padding: 0 1em 1.5em 1em;
+        }
+        .discInk {
+            padding: 0 1em 1.5em 1em;
+        }
+        .bagColor {
+            padding: 0 1em 1.5em 1em;
+        }
+        .bagModal {
+            padding: 0 1em 1.5em 1em;
+        }
+        .bagCapacity {
+            padding: 0 1em 1.5em 1em;
+        }
+        .apparelSize {
+            padding: 0 1em 1.5em 1em;
+        }
+        .apparelColor {
+            padding: 0 1em 1.5em 1em;
+        }
+        .apparelMaterial {
+            padding: 0 1em 1.5em 1em;
+        }
+        .basketModal {
+            padding: 0 1em 1.5em 1em;
+        }
+        .basketChains {
+            padding: 0 1em 1.5em 1em;
+        }
+        .basketColor {
+            padding: 0 1em 1.5em 1em;
+        }
+        .shoeSize {
+            padding: 0 1em 1.5em 1em;
+        }
+        .shoeColor {
+            padding: 0 1em 1.5em 1em;
+        }
+        .shoeGender {
+            padding: 0 1em 1.5em 1em;
+        }
+
+        #otherBrand {
+            padding: 0 1em 1.5em 1em;
+        }
         
     }

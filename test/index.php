@@ -1,5 +1,5 @@
 <?php include_once 'header.php'; ?>
-				<section id="searchMarket">
+				<section id="searchMarketHome">
 					<div class="6u -3u 12u(mobile) search-container">
 						<form action="buy.php" method="get" id="searchHome">
 							<button id="search2" type="submit" form="searchHome">

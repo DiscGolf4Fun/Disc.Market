@@ -710,6 +710,12 @@
 					$('.pageLoader').hide();
 					scrollTo(0,0);
 					$('.post2').show();
+					$('.search-container').css("pointer-events","auto");
+					$('.search-container').css("opacity","1");
+					$('.dropdown-container').css("pointer-events","auto");
+					$('.dropdown-container').css("opacity","1");
+					$('.filter2 div.border').css("pointer-events","auto");
+					$('.filter2 div.border').css("opacity","1");
     			}, 3000);
 
 			} else {

@@ -6,7 +6,7 @@
 
 <?php
 
-$sql = "SELECT * FROM posts WHERE UNIX_TIMESTAMP(timestamp) > " . time() . " ORDER BY timestamp ASC limit 8";
+$sql = "SELECT * FROM posts WHERE NOW() + INTERVAL 1 HOUR < timestamp ORDER BY timestamp ASC limit 8";
 
 $posts = mysqli_query($conn, $sql);
 

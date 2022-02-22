@@ -29,6 +29,7 @@
 	<link rel="stylesheet" href="/test/assets/css/jquery.bracket.min.css">
 	<link rel="stylesheet" href="/test/assets/css/jConfirm.min.css">
 	<link rel="stylesheet" href="/test/assets/css/croppic.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/css/autoComplete.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 	<link rel="stylesheet" href="/test/assets/css/style.css" />
 
@@ -285,6 +286,7 @@
 							<h3 id="logoutButton" class="profilePopup"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;Logout</h3>
 						</form>
 						<hr style="margin: 0 20% 0 20%;">
+						<p><a href="#login" id="loginToggle2">Close</a></p>
 					<?php else: ?>
 						<div class="form-wrap">
 							<div class="tabs">
@@ -329,22 +331,22 @@
 								<div id="signup-tab-content">
 									<form class="signup-form" action="/test/includes/signup.inc.php" method="post">
 										<div class="row" style="margin-bottom: 0;">
-											<div class="6u">
+											<div class="6u 12u(mobile)">
 												<input type="text" class="input" id="user_firstname" name="user_firstname" autocomplete="off" placeholder="First Name" required>
 											</div>
-											<div class="6u">
+											<div class="6u 12u(mobile)">
 												<input type="text" class="input" id="user_lastname" name="user_lastname" autocomplete="off" placeholder="Last Name" required>
 											</div>
-											<div class="12u" style="padding-top: 0em;">
+											<div class="12u 12u(mobile)" style="padding-top: 0em;">
 												<input type="email" class="input" id="user_email" name="user_email" autocomplete="off" placeholder="Email" required>
 											</div>
-											<div class="12u" style="padding-top: 0em;">
+											<div class="12u 12u(mobile)" style="padding-top: 0em;">
 												<input type="text" class="input" id="user_name" name="user_name" autocomplete="off" placeholder="Username" required>
 											</div>
-											<div class="6u" style="padding-top: 0em;">
+											<div class="6u 12u(mobile)" style="padding-top: 0em;">
 												<input type="password" class="input" id="user_pass"  name="user_pass" autocomplete="off" placeholder="Password" required>
 											</div>
-											<div class="6u" style="padding-top: 0em;">
+											<div class="6u 12u(mobile)" style="padding-top: 0em;">
 												<input type="password" class="input" id="user_pass2"  name="user_pass2" autocomplete="off" placeholder="Repeat Password" required>
 											</div>
 											<div class="6u 12u(mobile)" style="padding-top: 0em;">

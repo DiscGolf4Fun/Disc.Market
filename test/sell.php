@@ -10,16 +10,16 @@
 			</header>
 				<form action="sell-images.php" method="post">
 				<div class="row" style="width: 100%; margin: auto 0 auto 0;">
-					<div class="9u" style="padding: 0 1em 1.5em 1em;">
+					<div class="sellTitle 9u 12u(mobile)">
 						<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Title&nbsp;<span style="color: red;">*</span></label>
-						<input type="text" name="title" placeholder="Title" style="border: 1px solid black;">
+						<input type="text" name="title" placeholder="Title" style="border: 1px solid black;" required>
 					</div>
-					<div class="3u 12u(mobile)" style="padding: 0 1em 1.5em 1em;">
-						<label for="dropdown" style="font-size: 1.5em; margin-bottom: .25em; padding-left: 10%;">Category&nbsp;<span style="color: red;">*</span></label>
-						<div class="dropdown" style="width: 100%; margin-left: 0; padding-left: 10%;">
+					<div class="sellCategory 3u 12u(mobile)">
+						<label for="dropdown" style="font-size: 1.5em; margin-bottom: .25em;">Category&nbsp;<span style="color: red;">*</span></label>
+						<div class="dropdown" style="width: 100%; margin-left: 0;">
 							<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 							<div class="custom-select">
-									<select id="category">
+									<select id="category" required>
 										<option value="">Select Category</option>
 										<option value="Disc">Discs</option>
 										<option value="Bag">Bags / Carts</option>
@@ -33,7 +33,7 @@
 					</div>
 
 
-					<div class="12u" style="padding: 0 1em 1.5em 1em;">
+					<div class="sellDescription 12u">
 						<label for="description" style="font-size: 1.5em; margin-bottom: .25em;">Description&nbsp;<span style="color: red;">*</span></label>
 						<textarea name="description" id="textarea" onkeydown="return limitLines(this, event)" placeholder="Description" maxlength="250" rows="5" style="resize: none; height: 10em; border: 1px solid black;"></textarea>
 						<div id="textarea_feedback"></div>
@@ -41,146 +41,78 @@
 
 
 					<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: 1em 1em 1.5em 1em;">
-						<div class="4u 12u(mobile)" style="padding: 0 1em 0 1em; text-align: right;">
-							<div class="switch-field">
-								<input type="radio" id="switch_left" name="switch_2" value="yes"/>
-								<label for="switch_left" style="width: 30%; border: 1px solid black; padding: 0.75em 1em;">New</label>
-								<input type="radio" id="switch_right" name="switch_2" value="no" />
-								<label for="switch_right" style="width: 30%; border: 1px solid black; padding: 0.75em 1em;">Used</label>
+					<div class="sellNewused 4u 12u(mobile)">
+							<label for="newused" style="font-size: 1.5em; margin-bottom: .25em;">New/Used?&nbsp;<span style="color: red;"> *</span></label>
+							<div class="custom-select" style="display: inline-block; width: 100%;">
+								<select style="width: 100%;" required>
+									<option value="">Select New or Used</option>
+									<option value="new">New</option>
+									<option value="used">Used</option>
+								</select>
 							</div>
 						</div>
-						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center;">
-							<div class="quality row" style="margin: 0 auto 0 auto;">
-
-								<div class="5u" style="padding-left: 0; padding-top: 0; text-align: right;">
-									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-										<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Quality:</span>
-									</div>
-								</div>
-								<div class="3u" style="padding-left: 0; padding-top: 0;">
-									<div style="padding-left: 0; display: inline-block;">
-										<div class="custom-select" style="display: inline-block;">
-												<select style="padding-bottom: .25em; padding-top: .25em; padding-left: .5em; font-size: 1.5em; width: 100%;">
-													<option value="">#</option>
-													<option value="10">10</option>
-													<option value="9">9</option>
-													<option value="8">8</option>
-													<option value="7">7</option>
-													<option value="6">6</option>
-													<option value="5">5</option>
-													<option value="4">4</option>
-													<option value="3">3</option>
-													<option value="2">2</option>
-													<option value="1">1</option>
-												</select>
-										</div>
-									</div>
-								</div>
-								<div class="4u 12u(mobile)" style="padding-left: 0; padding-top: 0; text-align: left;">
-									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-										<span style="display: inline-block; margin-bottom: 0;">/ 10</span>
-									</div>
-								</div>
-
+						<div class="sellQuality 4u 12u(mobile)">
+							<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Quality&nbsp;<span style="color: red;"> *</span></label>
+							<div class="custom-select" style="display: inline-block; width: 100%;">
+								<select style="width: 100%;" required>
+									<option value="">Select Quality #</option>
+									<option value="10">10</option>
+									<option value="9">9</option>
+									<option value="8">8</option>
+									<option value="7">7</option>
+									<option value="6">6</option>
+									<option value="5">5</option>
+									<option value="4">4</option>
+									<option value="3">3</option>
+									<option value="2">2</option>
+									<option value="1">1</option>
+								</select>
 							</div>
 						</div>
-						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center;">
-							<div class="quality row" style="margin: 0 auto 0 auto;">
-
-								<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-										<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Brand:&nbsp;&nbsp;</span>
-									</div>
-								</div>
-								<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-									<div style="padding-left: 0; display: inline-block; width: 80%;">
-										<div class="custom-select" style="display: inline-block; width: 100%;">
-												<select style="width: 100%;">
+						<div class="sellBrand 4u 12u(mobile)">
+							<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Brand<span style="color: red;"> *</span></label>
+							<div class="custom-select" style="display: inline-block; width: 100%;">
+												<select style="width: 100%;" id="brands" required>
 													<option value="">Select Brand</option>
-													<option value="Innova">Innova</option>
+													<option value="DGA">DGA</option>
+													<option value="Discmania">Discmania</option>
 													<option value="Discraft">Discraft</option>
 													<option value="Dynamic">Dynamic Discs</option>
-													<option value="Latitude">Latitude 64</option>
-													<option value="Westside">Westside</option>
-													<option value="Discmania">Discmania</option>
-													<option value="Prodigy">Prodigy</option>
-													<option value="MVP">MVP</option>
+													<option value="Elevation">Elevation</option>
+													<option value="Fullturn">Full Turn</option>
 													<option value="Gateway">Gateway</option>
-													<option value="Other">Other</option>
+													<option value="Hyzerbomb">Hyzerbomb</option>
+													<option value="Innova">Innova</option>
+													<option value="Latitude">Latitude 64</option>
+													<option value="Legacy">Legacy</option>
+													<option value="Milenium">Milenium</option>
+													<option value="MVP">MVP</option>
+													<option value="Prodigy">Prodigy</option>
+													<option value="Westside">Westside</option>
+													<option value="Other" style="color:red;">Other</option>
 												</select>
-										</div>
-									</div>
-								</div>
-
 							</div>
 						</div>
-					</div>
-
-
-					<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-							<div class="quality row" style="margin: 0 auto 0 auto;">
-								<div class="6u" style="padding-left: 0; padding-top: 0; text-align: right;">
-									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-									<span style="margin-bottom: 0; color: #252122; font-weight: 400; display: inline-block;">Min. Bid:&nbsp;&nbsp;</span>
-									</div>
-								</div>
-								<div class="3u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-									<input type="text" name="" placeholder="0" style="border: 1px solid black; display: inline-block;">
-								</div>
-								<div class="3u" style="padding-left: 0; padding-top: 0; text-align: left;">
-								</div>
-							</div>							
+						<div class="12u 12u(mobile)" id="otherBrand">
+							<label for="otherbrand" style="font-size: 1.5em; margin-bottom: .25em;">Other Brand<span style="color: red;"> *</span></label>
+							<input type="text" name="otherBrand" placeholder="Enter other brand" style="border: 1px solid black;" required>
 						</div>
-						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-							<div class="quality row" style="margin: 0 auto 0 auto;">
-								<div class="7u" style="padding-left: 0; padding-top: 0; text-align: right;">
-									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-									<span style="margin-bottom: 0; color: #252122; font-weight: 400; display: inline-block;">Buy It Now:&nbsp;&nbsp;</span>
-									</div>
-								</div>
-								<div class="3u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-									<input type="text" name="" placeholder="0" style="border: 1px solid black; display: inline-block;">
-								</div>
-								<div class="2u" style="padding-left: 0; padding-top: 0; text-align: left;">
-								</div>
-							</div>							
+						<div class="sellMinBid 6u 12u(mobile)">
+							<label for="minbid" style="font-size: 1.5em; margin-bottom: .25em;">Minimum Bid<span style="color: red;"> *</span></label>
+							<input type="text" name="minbid" min="1" max="999" placeholder="$1" style="border: 1px solid black;" required>
 						</div>
-						<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-							<div class="quality row" style="margin: 0 auto 0 auto;">
-								<div class="7u" style="padding-left: 0; padding-top: 0; text-align: right;">
-									<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-									<span style="margin-bottom: 0; color: #252122; font-weight: 400; display: inline-block;">Auction Length:&nbsp;&nbsp;</span>
-									</div>
-								</div>
-								<div class="4u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-									<div style="padding-left: 0; display: inline-block; width: 100%;">
-										<div class="custom-select" style="display: inline-block; width: 100%;">
-												<select style="width: 100%;">
-													<option value=""># Days</option>
-													<option value="3days">3 Days</option>
-													<option value="5days">5 Days</option>
-													<option value="7days">7 Days</option>
-												</select>
-										</div>
-									</div>
-								</div>
-								<div class="1u" style="padding-left: 0; padding-top: 0; text-align: left;">
-								</div>
-							</div>							
+						<div class="sellBuyitnow 6u 12u(mobile)">
+							<label for="buyitnow" style="font-size: 1.5em; margin-bottom: .25em;">Buy it Now</label>
+							<input type="text" name="buyitnow" min="1" max="999" placeholder="$" style="border: 1px solid black;">
 						</div>
 					</div>
-					
-
-					<div class="12u" style="padding: 0;">
-						
-					</div>
+				
 
 					<div class="12u" style="padding: 0; text-align: center;" id="noCategory">
 						<header class="major" style="margin-bottom: 1.5em;">
 							<h2 style="font-weight: 500;">Category:&nbsp;None</h2>
 						</header>
-						<h2 style="font-weight: 300; padding-bottom: 2em;">You need to select a Category above</h2>
+						<h2 style="font-weight: 300; padding-bottom: 2em; color: red;">You need to select a Category above</h2>
 					</div>
 
 					<div class="12u" style="padding: 0; display: none; text-align: left;" id="discs">
@@ -189,74 +121,31 @@
 						</header>
 
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Weight:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="weight" placeholder="Weight" style="border: 1px solid black;">
-									</div>
-								</div>					
+							<div class="discWeight 4u 12u(mobile)">
+								<label for="discweight" style="font-size: 1.5em; margin-bottom: .25em;">Disc weight(g)<span style="color: red;"> *</span></label>
+								<input type="text" name="discweight" placeholder="Weight" style="border: 1px solid black;" required>
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Plastic:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="plastic" placeholder="Plastic" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="discPlastic 4u 12u(mobile)">
+								<label for="discplastic" style="font-size: 1.5em; margin-bottom: .25em;">Plastic type<span style="color: red;"> *</span></label>
+								<input type="text" name="discplastic" placeholder="Plastic type" style="border: 1px solid black;" required>
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Color:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="color" placeholder="Color" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="discColor 4u 12u(mobile)">
+								<label for="disccolor" style="font-size: 1.5em; margin-bottom: .25em;">Disc color<span style="color: red;"> *</span></label>
+								<input type="text" name="disccolor" placeholder="Disc color" style="border: 1px solid black;" required>
 							</div>
-						</div>
-						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="row" style="margin: 0 auto 0 auto;">
-									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Disc Name:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="discName" placeholder="Disc Name" style="border: 1px solid black;">
-									</div>
-								</div>					
+							<div class="discName 6u 12u(mobile)">
+								<label for="discname" style="font-size: 1.5em; margin-bottom: .25em;">Disc Name<span style="color: red;"> *</span></label>
+								<input type="text" name="discname" placeholder="Disc name" style="border: 1px solid black;" required>
 							</div>
-							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="row" style="margin: 0 auto 0 auto;">
-									<div class="2u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block; text-align: right;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Ink:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<div class="switch-field2">
-											<input type="radio" id="switch_left2" name="switch_2" value="yes"/>
-											<label for="switch_left2" style="width: 40%; border: 1px solid black; padding: 0.75em 1em;">Yes</label>
-											<input type="radio" id="switch_right2" name="switch_2" value="no" />
-											<label for="switch_right2" style="width: 40%; border: 1px solid black; padding: 0.75em 1em;">No</label>
-										</div>
-									</div>
-									<div class="2u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-									</div>
-								</div>							
+							<div class="discInk 6u 12u(mobile)">
+								<label for="discink" style="font-size: 1.5em; margin-bottom: .25em;">Ink?<span style="color: red;">  *</span></label>
+								<div class="custom-select" style="display: inline-block; width: 100%;">
+									<select style="width: 100%;" required>
+										<option value="">Select Yes or No</option>
+										<option value="new">Yes</option>
+										<option value="used">No</option>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -266,41 +155,17 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Bags / Carts</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Modal:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="weight" placeholder="Weight" style="border: 1px solid black;">
-									</div>
-								</div>					
+							<div class="bagColor 4u 12u(mobile)">
+								<label for="bagcolor" style="font-size: 1.5em; margin-bottom: .25em;">Bag/Cart Color<span style="color: red;">*</span></label>
+								<input type="text" name="bagcolor" placeholder="Color" style="border: 1px solid black;" required>
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Capacity:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="capacity" placeholder="Capacity" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="bagModal 4u 12u(mobile)">
+								<label for="modal" style="font-size: 1.5em; margin-bottom: .25em;">Bag/Cart Modal</label>
+								<input type="text" name="modal" placeholder="Modal" style="border: 1px solid black;">
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Color:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="color" placeholder="Color" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="bagCapacity 4u 12u(mobile)">
+								<label for="modal" style="font-size: 1.5em; margin-bottom: .25em;">Disc Capacity</label>
+								<input type="text" name="capacity" placeholder="# Disc capacity" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
@@ -310,41 +175,17 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Apparel</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Size:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="size" placeholder="Size" style="border: 1px solid black;">
-									</div>
-								</div>					
+							<div class="apparelSize 4u 12u(mobile)">
+								<label for="apparelsize" style="font-size: 1.5em; margin-bottom: .25em;">Apparel Size<span style="color: red;"> *</span></label>
+								<input type="text" name="apparelsize" placeholder="Size" style="border: 1px solid black;" required>
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Material:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="material" placeholder="Material" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="apparelColor 4u 12u(mobile)">
+								<label for="apparelcolor" style="font-size: 1.5em; margin-bottom: .25em;">Apparel Color<span style="color: red;"> *</span></label>
+								<input type="text" name="apparelcolor" placeholder="Color" style="border: 1px solid black;" required>
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Color:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="color" placeholder="Color" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="apparelMaterial 4u 12u(mobile)">
+								<label for="apparelmaterial" style="font-size: 1.5em; margin-bottom: .25em;">Apparel Material</label>
+								<input type="text" name="apparelmaterial" placeholder="Material" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
@@ -354,41 +195,17 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Baskets</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Modal:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="size" placeholder="Size" style="border: 1px solid black;">
-									</div>
-								</div>					
+							<div class="basketModal 4u 12u(mobile)">
+								<label for="basketmodal" style="font-size: 1.5em; margin-bottom: .25em;">Basket modal<span style="color: red;"> *</span></label>
+								<input type="text" name="basketmodal" placeholder="Modal" style="border: 1px solid black;" required>
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;"># Chains:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="chains" placeholder="# Chains" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="basketChains 4u 12u(mobile)">
+								<label for="basketchains" style="font-size: 1.5em; margin-bottom: .25em;">Number of chains</label>
+								<input type="text" name="basketchains" placeholder="# of chains" style="border: 1px solid black;">
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Color:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="color" placeholder="Color" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="basketColor 4u 12u(mobile)">
+								<label for="basketcolor" style="font-size: 1.5em; margin-bottom: .25em;">Basket Color</label>
+								<input type="text" name="basketcolor" placeholder="Color" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
@@ -398,41 +215,23 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Shoes</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Size:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="size" placeholder="Size" style="border: 1px solid black;">
-									</div>
-								</div>					
+							<div class="shoeSize 4u 12u(mobile)">
+								<label for="shoesize" style="font-size: 1.5em; margin-bottom: .25em;">Shoe size<span style="color: red;"> *</span></label>
+								<input type="text" name="shoesize" placeholder="Size" style="border: 1px solid black;" required>
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="12u" style="padding-left: 0; padding-top: 0; text-align: center;">
-										<div class="switch-field3" style="text-align: center;">
-											<input type="radio" id="switch_left3" name="switch_3" value="men" />
-											<label for="switch_left3" style="width: 30%; border: 1px solid black; padding: 0.75em 1em;">Men</label>
-											<input type="radio" id="switch_right3" name="switch_3" value="women" />
-											<label for="switch_right3" style="width: 30%; border: 1px solid black; padding: 0.75em 1em;">Women</label>
-										</div>
-									</div>
-								</div>							
+							<div class="shoeColor 4u 12u(mobile)">
+								<label for="shoesize" style="font-size: 1.5em; margin-bottom: .25em;">Shoe color</label>
+								<input type="text" name="shoecolor" placeholder="Color" style="border: 1px solid black;">
 							</div>
-							<div class="4u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: center; display: inline-block;">
-								<div class="quality row" style="margin: 0 auto 0 auto;">
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Color:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="8u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="color" placeholder="Color" style="border: 1px solid black;">
-									</div>
-								</div>							
+							<div class="shoeGender 4u 12u(mobile)">
+								<label for="shoeGender" style="font-size: 1.5em; margin-bottom: .25em;">Men or Women<span style="color: red;">  *</span></label>
+								<div class="custom-select" style="display: inline-block; width: 100%;">
+									<select style="width: 100%;" required>
+										<option value="">Select Men or Women</option>
+										<option value="men">Men</option>
+										<option value="women">Women</option>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -442,41 +241,21 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Accessories</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="row" style="margin: 0 auto 0 auto;">
-									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Size:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="size" placeholder="Size" style="border: 1px solid black;">
-									</div>
-								</div>					
+							<div class="sellAccessorySize 6u 12u(mobile)">
+								<label for="accessorysize" style="font-size: 1.5em; margin-bottom: .25em;">Accessory size</label>
+								<input type="text" name="accessorysize" placeholder="Size" style="border: 1px solid black;">
 							</div>
-							<div class="6u 12u(mobile)" style="padding: 0 0 1.5em 0; text-align: left; display: inline-block;">
-								<div class="row" style="margin: 0 auto 0 auto;">
-									<div class="2u" style="padding-left: 0; padding-top: 0; text-align: right;">
-										<div style="padding-left: 0; margin-top: .5em; font-size: 1.5em; display: inline-block;">
-											<span style="display: inline-block; margin-bottom: 0; color: #252122; font-weight: 400;">Color:&nbsp;&nbsp;</span>
-										</div>
-									</div>
-									<div class="6u" style="padding-left: 0; padding-top: 0; text-align: left; padding-right: 1em;">
-										<input type="text" name="color" placeholder="Color" style="border: 1px solid black;">
-									</div>
-									<div class="4u" style="padding-left: 0; padding-top: 0; text-align: right;">
-									</div>
-								</div>					
+							<div class="sellAccessoryColor 6u 12u(mobile)">
+								<label for="accessorycolor" style="font-size: 1.5em; margin-bottom: .25em;">Accessory color</label>
+								<input type="text" name="accessorycolor" placeholder="Color" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
-
-
-					<div class="6u 12u(mobile)" style="text-align: right; padding-left: 0; padding-top: 0;">
-						<input type="submit" name="submit" value="Next: Images" style="margin-right: 1em;">
+					<div class="nextImages 6u 12u(mobile)">
+						<input type="submit" name="submit" value="Next:  Images" style="float:right;">
 					</div>
-					<div class="6u 12u(mobile)" style="text-align: left; padding-left: 0; padding-top: 0;">
-						<input type="reset" value="Reset" style="margin-left: 1em; background-color: gray;" onclick="topFunction();">
+					<div class="sellReset 6u 12u(mobile)">
+						<input type="reset" name="submit" value="Reset" style="background-color: gray;" onclick="topFunction();">
 					</div>
 				</div>
 				</form> 
@@ -488,6 +267,13 @@
 <?php include_once 'footer.php'; ?>
 
 <script>
+	$('#brands').on('change', function() {
+		if ( this.value == 'Other') {
+        $("#otherBrand").show();
+      } else {
+		$("#otherBrand").hide();
+	  }
+	});
 	$('#category').on('change', function() {
 	  if ( this.value == '') {
         $("#noCategory").show();

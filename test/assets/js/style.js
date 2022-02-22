@@ -96,7 +96,6 @@ if (document.location.href.indexOf('buy.php') !== -1){
             scrolled2 = document.body.offsetHeight;
             scrolled3 = scrolled2 - 100;
             if($("#footer-wrapper").is(":hidden")) { 
-                $("#postsLoader").scrollTop($("#postsLoader")[0].offsetHeight);
                 $(".postsLoader").css("display","block");
                 if (scrolled1 >= scrolled3 && scrollOnce == true) {
                     scrollOnce = false;
@@ -530,12 +529,25 @@ function getPostsCategories(value) {
                 globalFilterPrice.length === 0 && 
                 globalFilterWeight.length === 0 && 
                 globalFilterQuality.length === 0) {
-                $(".filterButton").css("margin-top","0");
-                $("#results").css("margin-top","50px");
+                    if ($(window).width() < 737) {
+                        $(".filterButton").css("margin-top","0");
+                        $("#results").css("margin-top","0");
+                     }
+                     else {
+                        $(".filterButton").css("margin-top","50px");
+                        $("#results").css("margin-top","50px");
+                     }
+                
                 
             } else {
-                $(".filterButton").css("margin-top","50px");
-                $("#results").css("margin-top","0px");
+                if ($(window).width() < 737) {
+                    $(".filterButton").css("margin-top","0");
+                    $("#results").css("margin-top","0px");
+                 }
+                 else {
+                    $(".filterButton").css("margin-top","50px");
+                    $("#results").css("margin-top","0px");
+                 }
             }
             $("#filterResults").html(data);
         });
@@ -1367,7 +1379,7 @@ var keynum, lines = 1;
       }
 
 function unCheck(value, value2) {
-    if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand' || value == 'hyzerbomb' || value == 'kastaplast' || value == 'dga' || value == 'milenium' || value == 'legacy'){
+    if(value == 'innova' || value == 'discraft' || value == 'dynamic' || value == 'latitude' || value == 'westside' || value == 'discmania' || value == 'prodigy' || value == 'mvp' || value == 'gateway' || value == 'otherBrand' || value == 'hyzerbomb' || value == 'kastaplast' || value == 'dga' || value == 'milenium' || value == 'legacy' || value == 'fullturn' || value == 'elevation'){
         value2.remove();
         $('input#' + value).not(this).prop('checked', false);
         getPostsBrands(value);
@@ -1549,7 +1561,15 @@ $('a#loginToggle').click( function(e) {
     loginDiv.show();
     $('html, body').css("overflow","hidden");
     console.log("Show Login");
+})
 
+$('a#loginToggle2').click( function(e) {
+    e.preventDefault();
+    mobileMenu.show();
+    dimmer.hide();
+    loginDiv.hide();
+    $('html, body').css("overflow","auto");
+    console.log("Close Login");
 })
 
 $('.dimmer').click( function(e) {
