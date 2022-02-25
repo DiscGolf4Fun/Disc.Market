@@ -2,24 +2,229 @@
 </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+
+<style>
+
+
+
+  #image1 {
+			width: 350px;
+			height: 350px;
+      		border: 1px solid;
+			position:relative;
+			background: none;
+			z-index: 3;
+		}
+
+		.imageTest {
+			width: 350px;
+			height: 350px;
+			outline: 5px solid #0a7e07;
+		}
+
+		.imageTest2 {
+			height: 350px;
+			border: 2px solid #000000;
+		}
+
+		.imageTest p {
+			margin-top: -40px; 
+			z-index: 100; 
+			left: 0px; 
+			width: 100%; 
+			position: absolute; 
+			text-align: center;
+			color: #0a7e07;
+			font-weight: 800;
+		}
+
+    #image2 {
+			width: 350px;
+			height: 350px;
+     		border: 1px solid;
+			position:relative;
+			background: none;
+			z-index: 3;
+		}
+
+    #image3 {
+			width: 350px;
+			height: 350px;
+      		border: 1px solid;
+			position:relative;
+			background: none;
+			z-index: 3;
+		}
+
+    #image4 {
+			width: 350px;
+			height: 350px;
+      		border: 1px solid;
+			position:relative;
+			background: none;
+			z-index: 3;
+		}
+
+    #image5 {
+			width: 350px;
+			height: 350px;
+      		border: 1px solid;
+			position:relative;
+			background: none;
+			z-index: 3;
+		}
+
+    #image6 {
+			width: 350px;
+			height: 350px;
+      		border: 1px solid;
+			position:relative;
+			background: white;
+			display: flex; 
+			flex-direction: column; 
+			justify-content: center; 
+			align-items: center;
+		}
+
+		.previewPost {
+			margin-top: 4em;
+		}
+
+		.backImages {
+			background: gray;
+		}
+
+		.backImages:hover {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: gray;
+			opacity: 70%;
+		}
+
+		.resetImages {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: red;
+		}
+
+		.resetImages:hover {
+			-moz-transition: all .2s ease-in;
+			-o-transition: all .2s ease-in;
+			-webkit-transition: all .2s ease-in;
+			transition: all .2s ease-in;
+			background: red;
+			opacity: 50%;
+		}
+
+		#image1:hover {
+			cursor: grab;
+		}
+
+		#image1:active {
+			cursor: grabbing;
+		}
+
+		#image2:hover {
+			cursor: grab;
+		}
+
+		#image2:active {
+			cursor: grabbing;
+		}
+
+		#image3:hover {
+			cursor: grab;
+		}
+
+		#image3:active {
+			cursor: grabbing;
+		}
+
+		#image4:hover {
+			cursor: grab;
+		}
+
+		#image4:active {
+			cursor: grabbing;
+		}
+
+		#image5:hover {
+			cursor: grab;
+		}
+
+		#image5:active {
+			cursor: grabbing;
+		}
+
+		#croppicModal {
+			background: rgba(0,0,0,0.9);
+		}
+
+		.cropImgWrapper {
+			outline: 5px solid white;
+			background-color: white;
+		}
+
+		.noImage {
+			background-color: white;
+			position: absolute; 
+			height: 350px; 
+			width: 350px; 
+			display: flex; 
+			flex-direction: column; 
+			justify-content: center; 
+			align-items: center;
+		}
+
+
+</style>
+
+<script>
+  $( function() {
+    $( "#sortable1" ).sortable({
+	  forceHelperSize: true,
+	  tolerance: "pointer",
+	  items: "li:not(.unsortable)"
+    });
+    $( "#sortable1" ).disableSelection();
+	$("#sortable1").sortable({
+        stop: function ($item, container, _super, event) {
+            $('#sortable1 li').removeClass('dragged');
+            $("body").removeClass('dragging');
+            $('#sortable1 span').each(function (i) {
+                var humanNum = i + 1;
+                $(this).html(humanNum + '');
+            });
+        }
+    });
+  } );
+</script>
+
 
 <div id="main-wrapper">
-			<div class="container">
-			<header class="major" style="margin-bottom: 1.5em;">
-				<h2>Sell Anything Disc Golf</h2>
-			</header>
-				<form action="sell-images.php" method="post">
-				<div class="row" style="width: 100%; margin: auto 0 auto 0;">
+	<div class="container">
+		<header class="major" style="margin-bottom: 1.5em;">
+			<h2>Sell Anything Disc Golf</h2>
+		</header>
+			<form action="sell-images.php" method="post">
+				<div class="row sellInfoform" style="width: 100%; margin: auto 0 auto 0;">
 					<div class="sellTitle 9u 12u(mobile)">
 						<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Title&nbsp;<span style="color: red;">*</span></label>
-						<input type="text" name="title" placeholder="Title" style="border: 1px solid black;" required>
+						<input type="text" id="sellTitle" name="title" placeholder="Title" style="border: 1px solid black;">
+						<p class="formError" id="noTitle">Enter a title above (up to 65 characters)</p>
 					</div>
 					<div class="sellCategory 3u 12u(mobile)">
 						<label for="dropdown" style="font-size: 1.5em; margin-bottom: .25em;">Category&nbsp;<span style="color: red;">*</span></label>
 						<div class="dropdown" style="width: 100%; margin-left: 0;">
 							<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
-							<div class="custom-select">
-									<select id="category" required>
+							<div class="custom-select" id="sellCategory">
+									<select id="category">
 										<option value="">Select Category</option>
 										<option value="Disc">Discs</option>
 										<option value="Bag">Bags / Carts</option>
@@ -29,88 +234,93 @@
 										<option value="Accessory">Accessories</option>
 									</select>
 							</div>
+							<p class="formError" id="noCategoryMessage">Select a category above</p>
 						</div>
 					</div>
 
-
 					<div class="sellDescription 12u">
 						<label for="description" style="font-size: 1.5em; margin-bottom: .25em;">Description&nbsp;<span style="color: red;">*</span></label>
-						<textarea name="description" id="textarea" onkeydown="return limitLines(this, event)" placeholder="Description" maxlength="250" rows="5" style="resize: none; height: 10em; border: 1px solid black;"></textarea>
-						<div id="textarea_feedback"></div>
+						<textarea name="description" id="sellDescription" onkeydown="return limitLines(this, event)" placeholder="Description" maxlength="250" rows="5" style="resize: none; height: 10em; border: 1px solid black;"></textarea>
+						<p class="formError" id="noDescription">Enter a description above</p><div id="textarea_feedback"></div>
 					</div>
 
 
 					<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: 1em 1em 1.5em 1em;">
-					<div class="sellNewused 4u 12u(mobile)">
-							<label for="newused" style="font-size: 1.5em; margin-bottom: .25em;">New/Used?&nbsp;<span style="color: red;"> *</span></label>
-							<div class="custom-select" style="display: inline-block; width: 100%;">
-								<select style="width: 100%;" required>
-									<option value="">Select New or Used</option>
-									<option value="new">New</option>
-									<option value="used">Used</option>
-								</select>
+							<div class="sellNewused 4u 12u(mobile)">
+								<label for="newUsed" style="font-size: 1.5em; margin-bottom: .25em;">New/Used?&nbsp;<span style="color: red;"> *</span></label>
+								<div class="custom-select" id="sellNewused" style="width: 100%;">
+									<select style="width: 100%;" id="newUsed">
+										<option value="">Select New or Used</option>
+										<option value="new">New</option>
+										<option value="used">Used</option>
+									</select>
+								</div>
+								<p class="formError" id="noNewused">Select new or used above</p>
 							</div>
-						</div>
-						<div class="sellQuality 4u 12u(mobile)">
-							<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Quality&nbsp;<span style="color: red;"> *</span></label>
-							<div class="custom-select" style="display: inline-block; width: 100%;">
-								<select style="width: 100%;" required>
-									<option value="">Select Quality #</option>
-									<option value="10">10</option>
-									<option value="9">9</option>
-									<option value="8">8</option>
-									<option value="7">7</option>
-									<option value="6">6</option>
-									<option value="5">5</option>
-									<option value="4">4</option>
-									<option value="3">3</option>
-									<option value="2">2</option>
-									<option value="1">1</option>
-								</select>
+							<div class="sellQuality 4u 12u(mobile)">
+								<label for="sellquality" style="font-size: 1.5em; margin-bottom: .25em;">Quality&nbsp;<span style="color: red;"> *</span></label>
+								<div class="custom-select" id="sellQuality" style="width: 100%;">
+									<select style="width: 100%;" id="quality">
+										<option value="">Select Quality #</option>
+										<option value="10">10</option>
+										<option value="9">9</option>
+										<option value="8">8</option>
+										<option value="7">7</option>
+										<option value="6">6</option>
+										<option value="5">5</option>
+										<option value="4">4</option>
+										<option value="3">3</option>
+										<option value="2">2</option>
+										<option value="1">1</option>
+									</select>
+								</div>
+								<p class="formError" id="noQuality">Select a quality # above</p>
 							</div>
-						</div>
-						<div class="sellBrand 4u 12u(mobile)">
-							<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Brand<span style="color: red;"> *</span></label>
-							<div class="custom-select" style="display: inline-block; width: 100%;">
-												<select style="width: 100%;" id="brands" required>
-													<option value="">Select Brand</option>
-													<option value="DGA">DGA</option>
-													<option value="Discmania">Discmania</option>
-													<option value="Discraft">Discraft</option>
-													<option value="Dynamic">Dynamic Discs</option>
-													<option value="Elevation">Elevation</option>
-													<option value="Fullturn">Full Turn</option>
-													<option value="Gateway">Gateway</option>
-													<option value="Hyzerbomb">Hyzerbomb</option>
-													<option value="Innova">Innova</option>
-													<option value="Latitude">Latitude 64</option>
-													<option value="Legacy">Legacy</option>
-													<option value="Milenium">Milenium</option>
-													<option value="MVP">MVP</option>
-													<option value="Prodigy">Prodigy</option>
-													<option value="Westside">Westside</option>
-													<option value="Other" style="color:red;">Other</option>
-												</select>
+							<div class="sellBrand 4u 12u(mobile)">
+								<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Brand<span style="color: red;"> *</span></label>
+								<div class="custom-select" id="sellBrand" style="width: 100%;">
+									<select style="width: 100%;" id="brand">
+										<option value="">Select Brand</option>
+										<option value="DGA">DGA</option>
+										<option value="Discmania">Discmania</option>
+										<option value="Discraft">Discraft</option>
+										<option value="Dynamic">Dynamic Discs</option>
+										<option value="Elevation">Elevation</option>
+										<option value="Fullturn">Full Turn</option>
+										<option value="Gateway">Gateway</option>
+										<option value="Hyzerbomb">Hyzerbomb</option>
+										<option value="Innova">Innova</option>
+										<option value="Latitude">Latitude 64</option>
+										<option value="Legacy">Legacy</option>
+										<option value="Milenium">Milenium</option>
+										<option value="MVP">MVP</option>
+										<option value="Prodigy">Prodigy</option>
+										<option value="Westside">Westside</option>
+										<option value="Other" style="color:red;">Other</option>
+									</select>
+								</div>
+								<p class="formError" id="noBrand">Select a brand above</p>
 							</div>
-						</div>
 						<div class="12u 12u(mobile)" id="otherBrand">
 							<label for="otherbrand" style="font-size: 1.5em; margin-bottom: .25em;">Other Brand<span style="color: red;"> *</span></label>
-							<input type="text" name="otherBrand" placeholder="Enter other brand" style="border: 1px solid black;" required>
+							<input type="text" name="otherBrand" id="sellOtherBrand" placeholder="Enter other brand" style="border: 1px solid black;">
+							<p class="formError" id="noOtherBrand">Enter the other brand above</p>
 						</div>
 						<div class="sellMinBid 6u 12u(mobile)">
 							<label for="minbid" style="font-size: 1.5em; margin-bottom: .25em;">Minimum Bid<span style="color: red;"> *</span></label>
-							<input type="text" name="minbid" min="1" max="999" placeholder="$1" style="border: 1px solid black;" required>
+							<input type="number" name="minbid" id="sellMinbid" min="1" max="999" value="" placeholder="$1" style="border: 1px solid black;">
+							<p class="formError" id="noMinbid">Enter minimum bid above</p>
 						</div>
 						<div class="sellBuyitnow 6u 12u(mobile)">
 							<label for="buyitnow" style="font-size: 1.5em; margin-bottom: .25em;">Buy it Now</label>
-							<input type="text" name="buyitnow" min="1" max="999" placeholder="$" style="border: 1px solid black;">
+							<input type="number" name="buyitnow" id="sellBuyitnow" min="1" max="999" value="" placeholder="$" style="border: 1px solid black;">
 						</div>
 					</div>
 				
 
 					<div class="12u" style="padding: 0; text-align: center;" id="noCategory">
 						<header class="major" style="margin-bottom: 1.5em;">
-							<h2 style="font-weight: 500;">Category:&nbsp;None</h2>
+							<h2 style="font-weight: 500;">Category:&nbsp;None<span style="color: red;"> *</span></h2>
 						</header>
 						<h2 style="font-weight: 300; padding-bottom: 2em; color: red;">You need to select a Category above</h2>
 					</div>
@@ -123,29 +333,34 @@
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
 							<div class="discWeight 4u 12u(mobile)">
 								<label for="discweight" style="font-size: 1.5em; margin-bottom: .25em;">Disc weight(g)<span style="color: red;"> *</span></label>
-								<input type="text" name="discweight" placeholder="Weight" style="border: 1px solid black;" required>
+								<input type="text" name="discweight" id="sellDiscweight" placeholder="Weight" style="border: 1px solid black;">
+								<p class="formError" id="noDiscweight">Enter the disc weight above (g)</p>
 							</div>
 							<div class="discPlastic 4u 12u(mobile)">
 								<label for="discplastic" style="font-size: 1.5em; margin-bottom: .25em;">Plastic type<span style="color: red;"> *</span></label>
-								<input type="text" name="discplastic" placeholder="Plastic type" style="border: 1px solid black;" required>
+								<input type="text" name="discplastic" id="sellDiscplastic" placeholder="Plastic type" style="border: 1px solid black;">
+								<p class="formError" id="noDiscplastic">Enter the disc plastic type above</p>
 							</div>
 							<div class="discColor 4u 12u(mobile)">
 								<label for="disccolor" style="font-size: 1.5em; margin-bottom: .25em;">Disc color<span style="color: red;"> *</span></label>
-								<input type="text" name="disccolor" placeholder="Disc color" style="border: 1px solid black;" required>
+								<input type="text" name="disccolor" id="sellDisccolor" placeholder="Disc color" style="border: 1px solid black;">
+								<p class="formError" id="noDisccolor">Enter the disc color above</p>
 							</div>
 							<div class="discName 6u 12u(mobile)">
 								<label for="discname" style="font-size: 1.5em; margin-bottom: .25em;">Disc Name<span style="color: red;"> *</span></label>
-								<input type="text" name="discname" placeholder="Disc name" style="border: 1px solid black;" required>
+								<input type="text" name="discname" id="sellDiscname" placeholder="Disc name" style="border: 1px solid black;">
+								<p class="formError" id="noDiscname">Enter the disc name above</p>
 							</div>
 							<div class="discInk 6u 12u(mobile)">
 								<label for="discink" style="font-size: 1.5em; margin-bottom: .25em;">Ink?<span style="color: red;">  *</span></label>
 								<div class="custom-select" style="display: inline-block; width: 100%;">
-									<select style="width: 100%;" required>
+									<select style="width: 100%;" id="sellDiscink">
 										<option value="">Select Yes or No</option>
 										<option value="new">Yes</option>
 										<option value="used">No</option>
 									</select>
 								</div>
+								<p class="formError" id="noDiscink">Enter if your disc has ink on it</p>
 							</div>
 						</div>
 					</div>
@@ -157,15 +372,16 @@
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
 							<div class="bagColor 4u 12u(mobile)">
 								<label for="bagcolor" style="font-size: 1.5em; margin-bottom: .25em;">Bag/Cart Color<span style="color: red;">*</span></label>
-								<input type="text" name="bagcolor" placeholder="Color" style="border: 1px solid black;" required>
+								<input type="text" name="bagcolor" id="sellBagcolor" placeholder="Color" style="border: 1px solid black;">
+								<p class="formError" id="noBagcolor">Enter the bag/cart color above</p>
 							</div>
-							<div class="bagModal 4u 12u(mobile)">
-								<label for="modal" style="font-size: 1.5em; margin-bottom: .25em;">Bag/Cart Modal</label>
-								<input type="text" name="modal" placeholder="Modal" style="border: 1px solid black;">
+							<div class="bagModel 4u 12u(mobile)">
+								<label for="model" style="font-size: 1.5em; margin-bottom: .25em;">Bag/Cart Model</label>
+								<input type="text" name="model" id="sellBagmodel" placeholder="Model" style="border: 1px solid black;">
 							</div>
 							<div class="bagCapacity 4u 12u(mobile)">
-								<label for="modal" style="font-size: 1.5em; margin-bottom: .25em;">Disc Capacity</label>
-								<input type="text" name="capacity" placeholder="# Disc capacity" style="border: 1px solid black;">
+								<label for="model" style="font-size: 1.5em; margin-bottom: .25em;">Disc Capacity</label>
+								<input type="text" name="capacity" id="sellBagcapacity" placeholder="# Disc capacity" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
@@ -177,15 +393,17 @@
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
 							<div class="apparelSize 4u 12u(mobile)">
 								<label for="apparelsize" style="font-size: 1.5em; margin-bottom: .25em;">Apparel Size<span style="color: red;"> *</span></label>
-								<input type="text" name="apparelsize" placeholder="Size" style="border: 1px solid black;" required>
+								<input type="text" name="apparelsize" id="sellApparelsize" placeholder="Size" style="border: 1px solid black;">
+								<p class="formError" id="noApparelsize">Enter the apparel size above</p>
 							</div>
 							<div class="apparelColor 4u 12u(mobile)">
 								<label for="apparelcolor" style="font-size: 1.5em; margin-bottom: .25em;">Apparel Color<span style="color: red;"> *</span></label>
-								<input type="text" name="apparelcolor" placeholder="Color" style="border: 1px solid black;" required>
+								<input type="text" name="apparelcolor" id="sellApparelcolor" placeholder="Color" style="border: 1px solid black;">
+								<p class="formError" id="noApparelcolor">Enter the apparel color above</p>
 							</div>
 							<div class="apparelMaterial 4u 12u(mobile)">
 								<label for="apparelmaterial" style="font-size: 1.5em; margin-bottom: .25em;">Apparel Material</label>
-								<input type="text" name="apparelmaterial" placeholder="Material" style="border: 1px solid black;">
+								<input type="text" name="apparelmaterial" id="sellApparelmaterial" placeholder="Material" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
@@ -195,17 +413,18 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Baskets</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="basketModal 4u 12u(mobile)">
-								<label for="basketmodal" style="font-size: 1.5em; margin-bottom: .25em;">Basket modal<span style="color: red;"> *</span></label>
-								<input type="text" name="basketmodal" placeholder="Modal" style="border: 1px solid black;" required>
+							<div class="basketModel 4u 12u(mobile)">
+								<label for="basketmodel" style="font-size: 1.5em; margin-bottom: .25em;">Basket model<span style="color: red;"> *</span></label>
+								<input type="text" name="basketmodel" id="sellBasketmodel" placeholder="Model" style="border: 1px solid black;">
+								<p class="formError" id="noBasketmodel">Enter the basket model above</p>
 							</div>
 							<div class="basketChains 4u 12u(mobile)">
 								<label for="basketchains" style="font-size: 1.5em; margin-bottom: .25em;">Number of chains</label>
-								<input type="text" name="basketchains" placeholder="# of chains" style="border: 1px solid black;">
+								<input type="text" name="basketchains" id="sellBasketchains" placeholder="# of chains" style="border: 1px solid black;">
 							</div>
 							<div class="basketColor 4u 12u(mobile)">
 								<label for="basketcolor" style="font-size: 1.5em; margin-bottom: .25em;">Basket Color</label>
-								<input type="text" name="basketcolor" placeholder="Color" style="border: 1px solid black;">
+								<input type="text" name="basketcolor" id="sellBasketcolor" placeholder="Color" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
@@ -215,23 +434,25 @@
 							<h2 style="font-weight: 500;">Category:&nbsp;Shoes</h2>
 						</header>
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
-							<div class="shoeSize 4u 12u(mobile)">
-								<label for="shoesize" style="font-size: 1.5em; margin-bottom: .25em;">Shoe size<span style="color: red;"> *</span></label>
-								<input type="text" name="shoesize" placeholder="Size" style="border: 1px solid black;" required>
-							</div>
-							<div class="shoeColor 4u 12u(mobile)">
-								<label for="shoesize" style="font-size: 1.5em; margin-bottom: .25em;">Shoe color</label>
-								<input type="text" name="shoecolor" placeholder="Color" style="border: 1px solid black;">
-							</div>
 							<div class="shoeGender 4u 12u(mobile)">
 								<label for="shoeGender" style="font-size: 1.5em; margin-bottom: .25em;">Men or Women<span style="color: red;">  *</span></label>
 								<div class="custom-select" style="display: inline-block; width: 100%;">
-									<select style="width: 100%;" required>
+									<select style="width: 100%;" id="sellShoegender">
 										<option value="">Select Men or Women</option>
 										<option value="men">Men</option>
 										<option value="women">Women</option>
 									</select>
 								</div>
+								<p class="formError" id="noShoegender">Select men or women above</p>
+							</div>
+							<div class="shoeSize 4u 12u(mobile)">
+								<label for="shoesize" style="font-size: 1.5em; margin-bottom: .25em;">Shoe size<span style="color: red;"> *</span></label>
+								<input type="text" name="shoesize" id="sellShoesize" placeholder="Size" style="border: 1px solid black;">
+								<p class="formError" id="noShoesize">Enter the shoe size above</p>
+							</div>
+							<div class="shoeColor 4u 12u(mobile)">
+								<label for="shoesize" style="font-size: 1.5em; margin-bottom: .25em;">Shoe color</label>
+								<input type="text" name="shoecolor" id="sellShoecolor" placeholder="Color" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
@@ -243,42 +464,179 @@
 						<div class="row" style="width: 100%; margin: auto 0 auto 0; padding: .5em 1em 1.5em 1em;">
 							<div class="sellAccessorySize 6u 12u(mobile)">
 								<label for="accessorysize" style="font-size: 1.5em; margin-bottom: .25em;">Accessory size</label>
-								<input type="text" name="accessorysize" placeholder="Size" style="border: 1px solid black;">
+								<input type="text" name="accessorysize" id="sellAccessorysize" placeholder="Size" style="border: 1px solid black;">
 							</div>
 							<div class="sellAccessoryColor 6u 12u(mobile)">
 								<label for="accessorycolor" style="font-size: 1.5em; margin-bottom: .25em;">Accessory color</label>
-								<input type="text" name="accessorycolor" placeholder="Color" style="border: 1px solid black;">
+								<input type="text" name="accessorycolor" id="sellAccessorycolor" placeholder="Color" style="border: 1px solid black;">
 							</div>
 						</div>
 					</div>
 					<div class="nextImages 6u 12u(mobile)">
-						<input type="submit" name="submit" value="Next:  Images" style="float:right;">
+						<input type="button" name="submit" value="Next:  Images" style="float:right;" onclick="sellImages();">
 					</div>
 					<div class="sellReset 6u 12u(mobile)">
 						<input type="reset" name="submit" value="Reset" style="background-color: gray;" onclick="topFunction();">
 					</div>
 				</div>
-				</form> 
+
+				
+				<div class="row sellImagesform" style="width: 100%; margin: auto 0 auto 0; display: none;">
+				<div class="12u 12u(mobile)" style="padding: 1em 0 1.5em 0">
+					<center><h4 style="font-weight: 500;">Click on the&nbsp;&nbsp;<i class="fa fa-upload"></i>&nbsp;&nbsp;upload button to upload your images. Click and drag each box to change the order.</h4></center>
 				</div>
-			</div>
+				<ul class="row connectedSortable" id="sortable1" style="position: relative; padding:3em 0 0 0.5em;">
+					<li class="4u unsortable" style="position: absolute;">
+						<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
+					</li>
+					<li class="4u 12u(mobile) ui-state-default">
+								<div class="noImage">
+								<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+									<h2>Image <span>1</span></h2>
+									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+								</div>
+							<div id="image1"></div>
+					</li>
+					<li class="4u 12u(mobile) ui-state-default">
+							<div class="noImage">
+							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+								<h2>Image <span>2</span></h2>
+								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+							</div>
+							<div id="image2"></div>
+					</li>
+					<li class="4u 12u(mobile) ui-state-default">
+					<div class="noImage">
+							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+								<h2>Image <span>3</span></h2>
+								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+							</div>
+							<div id="image3"></div>
+					</li>
+					<li class="4u 12u(mobile) ui-state-default">
+							<div class="noImage">
+							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+								<h2>Image <span>4</span></h2>
+								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+							</div>
+							<div id="image4"></div>
+					</li>
+					<li class="4u 12u(mobile) ui-state-default">
+							<div class="noImage">
+							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+								<h2>Image <span>5</span></h2>
+								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+							</div>
+							<div id="image5"></div>
+					</li>
+					<li class="4u 12u(mobile) unsortable">
+						<div id="image6">
+						<center><input type="button" class="backImages" name="submit" value="Next:  Preview Post"></center>
+						<br>			  
+						<center><input type="button" class="backImages" name="submit" value="Back:  Post Info" style="background-color: gray;" onclick="backSellInfo();"></center>	
+						<br>
+						<center><input type="button" class="backImages" name="submit" value="Reset Images" style="background-color: red;"></center>		  
+						</div>
+					</li>
+				</ul>
+				</div>
+			</form> 
+		</div>
+	</div>
 </div>
 
 
 <?php include_once 'footer.php'; ?>
 
 <script>
-	$('#brands').on('change', function() {
+	$('#brand').change(function() {
 		if ( this.value == 'Other') {
+			if (this.value == '') {
+				$("#sellOtherBrand").css('border','2px solid red');
+				$("#noOtherBrand").css('display','block');
+      		} else {
+				$("#sellOtherBrand").css('border','1px solid black');
+				$("#noOtherBrand").css('display','none');
+	  	}			
         $("#otherBrand").show();
       } else {
 		$("#otherBrand").hide();
 	  }
 	});
-	$('#category').on('change', function() {
+
+
+	$('#sellTitle').change(function() {
+		if ( this.value == '') {
+        	$("#sellTitle").css('border','2px solid red');
+			$("#noTitle").css('display','block');
+      	} else {
+			$("#sellTitle").css('border','1px solid black');
+			$("#noTitle").css('display','none');
+	  	}
+	});
+	$('#sellCategory').change(function() {
+		if ( this.value == '') {
+        	$("#sellCategory").css('border','2px solid red');
+			$("#noCategoryMessage").css('display','block');
+      	} else {
+			$("#sellCategory").css('border','1px solid black');
+			$("#noCategoryMessage").css('display','none');
+	  	}
+	});
+	$('#sellDescription').change(function() {
+		if ( this.value == '') {
+        	$("#sellDescription").css('border','2px solid red');
+			$("#noDescription").css('display','inline-block');
+      	} else {
+			$("#sellDescription").css('border','1px solid black');
+			$("#noDescription").css('display','none');
+	  	}
+	});
+	$('#sellNewused').change(function() {
+		if ( this.value == '') {
+        	$("#sellNewused").css('border','2px solid red');
+			$("#noNewused").css('display','block');
+      	} else {
+			$("#sellNewused").css('border','1px solid black');
+			$("#noNewused").css('display','none');
+	  	}
+	});
+	$('#sellQuality').change(function() {
+		if ( this.value == '') {
+        	$("#sellQuality").css('border','2px solid red');
+			$("#noQuality").css('display','block');
+      	} else {
+			$("#sellQuality").css('border','1px solid black');
+			$("#noQuality").css('display','none');
+	  	}
+	});
+	$('#sellBrand').change(function() {
+		if ( this.value == '') {
+        	$("#sellBrand").css('border','2px solid red');
+			$("#noBrand").css('display','block');
+      	} else {
+			$("#sellBrand").css('border','1px solid black');
+			$("#noBrand").css('display','none');
+	  	}
+	});
+	$('#sellMinbid').change(function() {
+		if ( this.value == '') {
+        	$("#sellMinbid").css('border','2px solid red');
+			$("#noMinbid").css('display','block');
+      	} else {
+			$("#sellMinbid").css('border','1px solid black');
+			$("#noMinbid").css('display','none');
+	  	}
+	});
+
+
+	$('#category').change(function() {
 	  if ( this.value == '') {
         $("#noCategory").show();
+		$("#noCategoryMessage").css('display','block');
       } else {
         $("#noCategory").hide();
+		$("#noCategoryMessage").css('display','none');
 	  }
       if ( this.value == 'Disc') {
         $("#discs").show();
@@ -311,4 +669,42 @@
         $("#accessories").hide();
       }
     });
+
+
+	function resetImages() {
+		cropContainerModal1.reset();
+		cropContainerModal2.reset();
+		cropContainerModal3.reset();
+		cropContainerModal4.reset();
+		cropContainerModal5.reset();
+		$('.croppedImg').hide();
+		$('.cropControlRemoveCroppedImage').hide();
+	}
+
+
+$('[data-toggle="resetImages"]').jConfirm({
+
+question:'Reset Images?',
+confirm_text: 'Yes',
+deny_text: 'No',
+theme: 'black',
+// hides on click
+hide_on_click: true,
+// 'auto','top','bottom','left','right'
+position: 'left',
+// extra class(es)
+class: '',
+// shows deny button
+show_deny_btn: false,
+// 'tiny', 'small', 'medium', 'large'
+size: 'medium',
+// 'black', 'white', 'blurred'
+backdrop: false
+
+}).on('confirm', function(e){
+	resetImages()
+}).on('jc-show', function(e, value){
+$(".jc-tooltip").css("margin-left","-.5em");
+});
+
 </script>

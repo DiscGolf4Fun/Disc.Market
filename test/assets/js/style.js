@@ -60,8 +60,8 @@ $( document ).ready(function() {
     var text_max = 250;
     $('#textarea_feedback').html(text_max + ' characters remaining');
 
-    $('#textarea').keyup(function() {
-        var text_length = $('#textarea').val().length;
+    $('#sellDescription').keyup(function() {
+        var text_length = $('#sellDescription').val().length;
         var text_remaining = text_max - text_length;
 
         $('#textarea_feedback').html(text_remaining + ' characters remaining');
@@ -1335,11 +1335,278 @@ function topFunction() {
     });
 }
 
+
 // When the user clicks on the button, scroll to the top of the document
 function topFunctionRefresh() {
     var body = $("html, body");
     body.stop().animate({scrollTop:0}, 500, 'swing', function() { 
     });
+}
+
+// When the user clicks to go to the Sell Images page it checks the form and shows the images page
+function sellImages() {
+    var sellTitle = document.getElementById('sellTitle').value;
+    var sellCategory = document.getElementById('category').value;
+    var sellDescription = document.getElementById('sellDescription').value;
+    var sellNewused = document.getElementById('newUsed').value;
+    var sellQuality = document.getElementById('quality').value;
+    var sellBrand = document.getElementById('brand').value;
+    var sellBrandOther = document.getElementById('sellOtherBrand').value;
+    var sellMinbid = document.getElementById('sellMinbid').value;
+    var sellDiscweight = document.getElementById('sellDiscweight').value;
+    var sellDiscplastic = document.getElementById('sellDiscplastic').value;
+    var sellDisccolor = document.getElementById('sellDisccolor').value;
+    var sellDiscname = document.getElementById('sellDiscname').value;
+    var sellDiscink = document.getElementById('sellDiscink').value;
+    var sellBagcolor = document.getElementById('sellBagcolor').value;
+    var sellApparelsize = document.getElementById('sellApparelsize').value;
+    var sellApparelcolor = document.getElementById('sellApparelcolor').value;
+    var sellBasketmodel = document.getElementById('sellBasketmodel').value;
+    var sellShoesize = document.getElementById('sellShoesize').value;
+    var sellShoegender = document.getElementById('sellShoegender').value;
+
+    /*
+
+    if( sellMinbid === "" ) {
+        $("#sellMinbid").css('border','2px solid red');
+        $("#noMinbid").css('display','block');
+        $('div.sellMinBid')[0].scrollIntoView();
+    } else {
+        $("#sellMinbid").css('border','1px solid black');
+        $("#noMinbid").css('display','none;');
+    }
+
+    if(sellBrand === "Other"){
+        if( sellBrandOther === "") {
+            $("#sellOtherBrand").css('border','2px solid red');
+            $("#noBrandOther").css('display','block');
+            $('div#otherBrand')[0].scrollIntoView();
+        } else {
+            $("#sellOtherBrand").css('border','1px solid black');
+            $("#noBrandOther").css('display','none');
+        }
+    }
+
+    if( sellBrand === "" ) {
+        $("#sellBrand").css('border','2px solid red');
+        $("#noBrand").css('display','block');
+        $('div.sellBrand')[0].scrollIntoView();
+    } else {
+        $("#sellBrand").css('border','1px solid black');
+        $("#noBrand").css('display','none');
+    } 
+
+    if( sellQuality === "" ) {
+        $("#sellQuality").css('border','2px solid red');
+        $("#noQuality").css('display','block');
+        $('div.sellQuality')[0].scrollIntoView();
+    } else {
+        $("#sellQuality").css('border','1px solid black');
+        $("#noQuality").css('display','none');
+    } 
+    
+    if( sellNewused === "" ) {
+        $("#sellNewused").css('border','2px solid red');
+        $("#noNewused").css('display','block');
+        $('div.sellNewused')[0].scrollIntoView();
+    } else {
+        $("#sellNewused").css('border','1px solid black');
+        $("#noNewused").css('display','none');
+    }   
+
+    if( sellDescription === "" ) {
+        $("#sellDescription").css('border','2px solid red');
+        $("#noDescription").css('display','inline-block');
+        $('div.sellDescription')[0].scrollIntoView();
+    } else {
+        $("#noDescription").css('display','none');
+        $("#sellDescription").css('border','1px solid black');
+    } 
+
+    if( sellCategory === "" ) {
+        $("#sellCategory").css('border','2px solid red');
+        $("#noCategoryMessage").css('display','block');
+        $('div.sellCategory')[0].scrollIntoView();
+    } else if( sellCategory === "Shoes") {
+        if( sellShoesize === "" ) {
+            $("#sellShoesize").css('border','2px solid red');
+            $("#noShoesize").css('display','block');
+            $('div.shoeSize')[0].scrollIntoView();
+        } else {
+            $("#sellShoesize").css('border','1px solid black');
+            $("#noShoesize").css('display','none');
+        } 
+        if( sellShoegender === "" ) {
+            $("#sellShoegender").css('border','2px solid red');
+            $("#noShoegender").css('display','block');
+            $('div.shoeGender')[0].scrollIntoView();
+        } else {
+            $("#sellShoegender").css('border','1px solid black');
+            $("#noShoegender").css('display','none');
+        }  
+    } else if( sellCategory === "Basket") {
+        if( sellBasketmodel === "" ) {
+            $("#sellBasketmodel").css('border','2px solid red');
+            $("#noBasketmodel").css('display','block');
+            $('div.basketModel')[0].scrollIntoView();
+        } else {
+            $("#sellBasketmodel").css('border','1px solid black');
+            $("#noBasketmodel").css('display','none');
+        }  
+    } else if( sellCategory === "Apparel") {
+        if( sellApparelcolor === "" ) {
+            $("#sellApparelcolor").css('border','2px solid red');
+            $("#noApparelcolor").css('display','block');
+            $('div.apparelColor')[0].scrollIntoView();
+        } else {
+            $("#sellApparelcolor").css('border','1px solid black');
+            $("#noApparelcolor").css('display','none');
+        } 
+        if( sellApparelsize === "" ) {
+            $("#sellApparelsize").css('border','2px solid red');
+            $("#noApparelsize").css('display','block');
+            $('div.apparelSize')[0].scrollIntoView();
+        } else {
+            $("#sellApparelsize").css('border','1px solid black');
+            $("#noApparelsize").css('display','none');
+        }  
+    } else if( sellCategory === "Bag") {
+        if( sellBagcolor === "" ) {
+            $("#sellBagcolor").css('border','2px solid red');
+            $("#noBagcolor").css('display','block');
+            $('div.bagColor')[0].scrollIntoView();
+        } else {
+            $("#sellBagcolor").css('border','1px solid black');
+            $("#noBagcolor").css('display','none');
+        }  
+    } else if( sellCategory === "Disc") {
+        if( sellDiscink === "" ) {
+            $("#sellDiscink").css('border','2px solid red');
+            $("#noDiscink").css('display','block');
+            $('div.discInk')[0].scrollIntoView();
+        } else {
+            $("#sellDiscink").css('border','1px solid black');
+            $("#noDiscink").css('display','none');
+        } 
+        if( sellDiscname === "" ) {
+            $("#sellDiscname").css('border','2px solid red');
+            $("#noDiscname").css('display','block');
+            $('div.discName')[0].scrollIntoView();
+        } else {
+            $("#sellDiscname").css('border','1px solid black');
+            $("#noDiscname").css('display','none');
+        } 
+        if( sellDisccolor === "" ) {
+            $("#sellDisccolor").css('border','2px solid red');
+            $("#noDisccolor").css('display','block');
+            $('div.discColor')[0].scrollIntoView();
+        } else {
+            $("#sellDisccolor").css('border','1px solid black');
+            $("#noDisccolor").css('display','none');
+        } 
+        if( sellDiscplastic === "" ) {
+            $("#sellDiscplastic").css('border','2px solid red');
+            $("#noDiscplastic").css('display','block');
+            $('div.discPlastic')[0].scrollIntoView();
+        } else {
+            $("#sellDiscplastic").css('border','1px solid black');
+            $("#noDiscplastic").css('display','none');
+        } 
+        if( sellDiscweight === "" ) {
+            $("#sellDiscweight").css('border','2px solid red');
+            $("#noDiscweight").css('display','block');
+            $('div.discWeight')[0].scrollIntoView();
+        } else {
+            $("#sellDiscweight").css('border','1px solid black');
+            $("#noDiscweight").css('display','none');
+        } 
+    } else {
+        $("#noCategory").css('display','none');
+        $("#sellCategory").css('border','1px solid black');
+    }
+
+    if( sellTitle.length === 0 ) {
+        $("#sellTitle").css('border','2px solid red');
+        $("#noTitle").css('display','block');
+        $('div.sellTitle')[0].scrollIntoView();
+    } else {
+        $("#sellTitle").css('border','1px solid black');
+        $("#noTitle").css('display','none');
+    }
+
+    // Go to images page if all information is filled out
+    if (sellTitle.length !==0 &&
+    sellCategory !== "" &&
+    sellDescription !== "" &&
+    sellNewused !== "" &&
+    sellQuality !== "" &&
+    sellBrand !== "" &&
+    sellMinbid !== "") {
+
+        if(sellBrand === "Other"){
+            if(sellBrandOther !== "") {
+                $(".sellInfoform").css('display','none');
+                return;
+            }
+        }
+
+        if(sellCategory === "Disc") {
+            if(sellDiscweight !== "" &&
+                sellDiscplastic !== "" &&
+                sellDisccolor !== "" &&
+                sellDiscname !== "" &&
+                sellDiscink !== ""){
+                    $(".sellInfoform").css('display','none');
+                    $(".sellImagesform").css('display','block');
+                    return;
+            }
+        } 
+        if(sellCategory === "Bag") {
+            if(sellBagcolor !== "") {
+                $(".sellInfoform").css('display','none');
+                $(".sellImagesform").css('display','block');
+                return;
+            }
+        }
+        if(sellCategory === "Apparel") {
+            if(sellApparelsize !== "" &&
+                sellApparelcolor !== "") {
+                    $(".sellInfoform").css('display','none');
+                    $(".sellImagesform").css('display','block');
+                    return;
+            }
+        }
+        if(sellCategory === "Basket") {
+            if(sellBasketmodel !== "") {
+                $(".sellInfoform").css('display','none');
+                $(".sellImagesform").css('display','block');
+                return;
+            }
+        }
+        if(sellCategory === "Shoes") {
+            if(sellShoesize !== "" &&
+                sellShoegender !== "") {
+                    $(".sellInfoform").css('display','none');
+                    $(".sellImagesform").css('display','block');
+                    return;
+            }
+        }
+        
+        $(".sellInfoform").css('display','none');
+        $(".sellImagesform").css('display','block');
+    }
+    */
+    $(".sellInfoform").css('display','none');
+    $(".sellImagesform").css('display','block');
+    document.getElementById('main-wrapper').scrollIntoView();
+
+
+}
+
+function backSellInfo() {
+    $(".sellImagesform").css('display','none');
+    $(".sellInfoform").css('display','block');
+    document.getElementById('main-wrapper').scrollIntoView();
 }
 
 

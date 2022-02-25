@@ -466,6 +466,10 @@ input#searchBuypageCurrentBids:focus{
     padding: 0px;
 }
 
+.sellImagesform{
+   margin-bottom: 3em 0 2em 0; 
+}
+
 input#myRange.slider{
     width: 100%;
 
@@ -911,6 +915,19 @@ a.postModal {
         width: 82%;
 }
 
+.backImages {
+    background: gray;
+}
+
+.backImages:hover {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    background: gray;
+    opacity: 70%;
+}
+
 .clearfix:after {
     content: ".";
     visibility: hidden;
@@ -1080,6 +1097,7 @@ h4.postDetails {
 
 #textarea_feedback {
     padding-left: 1em;
+    display: inline-block;
 }
 
 
@@ -1309,7 +1327,7 @@ h4.postDetails {
 .bagColor {
     padding: 1.5em 3em 1.5em 3em;
 }
-.bagModal {
+.bagModel {
     padding: 1.5em 3em 1.5em 3em;
 }
 .bagCapacity {
@@ -1324,7 +1342,7 @@ h4.postDetails {
 .apparelMaterial {
     padding: 1.5em 3em 1.5em 3em;
 }
-.basketModal {
+.basketModel {
     padding: 1.5em 3em 1.5em 3em;
 }
 .basketChains {
@@ -1347,6 +1365,12 @@ h4.postDetails {
     padding-top: 0;
     padding-left: 35%;
     padding-right: 35%;
+    display: none;
+}
+
+.formError {
+    margin-bottom: 0; 
+    color: red; 
     display: none;
 }
 
@@ -2914,28 +2938,28 @@ header.major {
         }
 
         .sellAccessorySize {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         
         .sellAccessoryColor {
-            padding: 0 1em 0em 1em;
+            padding: 0 0 0em 0;
         }
 
         .sellMinBid {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         
         .sellBuyitnow {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .sellNewused {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .sellQuality {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .sellBrand {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .nextImages {
             padding-left: 20px;
@@ -2947,61 +2971,65 @@ header.major {
         }
 
         .discWeight {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         
         .discPlastic {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         
         .discColor {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .discName {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .discInk {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .bagColor {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
-        .bagModal {
-            padding: 0 1em 1.5em 1em;
+        .bagModel {
+            padding: 0 0 1.5em 0;
         }
         .bagCapacity {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .apparelSize {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .apparelColor {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .apparelMaterial {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
-        .basketModal {
-            padding: 0 1em 1.5em 1em;
+        .basketModel {
+            padding: 0 0 1.5em 0;
         }
         .basketChains {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .basketColor {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .shoeSize {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .shoeColor {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
         .shoeGender {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
         }
 
         #otherBrand {
-            padding: 0 1em 1.5em 1em;
+            padding: 0 0 1.5em 0;
+        }
+
+        .sellNewused {
+            padding: 0 0 1.5em 0;
         }
         
     }
