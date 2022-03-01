@@ -1866,6 +1866,14 @@ grecaptcha.ready(function() {
     //});
 });
 
+$('.save-modal').click( function(e) {
+    $('#confirm-img').css("display","block");
+    $('.imageNormal').css("display","none");
+    $('.imageUploaded').css("display","block");
+
+});
+
+
 
 
 

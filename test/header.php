@@ -29,10 +29,10 @@
 	<link rel="stylesheet" href="/test/assets/css/jquery.bracket.min.css">
 	<link rel="stylesheet" href="/test/assets/css/jConfirm.min.css">
 	<link rel="stylesheet" href="/test/assets/css/croppic.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/css/autoComplete.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 	<link rel="stylesheet" href="/test/assets/css/style.css" />
-
 	<link rel="apple-touch-icon" sizes="180x180" href="/test/images/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/test/images/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/test/images/favicon/favicon-16x16.png">

@@ -182,6 +182,31 @@
 			align-items: center;
 		}
 
+		.disp-none{
+ 		 	display:none;
+		}
+
+		.container-image{
+			width:100%;
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			padding:20px;
+		}
+		#confirm-img{
+			width: 100%;
+    		height: 100%;
+   			border-radius: 0px;
+			display: none;
+		}
+
+		.cr-boundary {
+			max-width: 800px;
+		}
+		.modal-header {
+			text-align: center;
+		}
+
 
 </style>
 
@@ -190,9 +215,9 @@
     $( "#sortable1" ).sortable({
 	  forceHelperSize: true,
 	  tolerance: "pointer",
-	  items: "li:not(.unsortable)"
+	  items: "li:not(.unsortable)",
+	  cancel: ''
     });
-    $( "#sortable1" ).disableSelection();
 	$("#sortable1").sortable({
         stop: function ($item, container, _super, event) {
             $('#sortable1 li').removeClass('dragged');
@@ -203,7 +228,9 @@
             });
         }
     });
+	$( "#sortable1" ).disableSelection();
   } );
+  
 </script>
 
 
@@ -212,7 +239,7 @@
 		<header class="major" style="margin-bottom: 1.5em;">
 			<h2>Sell Anything Disc Golf</h2>
 		</header>
-			<form action="sell-images.php" method="post">
+			<form action="javascript:void(0);" method="post">
 				<div class="row sellInfoform" style="width: 100%; margin: auto 0 auto 0;">
 					<div class="sellTitle 9u 12u(mobile)">
 						<label for="title" style="font-size: 1.5em; margin-bottom: .25em;">Title&nbsp;<span style="color: red;">*</span></label>
@@ -481,25 +508,31 @@
 				</div>
 
 				
+
+
+				<!-- Image Upload window starts HERE -->
 				<div class="row sellImagesform" style="width: 100%; margin: auto 0 auto 0; display: none;">
 				<div class="12u 12u(mobile)" style="padding: 1em 0 1.5em 0">
 					<center><h4 style="font-weight: 500;">Click on the&nbsp;&nbsp;<i class="fa fa-upload"></i>&nbsp;&nbsp;upload button to upload your images. Click and drag each box to change the order.</h4></center>
 				</div>
-				<ul class="row connectedSortable" id="sortable1" style="position: relative; padding:3em 0 0 0.5em;">
+				<ul class="row connectedSortable" id="sortable1" style="position: relative; padding: 3em 0 0 0;">
 					<li class="4u unsortable" style="position: absolute;">
 						<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 					</li>
-					<li class="4u 12u(mobile) ui-state-default">
+					<li class="4u 12u(mobile)">
 								<div class="noImage">
-								<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+										<input id='selectedFile' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
+										<button type="button" id="upload-aphoto" class="btn-primary btn imageNormal" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+										<button type="button" id="upload-aphoto2" class="btn-primary btn imageUploaded" style="margin-bottom: 1.5em; z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0;"><i class="fa fa-upload"></i></button>
 									<h2>Image <span>1</span></h2>
 									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
-							<div id="image1"></div>
+							<div id="image1"><img id='confirm-img' src=''></div>
 					</li>
 					<li class="4u 12u(mobile) ui-state-default">
 							<div class="noImage">
-							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+								<button type="button" style="width:50%; margin-bottom: 1.5em; z-index: 999;" onclick=""><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 								<h2>Image <span>2</span></h2>
 								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 							</div>
@@ -507,7 +540,7 @@
 					</li>
 					<li class="4u 12u(mobile) ui-state-default">
 					<div class="noImage">
-							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+						<button type="button" style="width:50%; margin-bottom: 1.5em; z-index: 999;" onclick=""><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 								<h2>Image <span>3</span></h2>
 								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 							</div>
@@ -515,7 +548,7 @@
 					</li>
 					<li class="4u 12u(mobile) ui-state-default">
 							<div class="noImage">
-							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+								<button type="button" style="width:50%; margin-bottom: 1.5em; z-index: 999;" onclick=""><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 								<h2>Image <span>4</span></h2>
 								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 							</div>
@@ -523,7 +556,7 @@
 					</li>
 					<li class="4u 12u(mobile) ui-state-default">
 							<div class="noImage">
-							<button style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+								<button type="button" style="width:50%; margin-bottom: 1.5em; z-index: 999;" onclick=""><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 								<h2>Image <span>5</span></h2>
 								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 							</div>
@@ -539,6 +572,29 @@
 						</div>
 					</li>
 				</ul>
+
+
+  				<!-- Upload Image Modal -->
+				  <div class="modal fade" id="imageModalContainer">
+					<div class="modal-dialog modal-md modal-dialog-centered">
+						<div class="modal-content modal-content1">
+						<div class="modal-header">
+							<h3 class="modal-title" id="imageModal">Crop Image: Use the tool below to re-format your image.</h3>
+						</div>
+						<div class="modal-body modal-body1">
+							<div id='crop-image-container'>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary save-modal">Save</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: gray;">Cancel</button>
+						</div>
+						</div>
+					</div>
+				</div>
+
+
 				</div>
 			</form> 
 		</div>
@@ -549,6 +605,76 @@
 <?php include_once 'footer.php'; ?>
 
 <script>
+	$(document).on('click', '#upload-aphoto', function () {
+    	document.getElementById('selectedFile').click();
+	});
+
+	$(document).on('click', '#upload-aphoto2', function () {
+    	document.getElementById('selectedFile').click();
+	});
+
+	$('#selectedFile').change(function () {
+    if (this.files[0] == undefined)
+      return;
+    $('#imageModalContainer').modal('show');
+    let reader = new FileReader();
+    reader.addEventListener("load", function () {
+      window.src = reader.result;
+      $('#selectedFile').val('');
+    }, false);
+    if (this.files[0]) {
+      reader.readAsDataURL(this.files[0]);
+    }
+	});
+
+	//only if you want to update the content after page load.
+	$(document).bind('DOMSubtreeModified',function (){
+		$('#crop-image-container').height($('.cr-boundary').height() + $('.cr-slider-wrap').height());
+	})
+
+	let croppi;
+	$('#imageModalContainer').on('shown.bs.modal', function () {
+	let width = document.getElementById('crop-image-container').offsetWidth - 20;
+	$('#crop-image-container').height((width - 80) + 'px');
+		croppi = $('#crop-image-container').croppie({
+			showZoomer: true,
+			enforceBoundary: false,
+            enableExif: true,
+            enableOrientation: true,
+            enableResize: false,
+		viewport: {
+			width: 500,
+			height: 500,
+			type: "square"
+		},
+		boundary: {
+            width: '80%',
+            height: 600
+        }
+		});
+	croppi.croppie('bind', {
+		url: window.src,
+	}).then(function () {
+		//croppi.croppie('setZoom', '0');
+		$('.cr-slider').attr({'min':0.1, 'max':2});
+	});
+	});
+	$('#imageModalContainer').on('hidden.bs.modal', function () {
+	croppi.croppie('destroy');
+	});
+
+	$(document).on('click', '.save-modal', function (ev) {
+	croppi.croppie('result', {
+		type: 'base64',
+		format: 'jpg',
+		size: 'original'
+	}).then(function (resp) {
+		$('#confirm-img').attr('src', resp);
+		$('.modal').modal('hide');
+	});
+	});
+
+
 	$('#brand').change(function() {
 		if ( this.value == 'Other') {
 			if (this.value == '') {
