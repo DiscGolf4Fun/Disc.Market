@@ -1383,7 +1383,14 @@ h4.postDetails {
     padding-left: 1em;
 }
 
-#imageModalContainer {
+#imageModalContainer-one {
+    z-index: 99999;
+    max-width: none;
+    padding: 0;
+    background-color: white;
+}
+
+#imageModalContainer-two {
     z-index: 99999;
     max-width: none;
     padding: 0;

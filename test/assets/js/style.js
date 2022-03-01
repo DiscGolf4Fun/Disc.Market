@@ -1866,10 +1866,17 @@ grecaptcha.ready(function() {
     //});
 });
 
-$('.save-modal').click( function(e) {
-    $('#confirm-img').css("display","block");
-    $('.imageNormal').css("display","none");
-    $('.imageUploaded').css("display","block");
+$('.save-modal-one').click( function(e) {
+    $('#confirm-img-one').css("display","block");
+    $('.imageNormal-one').css("display","none");
+    $('.imageUploaded-one').css("display","block");
+
+});
+
+$('.save-modal-two').click( function(e) {
+    $('#confirm-img-two').css("display","block");
+    $('.imageNormal-two').css("display","none");
+    $('.imageUploaded-two').css("display","block");
 
 });
 

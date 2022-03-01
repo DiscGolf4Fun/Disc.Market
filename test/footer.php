@@ -87,7 +87,6 @@
 	<script src="/test/assets/js/dropzone.js"></script>
 	<script src="/test/assets/js/croppic.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
-	<script src="/test/assets/js/jquery.ui.touch-punch.min.js"></script>
 	<script src="/test/croppic.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/autoComplete.min.js"></script>
