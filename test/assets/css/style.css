@@ -1397,6 +1397,103 @@ h4.postDetails {
     background-color: white;
 }
 
+#imageModalContainer-three {
+    z-index: 99999;
+    max-width: none;
+    padding: 0;
+    background-color: white;
+}
+
+#imageModalContainer-four {
+    z-index: 99999;
+    max-width: none;
+    padding: 0;
+    background-color: white;
+}
+
+#imageModalContainer-five {
+    z-index: 99999;
+    max-width: none;
+    padding: 0;
+    background-color: white;
+}
+
+#upload-aphoto-one3 {
+    z-index: 999;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+    padding: 0.5em 1em;
+    background-color: red;
+}
+
+#upload-aphoto-one3:hover {
+    background-color: #FF6F6F;
+    ;
+}
+
+#upload-aphoto-two3 {
+    z-index: 999;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+    padding: 0.5em 1em;
+    background-color: red;
+}
+
+#upload-aphoto-two3:hover {
+    background-color: #FF6F6F;
+}
+
+#upload-aphoto-three3 {
+    z-index: 999;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+    padding: 0.5em 1em;
+    background-color: red;
+}
+
+#upload-aphoto-three3:hover {
+    background-color: #FF6F6F;
+}
+
+#upload-aphoto-four3 {
+    z-index: 999;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+    padding: 0.5em 1em;
+    background-color: red;
+}
+
+#upload-aphoto-four3:hover {
+    background-color: #FF6F6F;
+}
+
+#upload-aphoto-five3 {
+    z-index: 999;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+    padding: 0.5em 1em;
+    background-color: red;
+}
+
+#upload-aphoto-five3:hover {
+    background-color: #FF6F6F;
+}
+
 .modal-dialog {
     margin: 0 auto;
 }

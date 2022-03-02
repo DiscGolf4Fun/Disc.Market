@@ -207,6 +207,27 @@
 			display: none;
 		}
 
+		#confirm-img-three{
+			width: 100%;
+    		height: 100%;
+   			border-radius: 0px;
+			display: none;
+		}
+
+		#confirm-img-four{
+			width: 100%;
+    		height: 100%;
+   			border-radius: 0px;
+			display: none;
+		}
+
+		#confirm-img-five{
+			width: 100%;
+    		height: 100%;
+   			border-radius: 0px;
+			display: none;
+		}
+
 		.cr-boundary {
 			max-width: 800px;
 		}
@@ -530,49 +551,61 @@
 								<div class="noImage">
 										<input id='selectedFile-one' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
 										<button type="button" id="upload-aphoto-one" class="btn-primary btn imageNormal-one" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
-										<button type="button" id="upload-aphoto-one2" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0;"><i class="fa fa-upload"></i></button>
-										<button type="button" id="upload-aphoto-one3" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; background-color: red !important;"><i class="fa fa-times"></i></button>
+										<button type="button" id="upload-aphoto-one2" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
+										<button type="button" id="upload-aphoto-one3" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
 									<h2>Image <span>1</span></h2>
 									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image1"><img id='confirm-img-one' src=''></div>
 					</li>
-					<li class="4u 12u(mobile) ui-state-default">
+					<li class="4u 12u(mobile)">
 								<div class="noImage">
 										<input id='selectedFile-two' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
 										<button type="button" id="upload-aphoto-two" class="btn-primary btn imageNormal-two" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
-										<button type="button" id="upload-aphoto-two2" class="btn-primary btn imageUploaded-two" style="margin-bottom: 1.5em; z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0;"><i class="fa fa-upload"></i></button>
-										<button type="button" id="upload-aphoto-two3" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; background-color: red !important;"><i class="fa fa-times"></i></button>
+										<button type="button" id="upload-aphoto-two2" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
+										<button type="button" id="upload-aphoto-two3" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
 									<h2>Image <span>2</span></h2>
 									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
-							<div id="image1"><img id='confirm-img-two' src=''></div>
+							<div id="image2"><img id='confirm-img-two' src=''></div>
 					</li>
-					<li class="4u 12u(mobile) ui-state-default">
-					<div class="noImage">
-						<button type="button" style="width:50%; margin-bottom: 1.5em; z-index: 999;" onclick=""><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
-								<h2>Image <span>3</span></h2>
-								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
-							</div>
-							<div id="image3"></div>
+					<li class="4u 12u(mobile)">
+								<div class="noImage">
+										<input id='selectedFile-three' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
+										<button type="button" id="upload-aphoto-three" class="btn-primary btn imageNormal-three" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+										<button type="button" id="upload-aphoto-three2" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
+										<button type="button" id="upload-aphoto-three3" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
+									<h2>Image <span>3</span></h2>
+									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
+								</div>
+							<div id="image3"><img id='confirm-img-three' src=''></div>
 					</li>
-					<li class="4u 12u(mobile) ui-state-default">
-							<div class="noImage">
-								<button type="button" style="width:50%; margin-bottom: 1.5em; z-index: 999;" onclick=""><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
-								<h2>Image <span>4</span></h2>
-								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
-							</div>
-							<div id="image4"></div>
+					<li class="4u 12u(mobile)">
+								<div class="noImage">
+										<input id='selectedFile-four' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
+										<button type="button" id="upload-aphoto-four" class="btn-primary btn imageNormal-four" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+										<button type="button" id="upload-aphoto-four2" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
+										<button type="button" id="upload-aphoto-four3" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
+									<h2>Image <span>4</span></h2>
+									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
+								</div>
+							<div id="image4"><img id='confirm-img-four' src=''></div>
 					</li>
-					<li class="4u 12u(mobile) ui-state-default">
-							<div class="noImage">
-								<button type="button" style="width:50%; margin-bottom: 1.5em; z-index: 999;" onclick=""><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
-								<h2>Image <span>5</span></h2>
-								<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
-							</div>
-							<div id="image5"></div>
+					<li class="4u 12u(mobile)">
+								<div class="noImage">
+										<input id='selectedFile-five' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
+										<button type="button" id="upload-aphoto-five" class="btn-primary btn imageNormal-five" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
+										<button type="button" id="upload-aphoto-five2" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
+										<button type="button" id="upload-aphoto-five3" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
+									<h2>Image <span>5</span></h2>
+									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
+								</div>
+							<div id="image5"><img id='confirm-img-five' src=''></div>
 					</li>
 					<li class="4u 12u(mobile) unsortable">
 						<div id="image6">
@@ -580,13 +613,13 @@
 						<br>			  
 						<center><input type="button" class="backImages" name="submit" value="Back:  Post Info" style="background-color: gray;" onclick="backSellInfo();"></center>	
 						<br>
-						<center><input type="button" class="backImages" name="submit" value="Reset Images" style="background-color: red;"></center>		  
+						<center><input type="button" id="sellResetImages" class="backImages" name="submit" value="Reset Images" style="background-color: red;"></center>		  
 						</div>
 					</li>
 				</ul>
 
 
-  				<!-- Upload Image Modal -->
+  				<!-- Upload Image Modal #1 -->
 				<div class="modal fade" id="imageModalContainer-one">
 					<div class="modal-dialog modal-md modal-dialog-centered">
 						<div class="modal-content modal-content1">
@@ -606,7 +639,7 @@
 					</div>
 				</div>
 
-				<!-- Upload Image Modal -->
+				<!-- Upload Image Modal #2 -->
 				<div class="modal fade" id="imageModalContainer-two">
 					<div class="modal-dialog modal-md modal-dialog-centered">
 						<div class="modal-content modal-content1">
@@ -620,6 +653,66 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary save-modal-two">Save</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: gray;">Cancel</button>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Upload Image Modal #3 -->
+				<div class="modal fade" id="imageModalContainer-three">
+					<div class="modal-dialog modal-md modal-dialog-centered">
+						<div class="modal-content modal-content1">
+						<div class="modal-header">
+							<h3 class="modal-title" id="imageModal">Crop Image: Use the tool below to re-format your image.</h3>
+						</div>
+						<div class="modal-body modal-body1">
+							<div id='crop-image-container-three'>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary save-modal-three">Save</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: gray;">Cancel</button>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Upload Image Modal #4 -->
+				<div class="modal fade" id="imageModalContainer-four">
+					<div class="modal-dialog modal-md modal-dialog-centered">
+						<div class="modal-content modal-content1">
+						<div class="modal-header">
+							<h3 class="modal-title" id="imageModal">Crop Image: Use the tool below to re-format your image.</h3>
+						</div>
+						<div class="modal-body modal-body1">
+							<div id='crop-image-container-four'>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary save-modal-four">Save</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: gray;">Cancel</button>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Upload Image Modal #5 -->
+				<div class="modal fade" id="imageModalContainer-five">
+					<div class="modal-dialog modal-md modal-dialog-centered">
+						<div class="modal-content modal-content1">
+						<div class="modal-header">
+							<h3 class="modal-title" id="imageModal">Crop Image: Use the tool below to re-format your image.</h3>
+						</div>
+						<div class="modal-body modal-body1">
+							<div id='crop-image-container-five'>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary save-modal-five">Save</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: gray;">Cancel</button>
 						</div>
 						</div>
@@ -676,6 +769,82 @@
 		document.getElementById('upload-aphoto-two').style.display = 'block';
 	});
 
+	$(document).on('click', '#upload-aphoto-three', function () {
+    	document.getElementById('selectedFile-three').click();
+	});
+
+	$(document).on('click', '#upload-aphoto-three2', function () {
+    	document.getElementById('selectedFile-three').click();
+	});
+
+	$(document).on('click', '#upload-aphoto-three3', function () {
+		document.getElementById('confirm-img-three').src = "";
+		document.getElementById('confirm-img-three').style.display = 'none';
+		document.getElementById('upload-aphoto-three2').style.display = 'none';
+		document.getElementById('upload-aphoto-three3').style.display = 'none';
+		document.getElementById('upload-aphoto-three').style.display = 'block';
+	});
+
+	$(document).on('click', '#upload-aphoto-four', function () {
+    	document.getElementById('selectedFile-four').click();
+	});
+
+	$(document).on('click', '#upload-aphoto-four2', function () {
+    	document.getElementById('selectedFile-four').click();
+	});
+
+	$(document).on('click', '#upload-aphoto-four3', function () {
+		document.getElementById('confirm-img-four').src = "";
+		document.getElementById('confirm-img-four').style.display = 'none';
+		document.getElementById('upload-aphoto-four2').style.display = 'none';
+		document.getElementById('upload-aphoto-four3').style.display = 'none';
+		document.getElementById('upload-aphoto-four').style.display = 'block';
+	});
+
+	$(document).on('click', '#upload-aphoto-five', function () {
+    	document.getElementById('selectedFile-five').click();
+	});
+
+	$(document).on('click', '#upload-aphoto-five2', function () {
+    	document.getElementById('selectedFile-five').click();
+	});
+
+	$(document).on('click', '#upload-aphoto-five3', function () {
+		document.getElementById('confirm-img-five').src = "";
+		document.getElementById('confirm-img-five').style.display = 'none';
+		document.getElementById('upload-aphoto-five2').style.display = 'none';
+		document.getElementById('upload-aphoto-five3').style.display = 'none';
+		document.getElementById('upload-aphoto-five').style.display = 'block';
+	});
+
+	$(document).on('click', '#sellResetImages', function () {
+		document.getElementById('confirm-img-one').src = "";
+		document.getElementById('confirm-img-one').style.display = 'none';
+		document.getElementById('upload-aphoto-one2').style.display = 'none';
+		document.getElementById('upload-aphoto-one3').style.display = 'none';
+		document.getElementById('upload-aphoto-one').style.display = 'block';
+		document.getElementById('confirm-img-two').src = "";
+		document.getElementById('confirm-img-two').style.display = 'none';
+		document.getElementById('upload-aphoto-two2').style.display = 'none';
+		document.getElementById('upload-aphoto-two3').style.display = 'none';
+		document.getElementById('upload-aphoto-two').style.display = 'block';
+		document.getElementById('confirm-img-three').src = "";
+		document.getElementById('confirm-img-three').style.display = 'none';
+		document.getElementById('upload-aphoto-three2').style.display = 'none';
+		document.getElementById('upload-aphoto-three3').style.display = 'none';
+		document.getElementById('upload-aphoto-three').style.display = 'block';
+		document.getElementById('confirm-img-four').src = "";
+		document.getElementById('confirm-img-four').style.display = 'none';
+		document.getElementById('upload-aphoto-four2').style.display = 'none';
+		document.getElementById('upload-aphoto-four3').style.display = 'none';
+		document.getElementById('upload-aphoto-four').style.display = 'block';
+		document.getElementById('confirm-img-five').src = "";
+		document.getElementById('confirm-img-five').style.display = 'none';
+		document.getElementById('upload-aphoto-five2').style.display = 'none';
+		document.getElementById('upload-aphoto-five3').style.display = 'none';
+		document.getElementById('upload-aphoto-five').style.display = 'block';
+	});
+
 
 	$('#selectedFile-one').change(function () {
     if (this.files[0] == undefined)
@@ -699,6 +868,48 @@
     reader.addEventListener("load", function () {
       window.src = reader.result;
       $('#selectedFile-two').val('');
+    }, false);
+    if (this.files[0]) {
+      reader.readAsDataURL(this.files[0]);
+    }
+	});
+
+	$('#selectedFile-three').change(function () {
+    if (this.files[0] == undefined)
+      return;
+    $('#imageModalContainer-three').modal('show');
+    let reader = new FileReader();
+    reader.addEventListener("load", function () {
+      window.src = reader.result;
+      $('#selectedFile-three').val('');
+    }, false);
+    if (this.files[0]) {
+      reader.readAsDataURL(this.files[0]);
+    }
+	});
+
+	$('#selectedFile-four').change(function () {
+    if (this.files[0] == undefined)
+      return;
+    $('#imageModalContainer-four').modal('show');
+    let reader = new FileReader();
+    reader.addEventListener("load", function () {
+      window.src = reader.result;
+      $('#selectedFile-four').val('');
+    }, false);
+    if (this.files[0]) {
+      reader.readAsDataURL(this.files[0]);
+    }
+	});
+
+	$('#selectedFile-five').change(function () {
+    if (this.files[0] == undefined)
+      return;
+    $('#imageModalContainer-five').modal('show');
+    let reader = new FileReader();
+    reader.addEventListener("load", function () {
+      window.src = reader.result;
+      $('#selectedFile-five').val('');
     }, false);
     if (this.files[0]) {
       reader.readAsDataURL(this.files[0]);
@@ -796,6 +1007,148 @@
 		size: 'original'
 	}).then(function (resp) {
 		$('#confirm-img-two').attr('src', resp);
+		$('.modal').modal('hide');
+	});
+	});
+
+	//only if you want to update the content after page load.
+	$(document).bind('DOMSubtreeModified',function (){
+		$('#crop-image-container-three').height($('.cr-boundary').height() + $('.cr-slider-wrap').height());
+	})
+
+	let croppi3;
+	$('#imageModalContainer-three').on('shown.bs.modal', function () {
+	let width3 = document.getElementById('crop-image-container-three').offsetWidth - 20;
+	$('#crop-image-container-three').height((width3 - 80) + 'px');
+		croppi3 = $('#crop-image-container-three').croppie({
+			showZoomer: true,
+			enforceBoundary: false,
+            enableExif: true,
+            enableOrientation: true,
+            enableResize: false,
+		viewport: {
+			width: 500,
+			height: 500,
+			type: "square"
+		},
+		boundary: {
+            width: '80%',
+            height: 600
+        }
+		});
+	croppi3.croppie('bind', {
+		url: window.src,
+	}).then(function () {
+		//croppi.croppie('setZoom', '0');
+		$('.cr-slider').attr({'min':0.1, 'max':2});
+	});
+	});
+	$('#imageModalContainer-three').on('hidden.bs.modal', function () {
+	croppi3.croppie('destroy');
+	});
+
+	$(document).on('click', '.save-modal-three', function (ev) {
+	croppi3.croppie('result', {
+		type: 'base64',
+		format: 'jpg',
+		size: 'original'
+	}).then(function (resp) {
+		$('#confirm-img-three').attr('src', resp);
+		$('.modal').modal('hide');
+	});
+	});
+
+
+	//only if you want to update the content after page load.
+	$(document).bind('DOMSubtreeModified',function (){
+		$('#crop-image-container-four').height($('.cr-boundary').height() + $('.cr-slider-wrap').height());
+	})
+
+	let croppi4;
+	$('#imageModalContainer-four').on('shown.bs.modal', function () {
+	let width4 = document.getElementById('crop-image-container-four').offsetWidth - 20;
+	$('#crop-image-container-four').height((width4 - 80) + 'px');
+		croppi4 = $('#crop-image-container-four').croppie({
+			showZoomer: true,
+			enforceBoundary: false,
+            enableExif: true,
+            enableOrientation: true,
+            enableResize: false,
+		viewport: {
+			width: 500,
+			height: 500,
+			type: "square"
+		},
+		boundary: {
+            width: '80%',
+            height: 600
+        }
+		});
+	croppi4.croppie('bind', {
+		url: window.src,
+	}).then(function () {
+		//croppi.croppie('setZoom', '0');
+		$('.cr-slider').attr({'min':0.1, 'max':2});
+	});
+	});
+	$('#imageModalContainer-four').on('hidden.bs.modal', function () {
+	croppi4.croppie('destroy');
+	});
+
+	$(document).on('click', '.save-modal-four', function (ev) {
+	croppi4.croppie('result', {
+		type: 'base64',
+		format: 'jpg',
+		size: 'original'
+	}).then(function (resp) {
+		$('#confirm-img-four').attr('src', resp);
+		$('.modal').modal('hide');
+	});
+	});
+
+	//only if you want to update the content after page load.
+	$(document).bind('DOMSubtreeModified',function (){
+		$('#crop-image-container-five').height($('.cr-boundary').height() + $('.cr-slider-wrap').height());
+	})
+
+	let croppi5;
+	$('#imageModalContainer-five').on('shown.bs.modal', function () {
+	let width5 = document.getElementById('crop-image-container-five').offsetWidth - 20;
+	$('#crop-image-container-five').height((width5 - 80) + 'px');
+		croppi5 = $('#crop-image-container-five').croppie({
+			showZoomer: true,
+			enforceBoundary: false,
+            enableExif: true,
+            enableOrientation: true,
+            enableResize: false,
+		viewport: {
+			width: 500,
+			height: 500,
+			type: "square"
+		},
+		boundary: {
+            width: '80%',
+            height: 600
+        }
+		});
+	croppi5.croppie('bind', {
+		url: window.src,
+	}).then(function () {
+		//croppi.croppie('setZoom', '0');
+		$('.cr-slider').attr({'min':0.1, 'max':2});
+	});
+	});
+	$('#imageModalContainer-five').on('hidden.bs.modal', function () {
+	croppi5.croppie('destroy');
+	});
+
+	$(document).on('click', '.save-modal-five', function (ev) {
+	croppi5.croppie('result', {
+		type: 'base64',
+		format: 'jpg',
+		size: 'original'
+	}).then(function (resp) {
+		$('#confirm-img-five').attr('src', resp);
 		$('.modal').modal('hide');
 	});
 	});
