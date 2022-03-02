@@ -1869,30 +1869,35 @@ grecaptcha.ready(function() {
 $('.save-modal-one').click( function(e) {
     $('#confirm-img-one').css("display","block");
     $('.imageNormal-one').css("display","none");
+    $('.imageIcon-one').css("display","none");
     $('.imageUploaded-one').css("display","block");
 });
 
 $('.save-modal-two').click( function(e) {
     $('#confirm-img-two').css("display","block");
     $('.imageNormal-two').css("display","none");
+    $('.imageIcon-two').css("display","none");
     $('.imageUploaded-two').css("display","block");
 });
 
 $('.save-modal-three').click( function(e) {
     $('#confirm-img-three').css("display","block");
     $('.imageNormal-three').css("display","none");
+    $('.imageIcon-three').css("display","none");
     $('.imageUploaded-three').css("display","block");
 });
 
 $('.save-modal-four').click( function(e) {
     $('#confirm-img-four').css("display","block");
     $('.imageNormal-four').css("display","none");
+    $('.imageIcon-four').css("display","none");
     $('.imageUploaded-four').css("display","block");
 });
 
 $('.save-modal-five').click( function(e) {
     $('#confirm-img-five').css("display","block");
     $('.imageNormal-five').css("display","none");
+    $('.imageIcon-five').css("display","none");
     $('.imageUploaded-five').css("display","block");
 });
 

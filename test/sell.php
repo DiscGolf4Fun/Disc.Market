@@ -244,7 +244,7 @@
 	  forceHelperSize: true,
 	  tolerance: "pointer",
 	  items: "li:not(.unsortable)",
-	  cancel: ''
+	  cancel: '#upload-aphoto-one, #upload-aphoto-one2, #upload-aphoto-one3, #upload-aphoto-two, #upload-aphoto-two2, #upload-aphoto-two3, #upload-aphoto-three, #upload-aphoto-three2, #upload-aphoto-three3, #upload-aphoto-four, #upload-aphoto-four2, #upload-aphoto-four3, #upload-aphoto-five, #upload-aphoto-five2, #upload-aphoto-five3'
     });
 	$("#sortable1").sortable({
         stop: function ($item, container, _super, event) {
@@ -253,6 +253,11 @@
             $('#sortable1 span').each(function (i) {
                 var humanNum = i + 1;
                 $(this).html(humanNum + '');
+            });
+
+			$('#sortable1 em').each(function (j) {
+                var humanNum2 = j + 1;
+                $(this).html(humanNum2 + '');
             });
         }
     });
@@ -553,8 +558,9 @@
 										<button type="button" id="upload-aphoto-one" class="btn-primary btn imageNormal-one" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-one2" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-one3" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-									<h2>Image <span>1</span></h2>
-									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+										<button type="button" id="upload-aphoto-one4" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>1</em></button>
+									<h2 class="imageIcon-one">Image <span>1</span></h2>
+									<h2 class="imageIcon-one" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image1"><img id='confirm-img-one' src=''></div>
@@ -565,8 +571,9 @@
 										<button type="button" id="upload-aphoto-two" class="btn-primary btn imageNormal-two" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-two2" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-two3" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-									<h2>Image <span>2</span></h2>
-									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+										<button type="button" id="upload-aphoto-two4" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>2</em></button>
+									<h2 class="imageIcon-two">Image <span>2</span></h2>
+									<h2 class="imageIcon-two" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image2"><img id='confirm-img-two' src=''></div>
@@ -577,8 +584,9 @@
 										<button type="button" id="upload-aphoto-three" class="btn-primary btn imageNormal-three" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-three2" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-three3" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-									<h2>Image <span>3</span></h2>
-									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+										<button type="button" id="upload-aphoto-three4" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>3</em></button>
+									<h2 class="imageIcon-three">Image <span>3</span></h2>
+									<h2 class="imageIcon-three" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image3"><img id='confirm-img-three' src=''></div>
@@ -589,8 +597,9 @@
 										<button type="button" id="upload-aphoto-four" class="btn-primary btn imageNormal-four" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-four2" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-four3" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-									<h2>Image <span>4</span></h2>
-									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+										<button type="button" id="upload-aphoto-four4" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>4</em></button>
+										<h2 class="imageIcon-four">Image <span>4</span></h2>
+									<h2 class="imageIcon-four" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image4"><img id='confirm-img-four' src=''></div>
@@ -601,8 +610,10 @@
 										<button type="button" id="upload-aphoto-five" class="btn-primary btn imageNormal-five" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-five2" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-five3" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-									<h2>Image <span>5</span></h2>
-									<h2 style="font-size: 3em;"><i class="fa fa-image"></i></h2>
+										<button type="button" id="upload-aphoto-five4" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>5</em></button>
+
+									<h2 class="imageIcon-five">Image <span>5</span></h2>
+									<h2 class="imageIcon-five" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image5"><img id='confirm-img-five' src=''></div>
@@ -613,7 +624,7 @@
 						<br>			  
 						<center><input type="button" class="backImages" name="submit" value="Back:  Post Info" style="background-color: gray;" onclick="backSellInfo();"></center>	
 						<br>
-						<center><input type="button" id="sellResetImages" class="backImages" name="submit" value="Reset Images" style="background-color: red;"></center>		  
+						<center><input type="button" class="backImages" name="submit" value="Reset Images" style="background-color: red;" data-toggle="resetSellImages"></center>		  
 						</div>
 					</li>
 				</ul>
@@ -750,7 +761,9 @@
 		document.getElementById('confirm-img-one').style.display = 'none';
 		document.getElementById('upload-aphoto-one2').style.display = 'none';
 		document.getElementById('upload-aphoto-one3').style.display = 'none';
+		document.getElementById('upload-aphoto-one4').style.display = 'none';
 		document.getElementById('upload-aphoto-one').style.display = 'block';
+		$('.imageIcon-one').css("display","block");
 	});
 
 	$(document).on('click', '#upload-aphoto-two', function () {
@@ -766,7 +779,9 @@
 		document.getElementById('confirm-img-two').style.display = 'none';
 		document.getElementById('upload-aphoto-two2').style.display = 'none';
 		document.getElementById('upload-aphoto-two3').style.display = 'none';
+		document.getElementById('upload-aphoto-two4').style.display = 'none';
 		document.getElementById('upload-aphoto-two').style.display = 'block';
+		$('.imageIcon-two').css("display","block");
 	});
 
 	$(document).on('click', '#upload-aphoto-three', function () {
@@ -782,7 +797,9 @@
 		document.getElementById('confirm-img-three').style.display = 'none';
 		document.getElementById('upload-aphoto-three2').style.display = 'none';
 		document.getElementById('upload-aphoto-three3').style.display = 'none';
+		document.getElementById('upload-aphoto-three4').style.display = 'none';
 		document.getElementById('upload-aphoto-three').style.display = 'block';
+		$('.imageIcon-three').css("display","block");
 	});
 
 	$(document).on('click', '#upload-aphoto-four', function () {
@@ -798,7 +815,9 @@
 		document.getElementById('confirm-img-four').style.display = 'none';
 		document.getElementById('upload-aphoto-four2').style.display = 'none';
 		document.getElementById('upload-aphoto-four3').style.display = 'none';
+		document.getElementById('upload-aphoto-four4').style.display = 'none';
 		document.getElementById('upload-aphoto-four').style.display = 'block';
+		$('.imageIcon-four').css("display","block");
 	});
 
 	$(document).on('click', '#upload-aphoto-five', function () {
@@ -814,39 +833,53 @@
 		document.getElementById('confirm-img-five').style.display = 'none';
 		document.getElementById('upload-aphoto-five2').style.display = 'none';
 		document.getElementById('upload-aphoto-five3').style.display = 'none';
+		document.getElementById('upload-aphoto-five4').style.display = 'none';
 		document.getElementById('upload-aphoto-five').style.display = 'block';
+		$('.imageIcon-five').css("display","block");
 	});
 
-	$(document).on('click', '#sellResetImages', function () {
+	function sellResetImages(){
+		document.getElementById('main-wrapper').scrollIntoView();
 		document.getElementById('confirm-img-one').src = "";
 		document.getElementById('confirm-img-one').style.display = 'none';
 		document.getElementById('upload-aphoto-one2').style.display = 'none';
 		document.getElementById('upload-aphoto-one3').style.display = 'none';
+		document.getElementById('upload-aphoto-4').style.display = 'none';
 		document.getElementById('upload-aphoto-one').style.display = 'block';
+		$('.imageIcon-one').css("display","block");
 		document.getElementById('confirm-img-two').src = "";
 		document.getElementById('confirm-img-two').style.display = 'none';
 		document.getElementById('upload-aphoto-two2').style.display = 'none';
 		document.getElementById('upload-aphoto-two3').style.display = 'none';
+		document.getElementById('upload-aphoto-two4').style.display = 'none';
 		document.getElementById('upload-aphoto-two').style.display = 'block';
+		$('.imageIcon-two').css("display","block");
 		document.getElementById('confirm-img-three').src = "";
 		document.getElementById('confirm-img-three').style.display = 'none';
 		document.getElementById('upload-aphoto-three2').style.display = 'none';
 		document.getElementById('upload-aphoto-three3').style.display = 'none';
+		document.getElementById('upload-aphoto-three4').style.display = 'none';
 		document.getElementById('upload-aphoto-three').style.display = 'block';
+		$('.imageIcon-three').css("display","block");
 		document.getElementById('confirm-img-four').src = "";
 		document.getElementById('confirm-img-four').style.display = 'none';
 		document.getElementById('upload-aphoto-four2').style.display = 'none';
 		document.getElementById('upload-aphoto-four3').style.display = 'none';
+		document.getElementById('upload-aphoto-four4').style.display = 'none';
 		document.getElementById('upload-aphoto-four').style.display = 'block';
+		$('.imageIcon-four').css("display","block");
 		document.getElementById('confirm-img-five').src = "";
 		document.getElementById('confirm-img-five').style.display = 'none';
 		document.getElementById('upload-aphoto-five2').style.display = 'none';
 		document.getElementById('upload-aphoto-five3').style.display = 'none';
+		document.getElementById('upload-aphoto-five4').style.display = 'none';
 		document.getElementById('upload-aphoto-five').style.display = 'block';
-	});
+		$('.imageIcon-five').css("display","block");
+	};
 
 
 	$('#selectedFile-one').change(function () {
+		console.log((this.files[0].size / 1024 / 1024) * 10);
     if (this.files[0] == undefined)
       return;
     $('#imageModalContainer-one').modal('show');
@@ -953,14 +986,17 @@
 	});
 
 	$(document).on('click', '.save-modal-one', function (ev) {
-	croppi.croppie('result', {
-		type: 'base64',
-		format: 'jpg',
-		size: 'original'
-	}).then(function (resp) {
-		$('#confirm-img-one').attr('src', resp);
-		$('.modal').modal('hide');
-	});
+		croppi.croppie('result', {
+			type: 'base64',
+			format: 'jpg',
+			size: {
+				width: 1000,
+				height: 1000
+			}
+		}).then(function (resp) {
+			$('#confirm-img-one').attr('src', resp);
+			$('.modal').modal('hide');
+		});
 	});
 
 
@@ -1004,7 +1040,10 @@
 	croppi2.croppie('result', {
 		type: 'base64',
 		format: 'jpg',
-		size: 'original'
+		size: {
+			width: 1000,
+			height: 1000
+		}
 	}).then(function (resp) {
 		$('#confirm-img-two').attr('src', resp);
 		$('.modal').modal('hide');
@@ -1051,7 +1090,10 @@
 	croppi3.croppie('result', {
 		type: 'base64',
 		format: 'jpg',
-		size: 'original'
+		size: {
+			width: 1000,
+			height: 1000
+		}
 	}).then(function (resp) {
 		$('#confirm-img-three').attr('src', resp);
 		$('.modal').modal('hide');
@@ -1099,7 +1141,10 @@
 	croppi4.croppie('result', {
 		type: 'base64',
 		format: 'jpg',
-		size: 'original'
+		size: {
+			width: 1000,
+			height: 1000
+		}
 	}).then(function (resp) {
 		$('#confirm-img-four').attr('src', resp);
 		$('.modal').modal('hide');
@@ -1146,7 +1191,10 @@
 	croppi5.croppie('result', {
 		type: 'base64',
 		format: 'jpg',
-		size: 'original'
+		size: {
+			width: 1000,
+			height: 1000
+		}
 	}).then(function (resp) {
 		$('#confirm-img-five').attr('src', resp);
 		$('.modal').modal('hide');
@@ -1276,41 +1324,28 @@
       }
     });
 
+	$('[data-toggle="resetSellImages"]').jConfirm({
 
-	function resetImages() {
-		cropContainerModal1.reset();
-		cropContainerModal2.reset();
-		cropContainerModal3.reset();
-		cropContainerModal4.reset();
-		cropContainerModal5.reset();
-		$('.croppedImg').hide();
-		$('.cropControlRemoveCroppedImage').hide();
-	}
+		question:'Reset ALL Images?',
+		confirm_text: 'Yes',
+		deny_text: 'No',
+		theme: 'black',
+		// hides on click
+		hide_on_click: true,
+		// 'auto','top','bottom','left','right'
+		position: 'bottom',
+		// extra class(es)
+		class: '',
+		// shows deny button
+		show_deny_btn: false,
+		// 'tiny', 'small', 'medium', 'large'
+		size: 'medium',
+		// 'black', 'white', 'blurred'
+		backdrop: false
 
+	}).on('confirm', function(e){
+		sellResetImages();
+	});
 
-$('[data-toggle="resetImages"]').jConfirm({
-
-question:'Reset Images?',
-confirm_text: 'Yes',
-deny_text: 'No',
-theme: 'black',
-// hides on click
-hide_on_click: true,
-// 'auto','top','bottom','left','right'
-position: 'left',
-// extra class(es)
-class: '',
-// shows deny button
-show_deny_btn: false,
-// 'tiny', 'small', 'medium', 'large'
-size: 'medium',
-// 'black', 'white', 'blurred'
-backdrop: false
-
-}).on('confirm', function(e){
-	resetImages()
-}).on('jc-show', function(e, value){
-$(".jc-tooltip").css("margin-left","-.5em");
-});
 
 </script>
