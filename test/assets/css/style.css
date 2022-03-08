@@ -1515,6 +1515,14 @@ h4.postDetails {
    margin-top: 50px;
 }
 
+.croppie-container .cr-viewport {
+    background: url('../../images/imageGridOverlay.png');
+    background-size: contain;
+    border: 0;
+    outline: 5px solid #0a7e07;
+    box-shadow: 0 0 2000px 2000px rgb(0 0 0 / 75%);
+}
+
 #brandsButton {
     background-color: white;
     border: 2px solid #0a7e07;

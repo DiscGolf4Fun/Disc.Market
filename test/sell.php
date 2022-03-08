@@ -239,30 +239,36 @@
 </style>
 
 <script>
+
+function sorting() {
+	$('#sortable1 span').each(function (i) {
+		var humanNum = i + 1;
+		$(this).html(humanNum + '');
+	});
+	$('#sortable1 em').each(function (j) {
+		var humanNum2 = j + 1;
+		$(this).html(humanNum2 + '');
+	});
+}
+
   $( function() {
     $( "#sortable1" ).sortable({
 	  forceHelperSize: true,
 	  tolerance: "pointer",
 	  items: "li:not(.unsortable)",
-	  cancel: '#upload-aphoto-one, #upload-aphoto-one2, #upload-aphoto-one3, #upload-aphoto-two, #upload-aphoto-two2, #upload-aphoto-two3, #upload-aphoto-three, #upload-aphoto-three2, #upload-aphoto-three3, #upload-aphoto-four, #upload-aphoto-four2, #upload-aphoto-four3, #upload-aphoto-five, #upload-aphoto-five2, #upload-aphoto-five3'
+	  cancel: '#upload-aphoto-one, #upload-aphoto-one2, #upload-aphoto-one3, #upload-aphoto-one4, #upload-aphoto-two, #upload-aphoto-two2, #upload-aphoto-two3, #upload-aphoto-two4, #upload-aphoto-three, #upload-aphoto-three2, #upload-aphoto-three3, #upload-aphoto-three4, #upload-aphoto-four, #upload-aphoto-four2, #upload-aphoto-four3,#upload-aphoto-four4, #upload-aphoto-five, #upload-aphoto-five2, #upload-aphoto-five3, #upload-aphoto-five4'
     });
 	$("#sortable1").sortable({
         stop: function ($item, container, _super, event) {
             $('#sortable1 li').removeClass('dragged');
             $("body").removeClass('dragging');
-            $('#sortable1 span').each(function (i) {
-                var humanNum = i + 1;
-                $(this).html(humanNum + '');
-            });
-
-			$('#sortable1 em').each(function (j) {
-                var humanNum2 = j + 1;
-                $(this).html(humanNum2 + '');
-            });
+			sorting();
         }
     });
 	$( "#sortable1" ).disableSelection();
+
   } );
+
   
 </script>
 
@@ -536,7 +542,7 @@
 						<input type="button" name="submit" value="Next:  Images" style="float:right;" onclick="sellImages();">
 					</div>
 					<div class="sellReset 6u 12u(mobile)">
-						<input type="reset" name="submit" value="Reset" style="background-color: gray;" onclick="topFunction();">
+						<input type="reset" name="submit" value="Reset Info" style="background-color: gray;" data-toggle="resetSellInfo">
 					</div>
 				</div>
 
@@ -552,66 +558,75 @@
 					<li class="4u unsortable" style="position: absolute;">
 						<div class="imageTest" style="position: relative;"><p>Featured Image</p></div>
 					</li>
-					<li class="4u 12u(mobile)">
+					<li class="4u 12u(mobile) sortButtons">
 								<div class="noImage">
 										<input id='selectedFile-one' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
 										<button type="button" id="upload-aphoto-one" class="btn-primary btn imageNormal-one" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-one2" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-one3" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-										<button type="button" id="upload-aphoto-one4" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>1</em></button>
+										<button type="button" id="upload-aphoto-one4" class="btn-primary btn imageUploaded-one" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0; background-color: white; color: black !important; border: 1px solid black;">
+											<i class="fa fa-chevron-up" id="upload-aphoto-one5" value='up' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i><em style="cursor: default;">1</em><i class="fa fa-chevron-down" id="upload-aphoto-one6" value='down' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i>
+										</button>
 									<h2 class="imageIcon-one">Image <span>1</span></h2>
 									<h2 class="imageIcon-one" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
-							<div id="image1"><img id='confirm-img-one' src=''></div>
+							<div class="imageOrder" id="image1"><img id='confirm-img-one' src=''></div>
 					</li>
-					<li class="4u 12u(mobile)">
+					<li class="4u 12u(mobile) sortButtons">
 								<div class="noImage">
 										<input id='selectedFile-two' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
 										<button type="button" id="upload-aphoto-two" class="btn-primary btn imageNormal-two" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-two2" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-two3" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-										<button type="button" id="upload-aphoto-two4" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>2</em></button>
+										<button type="button" id="upload-aphoto-two4" class="btn-primary btn imageUploaded-two" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0; background-color: white; color: black !important; border: 1px solid black;">
+											<i class="fa fa-chevron-up" id="upload-aphoto-two5" value='up' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i><em style="cursor: default;">1</em><i class="fa fa-chevron-down" id="upload-aphoto-two6" value='down' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i>
+										</button>
 									<h2 class="imageIcon-two">Image <span>2</span></h2>
 									<h2 class="imageIcon-two" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image2"><img id='confirm-img-two' src=''></div>
 					</li>
-					<li class="4u 12u(mobile)">
+					<li class="4u 12u(mobile) sortButtons">
 								<div class="noImage">
 										<input id='selectedFile-three' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
 										<button type="button" id="upload-aphoto-three" class="btn-primary btn imageNormal-three" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-three2" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-three3" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-										<button type="button" id="upload-aphoto-three4" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>3</em></button>
+										<button type="button" id="upload-aphoto-three4" class="btn-primary btn imageUploaded-three" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0; background-color: white; color: black !important; border: 1px solid black;">
+											<i class="fa fa-chevron-up" id="upload-aphoto-three5" value='up' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i><em style="cursor: default;">3</em><i class="fa fa-chevron-down" id="upload-aphoto-three6" value='down' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i>
+										</button>
 									<h2 class="imageIcon-three">Image <span>3</span></h2>
 									<h2 class="imageIcon-three" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image3"><img id='confirm-img-three' src=''></div>
 					</li>
-					<li class="4u 12u(mobile)">
+					<li class="4u 12u(mobile) sortButtons">
 								<div class="noImage">
 										<input id='selectedFile-four' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
 										<button type="button" id="upload-aphoto-four" class="btn-primary btn imageNormal-four" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-four2" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-four3" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-										<button type="button" id="upload-aphoto-four4" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>4</em></button>
+										<button type="button" id="upload-aphoto-four4" class="btn-primary btn imageUploaded-four" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0; background-color: white; color: black !important; border: 1px solid black;">
+											<i class="fa fa-chevron-up" id="upload-aphoto-four5" value='up' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i><em style="cursor: default;">4</em><i class="fa fa-chevron-down" id="upload-aphoto-four6" value='down' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i>
+										</button>
 										<h2 class="imageIcon-four">Image <span>4</span></h2>
 									<h2 class="imageIcon-four" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
 								</div>
 							<div id="image4"><img id='confirm-img-four' src=''></div>
 					</li>
-					<li class="4u 12u(mobile)">
+					<li class="4u 12u(mobile) sortButtons">
 								<div class="noImage">
 										<input id='selectedFile-five' class="disp-none" type='file' accept=".png, .jpg, .jpeg, .svg">
 										<button type="button" id="upload-aphoto-five" class="btn-primary btn imageNormal-five" style="width:50%; margin-bottom: 1.5em; z-index: 999;"><i class="fa fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload</button>
 										<button type="button" id="upload-aphoto-five2" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; top: 0; left: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-upload"></i></button>
 										<button type="button" id="upload-aphoto-five3" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; top: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em;"><i class="fa fa-times"></i></button>
-										<button type="button" id="upload-aphoto-five4" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0.5em 1em 0.5em 1em; background-color: white; color: black !important; border: 1px solid black; pointer-events: none;"><em>5</em></button>
-
+										<button type="button" id="upload-aphoto-five4" class="btn-primary btn imageUploaded-five" style="z-index: 999; display: none; position: absolute; bottom: 0; right: 0; border-radius: 0; padding: 0; background-color: white; color: black !important; border: 1px solid black;">
+											<i class="fa fa-chevron-up" id="upload-aphoto-five5" value='up' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i><em style="cursor: default;">5</em><i class="fa fa-chevron-down" id="upload-aphoto-five6" value='down' style="cursor: pointer; padding: 0.5em 1em 0.5em 1em;"></i>
+										</button>
 									<h2 class="imageIcon-five">Image <span>5</span></h2>
 									<h2 class="imageIcon-five" style="font-size: 3em;"><i class="fa fa-image"></i></h2>
 									<!-- <button type="button" class="moveButton" style="width:50%; margin-top: 1.5em; z-index: 999; color: black !important; background: white; border: 2px solid black;" onclick=""><i class="fa fa-arrows"></i>&nbsp;&nbsp;&nbsp;Move</button> -->
@@ -641,6 +656,10 @@
 							<div id='crop-image-container-one'>
 
 							</div>
+							<div class="rotateButtons" style="text-align: center;">
+								<button type="button" class="btn btn-primary" id="rotateCounter-one">Rotate Left</button>
+								<button type="button" class="btn btn-primary" id="rotateClock-one">Rotate Right</button>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary save-modal-one">Save</button>
@@ -660,6 +679,10 @@
 						<div class="modal-body modal-body1">
 							<div id='crop-image-container-two'>
 
+							</div>
+							<div class="rotateButtons" style="text-align: center;">
+								<button type="button" class="btn btn-primary" id="rotateCounter-two">Rotate Left</button>
+								<button type="button" class="btn btn-primary" id="rotateClock-two">Rotate Right</button>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -681,6 +704,10 @@
 							<div id='crop-image-container-three'>
 
 							</div>
+							<div class="rotateButtons" style="text-align: center;">
+								<button type="button" class="btn btn-primary" id="rotateCounter-three">Rotate Left</button>
+								<button type="button" class="btn btn-primary" id="rotateClock-three">Rotate Right</button>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary save-modal-three">Save</button>
@@ -701,6 +728,10 @@
 							<div id='crop-image-container-four'>
 
 							</div>
+							<div class="rotateButtons" style="text-align: center;">
+								<button type="button" class="btn btn-primary" id="rotateCounter-four">Rotate Left</button>
+								<button type="button" class="btn btn-primary" id="rotateClock-four">Rotate Right</button>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary save-modal-four">Save</button>
@@ -720,6 +751,10 @@
 						<div class="modal-body modal-body1">
 							<div id='crop-image-container-five'>
 
+							</div>
+							<div class="rotateButtons" style="text-align: center;">
+								<button type="button" class="btn btn-primary" id="rotateCounter-five">Rotate Left</button>
+								<button type="button" class="btn btn-primary" id="rotateClock-five">Rotate Right</button>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -742,10 +777,83 @@
 
 <script>
 
-	// A $( document ).ready() block.
-	$( document ).ready(function() {
-		//enter here
+$(document).ready(function(){
+    
+    $('#upload-aphoto-one5').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		console.log("UPLOAD APHOTO UP");
+		moveUp(btn.parents('.sortButtons'));
+		sorting(); 
 	});
+
+	$('#upload-aphoto-one6').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		console.log("UPLOAD APHOTO DOWN");
+		moveDown(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-two5').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveUp(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-two6').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveDown(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-three5').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveUp(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-three6').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveDown(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-four5').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveUp(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-four6').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveDown(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-five5').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveUp(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+	$('#upload-aphoto-five6').click(function () {
+		var btn = $(this);
+		var val = btn.val();
+		moveDown(btn.parents('.sortButtons'));
+		sorting();
+	});
+
+    sorting();
+    
+});
 
 
 	$(document).on('click', '#upload-aphoto-one', function () {
@@ -844,7 +952,7 @@
 		document.getElementById('confirm-img-one').style.display = 'none';
 		document.getElementById('upload-aphoto-one2').style.display = 'none';
 		document.getElementById('upload-aphoto-one3').style.display = 'none';
-		document.getElementById('upload-aphoto-4').style.display = 'none';
+		document.getElementById('upload-aphoto-one4').style.display = 'none';
 		document.getElementById('upload-aphoto-one').style.display = 'block';
 		$('.imageIcon-one').css("display","block");
 		document.getElementById('confirm-img-two').src = "";
@@ -875,6 +983,40 @@
 		document.getElementById('upload-aphoto-five4').style.display = 'none';
 		document.getElementById('upload-aphoto-five').style.display = 'block';
 		$('.imageIcon-five').css("display","block");
+	};
+
+
+	function sellResetInfo(){
+		document.getElementById('main-wrapper').scrollIntoView();
+		$('#sellTitle').val('');
+		$('#category').val('');
+		$('#category').trigger('change');
+		$('#sellDescription').val('');
+		$('#sellNewused').val('');
+		$('#sellQuality').val('');
+		$('#sellBrand').val('');
+		$('#sellMinbid').val('');
+		$('#sellBuyitnow').val('');
+		$('#sellDiscweight').val('');
+		$('#sellDiscplastic').val('');
+		$('#sellDisccolor').val('');
+		$('#sellDiscname').val('');
+		$('#sellDiscink').val('');
+		$('#sellBagcolor').val('');
+		$('#sellBagmodel').val('');
+		$('#sellBagcapacity').val('');
+		$('#sellApparelsize').val('');
+		$('#sellApparelsize').val('');
+		$('#sellApparelcolor').val('');
+		$('#sellApparelmaterial').val('');
+		$('#sellBasketmodel').val('');
+		$('#sellBasketchains').val('');
+		$('#sellBasketcolor').val('');
+		$('#sellShoegender').val('');
+		$('#sellShoesize').val('');
+		$('#sellShoecolor').val('');
+		$('#sellAccessorysize').val('');
+		$('#sellAccessorycolor').val('');
 	};
 
 
@@ -956,8 +1098,8 @@
 
 	let croppi;
 	$('#imageModalContainer-one').on('shown.bs.modal', function () {
-	let width = document.getElementById('crop-image-container-one').offsetWidth - 20;
-	$('#crop-image-container-one').height((width - 80) + 'px');
+		let width = document.getElementById('crop-image-container-one').offsetWidth - 120;
+		$('#crop-image-container-one').height((width) + 'px');
 		croppi = $('#crop-image-container-one').croppie({
 			showZoomer: true,
 			enforceBoundary: false,
@@ -980,23 +1122,6 @@
 		//croppi.croppie('setZoom', '0');
 		$('.cr-slider').attr({'min':0.1, 'max':2});
 	});
-	});
-	$('#imageModalContainer-one').on('hidden.bs.modal', function () {
-	croppi.croppie('destroy');
-	});
-
-	$(document).on('click', '.save-modal-one', function (ev) {
-		croppi.croppie('result', {
-			type: 'base64',
-			format: 'jpg',
-			size: {
-				width: 1000,
-				height: 1000
-			}
-		}).then(function (resp) {
-			$('#confirm-img-one').attr('src', resp);
-			$('.modal').modal('hide');
-		});
 	});
 
 
@@ -1203,6 +1328,85 @@
 
 
 
+	$('#rotateClock-one').click(function () {
+		console.log("Rotate 90 Clockwise");
+  		croppi.croppie('rotate', -90); 
+	});
+	$('#rotateCounter-one').click(function () {
+		console.log("Rotate 90 Counter-Clockwise");
+  		croppi.croppie('rotate', 90);  
+	});
+	$('#imageModalContainer-one').on('hidden.bs.modal', function () {
+	croppi.croppie('destroy');
+	});
+
+	$('#rotateClock-two').click(function () {
+		console.log("Rotate 90 Clockwise");
+  		croppi2.croppie('rotate', -90); 
+	});
+	$('#rotateCounter-two').click(function () {
+		console.log("Rotate 90 Counter-Clockwise");
+  		croppi2.croppie('rotate', 90);  
+	});
+	$('#imageModalContainer-two').on('hidden.bs.modal', function () {
+	croppi2.croppie('destroy');
+	});
+
+	$('#rotateClock-three').click(function () {
+		console.log("Rotate 90 Clockwise");
+  		croppi3.croppie('rotate', -90); 
+	});
+	$('#rotateCounter-three').click(function () {
+		console.log("Rotate 90 Counter-Clockwise");
+  		croppi3.croppie('rotate', 90);  
+	});
+	$('#imageModalContainer-three').on('hidden.bs.modal', function () {
+	croppi3.croppie('destroy');
+	});
+
+	$('#rotateClock-four').click(function () {
+		console.log("Rotate 90 Clockwise");
+  		croppi4.croppie('rotate', -90); 
+	});
+	$('#rotateCounter-four').click(function () {
+		console.log("Rotate 90 Counter-Clockwise");
+  		croppi4.croppie('rotate', 90);  
+	});
+	$('#imageModalContainer-four').on('hidden.bs.modal', function () {
+	croppi4.croppie('destroy');
+	});
+
+	$('#rotateClock-five').click(function () {
+		console.log("Rotate 90 Clockwise");
+  		croppi5.croppie('rotate', -90); 
+	});
+	$('#rotateCounter-five').click(function () {
+		console.log("Rotate 90 Counter-Clockwise");
+  		croppi5.croppie('rotate', 90);  
+	});
+	$('#imageModalContainer-five').on('hidden.bs.modal', function () {
+	croppi5.croppie('destroy');
+	});
+	
+
+	$(document).on('click', '.save-modal-one', function (ev) {
+		croppi.croppie('result', {
+			type: 'base64',
+			format: 'jpg',
+			backgroundColor:'#FFFFFF',
+			size: {
+				width: 1000,
+				height: 1000
+			}
+		}).then(function (resp) {
+			$('#confirm-img-one').attr('src', resp);
+			$('.modal').modal('hide');
+		});
+	});
+
+
+
+
 	$('#brand').change(function() {
 		if ( this.value == 'Other') {
 			if (this.value == '') {
@@ -1346,6 +1550,54 @@
 	}).on('confirm', function(e){
 		sellResetImages();
 	});
+
+	$('[data-toggle="resetSellInfo"]').jConfirm({
+
+		question:'Reset ALL Info?',
+		confirm_text: 'Yes',
+		deny_text: 'No',
+		theme: 'black',
+		// hides on click
+		hide_on_click: true,
+		// 'auto','top','bottom','left','right'
+		position: 'bottom',
+		// extra class(es)
+		class: '',
+		// shows deny button
+		show_deny_btn: false,
+		// 'tiny', 'small', 'medium', 'large'
+		size: 'medium',
+		// 'black', 'white', 'blurred'
+		backdrop: false
+
+	}).on('confirm', function(e){
+		sellResetInfo();
+	});
+
+
+
+	function moveUp(item) {
+		var prev = item.prev();
+		if (prev.length == 0 || $(prev[0]).hasClass('unsortable')) return;
+		item.css('z-index', 1000).css('position', 'relative').animate({
+		}, 0, function () {
+			prev.css('z-index', '').css('top', '').css('position', '');
+			item.css('z-index', '').css('top', '').css('position', '');
+			item.insertBefore(prev);
+		});
+	}
+
+	function moveDown(item) {
+		var next = item.next();
+		if (next.length == 0 || $(next[0]).hasClass('unsortable')) return;
+		item.css('z-index', 1000).css('position', 'relative').animate({
+		}, 0, function () {
+			next.css('z-index', '').css('top', '').css('position', '');
+			item.css('z-index', '').css('top', '').css('position', '');
+			item.insertAfter(next);
+		});
+	}
+
 
 
 </script>
