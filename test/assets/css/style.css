@@ -743,6 +743,43 @@ header#tabs button.exit {
   }
 
 
+#mobileMoreimages {
+    display: none;
+}
+
+#mobile1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mobile2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mobile3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mobile4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mobile5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#featuredImageTitle {
+    position: absolute; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
 /* The Modal (background) */
 .modalPost {
     display: none; /* Hidden by default */
@@ -917,6 +954,7 @@ a.postModal {
 
 .backImages {
     background: gray;
+    width: 60%;
 }
 
 .backImages:hover {
@@ -1385,9 +1423,10 @@ h4.postDetails {
 
 #imageModalContainer-one {
     z-index: 99999;
-    max-width: none;
     padding: 0;
     background-color: white;
+    max-width: none;
+    height: 100vh;
 }
 
 #imageModalContainer-two {
@@ -1395,6 +1434,7 @@ h4.postDetails {
     max-width: none;
     padding: 0;
     background-color: white;
+    height: 100vh;
 }
 
 #imageModalContainer-three {
@@ -1402,6 +1442,7 @@ h4.postDetails {
     max-width: none;
     padding: 0;
     background-color: white;
+    height: 100vh;
 }
 
 #imageModalContainer-four {
@@ -1409,6 +1450,7 @@ h4.postDetails {
     max-width: none;
     padding: 0;
     background-color: white;
+    height: 100vh;
 }
 
 #imageModalContainer-five {
@@ -1416,6 +1458,7 @@ h4.postDetails {
     max-width: none;
     padding: 0;
     background-color: white;
+    height: 100vh;
 }
 
 #upload-aphoto-one3 {
@@ -1496,6 +1539,32 @@ h4.postDetails {
 
 .modal-dialog {
     margin: 0 auto;
+    height: 100vh;
+}
+
+.modal-content1 {
+    margin: 0 auto;
+    height: 100vh;
+}
+.modal-content2 {
+    margin: 0 auto;
+    height: 100vh;
+}
+.modal-content3 {
+    margin: 0 auto;
+    height: 100vh;
+}
+.modal-content4 {
+    margin: 0 auto;
+    height: 100vh;
+}
+.modal-content5 {
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.cr-boundary {
+    max-width: 800px;
 }
 
 .modal-footer {
@@ -1515,12 +1584,55 @@ h4.postDetails {
    margin-top: 50px;
 }
 
+.upload-noimage {
+    width:50%; 
+    margin-bottom: 1.5em; 
+    z-index: 999;
+}
+
+.upload-yesimage {
+    z-index: 999; 
+    display: none; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    border-radius: 0; 
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+.upload-cancelimage {
+    z-index: 999; 
+    display: none; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    border-radius: 0; 
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+.upload-orderimage {
+    z-index: 999; 
+    display: none; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    border-radius: 0; 
+    padding: 0; 
+    background-color: white; 
+    color: black !important; 
+    border: 1px solid black;
+}
+
+.upload-orderimage:hover {
+    background-color: white;
+}
+
 .croppie-container .cr-viewport {
     background: url('../../images/imageGridOverlay.png');
     background-size: contain;
-    border: 0;
-    outline: 5px solid #0a7e07;
-    box-shadow: 0 0 2000px 2000px rgb(0 0 0 / 75%);
+    border: black solid 5px;
+    outline: 0;
+    box-shadow: 0;
 }
 
 #brandsButton {
@@ -3161,5 +3273,100 @@ header.major {
         .sellNewused {
             padding: 0 0 1.5em 0;
         }
+
+        .upload-noimage {
+            width:50%; 
+            margin-bottom: 1.5em; 
+            z-index: 999;
+        }
         
+        .upload-yesimage {
+            z-index: 999; 
+            display: none; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            border-radius: 0; 
+            padding: 0.5em 1em 0.5em 1em;
+            width: 3em;
+            margin: 0;
+        }
+        
+        .upload-cancelimage {
+            z-index: 999; 
+            display: none; 
+            position: absolute; 
+            top: 0; 
+            right: 0; 
+            border-radius: 0; 
+            padding: 0.5em 1em 0.5em 1em;
+            width: 3em;
+            margin: 0;
+        }
+        
+        .upload-orderimage {
+            z-index: 999; 
+            display: none; 
+            position: absolute; 
+            bottom: 0; 
+            right: 0; 
+            border-radius: 0; 
+            padding: 0.2em !important; 
+            background-color: white; 
+            color: black !important; 
+            border: 1px solid black;
+            width: auto;
+            margin: 0;
+        }
+        
+        .upload-orderimage:hover {
+            background-color: white;
+        }
+
+        #mobileMoreimages {
+            display: block;
+        }
+
+        #mobile1 {
+            display: block;
+        }
+        #mobile2 {
+            display: none;
+        }
+        #mobile3 {
+            display: none;
+        }
+        #mobile4 {
+            display: none;
+        }
+        #mobile5 {
+            display: none;
+        }
+
+        #featuredImageTitle {
+            position: absolute; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            width: auto;
+        }
+        
+        .cr-boundary {
+			width: 100%;
+            right: 1px;
+		}
+
+        #nextPost {
+            width: 60vw;
+        }
+
+        #backPost {
+            width: 60vw;
+        }
+
+        #resetPost {
+            width: 60vw;
+        }
+
+
     }

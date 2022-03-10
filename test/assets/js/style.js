@@ -1868,37 +1868,47 @@ grecaptcha.ready(function() {
 
 $('.save-modal-one').click( function(e) {
     $('#confirm-img-one').css("display","block");
-    $('.imageNormal-one').css("display","none");
     $('.imageIcon-one').css("display","none");
-    $('.imageUploaded-one').css("display","block");
+    $('#upload-aphoto-one').css("display","none");
+    $('#upload-aphoto-one2').css("display","block");
+    $('#upload-aphoto-one3').css("display","block");
+    $('#upload-aphoto-one4').css("display","block");
 });
 
 $('.save-modal-two').click( function(e) {
     $('#confirm-img-two').css("display","block");
-    $('.imageNormal-two').css("display","none");
     $('.imageIcon-two').css("display","none");
-    $('.imageUploaded-two').css("display","block");
+    $('#upload-aphoto-two').css("display","none");
+    $('#upload-aphoto-two2').css("display","block");
+    $('#upload-aphoto-two3').css("display","block");
+    $('#upload-aphoto-two4').css("display","block");
 });
 
 $('.save-modal-three').click( function(e) {
     $('#confirm-img-three').css("display","block");
-    $('.imageNormal-three').css("display","none");
     $('.imageIcon-three').css("display","none");
-    $('.imageUploaded-three').css("display","block");
+    $('#upload-aphoto-three').css("display","none");
+    $('#upload-aphoto-three2').css("display","block");
+    $('#upload-aphoto-three3').css("display","block");
+    $('#upload-aphoto-three4').css("display","block");
 });
 
 $('.save-modal-four').click( function(e) {
     $('#confirm-img-four').css("display","block");
-    $('.imageNormal-four').css("display","none");
     $('.imageIcon-four').css("display","none");
-    $('.imageUploaded-four').css("display","block");
+    $('#upload-aphoto-four').css("display","none");
+    $('#upload-aphoto-four2').css("display","block");
+    $('#upload-aphoto-four3').css("display","block");
+    $('#upload-aphoto-four4').css("display","block");
 });
 
 $('.save-modal-five').click( function(e) {
     $('#confirm-img-five').css("display","block");
-    $('.imageNormal-five').css("display","none");
     $('.imageIcon-five').css("display","none");
-    $('.imageUploaded-five').css("display","block");
+    $('#upload-aphoto-five').css("display","none");
+    $('#upload-aphoto-five2').css("display","block");
+    $('#upload-aphoto-five3').css("display","block");
+    $('#upload-aphoto-five4').css("display","block");
 });
 
 
